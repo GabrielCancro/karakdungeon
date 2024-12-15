@@ -18,6 +18,7 @@ config/icon="res://icon.png"
 
 DungeonManager="*res://autoloads/DungeonManager.gd"
 Utils="*res://autoloads/Utils.gd"
+DefianceManager="*res://autoloads/DefianceManager.gd"
 
 [display]
 

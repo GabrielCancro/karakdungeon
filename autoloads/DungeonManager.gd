@@ -2,10 +2,10 @@ extends Node
 
 
 var map = {
-	"0x0":{"type":"empy"},
+	"0x0":{"type":"empy", "defiance":"goblin"},
 	"0x1":{"type":"empy"},
-	"1x0":{"type":"empy"},
-	"1x1":{"type":"empy"},
+	"1x0":{"type":"empy", "defiance":"goblin"},
+	"1x1":{"type":"empy", "defiance":"goblin"},
 	"2x0":{"type":"empy"},
 	"2x1":{"type":"empy"},
 }
@@ -24,6 +24,7 @@ func create_dungeon():
 		rnode.name = "r_"+key
 		var rsize = rnode.get_node("image").rect_size
 		var room_data = map[key]
+		rnode.set_data(room_data)
 		rnode.position = Vector2(room_data.x*rsize.x,room_data.y*rsize.y)
 		get_node("/root/Game/Map").add_child(rnode)
 		Utils.set_zindex( rnode.get_node("Sprite"), .1 )
