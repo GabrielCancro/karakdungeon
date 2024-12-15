@@ -1,5 +1,6 @@
 extends Node
 
+var current_room
 
 var map = {
 	"0x0":{"type":"empy", "defiance":"goblin"},
@@ -38,4 +39,7 @@ func get_room_node(dx,dy):
 	var key = str(dx)+"x"+str(dy)
 	return get_node_or_null("/root/Game/Map/r_"+key)
 
-
+func set_current_room(dx,dy):
+	var room = get_room_node(dx,dy)
+	if room && room != current_room: Effector.shake(current_room)
+	current_room = room

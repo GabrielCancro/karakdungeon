@@ -29,6 +29,7 @@ func move_to(dx,dy):
 	if room:
 		data.x += dx
 		data.y += dy
+		DungeonManager.set_current_room(data.x,data.y)
 		get_node("/root/Game/Camera2D").position = room.position
 		var offset = Vector2(data.h*80,data.v*80)
 		$Tween.interpolate_property(self,"position",null,room.position+offset,0.2,Tween.TRANS_QUAD,Tween.EASE_OUT)
