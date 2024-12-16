@@ -9,5 +9,8 @@ func _ready():
 
 func set_data(room_data):
 	data = room_data
-	if "defiance" in data: data["defiance"] = DefianceManager.get_defiance_data(data["defiance"])
-	$Sprite.visible = ("defiance" in data)
+	$Sprite.visible = false
+	if "defiance" in data: 
+		data["defiance"] = DefianceManager.get_defiance_data(data["defiance"])
+		$Sprite.visible = true
+		$Sprite.texture = load("res://assets/defiances/df_"+data["defiance"]["name"]+".png")

@@ -19,14 +19,14 @@ z_index = 3
 
 [node name="CLUI" type="CanvasLayer" parent="."]
 
+[node name="ActionList" parent="CLUI" instance=ExtResource( 5 )]
+margin_left = 1216.0
+margin_top = 47.0
+margin_right = 1597.0
+margin_bottom = 198.0
+
 [node name="PlayerUI" parent="CLUI" instance=ExtResource( 4 )]
 margin_left = 290.0
 margin_top = 743.0
 margin_right = 590.0
 margin_bottom = 905.0
-
-[node name="ActionList" parent="CLUI" instance=ExtResource( 5 )]
-margin_left = 409.0
-margin_top = -437.0
-margin_right = 790.0
-margin_bottom = 212.0

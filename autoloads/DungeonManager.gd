@@ -6,7 +6,7 @@ var current_player
 var map = {
 	"0x0":{"type":"empy", "defiance":"goblin"},
 	"0x1":{"type":"empy"},
-	"1x0":{"type":"empy", "defiance":"bear_trap"},
+	"1x0":{"type":"empy", "defiance":"trap1"},
 	"1x1":{"type":"empy", "defiance":"goblin"},
 	"2x0":{"type":"empy"},
 	"2x1":{"type":"empy"},
