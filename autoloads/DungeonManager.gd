@@ -1,11 +1,12 @@
 extends Node
 
 var current_room
+var current_player
 
 var map = {
 	"0x0":{"type":"empy", "defiance":"goblin"},
 	"0x1":{"type":"empy"},
-	"1x0":{"type":"empy", "defiance":"goblin"},
+	"1x0":{"type":"empy", "defiance":"bear_trap"},
 	"1x1":{"type":"empy", "defiance":"goblin"},
 	"2x0":{"type":"empy"},
 	"2x1":{"type":"empy"},
@@ -41,5 +42,6 @@ func get_room_node(dx,dy):
 
 func set_current_room(dx,dy):
 	var room = get_room_node(dx,dy)
-	if room && room != current_room: Effector.shake(current_room)
+	if room && room != current_room: Effector.scale_boom(room)
 	current_room = room
+	get_node("/root/Game/CLUI/ActionList").show_current_actions(current_room,current_player)

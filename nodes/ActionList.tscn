@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/font/AbyssinicaSIL-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://nodes/ActionList.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 size = 49
@@ -16,6 +17,7 @@ margin_top = -426.0
 margin_right = 798.0
 margin_bottom = 223.0
 color = Color( 0.219608, 0.219608, 0.219608, 1 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }

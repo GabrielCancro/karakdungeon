@@ -6,6 +6,7 @@ var data = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	DungeonManager.current_player = data
 	move_to(0,0)
 
 func _input(event):
