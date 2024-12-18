@@ -19,11 +19,13 @@ func _input(event):
 
 func move_to(dx,dy):
 	if dx!=data.h:
+		if obstructed_by_door(): return
 		data.h = dx
 		dx = 0
 	elif dx!=0: data.h = -dx
 		
 	if dy!=data.v:
+		if obstructed_by_door(): return
 		data.v = dy
 		dy = 0
 	elif dy!=0: data.v = -dy
@@ -51,3 +53,11 @@ func teleport_to(xx,yy):
 		var offset = Vector2(data.h*80,data.v*80)
 		position = room.position+offset
 		Utils.set_zindex(self,.2)
+
+func obstructed_by_door():
+	var room = DungeonManager.current_room
+	var def = DungeonManager.get_room_defiance(room)
+	if def && def.type=="door":
+		if data.x == room.data.x && data.y == room.data.y:
+			return true
+	return false
