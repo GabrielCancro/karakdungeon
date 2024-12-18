@@ -6,6 +6,14 @@
 
 [node name="Game" type="Node2D"]
 
+[node name="CLBG" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CLBG"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0980392, 0.0980392, 0.0980392, 1 )
+
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 smoothing_enabled = true

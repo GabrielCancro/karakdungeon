@@ -17,7 +17,10 @@ func show_current_actions(room,player):
 	$Label.text = ""
 	Utils.remove_all_childs($List)
 	if defiance: 
-		$Label.text += defiance.name
+		$Label.text += defiance.name+"\n"
+		if "hp" in defiance: $Label.text += "HP:"+str(defiance.hp)+"  "
+		if "dif" in defiance: $Label.text += "DIF:"+str(defiance.dif)+"  "
+		if "dam" in defiance: $Label.text += "DAM:"+str(defiance.dam)+"  "
 		$Label.text += "\n*****************"
 		var ac_array = ActionManager.get_room_actions()
 		for ac_name in ac_array:

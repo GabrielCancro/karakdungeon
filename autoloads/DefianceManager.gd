@@ -3,6 +3,8 @@ extends Node
 var DEFIANCES = {
 	"goblin":{"type":"enemy", "hp":5, "dam":2},
 	"trap1":{"type":"trap", "dif":4, "dam":2},
+	"door1":{"type":"door", "hp":6, "dif":2},
+	"chest1":{"type":"chest", "hp":6, "dif":2},
 }
 
 var ACTIONS = {

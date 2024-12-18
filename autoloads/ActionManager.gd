@@ -7,6 +7,8 @@ var ACTIONS = {
 	"attack":{},
 	"evade":{},
 	"dissarm":{},
+	"unlock":{},
+	"force":{},
 }
 
 func get_room_actions():
@@ -29,3 +31,9 @@ func check_action_evade():
 
 func check_action_dissarm():
 	return (def && def.type == "trap")
+
+func check_action_unlock():
+	return (def && (def.type == "door" or def.type == "chest"))
+
+func check_action_force():
+	return (def && (def.type == "door" or def.type == "chest"))
