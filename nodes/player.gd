@@ -7,6 +7,7 @@ var data = {
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	DungeonManager.current_player = data
+	DungeonManager.create_dungeon_nodes(0,0)
 	move_to(0,0)
 
 func _input(event):
@@ -31,6 +32,7 @@ func move_to(dx,dy):
 		data.x += dx
 		data.y += dy
 		DungeonManager.set_current_room(data.x,data.y)
+		DungeonManager.create_dungeon_nodes(data.x,data.y)
 		get_node("/root/Game/Camera2D").position = room.position
 		var offset = Vector2(data.h*80,data.v*80)
 		$Tween.interpolate_property(self,"position",null,room.position+offset,0.2,Tween.TRANS_QUAD,Tween.EASE_OUT)
