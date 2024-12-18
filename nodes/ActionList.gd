@@ -19,9 +19,10 @@ func show_current_actions(room,player):
 	if defiance: 
 		$Label.text += defiance.name
 		$Label.text += "\n*****************"
-		for action in DefianceManager.get_actions(defiance.type):
+		var ac_array = ActionManager.get_room_actions()
+		for ac_name in ac_array:
 			var ac = preload("res://nodes/ActionNode.tscn").instance()
-			ac.set_action(action)
+			ac.set_action(ac_name)
 			$List.add_child(ac)
 		order_actions()
 

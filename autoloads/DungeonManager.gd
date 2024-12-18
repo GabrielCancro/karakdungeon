@@ -13,9 +13,19 @@ var map = {
 }
 
 func _ready():
-	create_dungeon()
+	generate_procedural_dungeon()
+	create_dungeon_nodes()
 
-func create_dungeon():
+func generate_procedural_dungeon():
+	map = {}
+	for x in range(-5,5):
+		for y in range(-5,5):
+			var key = str(x)+"x"+str(y)
+			map[key] = {"type":"empy"}
+			var def = DefianceManager.get_random_defiance(50)
+			if def: map[key]["defiance"] = def
+
+func create_dungeon_nodes():
 	for key in map.keys():
 		map[key]["x"] = int( key.split("x")[0] )
 		map[key]["y"] = int( key.split("x")[1] )

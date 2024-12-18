@@ -17,3 +17,9 @@ func get_defiance_data(code):
 
 func get_actions(defiance_type):
 	return ACTIONS[defiance_type].duplicate()
+
+func get_random_defiance(perc = 100):
+	randomize()
+	if randi()%100<perc: return null
+	var i = randi()%DEFIANCES.keys().size()
+	return DEFIANCES.keys()[i]
