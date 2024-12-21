@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/font/AbyssinicaSIL-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://nodes/Dice.tscn" type="PackedScene" id=2]
+[ext_resource path="res://nodes/PlayerUI.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 49
@@ -10,6 +12,7 @@ font_data = ExtResource( 1 )
 margin_right = 300.0
 margin_bottom = 162.0
 color = Color( 0.219608, 0.219608, 0.219608, 1 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -17,9 +20,34 @@ __meta__ = {
 [node name="Label" type="Label" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_bottom = -97.0
 custom_colors/font_color = Color( 0.666667, 0.666667, 0.666667, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "PLAYER UI"
 align = 1
 valign = 1
 clip_text = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_top = 72.0
+margin_right = 304.0
+margin_bottom = 142.0
+
+[node name="Dice1" parent="HBoxContainer" instance=ExtResource( 2 )]
+
+[node name="Dice2" parent="HBoxContainer" instance=ExtResource( 2 )]
+margin_left = 74.0
+margin_right = 144.0
+
+[node name="Dice3" parent="HBoxContainer" instance=ExtResource( 2 )]
+margin_left = 148.0
+margin_right = 218.0
+
+[node name="Dice4" parent="HBoxContainer" instance=ExtResource( 2 )]
+margin_left = 222.0
+margin_right = 292.0
+
+[node name="Button" type="Button" parent="."]
+margin_right = 12.0
+margin_bottom = 20.0
+text = "R"

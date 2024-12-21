@@ -22,12 +22,17 @@ func get_room_actions():
 			if call("check_action_"+ac_name):
 				ac_array.append(ac_name)
 	return ac_array
-
+	
+func get_calculation(ac_name):
+	if has_method("get_calculation_"+ac_name):
+		return call("get_calculation_"+ac_name)
+	return "-"
+	
 func check_action_attack():
 	return (def && def.type == "enemy")
 
 func check_action_evade():
-	return (def && def.type == "enemy")
+	return (def && def.type == "enemy" && PlayerManager.current_player_have_dice("BT"))
 
 func check_action_dissarm():
 	return (def && def.type == "trap")
@@ -37,3 +42,6 @@ func check_action_unlock():
 
 func check_action_force():
 	return (def && (def.type == "door" or def.type == "chest"))
+
+func get_calculation_force():
+	return "-2HP"

@@ -4,7 +4,7 @@ func _ready():
 	$Button.connect("button_down",self,"on_click")
 
 func set_action(name):
-	$Label.text = name
+	$Label.text = name+" "+ActionManager.get_calculation(name)
 
 func on_click():
 	Effector.scale_boom(self)

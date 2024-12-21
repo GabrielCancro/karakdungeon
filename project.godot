@@ -21,6 +21,7 @@ Utils="*res://autoloads/Utils.gd"
 DefianceManager="*res://autoloads/DefianceManager.gd"
 Effector="*res://autoloads/Effector.gd"
 ActionManager="*res://autoloads/ActionManager.gd"
+PlayerManager="*res://autoloads/PlayerManager.gd"
 
 [display]
 
