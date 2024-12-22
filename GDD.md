@@ -1,14 +1,9 @@
 # karakdungeon
 
-
-ENEMIGO -> ATACAR / ATAQUE AGIL (% de evitar contrataque)
-
-TRAMPA -> DESACTIVAR
-
-PUERTA -> ABRIR CERROJO / FORZAR
-
+Desafios y sus stats
+ENEMIGO -> HP:5/8  DAM:2
+TRAMPA -> DIF: 5 (tabla de dificultad)
+PUERTA -> HP:10/15 PRG:1/4
 COFRE -> IDEM PUERTA
-
-SECRETO -> INVESTIGAR
-
-TOTEM -> DESCIFRAR
+SECRETO -> PRG:1/4
+TOTEM -> PRG:1/4
