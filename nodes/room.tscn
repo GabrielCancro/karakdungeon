@@ -43,4 +43,3 @@ clip_text = true
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 3, 3 )
 texture = ExtResource( 1 )
-offset = Vector2( 0, -9.66667 )

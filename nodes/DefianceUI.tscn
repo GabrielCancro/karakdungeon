@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/font/AbyssinicaSIL-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/defiances/df_goblin.png" type="Texture" id=2]
+[ext_resource path="res://nodes/DefianceUI.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 49
+font_data = ExtResource( 1 )
+
+[node name="DefianceUI" type="ColorRect"]
+margin_right = 469.0
+margin_bottom = 127.0
+color = Color( 0.184314, 0.184314, 0.184314, 1 )
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( -6, 108 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 2 )
+offset = Vector2( 0, -9.66667 )
+
+[node name="lb_name" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 18.0
+margin_top = 3.0
+margin_bottom = -74.0
+custom_colors/font_color = Color( 0.843137, 0.388235, 0.388235, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "PUERTA"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="lb_stats" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_top = 60.0
+margin_right = 12.0
+margin_bottom = -17.0
+custom_colors/font_color = Color( 0.666667, 0.666667, 0.666667, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "HP: 10/10   DM: 2"
+align = 1
+valign = 1
+clip_text = true

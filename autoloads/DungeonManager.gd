@@ -3,6 +3,8 @@ extends Node
 var current_room
 var current_player
 
+signal change_room()
+
 var map = {
 	"0x0":{"type":"empy", "defiance":"goblin"},
 	"0x1":{"type":"empy"},
@@ -25,11 +27,11 @@ func generate_procedural_dungeon():
 			if def: map[key]["defiance"] = def
 
 func create_dungeon_nodes(xx,yy):
-	print("GENERATE SECUENCE ",xx," x ",yy)
+	#print("GENERATE SECUENCE ",xx," x ",yy)
 	var nodes =[[xx-1,yy],[xx,yy-1],[xx,yy],[xx,yy+1],[xx+1,yy], ]
 	for pos in nodes:
 		var key = str(pos[0])+"x"+str(pos[1])
-		print("GENERATE ",key)
+		#print("GENERATE ",key)
 		if !key in map.keys(): continue
 		if get_node_or_null("/root/Game/Map/"+"r_"+key): continue
 		var rnode = preload("res://nodes/room.tscn").instance()
@@ -61,6 +63,6 @@ func set_current_room(dx,dy):
 	if room && room != current_room: Effector.scale_boom(room)
 	current_room = room
 	if current_room: current_room.on_enter()
-	get_node("/root/Game/CLUI/ActionList").show_current_actions(current_room,current_player)
 	var def = get_room_defiance(current_room)
 	if !def or def.type!="door": DungeonManager.create_dungeon_nodes(dx,dy)
+	emit_signal("change_room")

@@ -8,26 +8,22 @@ extends ColorRect
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	DungeonManager.connect("change_room",self,"show_current_actions")
 
-
-func show_current_actions(room,player):
+func show_current_actions():
+	var room = DungeonManager.current_room
+	var player = DungeonManager.current_player
 	var defiance = null
 	if room && "defiance" in room.data: defiance = room.data.defiance
-	$Label.text = ""
 	Utils.remove_all_childs($List)
-	if defiance: 
-		$Label.text += defiance.name+"\n"
-		if "hp" in defiance: $Label.text += "HP:"+str(defiance.hp)+"  "
-		if "dif" in defiance: $Label.text += "DIF:"+str(defiance.dif)+"  "
-		if "dam" in defiance: $Label.text += "DAM:"+str(defiance.dam)+"  "
-		$Label.text += "\n*****************"
-		var ac_array = ActionManager.get_room_actions()
-		for ac_name in ac_array:
-			var ac = preload("res://nodes/ActionNode.tscn").instance()
-			ac.set_action(ac_name)
-			$List.add_child(ac)
-		order_actions()
+	visible = (defiance!=null)
+	if !defiance: return
+	var ac_array = ActionManager.get_room_actions()
+	for ac_name in ac_array:
+		var ac = preload("res://nodes/ActionNode.tscn").instance()
+		ac.set_action(ac_name)
+		$List.add_child(ac)
+	order_actions()
 
 func order_actions():
 	for ac in $List.get_children():

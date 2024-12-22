@@ -2,9 +2,9 @@ extends Node
 
 var DEFIANCES = {
 	"goblin":{"type":"enemy", "hp":5, "dam":2},
-	"trap1":{"type":"trap", "dif":4, "dam":2},
-	"door1":{"type":"door", "hp":6, "dif":2},
-	"chest1":{"type":"chest", "hp":6, "dif":2},
+	"trap1":{"type":"trap", "dif":4},
+	"door1":{"type":"door", "hp":6, "prg":2},
+	"chest1":{"type":"chest", "hp":6, "prg":2},
 }
 
 var ACTIONS = {
@@ -15,6 +15,9 @@ var ACTIONS = {
 func get_defiance_data(code):
 	var data = DEFIANCES[code].duplicate()
 	data.name = code
+	if "hp" in data: data["hpm"] = data.hp
+	if "prg" in data: data["prgm"] = data.prg
+	if "prg" in data: data["prg"] = 0
 	return data
 
 func get_actions(defiance_type):
