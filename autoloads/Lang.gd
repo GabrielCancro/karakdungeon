@@ -3,7 +3,7 @@ extends Node
 var lang = "es"
 
 var texts = {
-	"ab_desc_direct_attack_es": "Ataque Directo: Consume 2x@SW para dañar 1xVIDA a un enemigo.",
+	"ab_desc_direct_attack_es": "Ataque Directo: Consume 2x@SW para dañar 1xVIDA a un enemigo. #1",
 	"ab_desc_power_attack_es": "Ataque Poderoso: Consume 3xESPADA para dañar 2xVIDA a un enemigo.",
 	"ab_desc_unlock_es": "Destrabar Mecanismo: Consume 2xMANO para resolver 1xENGRANAJE de un mecanismo.",
 	"ab_desc_berserk_es": "Berserker: Consume 1xVIDA para relanzar las ESPADAS INACTIVAS que tengas.",
@@ -26,18 +26,20 @@ var texts = {
 }
 
 var images = {
-	"@SW":"[img=35]res://assets/dices/SW.png[/img]",
-	"@HP":"[img=15]res://assets/bbimg/bb_hp.png[/img]",
-	"@GR":"[img=15]res://assets/slats/GR.png[/img]",
-	"@MC":"[img=15]res://assets/bbimg/gear.png[/img]"
+	"@SW":"[font=res://assets/font/bbcode_font.tres][img=50]res://assets/dices/SW.png[/img][/font]",
+	"@HP":"[font=res://assets/font/bbcode_font.tres][img=50]res://assets/bbimg/bb_hp.png[/img][/font]",
+	"@GR":"[font=res://assets/font/bbcode_font.tres][img=50]res://assets/slats/GR.png[/img][/font]",
+	"@MC":"[font=res://assets/font/bbcode_font.tres][img=50]res://assets/bbimg/gear.png[/img][/font]"
 }
 
-func get_text(code):
+func get_text(code,vals = []):
 	var lang_code = code+"_"+lang
 	if !lang_code in texts: return "<"+lang_code+">"
 	else: 
 		var tx = texts[lang_code]
+		for i in range(vals.size()): tx = tx.replace("#"+str(i+1),str(vals[i]))
 		if "@" in tx: 
 			for k in images.keys(): tx = tx.replace(k,images[k])
 			return "[center]"+tx+"[/center]"
 		else: return tx
+		

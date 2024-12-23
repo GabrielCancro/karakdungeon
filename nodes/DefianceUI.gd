@@ -12,6 +12,14 @@ func update():
 	else: defiance = null
 	
 	if defiance:
+		if "hp" in defiance && defiance.hp<=0: 
+			DefianceManager.resolve_current_defiance()
+			return
+		if "prg" in defiance && defiance.prg>=defiance.prgm: 
+			DefianceManager.resolve_current_defiance()
+			return
+	
+	if defiance:
 		$Sprite.texture = load("res://assets/defiances/df_"+defiance.name+".png")
 		$lb_name.text = defiance.name
 		$lb_stats.text = ""

@@ -38,6 +38,7 @@ func create_dungeon_nodes(xx,yy):
 		rnode.name = "r_"+key
 		var rsize = rnode.get_node("image").rect_size
 		var room_data = map[key]
+		if "defiance" in room_data: room_data.defiance = DefianceManager.get_defiance_data(room_data.defiance)
 		rnode.set_data(room_data)
 		rnode.position = Vector2(room_data.x*rsize.x,room_data.y*rsize.y)
 		get_node("/root/Game/Map").add_child(rnode)
@@ -64,5 +65,12 @@ func set_current_room(dx,dy):
 	current_room = room
 	if current_room: current_room.on_enter()
 	var def = get_room_defiance(current_room)
-	if !def or def.type!="door": DungeonManager.create_dungeon_nodes(dx,dy)
+	if !def or (def.type!="door" and def.type!="enemy"): DungeonManager.create_dungeon_nodes(dx,dy)
+	emit_signal("change_room")
+
+func reset_current_room():
+	set_current_room(current_room.data.x, current_room.data.y)
+
+func force_update():
+	current_room.update()
 	emit_signal("change_room")

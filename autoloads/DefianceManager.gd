@@ -1,5 +1,7 @@
 extends Node
 
+signal resolved_defiance()
+
 var DEFIANCES = {
 	"goblin":{"type":"enemy", "hp":5, "dam":2},
 	"trap1":{"type":"trap", "dif":4},
@@ -28,3 +30,10 @@ func get_random_defiance(perc = 100):
 	if randi()%100<perc: return null
 	var i = randi()%DEFIANCES.keys().size()
 	return DEFIANCES.keys()[i]
+
+func resolve_current_defiance():
+	var croom = DungeonManager.current_room.data.erase("defiance")
+	DungeonManager.force_update()
+	yield(get_tree().create_timer(.5),"timeout")
+	DungeonManager.reset_current_room()
+	emit_signal("resolved_defiance")

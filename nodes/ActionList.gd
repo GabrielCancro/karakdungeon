@@ -1,13 +1,7 @@
 extends ColorRect
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
+	ActionManager.ACTION_LIST_NODE = self
 	DungeonManager.connect("change_room",self,"show_current_actions")
 
 func show_current_actions():
@@ -31,3 +25,9 @@ func order_actions():
 		ac.rect_position = Vector2(0,i*120)
 #		$Tween.interpolate_property(ac,"rect_position",null,Vector2(0,i*120),.2,Tween.TRANS_QUAD,Tween.EASE_OUT,i*.1)
 #	$Tween.start()
+
+func block():
+	$block.visible = true
+
+func unblock():
+	$block.visible = false

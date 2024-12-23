@@ -6,7 +6,7 @@ var data = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	DungeonManager.current_player = data
+	DungeonManager.current_player = self
 	yield(get_tree().create_timer(0.1),"timeout")
 	DungeonManager.create_dungeon_nodes(0,0)
 	teleport_to(0,0)
@@ -61,3 +61,18 @@ func obstructed_by_door():
 		if data.x == room.data.x && data.y == room.data.y:
 			return true
 	return false
+
+func anim_action_start():
+	var room = DungeonManager.get_room_node(data.x,data.y)
+	$Tween.interpolate_property(self,"position",null,room.position,0.2,Tween.TRANS_QUAD,Tween.EASE_OUT)
+	$Tween.start()
+	yield($Tween,"tween_completed")
+	Utils.set_zindex(self,.2)
+
+func anim_action_end():
+	var room = DungeonManager.get_room_node(data.x,data.y)
+	var offset = Vector2(data.h*80,data.v*80)
+	$Tween.interpolate_property(self,"position",null,room.position+offset,0.2,Tween.TRANS_QUAD,Tween.EASE_OUT)
+	$Tween.start()
+	yield($Tween,"tween_completed")
+	Utils.set_zindex(self,.2)
