@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/font/AbyssinicaSIL-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/defiances/df_goblin.png" type="Texture" id=2]
 [ext_resource path="res://nodes/DefianceUI.gd" type="Script" id=3]
+[ext_resource path="res://nodes/TestRnd.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 49
@@ -47,3 +48,10 @@ text = "HP: 10/10   DM: 2"
 align = 1
 valign = 1
 clip_text = true
+
+[node name="TestRnd" parent="." instance=ExtResource( 4 )]
+visible = false
+margin_left = 277.0
+margin_top = 64.0
+margin_right = 277.0
+margin_bottom = 64.0
