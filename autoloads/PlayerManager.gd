@@ -42,3 +42,7 @@ func reorder_players(_x,_y):
 
 func get_player_data(id):
 	return PLAYERS[id-1]
+
+func damage_current_player(dam):
+	Effector.scale_boom(DungeonManager.current_player.node)
+	Effector.show_float_text("-2HP",DungeonManager.current_player.node.position+Vector2(0,-50),"damage")

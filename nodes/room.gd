@@ -11,6 +11,7 @@ func set_data(room_data):
 	$Sprite.visible = false
 	$Label.text = str(data.x)+"x"+str(data.y)
 	if "defiance" in data: 
+		data["defiance"]["def_sprite"] = $Sprite
 		$Sprite.visible = true
 		$Sprite.texture = load("res://assets/defiances/df_"+data["defiance"]["name"]+".png")
 

@@ -25,7 +25,7 @@ func move_to(node,pos):
 	tween.start()
 
 func move_to_yoyo(node,to_pos):
-	var prop = "position" if ("position" in node) else "rect_position"
+	var prop = "global_position" if ("global_position" in node) else "rect_global_position"
 	var pos_ini = node.get(prop)
 	tween.interpolate_property(node,prop,pos_ini,pos_ini+to_pos,.15,Tween.TRANS_QUAD,Tween.EASE_IN)
 	tween.interpolate_property(node,prop,pos_ini+to_pos,pos_ini,.2,Tween.TRANS_QUAD,Tween.EASE_OUT,.15)
@@ -48,7 +48,8 @@ func shake(node,power=6,time=.5):
 
 func scale_boom(node):
 	var prop = "scale" if ("scale" in node) else "rect_scale"
-	tween.interpolate_property(node,prop,Vector2(1.2,1.2),Vector2(1,1),.3,Tween.TRANS_QUAD,Tween.EASE_OUT)
+	var origin = node.get(prop)
+	tween.interpolate_property(node,prop,origin*1.3,origin,.3,Tween.TRANS_QUAD,Tween.EASE_OUT)
 	tween.start()
 #
 #func damage_fx(node,dam):

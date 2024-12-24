@@ -43,6 +43,16 @@ func move_to(dx,dy):
 	
 	var room = DungeonManager.get_room_node(data.x+dx,data.y+dy)
 	if room:
+		TurnManager.on_pre_move()
+		yield(TurnManager,"end_reaction")
+		
+		if dx==0 && dy==0:
+			TurnManager.on_across_room()
+			yield(TurnManager,"end_reaction")
+		else:
+			TurnManager.on_leave_room()
+			yield(TurnManager,"end_reaction")
+		
 		data.x += dx
 		data.y += dy
 		DungeonManager.set_current_room(data.x,data.y)

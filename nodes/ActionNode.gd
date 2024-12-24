@@ -12,3 +12,5 @@ func set_action(_name):
 func on_click():
 	Effector.scale_boom(self)
 	ActionManager.run_action(ac_name)
+	yield(ActionManager,"end_action")
+	TurnManager.on_post_action()
