@@ -20,3 +20,6 @@ func get_dices():
 
 func on_select():
 	PlayerManager.change_player(id)
+
+func set_selected(val):
+	$ColorRect.visible = val

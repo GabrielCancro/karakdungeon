@@ -80,3 +80,6 @@ func get_dest_pos():
 	var room = DungeonManager.get_room_node(data.x,data.y)
 	var offset = Vector2(data.h*80,data.v*80)
 	return room.position+offset
+
+func set_selected(val):
+	$ColorRect.visible = val

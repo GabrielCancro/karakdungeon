@@ -17,9 +17,13 @@ func current_player_have_dice(val):
 	return false
 
 func change_player(id):
+	if DungeonManager.current_player: 
+		DungeonManager.current_player.set_selected(false)
+		get_player_ui(DungeonManager.current_player).set_selected(false)
 	DungeonManager.current_player = PLAYERS[id-1]
 	DungeonManager.set_current_room(DungeonManager.current_player.data.x,DungeonManager.current_player.data.y)
-	for p in PLAYERS: Utils.set_zindex(p)
+	DungeonManager.current_player.set_selected(true)
+	get_player_ui(DungeonManager.current_player).set_selected(true)
 
 func reorder_players(_x,_y):
 	var pjs = []
@@ -29,3 +33,6 @@ func reorder_players(_x,_y):
 		var p = pjs[i]
 		var offset = (-30*(am-1)/2+30*i) * Vector2(p.data.v,p.data.h)
 		p.dest = p.get_dest_pos() + offset
+
+func get_player_ui(player_node):
+	return get_node("/root/Game/CLUI/PlayerUI"+str(player_node.data.id))
