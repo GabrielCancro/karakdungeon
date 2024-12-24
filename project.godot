@@ -23,6 +23,7 @@ Effector="*res://autoloads/Effector.gd"
 ActionManager="*res://autoloads/ActionManager.gd"
 PlayerManager="*res://autoloads/PlayerManager.gd"
 Lang="*res://autoloads/Lang.gd"
+TurnManager="*res://autoloads/TurnManager.gd"
 
 [display]
 
