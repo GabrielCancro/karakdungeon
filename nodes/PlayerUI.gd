@@ -3,10 +3,13 @@ extends ColorRect
 var id = null
 
 func _ready():
-	for i in range(10): if name=="PlayerUI"+str(i): id=i
 	$btn_roll.connect("button_down",self,"roll_dices")
 	$btn_select.connect("button_down",self,"on_select")
 	roll_dices()
+
+func set_player(_id):
+	id = _id
+	$TextureRect.texture = PlayerManager.get_player_data(id).retrait
 
 func roll_dices():
 	for d in $HBoxContainer.get_children():

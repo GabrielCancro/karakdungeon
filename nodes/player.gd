@@ -1,20 +1,18 @@
 extends Node2D
 
-var data = {
-	"id":null, "x":1, "y":0,"h":0,"v":1,
-}
+var data = null
 var dest = Vector2()
 
 func _ready():
-	dest = global_position
-	data.id = PlayerManager.add_player(self)
+	data = PlayerManager.add_player(self)
+	$TextureRect.texture = data.retrait
 	yield(get_tree().create_timer(0.1),"timeout")
-	DungeonManager.create_dungeon_nodes(0,0)
 	teleport_to(0,0)
 
 func _process(delta):
 	global_position += global_position.direction_to(dest)*global_position.distance_to(dest)*0.1
 	for p in PlayerManager.PLAYERS:
+		p = p.node
 		if p==self: continue
 		if p.global_position.distance_to(global_position)<20:
 			var dir = p.global_position.direction_to(global_position)*Vector2(data.v,data.h)*2
@@ -23,13 +21,14 @@ func _process(delta):
 	Utils.set_zindex(self)
 
 func _input(event):
-	if DungeonManager.current_player!=self: return
+	if DungeonManager.current_player.node!=self: return
 	if event.is_action_pressed("ui_up"): move_to(0,-1)
 	if event.is_action_pressed("ui_down"): move_to(0,1)
 	if event.is_action_pressed("ui_right"): move_to(1,0)
 	if event.is_action_pressed("ui_left"): move_to(-1,0)
 
 func move_to(dx,dy):
+	print("MOVE")
 	if dx!=data.h:
 		if obstructed_by_door(): return
 		data.h = dx
@@ -82,4 +81,4 @@ func get_dest_pos():
 	return room.position+offset
 
 func set_selected(val):
-	$ColorRect.visible = val
+	$Selector.visible = val

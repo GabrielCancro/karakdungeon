@@ -32,11 +32,11 @@ func run_action(ac_name):
 	ACTION_LIST_NODE.block()
 	if has_method("run_action_"+ac_name):
 		call("run_action_"+ac_name)
-		DungeonManager.current_player.anim_action_start()
+		DungeonManager.current_player.node.anim_action_start()
 		yield(get_tree().create_timer(.2),"timeout")
 		yield(self,"end_action")
 		DungeonManager.force_update()
-		DungeonManager.current_player.anim_action_end()
+		DungeonManager.current_player.node.anim_action_end()
 	ACTION_LIST_NODE.unblock()
 
 func get_calculation(ac_name):
