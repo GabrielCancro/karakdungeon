@@ -1,7 +1,11 @@
 extends ColorRect
 
+var id = null
+
 func _ready():
-	$Button.connect("button_down",self,"roll_dices")
+	for i in range(10): if name=="PlayerUI"+str(i): id=i
+	$btn_roll.connect("button_down",self,"roll_dices")
+	$btn_select.connect("button_down",self,"on_select")
 	roll_dices()
 
 func roll_dices():
@@ -13,3 +17,6 @@ func get_dices():
 	for d in $HBoxContainer.get_children(): 
 		arr.append(d.value)
 	return arr
+
+func on_select():
+	PlayerManager.change_player(id)

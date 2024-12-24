@@ -1,17 +1,29 @@
 extends Node2D
 
 var data = {
-	"x":1, "y":0,"h":0,"v":1,
+	"id":null, "x":1, "y":0,"h":0,"v":1,
 }
+var dest = Vector2()
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	DungeonManager.current_player = self
+	dest = global_position
+	data.id = PlayerManager.add_player(self)
 	yield(get_tree().create_timer(0.1),"timeout")
 	DungeonManager.create_dungeon_nodes(0,0)
 	teleport_to(0,0)
 
+func _process(delta):
+	global_position += global_position.direction_to(dest)*global_position.distance_to(dest)*0.1
+	for p in PlayerManager.PLAYERS:
+		if p==self: continue
+		if p.global_position.distance_to(global_position)<20:
+			var dir = p.global_position.direction_to(global_position)*Vector2(data.v,data.h)*2
+			p.dest -= dir
+			dest += dir
+	Utils.set_zindex(self)
+
 func _input(event):
+	if DungeonManager.current_player!=self: return
 	if event.is_action_pressed("ui_up"): move_to(0,-1)
 	if event.is_action_pressed("ui_down"): move_to(0,1)
 	if event.is_action_pressed("ui_right"): move_to(1,0)
@@ -35,11 +47,7 @@ func move_to(dx,dy):
 		data.x += dx
 		data.y += dy
 		DungeonManager.set_current_room(data.x,data.y)
-		get_node("/root/Game/Camera2D").position = room.position
-		var offset = Vector2(data.h*80,data.v*80)
-		$Tween.interpolate_property(self,"position",null,room.position+offset,0.2,Tween.TRANS_QUAD,Tween.EASE_OUT)
-		$Tween.start()
-		Utils.set_zindex(self,.2)
+		dest = get_dest_pos()
 
 func teleport_to(xx,yy):
 	var room = DungeonManager.get_room_node(xx,yy)
@@ -49,9 +57,8 @@ func teleport_to(xx,yy):
 		data.h = 0
 		data.v = 1
 		DungeonManager.set_current_room(data.x,data.y)
-		get_node("/root/Game/Camera2D").position = room.position
-		var offset = Vector2(data.h*80,data.v*80)
-		position = room.position+offset
+		position = get_dest_pos()
+		dest = position
 		Utils.set_zindex(self,.2)
 
 func obstructed_by_door():
@@ -64,15 +71,12 @@ func obstructed_by_door():
 
 func anim_action_start():
 	var room = DungeonManager.get_room_node(data.x,data.y)
-	$Tween.interpolate_property(self,"position",null,room.position,0.2,Tween.TRANS_QUAD,Tween.EASE_OUT)
-	$Tween.start()
-	yield($Tween,"tween_completed")
-	Utils.set_zindex(self,.2)
+	dest = room.position
 
 func anim_action_end():
+	dest = get_dest_pos()
+
+func get_dest_pos():
 	var room = DungeonManager.get_room_node(data.x,data.y)
 	var offset = Vector2(data.h*80,data.v*80)
-	$Tween.interpolate_property(self,"position",null,room.position+offset,0.2,Tween.TRANS_QUAD,Tween.EASE_OUT)
-	$Tween.start()
-	yield($Tween,"tween_completed")
-	Utils.set_zindex(self,.2)
+	return room.position+offset

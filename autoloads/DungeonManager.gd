@@ -63,7 +63,9 @@ func set_current_room(dx,dy):
 	if current_room: current_room.on_leave()
 	if room && room != current_room: Effector.scale_boom(room)
 	current_room = room
-	if current_room: current_room.on_enter()
+	if current_room: 
+		current_room.on_enter()
+		get_node("/root/Game/Camera2D").position = room.position
 	var def = get_room_defiance(current_room)
 	if !def or (def.type!="door" and def.type!="enemy"): DungeonManager.create_dungeon_nodes(dx,dy)
 	emit_signal("change_room")

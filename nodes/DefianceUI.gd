@@ -8,7 +8,7 @@ func _ready():
 	DungeonManager.connect("change_room",self,"update")
 
 func update():
-	print("DEFIANCE UI UPDATE")
+	#print("DEFIANCE UI UPDATE")
 	$TestRnd.visible = false
 	var room = DungeonManager.current_room
 	if room && "defiance" in room.data: defiance = room.data["defiance"]

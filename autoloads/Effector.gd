@@ -126,3 +126,8 @@ func fade_yoyo(node):
 	tween.interpolate_property(node,"modulate",Color(1,1,1,1),Color(0,0,0,1),.25,Tween.TRANS_QUAD,Tween.EASE_IN)
 	tween.interpolate_property(node,"modulate",Color(0,0,0,1),Color(1,1,1,1),.25,Tween.TRANS_QUAD,Tween.EASE_OUT,0.26)
 	tween.start()
+
+func show_float_text(text,pos,style="normal"):
+	var node = preload("res://nodes/fx/FloatText.tscn").instance()
+	node.set_float(text,pos,style)
+	get_node("/root").add_child(node)

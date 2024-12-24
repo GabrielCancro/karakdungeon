@@ -47,7 +47,9 @@ func get_calculation(ac_name):
 func check_action_attack(): return (def.type == "enemy")
 func run_action_attack(): 
 	def.hp -= 2
-	yield(get_tree().create_timer(1),"timeout")
+	yield(get_tree().create_timer(.5),"timeout")
+	Effector.show_float_text("-2HP",room.position+Vector2(0,-100),"damage")
+	yield(get_tree().create_timer(.5),"timeout")
 	emit_signal("end_action")
 
 func check_action_evade():
@@ -59,15 +61,26 @@ func run_action_dissarm():
 	defUI.dif_test.roll()
 	var result = yield(defUI.dif_test,"end_roll")
 	yield(get_tree().create_timer(.5),"timeout")
+	if result=="FAIL": Effector.show_float_text("ACTIVATED!",room.position+Vector2(0,-100),"damage")
+	elif result=="SUCCESS": Effector.show_float_text("DISSARMED",room.position+Vector2(0,-100),"normal")
+	elif result=="NONE": Effector.show_float_text("NONE",room.position+Vector2(0,-100),"white")
+	yield(get_tree().create_timer(.3),"timeout")
 	emit_signal("end_action")
 
-func check_action_unlock():
-	return (def.type == "door" or def.type == "chest")
+func check_action_unlock(): return (def.type == "door" or def.type == "chest")
+func run_action_unlock():
+	def.prg += 1
+	yield(get_tree().create_timer(.5),"timeout")
+	Effector.show_float_text("+1PRG",room.position+Vector2(0,-100),"white")
+	yield(get_tree().create_timer(.5),"timeout")
+	emit_signal("end_action")
 
 func check_action_force(): return (def.type == "door" or def.type == "chest")
 func run_action_force():
 	def.hp -= 2
-	yield(get_tree().create_timer(1),"timeout")
+	yield(get_tree().create_timer(.5),"timeout")
+	Effector.show_float_text("-2HP",room.position+Vector2(0,-100),"damage")
+	yield(get_tree().create_timer(.5),"timeout")
 	emit_signal("end_action")
 
 func get_calculation_force():
