@@ -25,7 +25,7 @@ func move_to(node,pos):
 	tween.start()
 
 func move_to_yoyo(node,to_pos):
-	var prop = "global_position" if ("global_position" in node) else "rect_global_position"
+	var prop = "position" if ("position" in node) else "rect_position"
 	var pos_ini = node.get(prop)
 	tween.interpolate_property(node,prop,pos_ini,pos_ini+to_pos,.15,Tween.TRANS_QUAD,Tween.EASE_IN)
 	tween.interpolate_property(node,prop,pos_ini+to_pos,pos_ini,.2,Tween.TRANS_QUAD,Tween.EASE_OUT,.15)

@@ -27,22 +27,24 @@ func generate_procedural_dungeon():
 			if def: map[key]["defiance"] = def
 
 func create_dungeon_nodes(xx,yy):
-	#print("GENERATE SECUENCE ",xx," x ",yy)
 	var nodes =[[xx-1,yy],[xx,yy-1],[xx,yy],[xx,yy+1],[xx+1,yy], ]
-	for pos in nodes:
-		var key = str(pos[0])+"x"+str(pos[1])
-		#print("GENERATE ",key)
-		if !key in map.keys(): continue
-		if get_node_or_null("/root/Game/Map/"+"r_"+key): continue
-		var rnode = preload("res://nodes/room.tscn").instance()
-		rnode.name = "r_"+key
-		var rsize = rnode.get_node("image").rect_size
-		var room_data = map[key]
-		if "defiance" in room_data: room_data.defiance = DefianceManager.get_defiance_data(room_data.defiance)
-		rnode.set_data(room_data)
-		rnode.position = Vector2(room_data.x*rsize.x,room_data.y*rsize.y)
-		get_node("/root/Game/Map").add_child(rnode)
-		Utils.set_zindex( rnode.get_node("Sprite"), .1 )
+	for pos in nodes: get_or_create_one_room(pos[0],pos[1])
+
+func get_or_create_one_room(xx,yy):
+	var key = str(xx)+"x"+str(yy)
+	if !key in map.keys(): return null
+	var exist_room = get_node_or_null("/root/Game/Map/"+"r_"+key)
+	if exist_room: return exist_room
+	var rnode = preload("res://nodes/room.tscn").instance()
+	rnode.name = "r_"+key
+	var rsize = rnode.get_node("image").rect_size
+	var room_data = map[key]
+	if "defiance" in room_data: room_data.defiance = DefianceManager.get_defiance_data(room_data.defiance)
+	rnode.set_data(room_data)
+	rnode.position = Vector2(room_data.x*rsize.x,room_data.y*rsize.y)
+	get_node("/root/Game/Map").add_child(rnode)
+	Utils.set_zindex( rnode.get_node("Sprite"), .1 )
+	return rnode
 
 func get_room_data(dx,dy):
 	var key = str(dx)+"x"+str(dy)

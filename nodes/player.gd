@@ -29,32 +29,28 @@ func _input(event):
 
 func move_to(dx,dy):
 	print("MOVE")
-	if dx!=data.h:
-		if obstructed_by_door(): return
-		data.h = dx
-		dx = 0
-	elif dx!=0: data.h = -dx
-		
-	if dy!=data.v:
-		if obstructed_by_door(): return
-		data.v = dy
-		dy = 0
-	elif dy!=0: data.v = -dy
+	if obstructed_by_door() && (dx!=data.h || dy!=data.v): return
+	var dest_mov = get_destine_mov(dx,dy)
 	
-	var room = DungeonManager.get_room_node(data.x+dx,data.y+dy)
-	if room:
+	var room_data = DungeonManager.get_room_data(data.x+dx,data.y+dy)
+	if room_data:
 		TurnManager.on_pre_move()
 		yield(TurnManager,"end_reaction")
 		
-		if dx==0 && dy==0:
+		if data.x==dest_mov.x && data.y==dest_mov.y:
 			TurnManager.on_across_room()
 			yield(TurnManager,"end_reaction")
 		else:
 			TurnManager.on_leave_room()
 			yield(TurnManager,"end_reaction")
 		
-		data.x += dx
-		data.y += dy
+		DungeonManager.get_or_create_one_room(data.x+dx,data.y+dy)
+		
+		data.x = dest_mov.x
+		data.y = dest_mov.y
+		data.h = dest_mov.h
+		data.v = dest_mov.v
+
 		DungeonManager.set_current_room(data.x,data.y)
 		dest = get_dest_pos()
 
@@ -92,3 +88,22 @@ func get_dest_pos():
 
 func set_selected(val):
 	$Selector.visible = val
+
+func get_destine_mov(dx,dy):
+	var mov = {"x":data.x,"y":data.y,"h":0,"v":0}
+	if dx!=data.h:
+		mov.h = dx
+		dx = 0
+	elif dx!=0: 
+		mov.h = -dx
+		
+	if dy!=data.v:
+		mov.v = dy
+		dy = 0
+	elif dy!=0: 
+		mov.v = -dy
+		
+	mov.x += dx
+	mov.y += dy
+	
+	return mov
