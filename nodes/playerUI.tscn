@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/font/AbyssinicaSIL-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://nodes/Dice.tscn" type="PackedScene" id=2]
@@ -6,8 +6,16 @@
 [ext_resource path="res://assets/retraits/retrait_1.png" type="Texture" id=4]
 [ext_resource path="res://assets/retraits/retrait_outline.png" type="Texture" id=5]
 
-[sub_resource type="DynamicFont" id=1]
-size = 49
+[sub_resource type="DynamicFont" id=3]
+size = 30
+outline_size = 3
+outline_color = Color( 0.0666667, 0.0666667, 0.0666667, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 28
+outline_size = 3
+outline_color = Color( 0.0666667, 0.0666667, 0.0666667, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
@@ -53,14 +61,27 @@ margin_bottom = -10.0
 texture = ExtResource( 4 )
 expand = true
 
-[node name="Label" type="Label" parent="."]
+[node name="lb_hp" type="Label" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 87.0
-margin_bottom = -97.0
-custom_colors/font_color = Color( 0.666667, 0.666667, 0.666667, 1 )
-custom_fonts/font = SubResource( 1 )
-text = "10/10"
+margin_left = 93.0
+margin_bottom = -128.0
+custom_colors/font_color = Color( 1, 0.254902, 0.254902, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "HP: 10/10"
+valign = 1
+clip_text = true
+
+[node name="lb_mov" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 85.0
+margin_top = 32.0
+margin_right = -8.0
+margin_bottom = -96.0
+custom_colors/font_color = Color( 0.780392, 0.803922, 0.486275, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "MOV: 5/5"
 valign = 1
 clip_text = true
 
@@ -91,9 +112,9 @@ custom_fonts/font = SubResource( 2 )
 flat = true
 
 [node name="btn_roll" type="Button" parent="."]
-margin_left = 223.0
-margin_top = 1.0
-margin_right = 299.0
-margin_bottom = 34.0
+margin_left = 263.0
+margin_top = 4.0
+margin_right = 294.0
+margin_bottom = 37.0
 custom_fonts/font = SubResource( 2 )
-text = "ROLL"
+text = "R"

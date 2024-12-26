@@ -3,7 +3,9 @@ extends Node
 var PLAYERS = []
 
 func add_player(player_node):
-	var data = {"id":null, "x":1, "y":0, "h":0, "v":1, "node":null, "ui":null, "action":true}
+	var data = {"id":null, "x":1, "y":0, "h":0, "v":1, 
+		"node":null, "ui":null, "action":true,
+		"hp":5,"hpm":5,"mov":5,"movm":5}
 	PLAYERS.append(data)
 	data["id"] = PLAYERS.size()
 	data["ui"] = get_node("/root/Game/CLUI/PlayerUI"+str(data["id"]))

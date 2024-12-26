@@ -11,6 +11,11 @@ func _ready():
 func set_player(id):
 	data = PlayerManager.get_player_data(id)
 	$TextureRect.texture = data.retrait
+	updateUI()
+
+func updateUI():
+	$lb_hp.text = "HP: "+str(data.hp)+"/"+str(data.hpm)
+	$lb_mov.text = "MOV: "+str(data.mov)+"/"+str(data.movm)
 
 func roll_dices():
 	for d in $HBoxContainer.get_children():
