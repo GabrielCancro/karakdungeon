@@ -72,7 +72,7 @@ func run_action_dissarm():
 func check_action_unlock(): return (def.type == "door" or def.type == "chest")
 func run_action_unlock():
 	for dice in PlayerManager.get_current_player_dices():
-		for i in range(def.req_solved.size()):
+		for i in range(def.req.size()):
 			if def.req[i]==dice && !def.req_solved[i]: 
 				def.req_solved[i] = true
 				break
@@ -81,9 +81,16 @@ func run_action_unlock():
 
 func check_action_force(): return (def.type == "door" or def.type == "chest")
 func run_action_force():
-	def.hp -= 2
 	yield(get_tree().create_timer(.5),"timeout")
-	Effector.show_float_text("-2HP",room.position+Vector2(0,-100),"damage")
+	randomize()
+	if randi()%100<=70: 
+		Effector.show_float_text("FORCE",room.position+Vector2(0,-100),"normal")
+		for i in range(def.req_solved.size()):
+			if !def.req_solved[i]:
+				def.req.pop_at(i)
+				def.req_solved.pop_at(i)
+				break
+	else: Effector.show_float_text("NONE",room.position+Vector2(0,-100),"white")
 	yield(get_tree().create_timer(.5),"timeout")
 	emit_signal("end_action")
 

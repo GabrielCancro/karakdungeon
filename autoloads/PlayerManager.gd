@@ -47,4 +47,6 @@ func get_player_data(id):
 
 func damage_current_player(dam):
 	Effector.scale_boom(DungeonManager.current_player.node)
-	Effector.show_float_text("-2HP",DungeonManager.current_player.node.position+Vector2(0,-50),"damage")
+	DungeonManager.current_player.hp -= dam
+	DungeonManager.current_player.ui.updateUI()
+	Effector.show_float_text("-"+str(dam)+"HP",DungeonManager.current_player.node.position+Vector2(0,-50),"damage")
