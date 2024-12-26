@@ -33,3 +33,9 @@ func enemy_attack(def,pj):
 	print(pj)
 	yield(get_tree().create_timer(.3),"timeout")
 	PlayerManager.damage_current_player(1)
+
+func end_turn():
+	for p in PlayerManager.PLAYERS:
+		p.mov = p.movm
+		p.ui.roll_dices()
+		p.ui.updateUI()

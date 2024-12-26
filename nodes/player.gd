@@ -31,6 +31,7 @@ func _input(event):
 
 func move_to(dx,dy):
 	print("MOVE")
+	if data.mov<=0: return
 	if obstructed_by_door() && (dx!=data.h || dy!=data.v): return
 	var dest_mov = get_destine_mov(dx,dy)
 	
@@ -48,10 +49,12 @@ func move_to(dx,dy):
 		
 		DungeonManager.get_or_create_one_room(data.x+dx,data.y+dy)
 		
+		data.mov -= 1
 		data.x = dest_mov.x
 		data.y = dest_mov.y
 		data.h = dest_mov.h
 		data.v = dest_mov.v
+		data.ui.updateUI()
 
 		DungeonManager.set_current_room(data.x,data.y)
 		dest = get_dest_pos()
