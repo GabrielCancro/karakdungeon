@@ -5,8 +5,8 @@ signal resolved_defiance()
 var DEFIANCES = {
 	"goblin":{"type":"enemy", "hp":5, "dam":2},
 	"trap1":{"type":"trap", "dif":4},
-	"door1":{"type":"door", "hp":6, "prg":2},
-	"chest1":{"type":"chest", "hp":6, "prg":2},
+	"door1":{"type":"door", "req":["HN","EY"]},
+	"chest1":{"type":"chest", "req":["HN","HN","HN","EY","EY"]},
 }
 
 var ACTIONS = {
@@ -20,6 +20,9 @@ func get_defiance_data(code):
 	if "hp" in data: data["hpm"] = data.hp
 	if "prg" in data: data["prgm"] = data.prg
 	if "prg" in data: data["prg"] = 0
+	if "req" in data: 
+		data["req_solved"] = []
+		for i in data.req: data["req_solved"].append(false)
 	return data
 
 func get_actions(defiance_type):

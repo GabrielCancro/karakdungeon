@@ -6,7 +6,9 @@ var dest = Vector2()
 func _ready():
 	data = PlayerManager.add_player(self)
 	$TextureRect.texture = data.retrait
+	$Button.connect("button_down",PlayerManager,"change_player",[data.id])
 	yield(get_tree().create_timer(0.1),"timeout")
+	set_selected(false)
 	teleport_to(0,0)
 
 func _process(delta):

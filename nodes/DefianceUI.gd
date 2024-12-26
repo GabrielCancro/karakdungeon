@@ -10,17 +10,10 @@ func _ready():
 func update():
 	#print("DEFIANCE UI UPDATE")
 	$TestRnd.visible = false
+	$Reqs.visible = false
 	var room = DungeonManager.current_room
 	if room && "defiance" in room.data: defiance = room.data["defiance"]
 	else: defiance = null
-	
-	if defiance:
-		if "hp" in defiance && defiance.hp<=0: 
-			DefianceManager.resolve_current_defiance()
-			return
-		if "prg" in defiance && defiance.prg>=defiance.prgm: 
-			DefianceManager.resolve_current_defiance()
-			return
 	
 	if defiance:
 		$Sprite.texture = load("res://assets/defiances/df_"+defiance.name+".png")
@@ -29,9 +22,20 @@ func update():
 		if "hp" in defiance: $lb_stats.text += " HP:"+str(defiance.hp)+"/"+str(defiance.hpm)+" "
 		if "prg" in defiance: $lb_stats.text += " PRG:"+str(defiance.prg)+"/"+str(defiance.prgm)+" "
 		if "dif" in defiance: 
-			$lb_stats.text += " DIF:<"+str(defiance.dif)+">"+"          "
-			$TestRnd.visible = true
 			$TestRnd.set_dif(defiance.dif)
+			$TestRnd.visible = true
+		if "req" in defiance:
+			$Reqs.set_defiance(defiance)
+			$Reqs.visible = true
 		if "dam" in defiance: $lb_stats.text += " DAM:<"+str(defiance.dam)+">"+" "
 	
+	if check_solved(): DefianceManager.resolve_current_defiance()
+	
 	visible = (defiance!=null)
+
+func check_solved():
+	if !defiance: return false
+	if "hp" in defiance && defiance.hp<=0: return true
+	if "prg" in defiance && defiance.prg>=defiance.prgm: return true
+	#if "dif" in defiance && $TestRnd.result == "SUCCESS": return true
+	if "req" in defiance && $Reqs.all_complete(): return true

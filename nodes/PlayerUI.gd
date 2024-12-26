@@ -5,6 +5,7 @@ var data
 func _ready():
 	$btn_roll.connect("button_down",self,"roll_dices")
 	$btn_select.connect("button_down",self,"on_select")
+	set_selected(false)
 	roll_dices()
 
 func set_player(id):
@@ -26,4 +27,6 @@ func on_select():
 
 func set_selected(val=$Selector.visible):
 	$Selector.visible = val
+	if val: modulate = Color(1,1,1,1)
+	else: modulate = Color(.5,.5,.5,1)
 	

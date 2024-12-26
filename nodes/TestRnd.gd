@@ -17,6 +17,7 @@ func _ready():
 func set_dif(dif):
 	fail = DIF_TABLE[dif][0]
 	success = DIF_TABLE[dif][1]
+	$lb_num.text = str(dif)
 	$Selector.visible = false
 	for c in $Grid.get_children():
 		var i = c.get_index()+1

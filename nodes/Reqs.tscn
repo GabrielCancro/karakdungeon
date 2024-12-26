@@ -1,0 +1,91 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/dices/SW.png" type="Texture" id=1]
+[ext_resource path="res://nodes/Reqs.gd" type="Script" id=2]
+
+[node name="Reqs" type="Control"]
+margin_right = 344.0
+margin_bottom = 60.0
+script = ExtResource( 2 )
+
+[node name="Grid" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = -8
+alignment = 1
+
+[node name="R1" type="TextureRect" parent="Grid"]
+margin_left = 64.0
+margin_right = 124.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 5
+
+[node name="R2" type="TextureRect" parent="Grid"]
+margin_left = 116.0
+margin_right = 176.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 5
+
+[node name="R3" type="TextureRect" parent="Grid"]
+margin_left = 168.0
+margin_right = 228.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 5
+
+[node name="R4" type="TextureRect" parent="Grid"]
+visible = false
+margin_left = 111.0
+margin_right = 156.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 60, 60 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 5
+
+[node name="R5" type="TextureRect" parent="Grid"]
+margin_left = 220.0
+margin_right = 280.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 5
+
+[node name="R6" type="TextureRect" parent="Grid"]
+visible = false
+margin_left = 145.0
+margin_right = 190.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 60, 60 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 5
+
+[node name="R7" type="TextureRect" parent="Grid"]
+visible = false
+margin_left = 174.0
+margin_right = 219.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 60, 60 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 5
+
+[node name="R8" type="TextureRect" parent="Grid"]
+visible = false
+margin_left = 203.0
+margin_right = 248.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 60, 60 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 5

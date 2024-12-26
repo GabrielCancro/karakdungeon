@@ -8,16 +8,15 @@
 script = ExtResource( 2 )
 
 [node name="Selector" type="TextureRect" parent="."]
-visible = false
 modulate = Color( 0.768627, 0.772549, 0.105882, 1 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -39.0
-margin_top = -39.0
-margin_right = 39.0
-margin_bottom = 38.0
+margin_left = -40.0
+margin_top = -40.0
+margin_right = 40.0
+margin_bottom = 40.0
 texture = ExtResource( 3 )
 expand = true
 
@@ -34,3 +33,11 @@ texture = ExtResource( 1 )
 expand = true
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="Button" type="Button" parent="."]
+margin_left = -34.0
+margin_top = -35.0
+margin_right = 34.0
+margin_bottom = 33.0
+focus_mode = 0
+flat = true

@@ -60,18 +60,22 @@ func run_action_dissarm():
 	var defUI = get_node("/root/Game/CLUI/DefianceUI")
 	defUI.dif_test.roll()
 	var result = yield(defUI.dif_test,"end_roll")
-	yield(get_tree().create_timer(.5),"timeout")
+	yield(get_tree().create_timer(1),"timeout")
 	if result=="FAIL": Effector.show_float_text("ACTIVATED!",room.position+Vector2(0,-100),"damage")
-	elif result=="SUCCESS": Effector.show_float_text("DISSARMED",room.position+Vector2(0,-100),"normal")
+	elif result=="SUCCESS": 
+		Effector.show_float_text("DISSARMED",room.position+Vector2(0,-100),"normal")
+		DefianceManager.resolve_current_defiance()
 	elif result=="NONE": Effector.show_float_text("NONE",room.position+Vector2(0,-100),"white")
 	yield(get_tree().create_timer(.3),"timeout")
 	emit_signal("end_action")
 
 func check_action_unlock(): return (def.type == "door" or def.type == "chest")
 func run_action_unlock():
-	def.prg += 1
-	yield(get_tree().create_timer(.5),"timeout")
-	Effector.show_float_text("+1PRG",room.position+Vector2(0,-100),"white")
+	for dice in PlayerManager.get_current_player_dices():
+		for i in range(def.req_solved.size()):
+			if def.req[i]==dice && !def.req_solved[i]: 
+				def.req_solved[i] = true
+				break
 	yield(get_tree().create_timer(.5),"timeout")
 	emit_signal("end_action")
 

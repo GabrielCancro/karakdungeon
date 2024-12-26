@@ -1,6 +1,6 @@
 extends ColorRect
 
-var faces = ["AX","BT","HN","KY","PT","SC"]
+var faces = ["BT","HN","SW","EY"]
 var value = null
 
 signal end_roll()
