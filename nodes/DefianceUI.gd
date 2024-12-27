@@ -5,6 +5,9 @@ var dif_test
 
 func _ready():
 	dif_test = $TestRnd
+	on_hint_hover(false)
+	$HintButton.connect("mouse_entered",self,"on_hint_hover",[true])
+	$HintButton.connect("mouse_exited",self,"on_hint_hover",[false])
 	DungeonManager.connect("change_room",self,"update")
 
 func update():
@@ -18,6 +21,7 @@ func update():
 	if defiance:
 		$Sprite.texture = load("res://assets/defiances/df_"+defiance.name+".png")
 		$lb_name.text = defiance.name
+		$lb_desc.text = Lang.get_text("df_"+defiance.type)
 		$lb_stats.text = ""
 		if "hp" in defiance: $lb_stats.text += " HP:"+str(defiance.hp)+"/"+str(defiance.hpm)+" "
 		if "prg" in defiance: $lb_stats.text += " PRG:"+str(defiance.prg)+"/"+str(defiance.prgm)+" "
@@ -39,3 +43,6 @@ func check_solved():
 	if "prg" in defiance && defiance.prg>=defiance.prgm: return true
 	#if "dif" in defiance && $TestRnd.result == "SUCCESS": return true
 	if "req" in defiance && $Reqs.all_complete(): return true
+
+func on_hint_hover(val):
+	$lb_desc.visible = val

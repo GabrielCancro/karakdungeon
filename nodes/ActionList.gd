@@ -5,6 +5,7 @@ func _ready():
 	DungeonManager.connect("change_room",self,"show_current_actions")
 
 func show_current_actions():
+	on_hover_action("",false)
 	var room = DungeonManager.current_room
 	var player = DungeonManager.current_player
 	var defiance = null
@@ -15,6 +16,7 @@ func show_current_actions():
 	var ac_array = ActionManager.get_room_actions()
 	for ac_name in ac_array:
 		var ac = preload("res://nodes/ActionNode.tscn").instance()
+		ac.connect("on_hover",self,"on_hover_action")
 		ac.set_action(ac_name)
 		$List.add_child(ac)
 	order_actions()
@@ -31,3 +33,9 @@ func block():
 
 func unblock():
 	$block.visible = false
+
+func on_hover_action(ac_name,val,node=null):
+	if !node:return
+	$RTL.bbcode_text = "[right]"+Lang.get_text("ac_"+ac_name)+"[/right]"
+	$RTL.visible = val
+	$RTL.rect_global_position.y = node.rect_global_position.y
