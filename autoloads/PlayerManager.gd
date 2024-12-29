@@ -15,6 +15,7 @@ func add_player(player_node):
 	return data
 
 func get_current_player_dices():
+	if !DungeonManager.current_player: return []
 	var playerUI = DungeonManager.current_player.ui
 	return playerUI.get_dices()
 
@@ -22,6 +23,12 @@ func current_player_have_dice(val):
 	var dices = get_current_player_dices()
 	for d in dices: if d == val: return true
 	return false
+
+func get_dice_amount(dice):
+	var amount = 0
+	for d in get_current_player_dices():
+		if d==dice: amount += 1
+	return amount
 
 func change_player(id):
 	if DungeonManager.current_player: 

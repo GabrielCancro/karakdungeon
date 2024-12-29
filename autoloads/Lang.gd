@@ -24,8 +24,7 @@ func get_text(code,vals = []):
 	else: 
 		var tx = texts[lang_code]
 		for i in range(vals.size()): tx = tx.replace("#"+str(i+1),str(vals[i]))
-		if "@" in tx: 
-			for k in images.keys(): tx = tx.replace(k,images[k])
-			return tx
-		else: return tx
-		
+		for k in images.keys(): 
+			#var am = PlayerManager.get_dice_amount(k.substr(1))
+			tx = tx.replace(k,images[k]) #+"("+str(am)+")")
+		return tx

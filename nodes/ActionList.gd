@@ -3,6 +3,7 @@ extends ColorRect
 func _ready():
 	ActionManager.ACTION_LIST_NODE = self
 	DungeonManager.connect("change_room",self,"show_current_actions")
+	$RTL.visible = false
 
 func show_current_actions():
 	on_hover_action("",false)
