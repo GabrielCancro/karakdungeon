@@ -54,30 +54,29 @@ func create_new_room(x,y):
 	connect_disconnected_doors(room_data)
 
 func connect_disconnected_doors(room_data):
-	print("CREATING ",room_data.x,"x",room_data.y)
-	var test_room_data = get_room_data(room_data.x-1,room_data.y)
-	if test_room_data:
-		if test_room_data.doors.right: room_data.doors.left = true
-		if room_data.doors.left: test_room_data.doors.right = true
-		print("  connected L ",room_data.x,"x",room_data.y)
-		
-	test_room_data = get_room_data(room_data.x+1,room_data.y)
-	if test_room_data:
-		if test_room_data.doors.left: room_data.doors.right = true
-		if room_data.doors.right: test_room_data.doors.left = true
-		print("  connected R ",room_data.x,"x",room_data.y)
-		
-	test_room_data = get_room_data(room_data.x,room_data.y-1)
-	if test_room_data:
-		if test_room_data.doors.down: room_data.doors.up = true
-		if room_data.doors.up: test_room_data.doors.down = true
-		print("  connected U ",room_data.x,"x",room_data.y)
-		
-	test_room_data = get_room_data(room_data.x,room_data.y+1)
-	if test_room_data:
-		if test_room_data.doors.up: room_data.doors.down = true
-		if room_data.doors.down: test_room_data.doors.up = true
-		print("  connected D ",room_data.x,"x",room_data.y)
+	#print("CREATING ",room_data.x,"x",room_data.y)
+	
+	var LEFT = get_room_data(room_data.x-1,room_data.y)
+	var RIGHT = get_room_data(room_data.x+1,room_data.y)
+	var UP = get_room_data(room_data.x,room_data.y-1)
+	var DOWN = get_room_data(room_data.x,room_data.y+1)
+	
+	if LEFT && (LEFT.doors.right or room_data.doors.left): 
+		room_data.doors.left = true
+		LEFT.doors.right = true
+		#print("  connected LEFT ")
+	if RIGHT && (RIGHT.doors.left or room_data.doors.right):
+		room_data.doors.right = true
+		RIGHT.doors.left = true
+		#print("  connected RIGHT ")
+	if UP && (UP.doors.down or room_data.doors.up):
+		room_data.doors.up = true
+		UP.doors.down = true
+		#print("  connected UP ")
+	if DOWN && (DOWN.doors.up or room_data.doors.down):
+		room_data.doors.down = true
+		DOWN.doors.up = true
+		#print("  connected DOWN ")
 
 func add_one_random_door():
 	while true:
@@ -102,24 +101,18 @@ func add_one_random_door():
 
 func remove_unconnected_doors():
 	print("REMOVE UNCONNECTED DOORS")
-	for room_name in map:
-		var room_data = map[room_name]
-		var x = room_data.x
-		var y = room_data.x
-		room_data.doors.up = (room_data.doors.up == true) && (get_room_data(x,y-1) != null)
-		room_data.doors.down = (room_data.doors.down == true) && (get_room_data(x,y+1) != null)
-		room_data.doors.left = (room_data.doors.left == true) && (get_room_data(x-1,y) != null)
-		room_data.doors.right = (room_data.doors.right == true) && (get_room_data(x+1,y) != null)
+	for key in map:
+		var room_data = map[key]
+		if room_data.doors.up: room_data.doors.up = (get_room_data(room_data.x,room_data.y-1) != null)
+		if room_data.doors.down: room_data.doors.down = (get_room_data(room_data.x,room_data.y+1) != null)
+		if room_data.doors.left: room_data.doors.left = (get_room_data(room_data.x-1,room_data.y) != null)
+		if room_data.doors.right: room_data.doors.right = (get_room_data(room_data.x+1,room_data.y) != null)
 
 func get_room_data(x,y):
 	if str(x)+"x"+str(y) in map:
 		return map[str(x)+"x"+str(y)]
 	else:
 		return null
-
-func update_visual_doors(room_data):
-	for d in room_data.doors.keys():
-		room_data.node_ref.get_node(d).visible = room_data.doors[d]
 
 func on_reset():
 	get_tree().reload_current_scene()

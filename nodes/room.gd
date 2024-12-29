@@ -5,6 +5,7 @@ var data
 func _ready():
 	modulate = Color(.5,.5,.5,0)
 	Effector.appear(self)
+	$Button.connect("button_down",self,"on_click")
 
 func set_data(room_data):
 	data = room_data
@@ -27,3 +28,6 @@ func on_enter():
 
 func update():
 	set_data(data)
+
+func on_click():
+	print("ROOM ",data)

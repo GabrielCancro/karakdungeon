@@ -121,3 +121,12 @@ clip_text = true
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 3, 3 )
 texture = ExtResource( 2 )
+
+[node name="Button" type="Button" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -77.0
+margin_top = -67.0
+margin_right = 61.0
+margin_bottom = 52.0
+flat = true
