@@ -7,8 +7,8 @@ func _ready():
 	data = PlayerManager.add_player(self)
 	$TextureRect.texture = data.retrait
 	$Button.connect("button_down",PlayerManager,"change_player",[data.id])
-	yield(get_tree().create_timer(0.1),"timeout")
 	set_selected(false)
+	yield(get_tree().create_timer(.2),"timeout")
 	teleport_to(0,0)
 
 func _process(delta):
@@ -23,20 +23,20 @@ func _process(delta):
 	Utils.set_zindex(self)
 
 func _input(event):
+	if!DungeonManager.current_player: return
 	if DungeonManager.current_player.node!=self: return
+	if !data.action: return
 	if event.is_action_pressed("ui_up"): move_to(0,-1)
 	if event.is_action_pressed("ui_down"): move_to(0,1)
 	if event.is_action_pressed("ui_right"): move_to(1,0)
 	if event.is_action_pressed("ui_left"): move_to(-1,0)
 
 func move_to(dx,dy):
-	print("MOVE")
 	if data.mov<=0: return
 	if obstructed_by_door() && (dx!=data.h || dy!=data.v): return
-	var dest_mov = get_destine_mov(dx,dy)
 	
-	var room_data = DungeonManager.get_room_data(data.x+dx,data.y+dy)
-	if room_data:
+	var dest_mov = get_destine_mov(dx,dy)
+	if dest_mov:
 		TurnManager.on_pre_move()
 		yield(TurnManager,"end_reaction")
 		
@@ -110,5 +110,12 @@ func get_destine_mov(dx,dy):
 		
 	mov.x += dx
 	mov.y += dy
+	
+	var dest_room_data = DungeonManager.get_room_data(mov.x,mov.y)
+	if !dest_room_data: return null
+	if mov.h==-1 && !dest_room_data.doors.left: return null
+	if mov.h==1 && !dest_room_data.doors.right: return null
+	if mov.v==1 && !dest_room_data.doors.down: return null
+	if mov.v==-1 && !dest_room_data.doors.up: return null
 	
 	return mov

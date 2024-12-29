@@ -16,14 +16,15 @@ func set_player(id):
 func updateUI():
 	$lb_hp.text = "HP: "+str(data.hp)+"/"+str(data.hpm)
 	$lb_mov.text = "MOV: "+str(data.mov)+"/"+str(data.movm)
+	set_selected()
 
 func roll_dices():
-	for d in $HBoxContainer.get_children():
+	for d in $HBox.get_children():
 		d.roll()
 
 func get_dices():
 	var arr = []
-	for d in $HBoxContainer.get_children(): 
+	for d in $HBox.get_children(): 
 		arr.append(d.value)
 	return arr
 
@@ -34,4 +35,7 @@ func set_selected(val=$Selector.visible):
 	$Selector.visible = val
 	if val: modulate = Color(1,1,1,1)
 	else: modulate = Color(.5,.5,.5,1)
+	print("data.action ",data.action)
+	if data.action: $HBox.modulate = Color(1,1,1,1)
+	else: $HBox.modulate = Color(.5,.5,.5,.5)
 	

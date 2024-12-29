@@ -6,25 +6,13 @@ var current_player
 signal change_room()
 
 var map = {
-	"0x0":{"type":"empy", "defiance":"goblin"},
-	"0x1":{"type":"empy"},
-	"1x0":{"type":"empy", "defiance":"trap1"},
-	"1x1":{"type":"empy", "defiance":"goblin"},
-	"2x0":{"type":"empy"},
-	"2x1":{"type":"empy"},
 }
 
 func _ready():
-	generate_procedural_dungeon()
+	pass
 
 func generate_procedural_dungeon():
-	map = {}
-	for x in range(-5,5):
-		for y in range(-5,5):
-			var key = str(x)+"x"+str(y)
-			map[key] = {"type":"empy","x":x,"y":y}
-			var def = DefianceManager.get_random_defiance(50)
-			if def: map[key]["defiance"] = def
+	map = MapGenerator.generate_new_map(15)
 
 func create_dungeon_nodes(xx,yy):
 	var nodes =[[xx-1,yy],[xx,yy-1],[xx,yy],[xx,yy+1],[xx+1,yy], ]
@@ -35,7 +23,7 @@ func get_or_create_one_room(xx,yy):
 	if !key in map.keys(): return null
 	var exist_room = get_node_or_null("/root/Game/Map/"+"r_"+key)
 	if exist_room: return exist_room
-	var rnode = preload("res://nodes/room.tscn").instance()
+	var rnode = preload("res://nodes/Room.tscn").instance()
 	rnode.name = "r_"+key
 	var rsize = rnode.get_node("image").rect_size
 	var room_data = map[key]
@@ -71,6 +59,7 @@ func set_current_room(dx,dy):
 	var def = get_room_defiance(current_room)
 	if !def or (def.type!="door" and def.type!="enemy"): DungeonManager.create_dungeon_nodes(dx,dy)
 	emit_signal("change_room")
+	if current_room: print("CURRENT ROOM ",current_room.data)
 
 func reset_current_room():
 	set_current_room(current_room.data.x, current_room.data.y)

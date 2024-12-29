@@ -37,5 +37,6 @@ func enemy_attack(def,pj):
 func end_turn():
 	for p in PlayerManager.PLAYERS:
 		p.mov = p.movm
+		p.action = true
 		p.ui.roll_dices()
 		p.ui.updateUI()

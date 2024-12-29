@@ -37,6 +37,8 @@ func run_action(ac_name):
 		yield(self,"end_action")
 		DungeonManager.force_update()
 		DungeonManager.current_player.node.anim_action_end()
+		PlayerManager.set_pj_attr("action",false)
+		PlayerManager.set_pj_attr("mov",0)
 	ACTION_LIST_NODE.unblock()
 
 func get_calculation(ac_name):

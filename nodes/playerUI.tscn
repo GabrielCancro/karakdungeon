@@ -85,22 +85,22 @@ text = "MOV: 5/5"
 valign = 1
 clip_text = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBox" type="HBoxContainer" parent="."]
 margin_top = 72.0
 margin_right = 304.0
 margin_bottom = 142.0
 
-[node name="Dice1" parent="HBoxContainer" instance=ExtResource( 2 )]
+[node name="Dice1" parent="HBox" instance=ExtResource( 2 )]
 
-[node name="Dice2" parent="HBoxContainer" instance=ExtResource( 2 )]
+[node name="Dice2" parent="HBox" instance=ExtResource( 2 )]
 margin_left = 74.0
 margin_right = 144.0
 
-[node name="Dice3" parent="HBoxContainer" instance=ExtResource( 2 )]
+[node name="Dice3" parent="HBox" instance=ExtResource( 2 )]
 margin_left = 148.0
 margin_right = 218.0
 
-[node name="Dice4" parent="HBoxContainer" instance=ExtResource( 2 )]
+[node name="Dice4" parent="HBox" instance=ExtResource( 2 )]
 margin_left = 222.0
 margin_right = 292.0
 

@@ -13,6 +13,7 @@ func show_current_actions():
 	Utils.remove_all_childs($List)
 	visible = (defiance!=null)
 	if !defiance: return
+	if !player.action: return
 	var ac_array = ActionManager.get_room_actions()
 	for ac_name in ac_array:
 		var ac = preload("res://nodes/ActionNode.tscn").instance()

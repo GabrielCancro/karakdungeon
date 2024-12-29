@@ -14,6 +14,10 @@ func set_data(room_data):
 		data["defiance"]["def_sprite"] = $Sprite
 		$Sprite.visible = true
 		$Sprite.texture = load("res://assets/defiances/df_"+data["defiance"]["name"]+".png")
+	
+	#DOORS
+	for d in data.doors.keys():
+		get_node("doors/"+d).visible = !data.doors[d]
 
 func on_leave():
 	modulate = Color(.5,.5,.5)

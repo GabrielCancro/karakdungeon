@@ -12,7 +12,6 @@ func add_player(player_node):
 	data["node"] = player_node
 	data["retrait"] = load("res://assets/retraits/retrait_"+str(data["id"])+".png")
 	data["ui"].set_player(data["id"])
-	change_player(1)
 	return data
 
 func get_current_player_dices():
@@ -32,6 +31,7 @@ func change_player(id):
 	DungeonManager.set_current_room(DungeonManager.current_player.x,DungeonManager.current_player.y)
 	DungeonManager.current_player.node.set_selected(true)
 	DungeonManager.current_player.ui.set_selected(true)
+	DungeonManager.current_player.ui.updateUI()
 
 func reorder_players(_x,_y):
 	var pjs = []
@@ -50,3 +50,7 @@ func damage_current_player(dam):
 	DungeonManager.current_player.hp -= dam
 	DungeonManager.current_player.ui.updateUI()
 	Effector.show_float_text("-"+str(dam)+"HP",DungeonManager.current_player.node.position+Vector2(0,-50),"damage")
+
+func set_pj_attr(key,val):
+	DungeonManager.current_player[key] = val
+	PlayerManager.change_player( DungeonManager.current_player.id )
