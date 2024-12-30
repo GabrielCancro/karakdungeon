@@ -12,8 +12,10 @@ func _ready():
 
 func set_faces(arr):
 	faces = arr
-	for i in faces.size():
-		get_node("Faces/Grid/f"+str(i+1)).texture = load("res://assets/dices/"+faces[i]+".png")
+	for i in faces.size(): get_node("Faces/Grid/f"+str(i+1)).texture = load("res://assets/dices/"+faces[i]+".png")
+	color = PlayerManager.get_dice_color(faces)
+	$Faces.color = color
+	$Faces/ColorRect.color = color
 
 func roll():
 	randomize()

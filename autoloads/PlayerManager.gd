@@ -24,7 +24,7 @@ func add_player(player_node):
 	if data["id"]==3: data["dices"] = [
 		["NN","NN","SW","BT","HN","EY"],
 		["NN","BT","HN","EY","HN","EY"],
-		["NN","BT","HN","EY","HN","EY"],
+		["SW","BT","BT","BT","HN","EY"],
 	]
 	data["ui"].set_player(data["id"])
 	return data
@@ -96,3 +96,10 @@ func damage_current_player(dam):
 func set_pj_attr(key,val):
 	DungeonManager.current_player[key] = val
 	PlayerManager.change_player( DungeonManager.current_player.id )
+
+func get_dice_color(faces):
+	if faces == ["NN","NN","SW","BT","HN","EY"]: return Color(.4,.4,.4,1)
+	if faces == ["NN","NN","SW","SW","SW","BT"]: return Color(.8,.2,.2,1)
+	if faces == ["NN","BT","HN","EY","HN","EY"]: return Color(.2,.2,.8,1)
+	if faces == ["SW","BT","BT","BT","HN","EY"]: return Color(.2,.8,.2,1)
+	return Color(.2,.2,.2,1)
