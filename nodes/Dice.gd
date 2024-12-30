@@ -6,7 +6,14 @@ var value = null
 signal end_roll()
 
 func _ready():
-	pass
+	hover_dice(false)
+	$Button.connect("mouse_entered",self,"hover_dice",[true])
+	$Button.connect("mouse_exited",self,"hover_dice",[false])
+
+func set_faces(arr):
+	faces = arr
+	for i in faces.size():
+		get_node("Faces/Grid/f"+str(i+1)).texture = load("res://assets/dices/"+faces[i]+".png")
 
 func roll():
 	randomize()
@@ -18,3 +25,6 @@ func roll():
 		yield(get_tree().create_timer(.1),"timeout")
 	$img.rect_rotation = 0
 	emit_signal("end_roll")
+
+func hover_dice(val):
+	$Faces.visible = val

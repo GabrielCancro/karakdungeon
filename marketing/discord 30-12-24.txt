@@ -1,0 +1,2 @@
+Buenas! Estoy empezando a diseñar un pequeño juego de mazmorreo, la idea es que manejas una party de aventureros (tres) yy vas avanzando por turnos en un dungeon (tipico)
+Lo distinto es que cada aventurero tiene 3 o 4 dados de "attributos", en cada turno esos dados giran y dependiendo de los iconos que obtengas vas a tener ventajas en ciertas acciones.. Si sacas mas espadas pegas mas fuerte, si sacas mas BOTAS te moves mas, si sacas OJOS revelas secretos, si obtenes MANOS podes abrir cerraduras o robar.

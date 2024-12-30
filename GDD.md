@@ -30,11 +30,32 @@ TOTEM -> REQ:@@@@@
 ESCOMBROS -> DESPEJAR: SW HN SW
 
 PROGRESION:
-1 -Empezas con la party estandar (guerrero, explorador, pícaro)
-  -Mazmorra de pequeña, escombros, rata, murciélago.
+-Empezas con la party estandar (guerrero, explorador, pícaro)
+-Cada mazmorra sumará nuevos desafíos:
+M1: Escombros, rata, murciélago,
+M2: Puerta,Goblin, Fuente Sanadora, Secreto(biblioteca, totem)
+M3: Trampa Pinchos, Araña Gigante, Cofre, Pazadizo(2)
+M4: Fantasma, Trampa oculta, Cofre Oculto,
+M5: Trampa Rúnica, emboscadas, Esqueleto
+M6: Salón del tesoro, Cria de dragón
 
-2 -Cada mazmorra sumará nuevos desafíos:
-	M2: Puerta,Goblin, Fuente Sanadora
-	M3: Trampa Pinchos, Araña Gigante, Cofre, Pazadizo(2)
-	M4: Fantasma, Trampa oculta, Cofre Oculto,
-	M5: Trampa Rúnica, 
+ITEMS (bonif general a la party)
+-Corazón de bestia (+1HP a tu party)
+-Espadas de doran (0-1 de daño extra al realizar un ataque)
+-Amuleto De sangre (sanas 2HP al pasar de mazmorra)
+-Botas elficas (+1 de movimiento a toda tu party)
+-Escamas de dragón (añade un escudo en un dado de cada personaje)
+-Ojo de safiro (+15% de percepcion para encontrar desafios ocultos)
+
+HABILIDADES (usos por mazmrra)
+-Guerrear: si no tienes ninguna espada y te tocó alguna cara vacia, la convierte en espada
+-Berserk: pierdes -1HP pero todos tus dados con espada cambian a dicha cara.
+-Pies Ligeros: obtienes +2 de mov por cada BT.
+-Suerte de Pícaro: puede rerollear sus dados
+
+ROAD MAP::
+Para M1 necesitamos:
+-Habilidades de party inicial.
+-Escombros, rata, murciélago.
+-Puerta de salida.
+-Llave al siguiente piso.

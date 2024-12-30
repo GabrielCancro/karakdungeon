@@ -11,6 +11,21 @@ func add_player(player_node):
 	data["ui"] = get_node("/root/Game/CLUI/PlayerUI"+str(data["id"]))
 	data["node"] = player_node
 	data["retrait"] = load("res://assets/retraits/retrait_"+str(data["id"])+".png")
+	if data["id"]==1: data["dices"] = [
+		["NN","NN","SW","BT","HN","EY"],
+		["NN","NN","SW","SW","SW","BT"],
+		["NN","NN","SW","SW","SW","BT"],
+	]
+	if data["id"]==2: data["dices"] = [
+		["NN","NN","SW","BT","HN","EY"],
+		["NN","NN","SW","SW","SW","BT"],
+		["NN","BT","HN","EY","HN","EY"],
+	]
+	if data["id"]==3: data["dices"] = [
+		["NN","NN","SW","BT","HN","EY"],
+		["NN","BT","HN","EY","HN","EY"],
+		["NN","BT","HN","EY","HN","EY"],
+	]
 	data["ui"].set_player(data["id"])
 	return data
 

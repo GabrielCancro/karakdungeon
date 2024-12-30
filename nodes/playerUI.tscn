@@ -85,25 +85,6 @@ text = "MOV: 5/5"
 valign = 1
 clip_text = true
 
-[node name="HBox" type="HBoxContainer" parent="."]
-margin_top = 72.0
-margin_right = 304.0
-margin_bottom = 142.0
-
-[node name="Dice1" parent="HBox" instance=ExtResource( 2 )]
-
-[node name="Dice2" parent="HBox" instance=ExtResource( 2 )]
-margin_left = 74.0
-margin_right = 144.0
-
-[node name="Dice3" parent="HBox" instance=ExtResource( 2 )]
-margin_left = 148.0
-margin_right = 218.0
-
-[node name="Dice4" parent="HBox" instance=ExtResource( 2 )]
-margin_left = 222.0
-margin_right = 292.0
-
 [node name="btn_select" type="Button" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -118,3 +99,21 @@ margin_right = 294.0
 margin_bottom = 37.0
 custom_fonts/font = SubResource( 2 )
 text = "R"
+
+[node name="HBox" type="HBoxContainer" parent="."]
+margin_top = 72.0
+margin_right = 304.0
+margin_bottom = 142.0
+alignment = 1
+
+[node name="Dice1" parent="HBox" instance=ExtResource( 2 )]
+margin_left = 43.0
+margin_right = 113.0
+
+[node name="Dice2" parent="HBox" instance=ExtResource( 2 )]
+margin_left = 117.0
+margin_right = 187.0
+
+[node name="Dice4" parent="HBox" instance=ExtResource( 2 )]
+margin_left = 191.0
+margin_right = 261.0

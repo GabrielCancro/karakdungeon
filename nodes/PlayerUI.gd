@@ -11,6 +11,11 @@ func _ready():
 func set_player(id):
 	data = PlayerManager.get_player_data(id)
 	$TextureRect.texture = data.retrait
+	Utils.remove_all_childs($HBox)
+	for dice_faces in data.dices:
+		var node = preload("res://nodes/Dice.tscn").instance()
+		node.set_faces(dice_faces)
+		$HBox.add_child(node)
 	updateUI()
 
 func updateUI():
