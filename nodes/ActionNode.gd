@@ -10,7 +10,7 @@ func _ready():
 
 func set_action(_name):
 	ac_name = _name
-	$Label.text = ac_name+" "+ActionManager.get_calculation(ac_name)
+	$Label.text = ac_name + " " +ActionManager.get_bonif(ac_name)
 
 func on_click():
 	Effector.scale_boom(self)

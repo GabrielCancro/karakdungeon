@@ -30,6 +30,23 @@ func get_dice_amount(dice):
 		if d==dice: amount += 1
 	return amount
 
+func get_reqs_can_complete():
+	var reqs = {}
+	var i = 0
+	var def = DungeonManager.get_room_defiance()
+	for r in def.req: 
+		if !def.req_solved[i]:
+			if !r in reqs: reqs[r] = 1
+			else: reqs[r] += 1 
+		i+=1
+	var amount = 0
+	for d in get_current_player_dices():
+		if d in reqs:
+			reqs[d] -= 1
+			if reqs[d] == 0: reqs.erase(d)
+			amount += 1
+	return amount
+
 func change_player(id):
 	if DungeonManager.current_player: 
 		DungeonManager.current_player.node.set_selected(false)
@@ -56,7 +73,10 @@ func damage_current_player(dam):
 	Effector.scale_boom(DungeonManager.current_player.node)
 	DungeonManager.current_player.hp -= dam
 	DungeonManager.current_player.ui.updateUI()
-	Effector.show_float_text("-"+str(dam)+"HP",DungeonManager.current_player.node.position+Vector2(0,-50),"damage")
+	var tx = "-"+str(dam)+"HP"
+	var node = preload("res://nodes/fx/FloatText.tscn").instance()
+	node.set_float(tx,Vector2(20,-40),"damage")
+	DungeonManager.current_player.ui.add_child(node)
 
 func set_pj_attr(key,val):
 	DungeonManager.current_player[key] = val

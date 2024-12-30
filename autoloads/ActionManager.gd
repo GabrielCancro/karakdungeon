@@ -41,17 +41,22 @@ func run_action(ac_name):
 		PlayerManager.set_pj_attr("mov",0)
 	ACTION_LIST_NODE.unblock()
 
-func get_calculation(ac_name):
-	if has_method("get_calculation_"+ac_name):
-		return call("get_calculation_"+ac_name)
-	return "-"
-	
+func get_bonif(ac_name):
+	var am = 0
+	if ac_name=="attack": am = PlayerManager.get_dice_amount("SW")
+	elif ac_name=="unlock": am = PlayerManager.get_reqs_can_complete()
+	elif ac_name=="dissarm": am = PlayerManager.get_dice_amount("HN") + PlayerManager.get_dice_amount("EY")
+	return "("+str(am)+")"
+
 func check_action_attack(): return (def.type == "enemy")
 func run_action_attack(): 
-	def.hp -= 2
-	yield(get_tree().create_timer(.5),"timeout")
-	Effector.show_float_text("-2HP",room.position+Vector2(0,-100),"damage")
-	yield(get_tree().create_timer(.5),"timeout")
+	randomize()
+	for i in range(1+PlayerManager.get_dice_amount("SW")):
+		var val = randi()%3
+		def.hp -= val
+		yield(get_tree().create_timer(.7),"timeout")
+		Effector.show_float_text("-"+str(val)+"HP",room.position+Vector2(0,-100+i*10),"damage")
+	yield(get_tree().create_timer(1),"timeout")
 	emit_signal("end_action")
 
 func check_action_evade():

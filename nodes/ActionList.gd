@@ -3,7 +3,7 @@ extends ColorRect
 func _ready():
 	ActionManager.ACTION_LIST_NODE = self
 	DungeonManager.connect("change_room",self,"show_current_actions")
-	$RTL.visible = false
+	$desc.visible = false
 
 func show_current_actions():
 	on_hover_action("",false)
@@ -38,6 +38,8 @@ func unblock():
 
 func on_hover_action(ac_name,val,node=null):
 	if !node:return
-	$RTL.bbcode_text = "[right]"+Lang.get_text("ac_"+ac_name)+"[/right]"
-	$RTL.visible = val
-	$RTL.rect_global_position.y = node.rect_global_position.y
+	$desc/RTL.bbcode_text = "[center]"+Lang.get_text("ac_"+ac_name)
+	$desc.visible = val
+	$desc/RTL.rect_size.y = 0
+	$desc.rect_global_position.y = node.rect_global_position.y
+	$desc/RTL.rect_position.y = ($desc.rect_size.y-$desc/RTL.rect_size.y)/2

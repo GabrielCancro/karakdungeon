@@ -5,7 +5,7 @@ var lang = "es"
 var texts = {
 	"ab_desc_direct_attack_es": "Ataque Directo: Consume 2x@SW para dañar 1xVIDA a un enemigo. #1",
 	"df_enemy_es":"Te atacará si te mueves o realizas una acción. Además ataca a un personaje aleatorio al finalizar el turno.",
-	"ac_attack_es":"Causa (0-2) de daño, además cada @SW añade (0-2) de daño extra.",
+	"ac_attack_es":"Causa entre 0 y 2 de daño, cada @SW añade un golpe extra.",
 	"ac_dissarm_es":"Cada @HN y cada @EY mejora la posibilidad de éxito.",
 	"ac_unlock_es":"Completa los requisitos según los atributos actuales del personaje.",
 	"ac_force_es":"50% de destruir el primer requisito, esté o no resuelto.",
@@ -28,3 +28,6 @@ func get_text(code,vals = []):
 			#var am = PlayerManager.get_dice_amount(k.substr(1))
 			tx = tx.replace(k,images[k]) #+"("+str(am)+")")
 		return tx
+
+func get_img(code):
+	return images[code]

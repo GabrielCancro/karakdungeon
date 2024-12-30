@@ -35,8 +35,12 @@ func enemy_attack(def,pj):
 	PlayerManager.damage_current_player(1)
 
 func end_turn():
+	get_node("/root/Game/CLUI/ActionList").visible = false
 	for p in PlayerManager.PLAYERS:
 		p.mov = p.movm
 		p.action = true
 		p.ui.roll_dices()
 		p.ui.updateUI()
+	yield(get_tree().create_timer(2),"timeout")
+	PlayerManager.change_player(DungeonManager.current_player.id)
+	get_node("/root/Game/CLUI/ActionList").visible = true
