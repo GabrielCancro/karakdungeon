@@ -63,6 +63,7 @@ func get_reqs_can_complete():
 	return amount
 
 func change_player(id):
+	if PLAYERS[id-1].hp<=0: return
 	if DungeonManager.current_player: 
 		DungeonManager.current_player.node.set_selected(false)
 		DungeonManager.current_player.ui.set_selected(false)
@@ -95,8 +96,10 @@ func damage_player(id,dam):
 		player.hp = 0
 		player.mov = 0
 		player.action = false
+		player.ui.visible = false
 	player.ui.updateUI()
 	Effector.show_float_text("-"+str(dam)+"HP",player.node.position+Vector2(0,-80),"damage")
+	
 
 func set_pj_attr(key,val):
 	DungeonManager.current_player[key] = val
@@ -108,3 +111,16 @@ func get_dice_color(faces):
 	if faces == ["NN","BT","HN","EY","HN","EY"]: return Color(.4,.4,.7,1)
 	if faces == ["SW","BT","BT","BT","HN","EY"]: return Color(.2,.8,.2,1)
 	return Color(.2,.2,.2,1)
+
+func select_next_player():
+	if !DungeonManager.current_player: change_player(1)
+	else:
+		var id = DungeonManager.current_player.id+1
+		if id > PLAYERS.size(): id = 1
+		change_player(id)
+
+#func delete_player(id):
+#	var pj = PLAYERS.pop_at(id-1)
+#	if DungeonManager.current_player == pj: select_next_player()
+#	pj.node.queue_free()
+#	pj.ui.queue_free()

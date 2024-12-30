@@ -35,10 +35,10 @@ func run_action(ac_name):
 		var keep_action = call("run_action_"+ac_name)
 		DungeonManager.current_player.node.anim_action_start()
 		yield(get_tree().create_timer(.2),"timeout")
-		yield(self,"end_action")
+		var result = yield(self,"end_action")
 		DungeonManager.force_update()
 		DungeonManager.current_player.node.anim_action_end()
-		if !keep_action:
+		if result:
 			PlayerManager.set_pj_attr("action",false)
 			PlayerManager.set_pj_attr("mov",0)
 	ACTION_LIST_NODE.unblock()
@@ -59,7 +59,7 @@ func run_action_attack():
 		def.hp -= val
 		Effector.show_float_text("-"+str(val)+"HP",room.position+Vector2(0,-100+i*10),"damage")
 		yield(get_tree().create_timer(.7),"timeout")
-	emit_signal("end_action")
+	emit_signal("end_action",true)
 
 func check_action_evade():
 	return (def.type == "enemy" && PlayerManager.current_player_have_dice("BT"))
@@ -79,7 +79,7 @@ func run_action_dissarm():
 		DefianceManager.resolve_current_defiance()
 	elif result=="NONE": Effector.show_float_text("NONE",room.position+Vector2(0,-100),"white")
 	yield(get_tree().create_timer(.3),"timeout")
-	emit_signal("end_action")
+	emit_signal("end_action",true)
 
 
 func check_action_unlock(): return (def.type == "door" or def.type == "chest")
@@ -91,7 +91,7 @@ func run_action_unlock():
 				def.req_solved[i] = true
 				break
 	yield(get_tree().create_timer(.5),"timeout")
-	emit_signal("end_action")
+	emit_signal("end_action",true)
 
 func check_action_force(): return (def.type == "door" or def.type == "chest")
 func run_action_force():
@@ -106,23 +106,24 @@ func run_action_force():
 				break
 	else: Effector.show_float_text("NONE",room.position+Vector2(0,-100),"white")
 	yield(get_tree().create_timer(.5),"timeout")
-	emit_signal("end_action")
+	emit_signal("end_action",true)
 
 func check_action_descend(): return (def.type == "stairs")
 func run_action_descend():
 	yield(get_tree().create_timer(.5),"timeout")
-#	if !DungeonManager.have_key:
-#		Effector.show_float_text("NEED LEVEL KEY",room.position+Vector2(0,-100),"white")
-#		emit_signal("end_action")
-#		return true
-#	for p in PlayerManager.PLAYERS:
-#		if p.x != room.data.x or p.y != room.data.y:
-#			Effector.show_float_text("NEED ALL PARTY",room.position+Vector2(0,-100),"white")
-#			emit_signal("end_action")
-#			return true
+	if !DungeonManager.have_key:
+		Effector.show_float_text("NEED LEVEL KEY",room.position+Vector2(0,-100),"white")
+		emit_signal("end_action",false)
+		return
+	for p in PlayerManager.PLAYERS:
+		if p.hp<=0: continue
+		if p.x != room.data.x or p.y != room.data.y:
+			Effector.show_float_text("NEED ALL PARTY",room.position+Vector2(0,-100),"white")
+			emit_signal("end_action",false)
+			return
+	emit_signal("end_action",true)
 	yield(get_tree().create_timer(1.5),"timeout")
 	DungeonManager.goto_next_level()
-	emit_signal("end_action")
 
 func get_calculation_force():
 	return "-2HP"

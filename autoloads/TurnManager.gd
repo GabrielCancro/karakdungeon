@@ -42,14 +42,16 @@ func enemy_attack(def,pj):
 func end_turn():
 	get_node("/root/Game/CLUI/ActionList").visible = false
 	for p in PlayerManager.PLAYERS:
+		p.mov = 0
+		p.action = false
 		if p.hp>0:
-			p.mov = p.movm
 			p.action = true
 			p.ui.roll_dices()
-		else:
-			p.mov = 0
-			p.action = false
 		p.ui.updateUI()
 	yield(get_tree().create_timer(2),"timeout")
+	for p in PlayerManager.PLAYERS:
+		p.mov = p.movm
+		for d in p.ui.get_dices(): if d=="BT": p.mov += 1
+		p.ui.updateUI()
 	PlayerManager.change_player(DungeonManager.current_player.id)
 	get_node("/root/Game/CLUI/ActionList").visible = true

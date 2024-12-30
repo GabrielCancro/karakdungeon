@@ -3,10 +3,12 @@ extends Node
 var current_room
 var current_player
 var have_key = false
+var dungeon_level = 0
 var total_defs = 0
 var resolved_defs = 0
 
 signal change_room()
+signal new_dungeon()
 
 var map = {
 }
@@ -15,8 +17,9 @@ func _ready():
 	DefianceManager.connect("resolved_defiance",self,"on_resolve_defiance")
 
 func goto_next_level():
+	dungeon_level += 1
 	Utils.remove_all_childs(get_node("/root/Game/Map"))
-	get_node("/root/Game/CLUI/Key").modulate = Color(.3,.3,.3,.8)
+	get_node("/root/Game/CLUI/Key").modulate = Color(.1,.1,.1,.8)
 	have_key = false
 	yield(get_tree().create_timer(.1),"timeout")
 	map = MapGenerator.generate_new_map(15)
@@ -25,11 +28,15 @@ func goto_next_level():
 	for r in map: if "defiance" in map[r]: total_defs += 1
 	print("TOTAL DEFIANCES ",total_defs)
 	print("KEY IN ",floor(total_defs*0.8))
-	for p in PlayerManager.PLAYERS: p.node.teleport_to(0,0)
+	for p in PlayerManager.PLAYERS: 
+		if p.hp<=0: p.node.visible = false
+		p.node.teleport_to(0,0)
+	emit_signal("new_dungeon")
 	yield(get_tree().create_timer(.1),"timeout")
 	PlayerManager.change_player(1)
 	yield(get_tree().create_timer(.1),"timeout")
 	TurnManager.end_turn()
+	
 
 func create_dungeon_nodes(xx,yy):
 	get_or_create_one_room(xx,yy)
@@ -78,7 +85,8 @@ func set_current_room(dx,dy):
 		current_room.on_enter()
 		get_node("/root/Game/Camera2D").position = room.position
 	var def = get_room_defiance(current_room)
-	if !def or (def.type!="door" and def.type!="enemy"): DungeonManager.create_dungeon_nodes(dx,dy)
+	if !def or (def.type!="door" and def.type!="enemy" and def.type!="block"): 
+		DungeonManager.create_dungeon_nodes(dx,dy)
 	emit_signal("change_room")
 	if current_room: print("CURRENT ROOM ",current_room.data)
 
