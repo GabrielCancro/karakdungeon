@@ -1,15 +1,16 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/font/AbyssinicaSIL-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://nodes/Dice.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/PlayerUI.gd" type="Script" id=3]
 [ext_resource path="res://assets/retraits/retrait_1.png" type="Texture" id=4]
 [ext_resource path="res://assets/retraits/retrait_outline.png" type="Texture" id=5]
+[ext_resource path="res://assets/mov_point.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=3]
-size = 30
+size = 37
 outline_size = 3
-outline_color = Color( 0.0666667, 0.0666667, 0.0666667, 1 )
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=4]
@@ -35,9 +36,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -166.0
-margin_top = -110.0
+margin_top = -122.0
 margin_right = -66.0
-margin_bottom = -11.0
+margin_bottom = -23.0
 texture = ExtResource( 5 )
 expand = true
 
@@ -49,36 +50,40 @@ margin_top = 183.0
 margin_right = 215.0
 margin_bottom = 90.0
 
-[node name="TextureRect" type="TextureRect" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -166.0
-margin_top = -110.0
-margin_right = -66.0
-margin_bottom = -10.0
-texture = ExtResource( 4 )
-expand = true
+[node name="TextureProgress" type="TextureProgress" parent="."]
+margin_left = -16.0
+margin_top = -40.0
+margin_right = 84.0
+margin_bottom = 59.0
+value = 70.0
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 4 )
+fill_mode = 3
+tint_progress = Color( 1, 0, 0, 1 )
+nine_patch_stretch = true
 
 [node name="lb_hp" type="Label" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 93.0
-margin_bottom = -128.0
-custom_colors/font_color = Color( 1, 0.254902, 0.254902, 1 )
+margin_left = -16.0
+margin_top = 32.0
+margin_right = -215.0
+margin_bottom = -92.0
+custom_colors/font_color = Color( 1, 0.207843, 0.207843, 1 )
 custom_fonts/font = SubResource( 3 )
-text = "HP: 10/10"
+text = "10/10"
+align = 1
 valign = 1
 clip_text = true
 
 [node name="lb_mov" type="Label" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 85.0
-margin_top = 32.0
-margin_right = -8.0
-margin_bottom = -96.0
+margin_left = 91.0
+margin_top = 1.0
+margin_right = -2.0
+margin_bottom = -127.0
 custom_colors/font_color = Color( 0.780392, 0.803922, 0.486275, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "MOV: 5/5"
@@ -117,3 +122,61 @@ margin_right = 187.0
 [node name="Dice4" parent="HBox" instance=ExtResource( 2 )]
 margin_left = 191.0
 margin_right = 261.0
+
+[node name="mov" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="m1" type="TextureRect" parent="mov"]
+margin_left = -21.0
+margin_top = 19.0
+margin_right = -1.0
+margin_bottom = 39.0
+texture = ExtResource( 6 )
+expand = true
+
+[node name="m2" type="TextureRect" parent="mov"]
+margin_left = -28.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = 28.0
+texture = ExtResource( 6 )
+expand = true
+
+[node name="m3" type="TextureRect" parent="mov"]
+margin_left = -30.0
+margin_top = -6.0
+margin_right = -10.0
+margin_bottom = 14.0
+texture = ExtResource( 6 )
+expand = true
+
+[node name="m4" type="TextureRect" parent="mov"]
+margin_left = -28.0
+margin_top = -20.0
+margin_right = -8.0
+texture = ExtResource( 6 )
+expand = true
+
+[node name="m5" type="TextureRect" parent="mov"]
+margin_left = -22.0
+margin_top = -33.0
+margin_right = -2.0
+margin_bottom = -13.0
+texture = ExtResource( 6 )
+expand = true
+
+[node name="m6" type="TextureRect" parent="mov"]
+margin_left = -12.0
+margin_top = -43.0
+margin_right = 8.0
+margin_bottom = -23.0
+texture = ExtResource( 6 )
+expand = true
+
+[node name="m7" type="TextureRect" parent="mov"]
+margin_top = -49.0
+margin_right = 20.0
+margin_bottom = -29.0
+texture = ExtResource( 6 )
+expand = true

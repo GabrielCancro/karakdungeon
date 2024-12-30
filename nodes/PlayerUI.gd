@@ -10,7 +10,8 @@ func _ready():
 
 func set_player(id):
 	data = PlayerManager.get_player_data(id)
-	$TextureRect.texture = data.retrait
+	$TextureProgress.texture_under = data.retrait
+	$TextureProgress.texture_progress = data.retrait
 	Utils.remove_all_childs($HBox)
 	for dice_faces in data.dices:
 		var node = preload("res://nodes/Dice.tscn").instance()
@@ -19,8 +20,16 @@ func set_player(id):
 	updateUI()
 
 func updateUI():
-	$lb_hp.text = "HP: "+str(data.hp)+"/"+str(data.hpm)
-	$lb_mov.text = "MOV: "+str(data.mov)+"/"+str(data.movm)
+	$lb_hp.text = str(data.hp)+"/"+str(data.hpm)
+	$TextureProgress.max_value = data.hpm
+	$TextureProgress.value = data.hpm - data.hp
+	#$lb_mov.text = "MOV: "+str(data.mov)+"/"+str(data.movm)
+	for m in $mov.get_children():
+		var i = m.get_index()
+		if i < data.mov: m.modulate = Color(1,1,1,1)
+		else: m.modulate = Color(.3,.3,.3,1)
+		m.visible = (i<data.movm)
+	data.node.update_hp()
 	set_selected()
 
 func roll_dices():
@@ -39,7 +48,7 @@ func on_select():
 func set_selected(val=$Selector.visible):
 	$Selector.visible = val
 	if val: modulate = Color(1,1,1,1)
-	else: modulate = Color(.5,.5,.5,1)
+	else: modulate = Color(.7,.7,.7,1)
 	print("data.action ",data.action)
 	if data.action: $HBox.modulate = Color(1,1,1,1)
 	else: $HBox.modulate = Color(.5,.5,.5,.5)

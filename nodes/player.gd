@@ -5,7 +5,9 @@ var dest = Vector2()
 
 func _ready():
 	data = PlayerManager.add_player(self)
-	$TextureRect.texture = data.retrait
+	$TextureProgress.texture_under = data.retrait
+	$TextureProgress.texture_progress = data.retrait
+	update_hp()
 	$Button.connect("button_down",PlayerManager,"change_player",[data.id])
 	set_selected(false)
 	yield(get_tree().create_timer(.2),"timeout")
@@ -119,3 +121,8 @@ func get_destine_mov(dx,dy):
 	if mov.v==-1 && !dest_room_data.doors.up: return null
 	
 	return mov
+
+func update_hp():
+	if !data:return
+	$TextureProgress.max_value = data.hpm
+	$TextureProgress.value = data.hpm - data.hp
