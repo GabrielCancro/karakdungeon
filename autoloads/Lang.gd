@@ -4,7 +4,12 @@ var lang = "es"
 
 var texts = {
 	"ab_desc_direct_attack_es": "Ataque Directo: Consume 2x@SW para dañar 1xVIDA a un enemigo. #1",
-	"df_enemy_es":"Te atacará si te mueves o realizas una acción. Además ataca a un personaje aleatorio al finalizar el turno.",
+	"df_enemy_es":"Te atacará si te mueves o realizas una acción.",
+	"df_trap_es":"Se activa si atraviesas la habitación.",
+	"df_block_es":"No puedes pasar por aquí hasta que resuelvas el bloqueo.",
+	"df_door_es":"No puedes pasar por aquí hasta que abras el cerrojo.",
+	"df_stairs_es":"Obtén la llave de este piso y reúne a tus personajes aquí para descender al siguiente nivel.",
+	
 	"ac_attack_es":"Causa entre 0 y 2 de daño, cada @SW añade un golpe extra.",
 	"ac_dissarm_es":"Cada @HN y cada @EY mejora la posibilidad de éxito.",
 	"ac_unlock_es":"Completa los requisitos según los atributos actuales del personaje.",

@@ -2,6 +2,9 @@ extends Node
 
 var current_room
 var current_player
+var have_key = false
+var total_defs = 0
+var resolved_defs = 0
 
 signal change_room()
 
@@ -9,14 +12,32 @@ var map = {
 }
 
 func _ready():
-	pass
+	DefianceManager.connect("resolved_defiance",self,"on_resolve_defiance")
 
-func generate_procedural_dungeon():
+func goto_next_level():
+	Utils.remove_all_childs(get_node("/root/Game/Map"))
+	get_node("/root/Game/CLUI/Key").modulate = Color(.3,.3,.3,.8)
+	have_key = false
+	yield(get_tree().create_timer(.1),"timeout")
 	map = MapGenerator.generate_new_map(15)
+	total_defs = 0
+	resolved_defs = 0
+	for r in map: if "defiance" in map[r]: total_defs += 1
+	print("TOTAL DEFIANCES ",total_defs)
+	print("KEY IN ",floor(total_defs*0.8))
+	for p in PlayerManager.PLAYERS: p.node.teleport_to(0,0)
+	yield(get_tree().create_timer(.1),"timeout")
+	PlayerManager.change_player(1)
+	yield(get_tree().create_timer(.1),"timeout")
+	TurnManager.end_turn()
 
 func create_dungeon_nodes(xx,yy):
-	var nodes =[[xx-1,yy],[xx,yy-1],[xx,yy],[xx,yy+1],[xx+1,yy], ]
-	for pos in nodes: get_or_create_one_room(pos[0],pos[1])
+	get_or_create_one_room(xx,yy)
+	var data = get_room_data(xx,yy)
+	if data.doors.left: get_or_create_one_room(xx-1,yy)
+	if data.doors.right: get_or_create_one_room(xx+1,yy)
+	if data.doors.up: get_or_create_one_room(xx,yy-1)
+	if data.doors.down: get_or_create_one_room(xx,yy+1)
 
 func get_or_create_one_room(xx,yy):
 	var key = str(xx)+"x"+str(yy)
@@ -50,7 +71,7 @@ func get_room_defiance(room_node=current_room):
 
 func set_current_room(dx,dy):
 	var room = get_room_node(dx,dy)
-	if current_room: current_room.on_leave()
+	if is_instance_valid(current_room): current_room.on_leave()
 	if room && room != current_room: Effector.scale_boom(room)
 	current_room = room
 	if current_room: 
@@ -67,3 +88,21 @@ func reset_current_room():
 func force_update():
 	current_room.update()
 	emit_signal("change_room")
+
+func get_key():
+	have_key = true
+	var key = get_node("/root/Game/CLUI/Key")
+	key.modulate = Color(1,1,1,0)
+	var pos = key.rect_global_position
+	yield(get_tree().create_timer(.3),"timeout")
+	key.rect_position = Vector2(750,300)
+	Effector.move_to(key,Vector2(750,220))
+	Effector.appear(key)
+	yield(get_tree().create_timer(1),"timeout")
+	Effector.scale_boom(key)
+	Effector.move_to(key,pos)
+
+func on_resolve_defiance():
+	resolved_defs += 1
+	print("RESOLVED ",resolved_defs,"/",total_defs)
+	if !have_key && resolved_defs>=floor(total_defs*0.8): get_key()

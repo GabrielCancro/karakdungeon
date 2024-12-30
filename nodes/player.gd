@@ -10,8 +10,6 @@ func _ready():
 	update_hp()
 	$Button.connect("button_down",PlayerManager,"change_player",[data.id])
 	set_selected(false)
-	yield(get_tree().create_timer(.2),"timeout")
-	teleport_to(0,0)
 
 func _process(delta):
 	global_position += global_position.direction_to(dest)*global_position.distance_to(dest)*0.1
@@ -62,7 +60,8 @@ func move_to(dx,dy):
 		dest = get_dest_pos()
 
 func teleport_to(xx,yy):
-	var room = DungeonManager.get_room_node(xx,yy)
+	var room = DungeonManager.get_or_create_one_room(xx,yy)
+	print("TELEPORT ",room)
 	if room:
 		data.x = xx
 		data.y = yy
@@ -71,27 +70,29 @@ func teleport_to(xx,yy):
 		DungeonManager.set_current_room(data.x,data.y)
 		position = get_dest_pos()
 		dest = position
-		Utils.set_zindex(self,.2)
 
 func obstructed_by_door():
 	var room = DungeonManager.current_room
 	var def = DungeonManager.get_room_defiance(room)
-	if def && def.type=="door":
+	if def && (def.type=="door" or def.type=="block"):
 		if data.x == room.data.x && data.y == room.data.y:
 			return true
 	return false
 
 func anim_action_start():
 	var room = DungeonManager.get_room_node(data.x,data.y)
-	dest = room.position
+	dest = room.position+Vector2(data.h,data.v)*20
 
 func anim_action_end():
 	dest = get_dest_pos()
 
 func get_dest_pos():
 	var room = DungeonManager.get_room_node(data.x,data.y)
-	var offset = Vector2(data.h*80,data.v*80)
-	return room.position+offset
+	if room:
+		var offset = Vector2(data.h*80,data.v*80)
+		return room.position+offset
+	else:
+		return dest
 
 func set_selected(val):
 	$Selector.visible = val

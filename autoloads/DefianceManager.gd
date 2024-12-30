@@ -4,9 +4,13 @@ signal resolved_defiance()
 
 var DEFIANCES = {
 	"goblin":{"type":"enemy", "hp":5, "dam":2},
-	"trap1":{"type":"trap", "dif":4},
+	"rat":{"type":"enemy", "hp":3, "dam":1},
+	"bat":{"type":"enemy", "hp":2, "dam":1},
+	"trap1":{"type":"trap", "dif":4,"dam":2},
 	"door1":{"type":"door", "req":["HN","EY"]},
+	"debris":{"type":"block", "hp":3},
 	"chest1":{"type":"chest", "req":["HN","HN","HN","EY","EY"]},
+	"stairs":{"type":"stairs"},
 }
 
 var ACTIONS = {
@@ -40,3 +44,14 @@ func resolve_current_defiance():
 	yield(get_tree().create_timer(.5),"timeout")
 	DungeonManager.reset_current_room()
 	emit_signal("resolved_defiance")
+
+func activate_trap(def):
+	Effector.scale_boom(DungeonManager.current_room.get_node("Sprite"))
+	yield(get_tree().create_timer(.5),"timeout")
+	for p in PlayerManager.PLAYERS: 
+		if p.x!=DungeonManager.current_room.data.x: continue
+		if p.y!=DungeonManager.current_room.data.y: continue
+		PlayerManager.damage_player(p.id,def.dam)
+		yield(get_tree().create_timer(.1),"timeout")
+	yield(get_tree().create_timer(.5),"timeout")
+	resolve_current_defiance()

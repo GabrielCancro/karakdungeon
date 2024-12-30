@@ -85,13 +85,18 @@ func get_player_data(id):
 	return PLAYERS[id-1]
 
 func damage_current_player(dam):
-	Effector.scale_boom(DungeonManager.current_player.node)
-	DungeonManager.current_player.hp -= dam
-	DungeonManager.current_player.ui.updateUI()
-	var tx = "-"+str(dam)+"HP"
-	var node = preload("res://nodes/fx/FloatText.tscn").instance()
-	node.set_float(tx,Vector2(20,-40),"damage")
-	DungeonManager.current_player.ui.add_child(node)
+	damage_player(DungeonManager.current_player.id,dam)
+
+func damage_player(id,dam):
+	var player = PlayerManager.get_player_data(id)
+	Effector.scale_boom(player.node)
+	player.hp -= dam
+	if player.hp <=0:
+		player.hp = 0
+		player.mov = 0
+		player.action = false
+	player.ui.updateUI()
+	Effector.show_float_text("-"+str(dam)+"HP",player.node.position+Vector2(0,-80),"damage")
 
 func set_pj_attr(key,val):
 	DungeonManager.current_player[key] = val
@@ -100,6 +105,6 @@ func set_pj_attr(key,val):
 func get_dice_color(faces):
 	if faces == ["NN","NN","SW","BT","HN","EY"]: return Color(.4,.4,.4,1)
 	if faces == ["NN","NN","SW","SW","SW","BT"]: return Color(.8,.2,.2,1)
-	if faces == ["NN","BT","HN","EY","HN","EY"]: return Color(.2,.2,.8,1)
+	if faces == ["NN","BT","HN","EY","HN","EY"]: return Color(.4,.4,.7,1)
 	if faces == ["SW","BT","BT","BT","HN","EY"]: return Color(.2,.8,.2,1)
 	return Color(.2,.2,.2,1)

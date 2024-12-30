@@ -10,10 +10,11 @@ signal end_action()
 
 var ACTIONS = {
 	"attack":{},
-	"evade":{},
+	#"evade":{},
 	"dissarm":{},
 	"unlock":{},
 	"force":{},
+	"descend":{}
 }
 
 func get_room_actions():
@@ -31,14 +32,15 @@ func get_room_actions():
 func run_action(ac_name):
 	ACTION_LIST_NODE.block()
 	if has_method("run_action_"+ac_name):
-		call("run_action_"+ac_name)
+		var keep_action = call("run_action_"+ac_name)
 		DungeonManager.current_player.node.anim_action_start()
 		yield(get_tree().create_timer(.2),"timeout")
 		yield(self,"end_action")
 		DungeonManager.force_update()
 		DungeonManager.current_player.node.anim_action_end()
-		PlayerManager.set_pj_attr("action",false)
-		PlayerManager.set_pj_attr("mov",0)
+		if !keep_action:
+			PlayerManager.set_pj_attr("action",false)
+			PlayerManager.set_pj_attr("mov",0)
 	ACTION_LIST_NODE.unblock()
 
 func get_bonif(ac_name):
@@ -48,15 +50,15 @@ func get_bonif(ac_name):
 	elif ac_name=="dissarm": am = PlayerManager.get_dice_amount("HN") + PlayerManager.get_dice_amount("EY")
 	return "("+str(am)+")"
 
-func check_action_attack(): return (def.type == "enemy")
+func check_action_attack(): return (def.type == "enemy") or (def.type == "block")
 func run_action_attack(): 
 	randomize()
+	yield(get_tree().create_timer(.5),"timeout")
 	for i in range(1+PlayerManager.get_dice_amount("SW")):
 		var val = randi()%3
 		def.hp -= val
-		yield(get_tree().create_timer(.7),"timeout")
 		Effector.show_float_text("-"+str(val)+"HP",room.position+Vector2(0,-100+i*10),"damage")
-	yield(get_tree().create_timer(1),"timeout")
+		yield(get_tree().create_timer(.7),"timeout")
 	emit_signal("end_action")
 
 func check_action_evade():
@@ -68,7 +70,10 @@ func run_action_dissarm():
 	defUI.dif_test.roll()
 	var result = yield(defUI.dif_test,"end_roll")
 	yield(get_tree().create_timer(1),"timeout")
-	if result=="FAIL": Effector.show_float_text("ACTIVATED!",room.position+Vector2(0,-100),"damage")
+	if result=="FAIL": 
+		Effector.show_float_text("ACTIVATED!",room.position+Vector2(0,-100),"damage")
+		DefianceManager.activate_trap(def)
+		yield(get_tree().create_timer(1.5),"timeout")
 	elif result=="SUCCESS": 
 		Effector.show_float_text("DISSARMED",room.position+Vector2(0,-100),"normal")
 		DefianceManager.resolve_current_defiance()
@@ -76,8 +81,10 @@ func run_action_dissarm():
 	yield(get_tree().create_timer(.3),"timeout")
 	emit_signal("end_action")
 
+
 func check_action_unlock(): return (def.type == "door" or def.type == "chest")
 func run_action_unlock():
+	yield(get_tree().create_timer(.5),"timeout")
 	for dice in PlayerManager.get_current_player_dices():
 		for i in range(def.req.size()):
 			if def.req[i]==dice && !def.req_solved[i]: 
@@ -99,6 +106,22 @@ func run_action_force():
 				break
 	else: Effector.show_float_text("NONE",room.position+Vector2(0,-100),"white")
 	yield(get_tree().create_timer(.5),"timeout")
+	emit_signal("end_action")
+
+func check_action_descend(): return (def.type == "stairs")
+func run_action_descend():
+	yield(get_tree().create_timer(.5),"timeout")
+#	if !DungeonManager.have_key:
+#		Effector.show_float_text("NEED LEVEL KEY",room.position+Vector2(0,-100),"white")
+#		emit_signal("end_action")
+#		return true
+#	for p in PlayerManager.PLAYERS:
+#		if p.x != room.data.x or p.y != room.data.y:
+#			Effector.show_float_text("NEED ALL PARTY",room.position+Vector2(0,-100),"white")
+#			emit_signal("end_action")
+#			return true
+	yield(get_tree().create_timer(1.5),"timeout")
+	DungeonManager.goto_next_level()
 	emit_signal("end_action")
 
 func get_calculation_force():

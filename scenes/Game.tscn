@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://nodes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/DefianceUI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/dungeon_key.png" type="Texture" id=3]
 [ext_resource path="res://nodes/PlayerUI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://nodes/ActionList.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/font/AbyssinicaSIL-Regular.ttf" type="DynamicFontData" id=6]
@@ -21,6 +22,9 @@ layer = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.0980392, 0.0980392, 0.0980392, 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -84,3 +88,13 @@ margin_right = 1562.0
 margin_bottom = 846.0
 custom_fonts/font = SubResource( 1 )
 text = "END TURN"
+
+[node name="Key" type="TextureRect" parent="CLUI"]
+margin_left = 11.4125
+margin_top = 14.9126
+margin_right = 128.412
+margin_bottom = 131.913
+rect_rotation = -30.0
+rect_pivot_offset = Vector2( 58.5, 58.5 )
+texture = ExtResource( 3 )
+expand = true

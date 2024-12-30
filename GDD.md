@@ -56,6 +56,6 @@ HABILIDADES (usos por mazmrra)
 ROAD MAP::
 Para M1 necesitamos:
 -Habilidades de party inicial.
--Escombros, rata, murciélago.
+-Escombros, rata, murciélago. (OK)
 -Puerta de salida.
--Llave al siguiente piso.
+-Llave al siguiente piso. (OK)

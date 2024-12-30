@@ -9,12 +9,14 @@ var percent_of_door = 30
 
 # Called when the node enters the scene tree for the first time.
 func generate_new_map(_rooms_amount,generate_by_steps=false):
+	clear_map()
 	rooms_amount = _rooms_amount
 	randomize()
 	create_new_room(0,0)
 	if !generate_by_steps:
 		while rooms_amount>0: next_step_generation()
 		next_step_generation()
+	add_defiances()
 	return map
 
 func clear_map():
@@ -44,10 +46,8 @@ func create_new_room(x,y):
 		"x":x,
 		"y":y,
 		"doors":{"up":(randi()%100<percent_of_door),"down":(randi()%100<percent_of_door),"left":(randi()%100<percent_of_door),"right":(randi()%100<percent_of_door)},
-		"defiance": DefianceManager.get_random_defiance(50),
 		"is_creted_in_last_step":true,
 	}
-	if !room_data.defiance: room_data.erase("defiance")
 	
 	if x==0 && y==0: room_data.doors = {"up":true,"down":true,"left":true,"right":true}
 	map[str(x)+"x"+str(y)] = room_data
@@ -116,3 +116,14 @@ func get_room_data(x,y):
 
 func on_reset():
 	get_tree().reload_current_scene()
+
+func add_defiances():
+	var keys = map.keys()
+	keys.shuffle()
+	var defs = ["rat","bat","trap1","door1","debris","chest1","goblin","stairs"]
+	for d in defs: 
+		if keys.size()<=0: break
+		var k = keys.pop_back()
+		if k=="0x0": continue
+		map[k]["defiance"] = d
+
