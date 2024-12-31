@@ -113,3 +113,9 @@ margin_left = 1284.0
 margin_top = 750.0
 margin_right = 1562.0
 margin_bottom = 839.0
+
+[node name="InputBlocker" type="ColorRect" parent="CLUI"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 1, 1, 1, 0.0392157 )

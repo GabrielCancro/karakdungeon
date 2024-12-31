@@ -30,7 +30,7 @@ func get_room_actions():
 	return ac_array
 
 func run_action(ac_name):
-	ACTION_LIST_NODE.block()
+	Utils.disable_input(3)
 	if has_method("run_action_"+ac_name):
 		var keep_action = call("run_action_"+ac_name)
 		DungeonManager.current_player.node.anim_action_start()
@@ -41,7 +41,7 @@ func run_action(ac_name):
 		if result:
 			PlayerManager.set_pj_attr("action",false)
 			PlayerManager.set_pj_attr("mov",0)
-	ACTION_LIST_NODE.unblock()
+	Utils.enable_input()
 
 func get_bonif(ac_name):
 	var am = 0
