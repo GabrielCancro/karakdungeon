@@ -6,10 +6,10 @@ var DEFIANCES = {
 	"goblin":{"type":"enemy", "hp":5, "dam":2},
 	"rat":{"type":"enemy", "hp":3, "dam":1},
 	"bat":{"type":"enemy", "hp":2, "dam":1},
-	"trap1":{"type":"trap", "dif":4,"dam":2},
-	"door1":{"type":"door", "req":["HN","EY"]},
+	"trap":{"type":"trap", "dif":4,"dam":2},
+	"door":{"type":"door", "req":["HN","EY"]},
 	"debris":{"type":"block", "hp":3},
-	"chest1":{"type":"chest", "req":["HN","HN","HN","EY","EY"]},
+	"chest":{"type":"chest", "req":["HN","HN","HN","EY","EY"]},
 	"stairs":{"type":"stairs"},
 }
 

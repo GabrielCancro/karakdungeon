@@ -7,10 +7,7 @@
 [ext_resource path="res://nodes/ActionList.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/font/AbyssinicaSIL-Regular.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://scenes/Game.gd" type="Script" id=7]
-
-[sub_resource type="DynamicFont" id=1]
-size = 40
-font_data = ExtResource( 6 )
+[ext_resource path="res://nodes/EndTurnButton.tscn" type="PackedScene" id=8]
 
 [sub_resource type="DynamicFont" id=2]
 size = 46
@@ -36,6 +33,7 @@ __meta__ = {
 current = true
 smoothing_enabled = true
 smoothing_speed = 2.0
+offset_v = 0.5
 
 [node name="Map" type="Node2D" parent="."]
 
@@ -87,14 +85,6 @@ margin_top = 24.0
 margin_right = 234.5
 margin_bottom = 151.0
 
-[node name="Button" type="Button" parent="CLUI"]
-margin_left = 1311.0
-margin_top = 727.0
-margin_right = 1562.0
-margin_bottom = 846.0
-custom_fonts/font = SubResource( 1 )
-text = "END TURN"
-
 [node name="Key" type="TextureRect" parent="CLUI"]
 margin_left = 11.4125
 margin_top = 22.9126
@@ -117,3 +107,9 @@ custom_fonts/font = SubResource( 2 )
 text = "Nivel #"
 valign = 1
 clip_text = true
+
+[node name="EndTurnButton" parent="CLUI" instance=ExtResource( 8 )]
+margin_left = 1284.0
+margin_top = 750.0
+margin_right = 1562.0
+margin_bottom = 839.0

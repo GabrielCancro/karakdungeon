@@ -22,7 +22,7 @@ func goto_next_level():
 	get_node("/root/Game/CLUI/Key").modulate = Color(.1,.1,.1,.8)
 	have_key = false
 	yield(get_tree().create_timer(.1),"timeout")
-	map = MapGenerator.generate_new_map(15)
+	map = MapGenerator.generate_new_map(10+5*dungeon_level)
 	total_defs = 0
 	resolved_defs = 0
 	for r in map: if "defiance" in map[r]: total_defs += 1
