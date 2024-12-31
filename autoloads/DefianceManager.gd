@@ -11,6 +11,7 @@ var DEFIANCES = {
 	"debris":{"type":"block", "hp":3},
 	"chest":{"type":"chest", "req":["HN","HN","HN","EY","EY"]},
 	"stairs":{"type":"stairs"},
+	"fountain":{"type":"fountain"},
 }
 
 var ACTIONS = {
