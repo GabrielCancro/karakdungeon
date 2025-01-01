@@ -25,11 +25,10 @@ func disable_input(t):
 		if bn: bn.visible = true
 
 func enable_input():
-	if disabled_input_timer>0:
-		set_process(false)
-		disabled_input_timer = 0
-		var bn = get_node_or_null("/root/Game/CLUI/InputBlocker")
-		if bn: bn.visible = false
+	set_process(false)
+	disabled_input_timer = 0
+	var bn = get_node_or_null("/root/Game/CLUI/InputBlocker")
+	if bn: bn.visible = false
 
 func is_input_disabled():
 	return (disabled_input_timer>0)

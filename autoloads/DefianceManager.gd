@@ -11,12 +11,7 @@ var DEFIANCES = {
 	"debris":{"type":"block", "hp":3},
 	"chest":{"type":"chest", "req":["HN","HN","HN","EY","EY"]},
 	"stairs":{"type":"stairs"},
-	"fountain":{"type":"fountain"},
-}
-
-var ACTIONS = {
-	"enemy":["attack","evade","stun"],
-	"trap":["dissarm"],
+	"fountain":{"type":"fountain","uses":2},
 }
 
 func get_defiance_data(code):
@@ -29,9 +24,6 @@ func get_defiance_data(code):
 		data["req_solved"] = []
 		for i in data.req: data["req_solved"].append(false)
 	return data
-
-func get_actions(defiance_type):
-	return ACTIONS[defiance_type].duplicate()
 
 func get_random_defiance(perc = 100):
 	randomize()

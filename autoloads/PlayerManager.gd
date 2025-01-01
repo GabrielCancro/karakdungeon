@@ -99,7 +99,14 @@ func damage_player(id,dam):
 		player.ui.visible = false
 	player.ui.updateUI()
 	Effector.show_float_text("-"+str(dam)+"HP",player.node.position+Vector2(0,-80),"damage")
-	
+
+func heal_player(id,val):
+	var player = PlayerManager.get_player_data(id)
+	Effector.scale_boom(player.node)
+	val = min(player.hpm-player.hp,val)
+	player.hp += val
+	player.ui.updateUI()
+	Effector.show_float_text("+"+str(val)+"HP",player.node.position+Vector2(0,-80),"normal")
 
 func set_pj_attr(key,val):
 	DungeonManager.current_player[key] = val

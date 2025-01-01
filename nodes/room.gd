@@ -14,7 +14,7 @@ func set_data(room_data):
 	if "defiance" in data: 
 		data["defiance"]["def_sprite"] = $Sprite
 		$Sprite.visible = true
-		$Sprite.texture = load("res://assets/defiances/df_"+data["defiance"]["name"]+".png")
+		$Sprite/Image.texture = load("res://assets/defiances/df_"+data["defiance"]["name"]+".png")
 	
 	#DOORS
 	for d in data.doors.keys():

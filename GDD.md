@@ -54,11 +54,16 @@ HABILIDADES (usos por mazmrra)
 -Suerte de Pícaro: puede rerollear sus dados
 
 ROAD MAP::
-Para M1 necesitamos:
+Para poder jugar:
 -Loop Del Juego
 -Habilidades de party inicial. (OK) (solo dados)
--Escombros, rata, murciélago. (OK)
--Puerta de salida. (OK)
+-Escalera al siguiente nivel. (OK)
 -Llave al siguiente piso. (OK) (al completar el 80%)
 -Muerte permanente.
 -Final del juego.
+-Cordura (si estas mucho tiempo sin resolver desafios te atacan fantasmas)
+
+LV1: Escombros, Rata, murciélago (OK)
+LV2: Fuente, Goblin, Puerta (OK)
+LV3: Trampa, Telaraña, Araña, Pasadizo, Tesoro
+LV4: 

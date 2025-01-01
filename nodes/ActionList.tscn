@@ -19,9 +19,6 @@ margin_right = 327.0
 margin_bottom = 58.0
 color = Color( 0.219608, 0.219608, 0.219608, 1 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Label" type="Label" parent="."]
 anchor_right = 1.0
@@ -40,6 +37,18 @@ margin_top = 56.0
 margin_bottom = 56.0
 
 [node name="ActionNode" parent="List" instance=ExtResource( 3 )]
+
+[node name="ActionNode2" parent="List" instance=ExtResource( 3 )]
+margin_top = 84.0
+margin_bottom = 167.0
+
+[node name="ActionNode3" parent="List" instance=ExtResource( 3 )]
+margin_top = 169.0
+margin_bottom = 252.0
+
+[node name="ActionNode4" parent="List" instance=ExtResource( 3 )]
+margin_top = 254.0
+margin_bottom = 337.0
 
 [node name="block" type="ColorRect" parent="."]
 visible = false
@@ -61,7 +70,9 @@ color = Color( 0.121569, 0.12549, 0.180392, 1 )
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -1.0
 margin_right = 6.0
+margin_bottom = -31.0
 color = Color( 0.2, 0.203922, 0.301961, 1 )
 
 [node name="RTL" type="RichTextLabel" parent="desc"]

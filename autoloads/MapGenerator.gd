@@ -119,22 +119,29 @@ func on_reset():
 
 func add_defiances():
 	var lv = DungeonManager.dungeon_level
-	var keys = map.keys()
-	keys.shuffle()
+	
 	var defs = []
 	if lv==1:
 		defs=["rat","bat","debris"]
 		for i in range(3): defs.append(get_rnd(["rat","bat","debris"]))
 	elif lv==2:
-		defs=["rat","bat","goblin","goblin","door","door"]
+		defs=["rat","bat","goblin","goblin","door","door","fountain"]
 		for i in range(4): defs.append(get_rnd(["rat","bat","debris"]))
+	elif lv==3:
+		defs=["rat","bat","goblin","goblin","door","door","fountain","trap"]
+		for i in range(4): defs.append(get_rnd(["rat","bat","debris"]))
+		for i in range(3): defs.append(get_rnd(["goblin","trap"]))
 	
 	defs.append("stairs")
+	
+	var keys = map.keys()
+	keys.shuffle()
 	for d in defs: 
 		if keys.size()<=0: break
 		var k = keys.pop_back()
 		if k=="0x0": continue
 		map[k]["defiance"] = d
+		print(d," in ",k)
 
 func get_rnd(arr):
 	randomize()

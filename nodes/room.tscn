@@ -300,10 +300,22 @@ valign = 1
 clip_text = true
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 3, 3 )
+
+[node name="Image" type="TextureRect" parent="Sprite"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -100.0
+margin_right = 100.0
+margin_bottom = 100.0
 texture = ExtResource( 2 )
+expand = true
+stretch_mode = 1
 
 [node name="Button" type="Button" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -78.0

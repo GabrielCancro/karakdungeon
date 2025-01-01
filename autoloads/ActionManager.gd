@@ -14,7 +14,8 @@ var ACTIONS = {
 	"dissarm":{},
 	"unlock":{},
 	"force":{},
-	"descend":{}
+	"descend":{},
+	"recover":{},
 }
 
 func get_room_actions():
@@ -48,7 +49,8 @@ func get_bonif(ac_name):
 	if ac_name=="attack": am = PlayerManager.get_dice_amount("SW")
 	elif ac_name=="unlock": am = PlayerManager.get_reqs_can_complete()
 	elif ac_name=="dissarm": am = PlayerManager.get_dice_amount("HN") + PlayerManager.get_dice_amount("EY")
-	return "("+str(am)+")"
+	if am!=0: return "("+str(am)+")"
+	else: return ""
 
 func check_action_attack(): return (def.type == "enemy") or (def.type == "block")
 func run_action_attack(): 
@@ -125,5 +127,17 @@ func run_action_descend():
 	yield(get_tree().create_timer(1.5),"timeout")
 	DungeonManager.goto_next_level()
 
-func get_calculation_force():
-	return "-2HP"
+func check_action_recover(): return (def.type == "fountain")
+func run_action_recover():
+	yield(get_tree().create_timer(.5),"timeout")
+	if def.uses<=0:
+		Effector.show_float_text("AGOTADO!",room.position+Vector2(0,-100),"white")
+		emit_signal("end_action",false)
+	elif pj.hp!=pj.hpm: 
+		def.uses -= 1
+		PlayerManager.heal_player(pj.id,2)
+		if def.uses <= 0: def["def_sprite"].modulate = Color(.4,.4,.4,1)
+		emit_signal("end_action",true)
+	else: 
+		Effector.show_float_text("FULL HP!",room.position+Vector2(0,-100),"white")
+		emit_signal("end_action",false)
