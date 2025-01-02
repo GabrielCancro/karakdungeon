@@ -67,3 +67,7 @@ LV1: Escombros, Rata, murciélago (OK)
 LV2: Fuente, Goblin, Puerta (OK)
 LV3: Trampa, Telaraña, Araña, Pasadizo, Tesoro
 LV4: 
+
+-mas desafios en lvl 3
+-algunas puertas no se conectan bien
+-hab guerrero, cada vez que pasas de dungeon ganas +1HP max

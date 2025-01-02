@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://nodes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/DefianceUI.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/font/AbyssinicaSIL-Regular.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://scenes/Game.gd" type="Script" id=7]
 [ext_resource path="res://nodes/EndTurnButton.tscn" type="PackedScene" id=8]
+[ext_resource path="res://nodes/TutorialHint.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=2]
 size = 46
@@ -24,6 +25,10 @@ layer = -1
 [node name="ColorRect" type="ColorRect" parent="CLBG"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -49.0
+margin_top = -65.0
+margin_right = -49.0
+margin_bottom = -65.0
 color = Color( 0.0980392, 0.0980392, 0.0980392, 1 )
 __meta__ = {
 "_edit_group_": true
@@ -133,3 +138,9 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.235294, 0.235294, 0.235294, 0.0196078 )
+
+[node name="TutorialHint" parent="CLUI" instance=ExtResource( 9 )]
+margin_left = 94.0
+margin_top = 168.0
+margin_right = 495.0
+margin_bottom = 372.0
