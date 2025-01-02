@@ -10,3 +10,4 @@ func on_new_dungeon():
 func _process(delta):
 	if $Camera2D.zoom.x<2 && Input.is_action_pressed("zoom_map"): $Camera2D.zoom += Vector2(.05,.05)
 	if $Camera2D.zoom.x>1 && !Input.is_action_pressed("zoom_map"): $Camera2D.zoom -= Vector2(.05,.05)
+	if Input.is_action_just_pressed("change_player"): PlayerManager.select_next_player()
