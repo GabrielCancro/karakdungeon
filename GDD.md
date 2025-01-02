@@ -40,18 +40,19 @@ M5: Trampa Rúnica, emboscadas, Esqueleto
 M6: Salón del tesoro, Cria de dragón
 
 ITEMS (bonif general a la party)
--Corazón de bestia (+1HP a tu party)
--Espadas de doran (0-1 de daño extra al realizar un ataque)
+-Corazón de bestia (+1HP a toda tu party)
+-Espadas de doran (0-1 de daño extra al realizar un ataque con una SW o mas)
 -Amuleto De sangre (sanas 2HP al pasar de mazmorra)
 -Botas elficas (+1 de movimiento a toda tu party)
--Escamas de dragón (añade un escudo en un dado de cada personaje)
+-Escamas de dragón (añade un escudo a los personajes que tengan algun dado rojo)
 -Ojo de safiro (+15% de percepcion para encontrar desafios ocultos)
 
 HABILIDADES (usos por mazmrra)
--Guerrear: si no tienes ninguna espada y te tocó alguna cara vacia, la convierte en espada
+-Guerrear: si no tienes ninguna espada y te tocó alguna cara vacia, la convierte en espada.
 -Berserk: pierdes -1HP pero todos tus dados con espada cambian a dicha cara.
 -Pies Ligeros: obtienes +2 de mov por cada BT.
--Suerte de Pícaro: puede rerollear sus dados
+-Suerte de Pícaro: puede rerollear sus dados.
+-Coraje: cada vez que pasas de dungeon ganas +1HP max.
 
 ROAD MAP::
 Para poder jugar:
@@ -65,9 +66,8 @@ Para poder jugar:
 
 LV1: Escombros, Rata, murciélago (OK)
 LV2: Fuente, Goblin, Puerta (OK)
-LV3: Trampa, Telaraña, Araña, Pasadizo, Tesoro
+LV3: Trampa Pinchos, Telaraña, Araña, Pasadizo, Tesoro
 LV4: 
 
 -mas desafios en lvl 3
 -algunas puertas no se conectan bien
--hab guerrero, cada vez que pasas de dungeon ganas +1HP max
