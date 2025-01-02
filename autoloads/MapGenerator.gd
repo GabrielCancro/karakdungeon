@@ -121,13 +121,13 @@ func add_defiances():
 	var lv = DungeonManager.dungeon_level
 	
 	var defs = []
-	if lv==1:
+	if lv==1: #15 (6)
 		defs=["rat","bat","debris"]
 		for i in range(3): defs.append(get_rnd(["rat","bat","debris"]))
-	elif lv==2:
+	elif lv==2: #20(11)
 		defs=["rat","bat","goblin","goblin","door","door","fountain"]
 		for i in range(4): defs.append(get_rnd(["rat","bat","debris"]))
-	elif lv==3:
+	elif lv==3: #25 (15)
 		defs=["rat","bat","goblin","goblin","door","door","fountain","trap"]
 		for i in range(4): defs.append(get_rnd(["rat","bat","debris"]))
 		for i in range(3): defs.append(get_rnd(["goblin","trap"]))

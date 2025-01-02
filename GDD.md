@@ -33,11 +33,13 @@ PROGRESION:
 -Empezas con la party estandar (guerrero, explorador, pícaro)
 -Cada mazmorra sumará nuevos desafíos:
 M1: Escombros, rata, murciélago,
-M2: Puerta,Goblin, Fuente Sanadora, Secreto(biblioteca, totem)
-M3: Trampa Pinchos, Araña Gigante, Cofre, Pazadizo(2)
+M2: Puerta,Goblin, Fuente
+M3: Trampa Pinchos, Araña Gigante (envenenar? telaraña?), Cofre (reliquias), Pazadizo(2)
 M4: Fantasma, Trampa oculta, Cofre Oculto,
 M5: Trampa Rúnica, emboscadas, Esqueleto
 M6: Salón del tesoro, Cria de dragón
+
+,Secreto(biblioteca, totem)
 
 ITEMS (bonif general a la party)
 -Corazón de bestia (+1HP a toda tu party)
@@ -56,18 +58,18 @@ HABILIDADES (usos por mazmrra)
 
 ROAD MAP::
 Para poder jugar:
--Loop Del Juego
+-Loop Del Juego (OK)
 -Habilidades de party inicial. (OK) (solo dados)
 -Escalera al siguiente nivel. (OK)
 -Llave al siguiente piso. (OK) (al completar el 80%)
--Muerte permanente.
--Final del juego.
+Falta:
+-Reliquias para los tesoros
 -Cordura (si estas mucho tiempo sin resolver desafios te atacan fantasmas)
+-Implementar cosas ocultas (trampas, pasadizos, tesoros)
+-Final del juego.
+-Armar Party
 
-LV1: Escombros, Rata, murciélago (OK)
-LV2: Fuente, Goblin, Puerta (OK)
-LV3: Trampa Pinchos, Telaraña, Araña, Pasadizo, Tesoro
-LV4: 
 
+FEEDBACK
 -mas desafios en lvl 3
 -algunas puertas no se conectan bien
