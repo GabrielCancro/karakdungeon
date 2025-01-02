@@ -63,7 +63,7 @@ func get_reqs_can_complete():
 	return amount
 
 func change_player(id):
-	if PLAYERS[id-1].hp<=0: return
+	if PLAYERS[id-1].hp<=0: return false
 	if DungeonManager.current_player: 
 		DungeonManager.current_player.node.set_selected(false)
 		DungeonManager.current_player.ui.set_selected(false)
@@ -72,6 +72,7 @@ func change_player(id):
 	DungeonManager.current_player.node.set_selected(true)
 	DungeonManager.current_player.ui.set_selected(true)
 	DungeonManager.current_player.ui.updateUI()
+	return true
 
 func reorder_players(_x,_y):
 	var pjs = []
@@ -122,9 +123,11 @@ func get_dice_color(faces):
 func select_next_player():
 	if !DungeonManager.current_player: change_player(1)
 	else:
-		var id = DungeonManager.current_player.id+1
-		if id > PLAYERS.size(): id = 1
-		change_player(id)
+		var id = DungeonManager.current_player.id
+		for i in range(PLAYERS.size()):
+			id += 1
+			if id > PLAYERS.size(): id = 1
+			if change_player(id): return
 
 #func delete_player(id):
 #	var pj = PLAYERS.pop_at(id-1)

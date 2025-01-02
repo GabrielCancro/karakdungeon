@@ -17,6 +17,13 @@ func disappear(node,hide_end=false):
 		yield(get_tree().create_timer(.5),"timeout")
 		node.visible = false
 
+func disappear_fast(node,hide_end=false):
+	tween.interpolate_property(node,"modulate:a",null,0,.2,Tween.TRANS_QUAD,Tween.EASE_IN)
+	tween.start()
+	if hide_end:
+		yield(get_tree().create_timer(.2),"timeout")
+		node.visible = false
+
 func move_to(node,pos):
 	if ("rect_position" in node):
 		tween.interpolate_property(node,"rect_global_position",null,pos,.3,Tween.TRANS_QUAD,Tween.EASE_OUT)

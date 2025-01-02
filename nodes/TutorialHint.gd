@@ -9,4 +9,4 @@ func _ready():
 	Effector.appear(self)
 
 func on_click():
-	Effector.disappear(self,true)
+	Effector.disappear_fast(self,true)

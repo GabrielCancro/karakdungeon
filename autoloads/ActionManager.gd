@@ -99,13 +99,10 @@ func check_action_force(): return (def.type == "door" or def.type == "chest")
 func run_action_force():
 	yield(get_tree().create_timer(.5),"timeout")
 	randomize()
-	if randi()%100<=70: 
+	if randi()%100<=20: 
 		Effector.show_float_text("FORCE",room.position+Vector2(0,-100),"normal")
-		for i in range(def.req_solved.size()):
-			if !def.req_solved[i]:
-				def.req.pop_at(i)
-				def.req_solved.pop_at(i)
-				break
+		def.req.pop_at(0)
+		def.req_solved.pop_at(0)
 	else: Effector.show_float_text("NONE",room.position+Vector2(0,-100),"white")
 	yield(get_tree().create_timer(.5),"timeout")
 	emit_signal("end_action",true)
