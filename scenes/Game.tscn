@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://nodes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/DefianceUI.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/Game.gd" type="Script" id=7]
 [ext_resource path="res://nodes/EndTurnButton.tscn" type="PackedScene" id=8]
 [ext_resource path="res://nodes/TutorialHint.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/dungeon_key_outline.png" type="Texture" id=10]
 
 [sub_resource type="DynamicFont" id=2]
 size = 46
@@ -104,12 +105,20 @@ margin_top = 24.0
 margin_right = 770.5
 margin_bottom = 151.0
 
+[node name="KeyOut" type="TextureRect" parent="CLUI"]
+margin_left = 25.0
+margin_top = 21.0001
+margin_right = 142.0
+margin_bottom = 138.001
+rect_pivot_offset = Vector2( 58.5, 58.5 )
+texture = ExtResource( 10 )
+expand = true
+
 [node name="Key" type="TextureRect" parent="CLUI"]
-margin_left = 11.4125
-margin_top = 22.9126
-margin_right = 128.412
-margin_bottom = 139.913
-rect_rotation = -30.0
+margin_left = 25.0
+margin_top = 21.0
+margin_right = 142.0
+margin_bottom = 138.0
 rect_pivot_offset = Vector2( 58.5, 58.5 )
 texture = ExtResource( 3 )
 expand = true
@@ -117,10 +126,10 @@ expand = true
 [node name="lb_level" type="Label" parent="CLUI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 121.0
-margin_top = 16.0
-margin_right = -1169.0
-margin_bottom = -788.0
+margin_left = 149.0
+margin_top = 22.0
+margin_right = -1141.0
+margin_bottom = -782.0
 custom_colors/font_color = Color( 0.788235, 0.788235, 0.788235, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Nivel #"
@@ -140,7 +149,7 @@ anchor_bottom = 1.0
 color = Color( 0.235294, 0.235294, 0.235294, 0.0196078 )
 
 [node name="TutorialHint" parent="CLUI" instance=ExtResource( 9 )]
-margin_left = 94.0
-margin_top = 168.0
-margin_right = 495.0
-margin_bottom = 372.0
+margin_left = 106.0
+margin_top = 189.0
+margin_right = 507.0
+margin_bottom = 393.0

@@ -49,8 +49,7 @@ func get_bonif(ac_name):
 	if ac_name=="attack": am = PlayerManager.get_dice_amount("SW")
 	elif ac_name=="unlock": am = PlayerManager.get_reqs_can_complete()
 	elif ac_name=="dissarm": am = PlayerManager.get_dice_amount("HN") + PlayerManager.get_dice_amount("EY")
-	if am!=0: return "("+str(am)+")"
-	else: return ""
+	return am
 
 func check_action_attack(): return (def.type == "enemy") or (def.type == "block")
 func run_action_attack(): 

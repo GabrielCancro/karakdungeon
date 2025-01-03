@@ -19,7 +19,7 @@ func _ready():
 func goto_next_level():
 	dungeon_level += 1
 	Utils.remove_all_childs(get_node("/root/Game/Map"))
-	get_node("/root/Game/CLUI/Key").modulate = Color(.1,.1,.1,.8)
+	get_node("/root/Game/CLUI/Key").visible = false
 	have_key = false
 	yield(get_tree().create_timer(.1),"timeout")
 	map = MapGenerator.generate_new_map(10+5*dungeon_level)
@@ -100,15 +100,16 @@ func force_update():
 func get_key():
 	have_key = true
 	var key = get_node("/root/Game/CLUI/Key")
-	key.modulate = Color(1,1,1,0)
-	var pos = key.rect_global_position
+	key.modulate.a = 0
 	yield(get_tree().create_timer(.3),"timeout")
 	key.rect_position = Vector2(750,300)
+	key.visible = true
 	Effector.move_to(key,Vector2(750,220))
 	Effector.appear(key)
 	yield(get_tree().create_timer(1),"timeout")
 	Effector.scale_boom(key)
-	Effector.move_to(key,pos)
+	print(get_node("/root/Game/CLUI/KeyOut").rect_global_position)
+	Effector.move_to(key,get_node("/root/Game/CLUI/KeyOut").rect_global_position)
 
 func on_resolve_defiance():
 	resolved_defs += 1

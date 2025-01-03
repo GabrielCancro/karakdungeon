@@ -42,7 +42,6 @@ func enemy_attack(def,pj):
 	Utils.disable_input(.5)
 	Effector.scale_boom(def.def_sprite)
 	Effector.move_to_yoyo(def.def_sprite, Vector2(pj.h,pj.v)*50)
-	print(pj)
 	yield(get_tree().create_timer(.3),"timeout")
 	PlayerManager.damage_current_player(1)
 
@@ -56,7 +55,7 @@ func end_turn():
 			p.action = true
 			p.ui.roll_dices()
 		p.ui.updateUI()
-	yield(get_tree().create_timer(2),"timeout")
+	yield(get_tree().create_timer(1.5),"timeout")
 	for p in PlayerManager.PLAYERS:
 		p.mov = p.movm
 		for d in p.ui.get_dices(): if d=="BT": p.mov += 1

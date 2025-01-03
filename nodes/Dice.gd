@@ -19,7 +19,7 @@ func set_faces(arr):
 
 func roll():
 	randomize()
-	for i in range(15):
+	for i in range(10):
 		var index = randi()%faces.size()
 		value = faces[index]
 		$img.rect_rotation = rand_range(-50,50)
