@@ -17,9 +17,9 @@ func _process(delta):
 		p = p.node
 		if p==self: continue
 		if p.global_position.distance_to(global_position)<20:
-			var dir = p.global_position.direction_to(global_position)*Vector2(data.v,data.h)*2
-			p.dest -= dir
-			dest += dir
+			var dir = Vector2(data.v,data.h)*3
+			if data.id==1: dest -= dir
+			if data.id==3: dest += dir
 	Utils.set_zindex(self)
 
 func _input(event):
