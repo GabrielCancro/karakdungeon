@@ -25,6 +25,7 @@ PlayerManager="*res://autoloads/PlayerManager.gd"
 Lang="*res://autoloads/Lang.gd"
 TurnManager="*res://autoloads/TurnManager.gd"
 MapGenerator="*res://autoloads/MapGenerator.gd"
+ItemManager="*res://autoloads/ItemManager.gd"
 
 [display]
 

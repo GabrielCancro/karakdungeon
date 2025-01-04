@@ -7,7 +7,7 @@ var texts = {
 	"df_trap_es":"Se activa si atraviesas la habitación.",
 	"df_block_es":"No puedes pasar por aquí hasta que destruyas este obstáculo.",
 	"df_door_es":"No puedes pasar por aquí hasta que abras el cerrojo.",
-	"df_stairs_es":"Obtén la llave de este piso y reúne a tus personajes aquí para descender al siguiente nivel.",
+	"df_stairs_es":"Esta escalera lleva al siguiente nivel.",
 	"df_fountain_es":"Esta fuente sanará hasta 2HP a quien beba de ella.",
 	
 	"ac_attack_es":"Causa entre 0 y 2 de daño, cada @SW añade un golpe extra.",
@@ -15,6 +15,14 @@ var texts = {
 	"ac_unlock_es":"Completa los requisitos según los atributos actuales del personaje.",
 	"ac_force_es":"20% de destruir el primer requisito, esté o no resuelto.",
 	"ac_recover_es":"Curas tus puntos de vida (HP). Puede agotarse.",
+	"ac_descend_es":"Necesitas la llave de este nivel y reunir a todos tus personajes aquí para poder descender.",
+	
+	"it_collar1_name_es":"COLLAR 1",
+	"it_collar1_desc_es":"Descripcion de lo que hace este item como cosas raras.",
+	"it_collar2_name_es":"COLLAR 2",
+	"it_collar2_desc_es":"Descripcion de lo que hace este item como cosas raras. este item como cosas raras.",
+	"it_collar3_name_es":"COLLAR 3",
+	"it_collar3_desc_es":"Descripcion de lo que hace este item como cosas raras. este item como cosas raras. este item como cosas raras.",
 }
 
 var images = {
