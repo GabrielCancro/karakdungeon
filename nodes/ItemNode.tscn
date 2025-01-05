@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://nodes/ItemNode.gd" type="Script" id=1]
 [ext_resource path="res://assets/dungeon_key_outline.png" type="Texture" id=2]
+[ext_resource path="res://assets/font/AbyssinicaSIL-Regular.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 33
+outline_size = 2
+outline_color = Color( 0.121569, 0.121569, 0.121569, 1 )
+font_data = ExtResource( 3 )
 
 [node name="ItemNode" type="ColorRect"]
 margin_right = 100.0
@@ -21,3 +28,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 focus_mode = 0
 flat = true
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 34.0
+margin_top = 68.0
+margin_right = -3.0
+margin_bottom = 2.0
+custom_colors/font_color = Color( 0.72549, 0.737255, 0.529412, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "2/9"
+align = 2
+valign = 1

@@ -17,8 +17,8 @@ var texts = {
 	"ac_recover_es":"Curas tus puntos de vida (HP). Puede agotarse.",
 	"ac_descend_es":"Necesitas la llave de este nivel y reunir a todos tus personajes aquí para poder descender.",
 	
-	"it_collar1_name_es":"COLLAR 1",
-	"it_collar1_desc_es":"Descripcion de lo que hace este item como cosas raras.",
+	"it_old_dage_name_es":"DAGA VIEJA",
+	"it_old_dage_desc_es":"Si el personaje activo no tiene @SW, gana un @SW.",
 	"it_collar2_name_es":"COLLAR 2",
 	"it_collar2_desc_es":"Descripcion de lo que hace este item como cosas raras. este item como cosas raras.",
 	"it_collar3_name_es":"COLLAR 3",

@@ -49,6 +49,7 @@ func end_turn():
 	Utils.disable_input(2)
 	get_node("/root/Game/CLUI/ActionList").visible = false
 	for p in PlayerManager.PLAYERS:
+		p.ui.restore_original_dices()
 		p.mov = 0
 		p.action = false
 		if p.hp>0:

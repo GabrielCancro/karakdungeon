@@ -28,5 +28,12 @@ func roll():
 	$img.rect_rotation = 0
 	emit_signal("end_roll")
 
+func set_one_face(face):
+	faces = [face,face,face,face,face,face]
+	for i in faces.size(): get_node("Faces/Grid/f"+str(i+1)).texture = load("res://assets/dices/"+faces[i]+".png")
+	value = face
+	$img.texture = load("res://assets/dices/"+value+".png")
+	$Faces.color = Color(.2,.2,.2,1)
+	
 func hover_dice(val):
 	$Faces.visible = val

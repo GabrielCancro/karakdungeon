@@ -12,12 +12,15 @@ func set_player(id):
 	data = PlayerManager.get_player_data(id)
 	$TextureProgress.texture_under = data.retrait
 	$TextureProgress.texture_progress = data.retrait
+	restore_original_dices()
+	updateUI()
+
+func restore_original_dices():
 	Utils.remove_all_childs($HBox)
 	for dice_faces in data.dices:
 		var node = preload("res://nodes/Dice.tscn").instance()
 		node.set_faces(dice_faces)
 		$HBox.add_child(node)
-	updateUI()
 
 func updateUI():
 	$lb_hp.text = str(data.hp)+"/"+str(data.hpm)
@@ -35,6 +38,14 @@ func updateUI():
 func roll_dices():
 	for d in $HBox.get_children():
 		d.roll()
+
+func add_dice_face(face):
+	print("add_dice_face ",face)
+	var node = preload("res://nodes/Dice.tscn").instance()
+	node.set_one_face(face)
+	$HBox.add_child(node)
+	updateUI()
+	DungeonManager.reset_current_room()
 
 func get_dices():
 	var arr = []
