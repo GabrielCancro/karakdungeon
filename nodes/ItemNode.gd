@@ -10,6 +10,7 @@ func _ready():
 
 func set_data(it_data):
 	data = it_data
+	data["ui"] = self
 	$Img.texture = load("res://assets/items/it_"+data.name+".png")
 	$Label.text = ""
 	if "uses" in data: $Label.text = str(data.uses)+"/"+str(data.usesm)

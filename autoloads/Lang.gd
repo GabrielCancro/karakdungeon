@@ -18,11 +18,11 @@ var texts = {
 	"ac_descend_es":"Necesitas la llave de este nivel y reunir a todos tus personajes aquí para poder descender.",
 	
 	"it_old_dage_name_es":"DAGA VIEJA",
-	"it_old_dage_desc_es":"Si el personaje activo no tiene @SW, gana un @SW.",
-	"it_collar2_name_es":"COLLAR 2",
-	"it_collar2_desc_es":"Descripcion de lo que hace este item como cosas raras. este item como cosas raras.",
-	"it_collar3_name_es":"COLLAR 3",
-	"it_collar3_desc_es":"Descripcion de lo que hace este item como cosas raras. este item como cosas raras. este item como cosas raras.",
+	"it_old_dage_desc_es":"Si no tiene @SW, ganas una @SW",
+	"it_best_heart_name_es":"CORAZON DE BESTIA",
+	"it_best_heart_desc_es":"Si tienes @SW@SW, te curas +3HP",
+	"it_travel_boots_name_es":"BOTAS DE VIAJERO",
+	"it_travel_boots_desc_es":"Si tienes @BT@BT, recuperas tu accion, recuperas todo tu movimiento, pero pierdes una @BT",
 }
 
 var images = {
@@ -30,6 +30,7 @@ var images = {
 	"@HP":"[font=res://assets/font/bbcode_font.tres][img=40]res://assets/bbimg/bb_hp.png[/img][/font]",
 	"@HN":"[font=res://assets/font/bbcode_font.tres][img=40]res://assets/dices/HN.png[/img][/font]",
 	"@EY":"[font=res://assets/font/bbcode_font.tres][img=40]res://assets/dices/EY.png[/img][/font]",
+	"@BT":"[font=res://assets/font/bbcode_font.tres][img=40]res://assets/dices/BT.png[/img][/font]",
 	"@UP":"[font=res://assets/font/bbcode_font.tres][img=40]res://assets/up_arrow.png[/img][/font]",
 }
 

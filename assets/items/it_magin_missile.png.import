@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/it_collar1.png-dc73360d433e2e7fb2fe51898470fbb1.stex"
+path="res://.import/it_magin_missile.png-9e965de06ad46e8885a8f9b6c21fd253.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/items/it_collar1.png"
-dest_files=[ "res://.import/it_collar1.png-dc73360d433e2e7fb2fe51898470fbb1.stex" ]
+source_file="res://assets/items/it_magin_missile.png"
+dest_files=[ "res://.import/it_magin_missile.png-9e965de06ad46e8885a8f9b6c21fd253.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/it_collar3.png-139133353e3c6d48e3b7431c51105755.stex"
+path="res://.import/it_best_heart.png-87c2c3ab2bd561c8bd6410cfc568ec94.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/items/it_collar3.png"
-dest_files=[ "res://.import/it_collar3.png-139133353e3c6d48e3b7431c51105755.stex" ]
+source_file="res://assets/items/it_best_heart.png"
+dest_files=[ "res://.import/it_best_heart.png-87c2c3ab2bd561c8bd6410cfc568ec94.stex" ]
 
 [params]
 

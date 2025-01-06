@@ -20,6 +20,16 @@ func update_item_list():
 		itnode.set_data(party_items[it_name])
 		itnode.connect("on_hover",self,"on_hover_item")
 		$Items.add_child(itnode)
+	update_usables()
+
+func update_usables():
+	for it in $Items.get_children():
+		it.modulate = Color(1,1,1,1)
+		if (ItemManager.has_method("condition_"+it.data.name) 
+		&& !ItemManager.call("condition_"+it.data.name,it.data)): 
+			it.modulate = Color(.3,.3,.3,1)
+		if ("uses"in it.data) && (it.data["uses"]<=0): 
+			it.modulate = Color(.3,.3,.3,1)
 
 func on_hover_item(it_name,val,node=null):
 	if !node:return

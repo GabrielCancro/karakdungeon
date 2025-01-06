@@ -43,7 +43,7 @@ M6: Salón del tesoro, Cria de dragón
 
 ITEMS (bonif general a la party)
 -ViejaDaga: al usarlo, si no tienes SW, otorga un SW 
--Corazón de bestia: al usarlo, si tienes SW SW, te curas +1HP
+-Corazón de bestia: al usarlo, si tienes SW SW, te curas +2HP
 -Botas de Viajero: al usarlo, si tienes BT BT, recuperas tu accion y todo tu movimiento
 -Amuleto De sangre: al usarlo, sanas +1HP
 -Proyectil Magico: al usarlo, -1HP por cada EY que tengas al enemigo actual

@@ -72,6 +72,7 @@ func change_player(id):
 	DungeonManager.current_player.node.set_selected(true)
 	DungeonManager.current_player.ui.set_selected(true)
 	DungeonManager.current_player.ui.updateUI()
+	get_node("/root/Game/CLUI/ItemList").update_usables()
 	return true
 
 func reorder_players(_x,_y):

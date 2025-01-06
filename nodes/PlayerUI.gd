@@ -53,6 +53,13 @@ func get_dices():
 		arr.append(d.value)
 	return arr
 
+func quit_dice(face):
+	for d in $HBox.get_children(): 
+		if d.value==face: 
+			$HBox.remove_child(d)
+			d.queue_free()
+			return true
+
 func on_select():
 	PlayerManager.change_player(data.id)
 
