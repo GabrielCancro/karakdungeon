@@ -42,9 +42,13 @@ M6: Salón del tesoro, Cria de dragón
 ,Secreto(biblioteca, totem)
 
 ITEMS (bonif general a la party)
--Corazón de bestia (+1HP a toda tu party)
+-ViejaDaga: al usarlo, si no tienes SW, otorga un SW 
+-Corazón de bestia: al usarlo, si tienes SW SW, te curas +1HP
+-Botas de Viajero: al usarlo, si tienes BT BT, recuperas tu accion y todo tu movimiento
+-Amuleto De sangre: al usarlo, sanas +1HP
+-Proyectil Magico: al usarlo, -1HP por cada EY que tengas al enemigo actual
+
 -Espadas de doran (0-1 de daño extra al realizar un ataque con una SW o mas)
--Amuleto De sangre (sanas 2HP al pasar de mazmorra)
 -Botas elficas (+1 de movimiento a toda tu party)
 -Escamas de dragón (añade un escudo a los personajes que tengan algun dado rojo)
 -Ojo de safiro (+15% de percepcion para encontrar desafios ocultos)
