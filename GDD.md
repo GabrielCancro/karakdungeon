@@ -39,26 +39,24 @@ M4: Fantasma, Trampa oculta, Cofre Oculto,
 M5: Trampa Rúnica, emboscadas, Esqueleto
 M6: Salón del tesoro, Cria de dragón
 
-,Secreto(biblioteca, totem)
-
 ITEMS (bonif general a la party)
 -ViejaDaga: al usarlo, si no tienes SW, otorga un SW 
 -Corazón de bestia: al usarlo, si tienes SW SW, te curas +2HP
 -Botas de Viajero: al usarlo, si tienes BT BT, recuperas tu accion y todo tu movimiento
 -Amuleto De sangre: al usarlo, sanas +1HP
 -Proyectil Magico: al usarlo, -1HP por cada EY que tengas al enemigo actual
+Faltan implementar:
+x-Espadas de doran (0-1 de daño extra al realizar un ataque con una SW o mas)
+x-Botas elficas (+1 de movimiento a toda tu party)
+x-Escamas de dragón (añade un escudo a los personajes que tengan algun dado rojo)
+x-Ojo de safiro (+15% de percepcion para encontrar desafios ocultos)
 
--Espadas de doran (0-1 de daño extra al realizar un ataque con una SW o mas)
--Botas elficas (+1 de movimiento a toda tu party)
--Escamas de dragón (añade un escudo a los personajes que tengan algun dado rojo)
--Ojo de safiro (+15% de percepcion para encontrar desafios ocultos)
-
-HABILIDADES (usos por mazmrra)
--Guerrear: si no tienes ninguna espada y te tocó alguna cara vacia, la convierte en espada.
--Berserk: pierdes -1HP pero todos tus dados con espada cambian a dicha cara.
--Pies Ligeros: obtienes +2 de mov por cada BT.
--Suerte de Pícaro: puede rerollear sus dados.
--Coraje: cada vez que pasas de dungeon ganas +1HP max.
+HABILIDADES (creo q no van a estar)
+x-Guerrear: si no tienes ninguna espada y te tocó alguna cara vacia, la convierte en espada.
+x-Berserk: pierdes -1HP pero todos tus dados con espada cambian a dicha cara.
+x-Pies Ligeros: obtienes +2 de mov por cada BT.
+x-Suerte de Pícaro: puede rerollear sus dados.
+x-Coraje: cada vez que pasas de dungeon ganas +1HP max.
 
 ROAD MAP::
 Para poder jugar:
@@ -66,14 +64,14 @@ Para poder jugar:
 -Habilidades de party inicial. (OK) (solo dados)
 -Escalera al siguiente nivel. (OK)
 -Llave al siguiente piso. (OK) (al completar el 80%)
-Falta:
 -Reliquias para los tesoros
--Cordura (si estas mucho tiempo sin resolver desafios te atacan fantasmas)
--Implementar cosas ocultas (trampas, pasadizos, tesoros)
--Final del juego.
--Armar Party
+Falta:
+x-Cordura (si estas mucho tiempo sin resolver desafios te atacan fantasmas)
+x-Implementar cosas ocultas (trampas, pasadizos, tesoros)
+x-Final del juego.
+x-Armar Party
 
 
 FEEDBACK
--mas desafios en lvl 3
--algunas puertas no se conectan bien
+x-mas desafios en lvl 3
+x-algunas rooms no se conectan bien visualmente
