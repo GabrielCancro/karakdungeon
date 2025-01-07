@@ -71,7 +71,6 @@ x-Implementar cosas ocultas (trampas, pasadizos, tesoros)
 x-Final del juego.
 x-Armar Party
 
-
 FEEDBACK
 x-mas desafios en lvl 3
 x-algunas rooms no se conectan bien visualmente
