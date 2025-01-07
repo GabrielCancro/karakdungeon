@@ -24,12 +24,12 @@ func update_item_list():
 
 func update_usables():
 	for it in $Items.get_children():
-		it.modulate = Color(1,1,1,1)
+		it.color = Color(0,.2,.35,1)
 		if (ItemManager.has_method("condition_"+it.data.name) 
 		&& !ItemManager.call("condition_"+it.data.name,it.data)): 
-			it.modulate = Color(.3,.3,.3,1)
+			it.color = Color(.15,.15,.15,1)
 		if ("uses"in it.data) && (it.data["uses"]<=0): 
-			it.modulate = Color(.3,.3,.3,1)
+			it.color = Color(.15,.15,.15,1)
 
 func on_hover_item(it_name,val,node=null):
 	if !node:return

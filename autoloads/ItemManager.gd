@@ -35,6 +35,11 @@ func add_rnd_item():
 		if add_item(it_name): return true
 	return false
 
+func recover_uses():
+	for it in PARTY_ITEMS:
+		if "uses" in it: it.uses = it.usesm
+	update_item_list()
+
 func get_party_items():
 	return PARTY_ITEMS
 
@@ -59,7 +64,7 @@ func condition_old_dage(item): return !PlayerManager.current_player_have_dice("S
 func on_use_old_dage(item): DungeonManager.current_player.ui.add_dice_face("SW")
 
 func condition_best_heart(item): return (PlayerManager.get_dice_amount("SW")>=2) && (DungeonManager.current_player.hp<DungeonManager.current_player.hpm)
-func on_use_best_heart(item): PlayerManager.heal_player(DungeonManager.current_player.id,3)
+func on_use_best_heart(item): PlayerManager.heal_player(DungeonManager.current_player.id,2)
 
 func condition_travel_boots(item): return (PlayerManager.get_dice_amount("BT")>=2)
 func on_use_travel_boots(item): 

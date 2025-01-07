@@ -18,9 +18,9 @@ var texts = {
 	"ac_descend_es":"Necesitas la llave de este nivel y reunir a todos tus personajes aquí para poder descender.",
 	
 	"it_old_dage_name_es":"DAGA VIEJA",
-	"it_old_dage_desc_es":"Si no tiene @SW, ganas una @SW",
+	"it_old_dage_desc_es":"Si no tiene ninguna @SW, ganas una @SW",
 	"it_best_heart_name_es":"CORAZON DE BESTIA",
-	"it_best_heart_desc_es":"Si tienes @SW@SW, te curas +3HP",
+	"it_best_heart_desc_es":"Si tienes @SW@SW, te curas +2HP",
 	"it_travel_boots_name_es":"BOTAS DE VIAJERO",
 	"it_travel_boots_desc_es":"Si tienes @BT@BT, recuperas tu accion, recuperas todo tu movimiento, pero pierdes una @BT",
 }

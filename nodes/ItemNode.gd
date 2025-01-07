@@ -12,8 +12,12 @@ func set_data(it_data):
 	data = it_data
 	data["ui"] = self
 	$Img.texture = load("res://assets/items/it_"+data.name+".png")
-	$Label.text = ""
-	if "uses" in data: $Label.text = str(data.uses)+"/"+str(data.usesm)
+	if "uses" in data: 
+		for m in $VBox.get_children():
+			var i = m.get_index()
+			if i <= data.uses: m.modulate = Color(.7,.7,.7,1)
+			elif i <= data.usesm: m.modulate = Color(.3,.3,.3,1)
+			else: m.modulate = Color(0,0,0,0)
 
 func on_button_hover(val):
 	emit_signal("on_hover",data.name,val,self)

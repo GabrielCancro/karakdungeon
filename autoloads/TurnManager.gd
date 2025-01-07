@@ -57,6 +57,7 @@ func end_turn():
 			p.ui.roll_dices()
 		p.ui.updateUI()
 	yield(get_tree().create_timer(1.5),"timeout")
+	ItemManager.recover_uses()
 	for p in PlayerManager.PLAYERS:
 		p.mov = p.movm
 		for d in p.ui.get_dices(): if d=="BT": p.mov += 1

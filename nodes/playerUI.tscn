@@ -91,8 +91,6 @@ valign = 1
 clip_text = true
 
 [node name="mov" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
 
 [node name="m1" type="TextureRect" parent="mov"]
 margin_left = -21.0
