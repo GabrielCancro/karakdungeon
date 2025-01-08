@@ -24,6 +24,7 @@ func get_room_actions():
 	def = null
 	if room && "defiance" in room.data: def = room.data.defiance
 	var ac_array = []
+	if "hide" in def && def.hide: return ac_array
 	for ac_name in ACTIONS.keys():
 		if has_method("check_action_"+ac_name):
 			if def && call("check_action_"+ac_name):

@@ -15,6 +15,9 @@ func set_data(room_data):
 		data["defiance"]["def_sprite"] = $Sprite
 		$Sprite.visible = true
 		$Sprite/Image.texture = load("res://assets/defiances/df_"+data["defiance"]["name"]+".png")
+		if "hide" in data.defiance: 
+			if data.defiance.hide: $Sprite.modulate.a = .4
+			elif $Sprite.modulate.a<1: Effector.appear($Sprite)
 	
 	#DOORS
 	for d in data.doors.keys():
@@ -28,6 +31,13 @@ func on_enter():
 
 func update():
 	set_data(data)
+	if DungeonManager.current_player: DungeonManager.current_player.ui.updateUI()
 
 func on_click():
 	print("ROOM ",data)
+
+func show_hiden_defiance():
+	if "defiance" in data && "hide" in data.defiance && data.defiance.hide: 
+		data.defiance.hide = false
+		Utils.disable_input(.5)
+		update()

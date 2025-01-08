@@ -17,6 +17,7 @@ func update():
 	var room = DungeonManager.current_room
 	if room && "defiance" in room.data: defiance = room.data["defiance"]
 	else: defiance = null
+	if defiance && "hide" in defiance && defiance.hide: defiance = null
 	
 	if defiance:
 		$Sprite.texture = load("res://assets/defiances/df_"+defiance.name+".png")

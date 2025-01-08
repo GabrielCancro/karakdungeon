@@ -38,6 +38,8 @@ func move_to(dx,dy):
 	
 	var dest_mov = get_destine_mov(dx,dy)
 	if dest_mov:
+		DungeonManager.find_hide_defiances(dest_mov.x,dest_mov.y)
+		
 		TurnManager.on_pre_move()
 		yield(TurnManager,"end_reaction")
 		

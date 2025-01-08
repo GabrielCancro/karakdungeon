@@ -16,6 +16,7 @@ func show_current_actions():
 	if !defiance: return
 	if !player.action: return
 	var ac_array = ActionManager.get_room_actions()
+	visible = (ac_array.size()>0)
 	for ac_name in ac_array:
 		var ac = preload("res://nodes/ActionNode.tscn").instance()
 		ac.connect("on_hover",self,"on_hover_action")

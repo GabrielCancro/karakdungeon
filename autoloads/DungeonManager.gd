@@ -49,17 +49,17 @@ func create_dungeon_nodes(xx,yy):
 func get_or_create_one_room(xx,yy):
 	var key = str(xx)+"x"+str(yy)
 	if !key in map.keys(): return null
-	var exist_room = get_node_or_null("/root/Game/Map/"+"r_"+key)
-	if exist_room: return exist_room
-	var rnode = preload("res://nodes/Room.tscn").instance()
-	rnode.name = "r_"+key
-	var rsize = rnode.get_node("image").rect_size
-	var room_data = map[key]
-	if "defiance" in room_data: room_data.defiance = DefianceManager.get_defiance_data(room_data.defiance)
-	rnode.set_data(room_data)
-	rnode.position = Vector2(room_data.x*rsize.x,room_data.y*rsize.y)
-	get_node("/root/Game/Map").add_child(rnode)
-	Utils.set_zindex( rnode.get_node("Sprite"), .1 )
+	var rnode = get_node_or_null("/root/Game/Map/"+"r_"+key)
+	if !rnode: 
+		rnode = preload("res://nodes/Room.tscn").instance()
+		rnode.name = "r_"+key
+		var rsize = rnode.get_node("image").rect_size
+		var room_data = map[key]
+		if "defiance" in room_data: room_data.defiance = DefianceManager.get_defiance_data(room_data.defiance)
+		rnode.set_data(room_data)
+		rnode.position = Vector2(room_data.x*rsize.x,room_data.y*rsize.y)
+		get_node("/root/Game/Map").add_child(rnode)
+		Utils.set_zindex( rnode.get_node("Sprite"), .1 )
 	return rnode
 
 func get_room_data(dx,dy):
@@ -82,6 +82,7 @@ func set_current_room(dx,dy):
 	if room && room != current_room: Effector.scale_boom(room)
 	current_room = room
 	if current_room: 
+		current_room.update()
 		current_room.on_enter()
 		get_node("/root/Game/Camera2D").position = room.position
 	var def = get_room_defiance(current_room)
@@ -115,3 +116,14 @@ func on_resolve_defiance():
 	resolved_defs += 1
 	print("RESOLVED ",resolved_defs,"/",total_defs)
 	if !have_key && resolved_defs>=floor(total_defs*0.8): get_key()
+
+func find_hide_defiances(xx,yy):
+	var key = str(xx)+"x"+str(yy)
+	if !key in map.keys(): return
+	var rnode = get_node_or_null("/root/Game/Map/"+"r_"+key)
+	if !rnode: return
+	if "defiance" in rnode.data && "hide" in rnode.data.defiance && rnode.data.defiance.hide:
+		randomize()
+		var percept = 25 + PlayerManager.get_dice_amount("EY")*25
+		print("PERCENT ",percept)
+		if randi()%100 < percept: rnode.show_hiden_defiance()

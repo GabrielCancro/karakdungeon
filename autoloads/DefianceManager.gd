@@ -15,6 +15,8 @@ var DEFIANCES = {
 }
 
 func get_defiance_data(code):
+	var code_arr = code.split("@")
+	code = code_arr[0]
 	var data = DEFIANCES[code].duplicate()
 	data.name = code
 	if "hp" in data: data["hpm"] = data.hp
@@ -23,6 +25,7 @@ func get_defiance_data(code):
 	if "req" in data: 
 		data["req_solved"] = []
 		for i in data.req: data["req_solved"].append(false)
+	if "hide" in code_arr: data["hide"] = true
 	return data
 
 func get_random_defiance(perc = 100):

@@ -17,6 +17,7 @@ func on_across_room():
 	yield(get_tree().create_timer(.02),"timeout")
 	var def = DungeonManager.get_room_defiance()
 	if def && def.type=="trap": 
+		DungeonManager.current_room.show_hiden_defiance()
 		DefianceManager.activate_trap(def)
 		Utils.disable_input(1.5)
 		yield(get_tree().create_timer(1.5),"timeout")
