@@ -3,6 +3,10 @@ extends Node2D
 func _ready():
 	DungeonManager.connect("new_dungeon",self,"on_new_dungeon")
 	DungeonManager.goto_next_level()
+	yield(get_tree().create_timer(2),"timeout")
+	$CLUI/TutorialHint.show_tuto("start")
+	yield($CLUI/TutorialHint,"close_popup")
+	print("START GAME!!")
 
 func on_new_dungeon():
 	$CLUI/lb_level.text = "Nivel "+str(DungeonManager.dungeon_level)
