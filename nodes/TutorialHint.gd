@@ -17,6 +17,7 @@ func show_tuto(code):
 		yield(get_tree().create_timer(0.05),"timeout")
 		emit_signal("close_popup")
 	else:
+		$Panel/lb_desc.text = Lang.get_text("tuto_"+code)
 		set_process(true)
 		modulate.a = 0
 		visible = true
