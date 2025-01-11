@@ -28,10 +28,10 @@ var texts = {
 	"tuto_pjui_es":"En la parte inferior estan las fichas de tus personajes, allí verás sus atributos, vida y movimiento.",
 	"tuto_dices_es":"Al comenzar cada turno, se arrojarán los dados de atributos de tus personajes, estos dados te dan ventaja en distintas acciónes.",
 	
-	"attr_SW_es":"ESPADA: Fuerza de combate, otorga mayor daño de ataque.",
-	"attr_BT_es":"BOTA: Agilidad de movimiento, te permite esquivar y avanzar mas casillas que el resto.",
-	"attr_HN_es":"MANO: Maña, mayor facilidad para abrir cerrojos o desactivar trampas.",
-	"attr_EY_es":"EY: Percepcion y Astucia, mayor facilidad para encontrar secretos y resolver enigmas.",
+	"attr_SW_es":"@SW ESPADA: Fuerza de combate, otorga mayor daño de ataque.",
+	"attr_BT_es":"@BT BOTA: Agilidad de movimiento, te permite esquivar y avanzar mas casillas que el resto.",
+	"attr_HN_es":"@HN MANO: Maña, mayor facilidad para abrir cerrojos o desactivar trampas.",
+	"attr_EY_es":"@EY OJO: Percepcion y astucia, mayor facilidad para encontrar secretos y resolver enigmas.",
 }
 
 var images = {

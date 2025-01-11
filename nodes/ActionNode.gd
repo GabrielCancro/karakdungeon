@@ -17,6 +17,7 @@ func set_action(_name):
 	else: $lb_bon.text = "-"
 
 func on_click():
+	if Utils.is_input_disabled(): return
 	Effector.scale_boom(self)
 	ActionManager.run_action(ac_name)
 	yield(ActionManager,"end_action")

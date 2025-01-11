@@ -23,4 +23,5 @@ func on_button_hover(val):
 	emit_signal("on_hover",data.name,val,self)
 
 func on_click():
+	if Utils.is_input_disabled(): return
 	ItemManager.on_use_item(data)

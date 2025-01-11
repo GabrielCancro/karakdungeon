@@ -19,5 +19,6 @@ func _process(delta):
 		TurnManager.end_turn()
 
 func on_hold(val):
+	if Utils.is_input_disabled(): return
 	time = 0
 	holding = val

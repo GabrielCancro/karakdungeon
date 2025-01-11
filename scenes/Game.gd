@@ -6,6 +6,10 @@ func _ready():
 	yield(get_tree().create_timer(2),"timeout")
 	$CLUI/TutorialHint.show_tuto("start")
 	yield($CLUI/TutorialHint,"close_popup")
+	$CLUI/TutorialHint.show_tuto("pjui")
+	yield($CLUI/TutorialHint,"close_popup")
+	$CLUI/TutorialHint.show_tuto("dices")
+	yield($CLUI/TutorialHint,"close_popup")
 	print("START GAME!!")
 
 func on_new_dungeon():

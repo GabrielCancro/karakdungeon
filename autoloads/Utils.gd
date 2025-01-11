@@ -1,6 +1,7 @@
 extends Node
 
 var disabled_input_timer = 0
+var DISABLED_ACTIONS = false
 
 func set_zindex(node, delay=0,offsetY=0):
 	if delay>0: yield(get_tree().create_timer(delay),"timeout")
@@ -31,4 +32,4 @@ func enable_input():
 	if bn: bn.visible = false
 
 func is_input_disabled():
-	return (disabled_input_timer>0)
+	return (disabled_input_timer>0 || DISABLED_ACTIONS)

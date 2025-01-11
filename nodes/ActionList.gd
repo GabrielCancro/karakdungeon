@@ -42,6 +42,5 @@ func on_hover_action(ac_name,val,node=null):
 	$desc/RTL.bbcode_text = "[center]"+Lang.get_text("ac_"+ac_name)
 	$desc.rect_global_position.y = node.rect_global_position.y
 	$desc/RTL.rect_position.y = 15
-	$desc/RTL.rect_position.y = 15
 	$desc.rect_size.y = 30+$desc/RTL.get_content_height()
 	$desc.visible = val
