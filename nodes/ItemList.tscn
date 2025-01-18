@@ -25,7 +25,6 @@ margin_bottom = 84.0
 [node name="ItemNode" parent="Items" instance=ExtResource( 2 )]
 
 [node name="desc" type="ColorRect" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 131.0
