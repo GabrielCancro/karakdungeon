@@ -22,9 +22,11 @@ func update():
 	if defiance:
 		$Sprite.texture = load("res://assets/defiances/df_"+defiance.name+".png")
 		$lb_name.text = defiance.name
-		$lb_desc.text = Lang.get_text("df_"+defiance.type)
+		$desc/lb.text = Lang.get_text("df_"+defiance.type)
 		$lb_stats.text = ""
-		if "hp" in defiance: $lb_stats.text += " HP:"+str(defiance.hp)+"/"+str(defiance.hpm)+" "
+		#if "hp" in defiance: $lb_stats.text += " HP:"+str(defiance.hp)+"/"+str(defiance.hpm)+" "
+		$hp.visible = ("hp" in defiance)
+		if $hp.visible: $hp/lb.text = str(defiance.hp)
 		if "uses" in defiance: $lb_stats.text += " USES: "+str(defiance.uses)
 		if "prg" in defiance: $lb_stats.text += " PRG:"+str(defiance.prg)+"/"+str(defiance.prgm)+" "
 		if "dif" in defiance: 
@@ -36,7 +38,9 @@ func update():
 		if "req" in defiance:
 			$Reqs.set_defiance(defiance)
 			$Reqs.visible = true
-		if "dam" in defiance: $lb_stats.text += " DAM:<"+str(defiance.dam)+">"+" "
+		$dm.visible = ("dam" in defiance)
+		if $dm.visible: $dm/lb.text = str(defiance.dam)
+		#if "dam" in defiance: $lb_stats.text += " DAM:<"+str(defiance.dam)+">"+" "
 	
 	if check_solved(): DefianceManager.resolve_current_defiance()
 	

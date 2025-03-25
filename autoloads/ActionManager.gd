@@ -56,11 +56,14 @@ func check_action_attack(): return (def.type == "enemy") or (def.type == "block"
 func run_action_attack(): 
 	randomize()
 	yield(get_tree().create_timer(.5),"timeout")
+	var defUI = get_node("/root/Game/CLUI/DefianceUI")
 	for i in range(1+PlayerManager.get_dice_amount("SW")):
 		var val = randi()%3
 		def.hp -= val
 		Effector.show_float_text("-"+str(val)+"HP",room.position+Vector2(0,-100+i*10),"damage")
+		defUI.update()
 		yield(get_tree().create_timer(.7),"timeout")
+		if def.hp<=0: break
 	emit_signal("end_action",true)
 
 func check_action_evade():
