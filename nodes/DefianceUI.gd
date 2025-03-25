@@ -29,10 +29,12 @@ func update():
 		if $hp.visible: $hp/lb.text = str(defiance.hp)
 		if "uses" in defiance: $lb_stats.text += " USES: "+str(defiance.uses)
 		if "prg" in defiance: $lb_stats.text += " PRG:"+str(defiance.prg)+"/"+str(defiance.prgm)+" "
-		if "dif" in defiance: 
+		$dif.visible = ("dif" in defiance)
+		if $dif.visible: 
 			var am = 0
 			if defiance.type=="trap": 
 				am = PlayerManager.get_dice_amount("HN") + PlayerManager.get_dice_amount("EY")
+			$dif/lb.text = str(am)
 			$TestRnd.set_dif(defiance.dif - am)
 			$TestRnd.visible = true
 		if "req" in defiance:

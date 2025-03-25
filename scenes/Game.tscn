@@ -101,27 +101,31 @@ valign = 1
 clip_text = true
 
 [node name="EndTurnButton" parent="CLUI" instance=ExtResource( 8 )]
-margin_left = 1284.0
-margin_top = 750.0
-margin_right = 1562.0
-margin_bottom = 839.0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -262.0
+margin_top = -150.0
+margin_right = -91.0
+margin_bottom = -28.0
 
 [node name="PlayerUI1" parent="CLUI" instance=ExtResource( 4 )]
-margin_left = 186.0
+margin_left = 183.0
 margin_top = 743.0
-margin_right = 486.0
+margin_right = 483.0
 margin_bottom = 905.0
 
 [node name="PlayerUI2" parent="CLUI" instance=ExtResource( 4 )]
-margin_left = 514.0
+margin_left = 559.0
 margin_top = 743.0
-margin_right = 814.0
+margin_right = 859.0
 margin_bottom = 905.0
 
 [node name="PlayerUI3" parent="CLUI" instance=ExtResource( 4 )]
-margin_left = 842.0
+margin_left = 935.0
 margin_top = 743.0
-margin_right = 1142.0
+margin_right = 1235.0
 margin_bottom = 905.0
 
 [node name="ActionList" parent="CLUI" instance=ExtResource( 5 )]
