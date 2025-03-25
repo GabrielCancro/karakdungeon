@@ -15,28 +15,28 @@ custom_constants/separation = -8
 alignment = 1
 
 [node name="R1" type="TextureRect" parent="Grid"]
-margin_left = 64.0
-margin_right = 124.0
+margin_left = 74.0
+margin_right = 129.0
 margin_bottom = 60.0
-rect_min_size = Vector2( 60, 60 )
+rect_min_size = Vector2( 55, 55 )
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 5
 
 [node name="R2" type="TextureRect" parent="Grid"]
-margin_left = 116.0
+margin_left = 121.0
 margin_right = 176.0
 margin_bottom = 60.0
-rect_min_size = Vector2( 60, 60 )
+rect_min_size = Vector2( 55, 55 )
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 5
 
 [node name="R3" type="TextureRect" parent="Grid"]
 margin_left = 168.0
-margin_right = 228.0
+margin_right = 223.0
 margin_bottom = 60.0
-rect_min_size = Vector2( 60, 60 )
+rect_min_size = Vector2( 55, 55 )
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 5
@@ -46,16 +46,16 @@ visible = false
 margin_left = 111.0
 margin_right = 156.0
 margin_bottom = 45.0
-rect_min_size = Vector2( 60, 60 )
+rect_min_size = Vector2( 55, 55 )
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 5
 
 [node name="R5" type="TextureRect" parent="Grid"]
-margin_left = 220.0
-margin_right = 280.0
+margin_left = 215.0
+margin_right = 270.0
 margin_bottom = 60.0
-rect_min_size = Vector2( 60, 60 )
+rect_min_size = Vector2( 55, 55 )
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 5
@@ -65,7 +65,7 @@ visible = false
 margin_left = 145.0
 margin_right = 190.0
 margin_bottom = 45.0
-rect_min_size = Vector2( 60, 60 )
+rect_min_size = Vector2( 55, 55 )
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 5
@@ -75,7 +75,7 @@ visible = false
 margin_left = 174.0
 margin_right = 219.0
 margin_bottom = 45.0
-rect_min_size = Vector2( 60, 60 )
+rect_min_size = Vector2( 55, 55 )
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 5
@@ -85,7 +85,7 @@ visible = false
 margin_left = 203.0
 margin_right = 248.0
 margin_bottom = 45.0
-rect_min_size = Vector2( 60, 60 )
+rect_min_size = Vector2( 55, 55 )
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 5

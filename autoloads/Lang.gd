@@ -5,7 +5,7 @@ var lang = "es"
 var texts = {
 	"df_enemy_es":"Te atacará si te mueves o realizas una acción.",
 	"df_trap_es":"Se activa si atraviesas la habitación.",
-	"df_block_es":"No puedes pasar por aquí hasta que destruyas este obstáculo.",
+	"df_block_es":"Destruyelo para poder pasar por aqui.",
 	"df_door_es":"No puedes pasar por aquí hasta que abras el cerrojo.",
 	"df_stairs_es":"Esta escalera lleva al siguiente nivel.",
 	"df_fountain_es":"Esta fuente sanará hasta 2HP a quien beba de ella.",

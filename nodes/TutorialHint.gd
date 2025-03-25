@@ -38,6 +38,7 @@ func on_click_ok():
 	hide_tuto()
 
 func on_click_skip():
+	skip_tuto = true
 	hide_tuto()
 
 func show_attributes_panel():
