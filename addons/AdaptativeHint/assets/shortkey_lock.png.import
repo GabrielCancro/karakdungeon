@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon.png-d919cf596e391057d6eaa50ec5628e9e.stex"
+path="res://.import/shortkey_lock.png-6986bff254ca943205ab7941a17c16d9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/AdaptativeHint/icon.png"
-dest_files=[ "res://.import/icon.png-d919cf596e391057d6eaa50ec5628e9e.stex" ]
+source_file="res://addons/AdaptativeHint/assets/shortkey_lock.png"
+dest_files=[ "res://.import/shortkey_lock.png-6986bff254ca943205ab7941a17c16d9.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
