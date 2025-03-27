@@ -27,7 +27,7 @@ func show_current_actions():
 func order_actions():
 	for ac in $List.get_children():
 		var i = ac.get_index()
-		ac.rect_position = Vector2(0,i*120)
+		ac.rect_position = Vector2(i*5,i*16)
 #		$Tween.interpolate_property(ac,"rect_position",null,Vector2(0,i*120),.2,Tween.TRANS_QUAD,Tween.EASE_OUT,i*.1)
 #	$Tween.start()
 
