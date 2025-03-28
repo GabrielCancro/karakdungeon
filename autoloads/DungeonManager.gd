@@ -6,6 +6,7 @@ var have_key = false
 var dungeon_level = 0
 var total_defs = 0
 var resolved_defs = 0
+var total_torch = 0
 
 signal change_room()
 signal new_dungeon()
@@ -18,6 +19,7 @@ func _ready():
 
 func goto_next_level():
 	dungeon_level += 1
+	set_torch( 1 + 2 * dungeon_level )
 	Utils.remove_all_childs(get_node("/root/Game/Map"))
 	get_node("/root/Game/CLUI/Key").visible = false
 	have_key = false
@@ -127,3 +129,13 @@ func find_hide_defiances(xx,yy):
 		var percept = 25 + PlayerManager.get_dice_amount("EY")*25
 		print("PERCENT ",percept)
 		if randi()%100 < percept: rnode.show_hiden_defiance()
+
+func set_torch(val):
+	total_torch = val
+	get_node("/root/Game/CLUI/Torch/lb_torch").text = str(total_torch)
+	Effector.scale_boom( get_node("/root/Game/CLUI/Torch/lb_torch") )
+	get_node("/root/Game/CLUI/Torch/lb_torch").visible = (total_torch>0)
+	get_node("/root/Game/CLUI/Torch/img").visible = (total_torch>0)
+
+func dec_torch():
+	set_torch(total_torch-1)

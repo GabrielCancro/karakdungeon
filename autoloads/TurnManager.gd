@@ -65,3 +65,4 @@ func end_turn():
 		p.ui.updateUI()
 	PlayerManager.change_player(DungeonManager.current_player.id)
 	get_node("/root/Game/CLUI/ActionList").visible = true
+	DungeonManager.dec_torch()

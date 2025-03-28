@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://nodes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/DefianceUI.tscn" type="PackedScene" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://nodes/TutorialHint.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/dungeon_key_outline.png" type="Texture" id=10]
 [ext_resource path="res://nodes/ItemList.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/torch.png" type="Texture" id=12]
+[ext_resource path="res://assets/torch_off.png" type="Texture" id=13]
 
 [sub_resource type="DynamicFont" id=2]
 size = 46
@@ -97,6 +99,42 @@ margin_bottom = -782.0
 custom_colors/font_color = Color( 0.788235, 0.788235, 0.788235, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Nivel #"
+valign = 1
+clip_text = true
+
+[node name="Torch" type="TextureRect" parent="CLUI"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -167.0
+margin_right = -24.0
+margin_bottom = 143.0
+rect_pivot_offset = Vector2( 58.5, 58.5 )
+texture = ExtResource( 13 )
+expand = true
+
+[node name="img" type="TextureRect" parent="CLUI/Torch"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -143.0
+margin_bottom = 143.0
+rect_pivot_offset = Vector2( 58.5, 58.5 )
+texture = ExtResource( 12 )
+expand = true
+
+[node name="lb_torch" type="Label" parent="CLUI/Torch"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -24.5
+margin_top = 16.5
+margin_right = 86.5
+margin_bottom = 63.5
+rect_pivot_offset = Vector2( 56, 24 )
+custom_colors/font_color = Color( 0.788235, 0.788235, 0.788235, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "?"
+align = 1
 valign = 1
 clip_text = true
 
