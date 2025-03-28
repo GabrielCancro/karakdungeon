@@ -1,14 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://nodes/ItemList.gd" type="Script" id=1]
 [ext_resource path="res://nodes/ItemNode.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/font/AbyssinicaSIL-Regular.ttf" type="DynamicFontData" id=3]
-
-[sub_resource type="DynamicFont" id=1]
-size = 31
-extra_spacing_top = 2
-extra_spacing_bottom = 2
-font_data = ExtResource( 3 )
 
 [node name="ItemList" type="ColorRect"]
 margin_right = 160.0
@@ -23,30 +16,3 @@ margin_right = 84.0
 margin_bottom = 84.0
 
 [node name="ItemNode" parent="Items" instance=ExtResource( 2 )]
-
-[node name="desc" type="ColorRect" parent="."]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 131.0
-margin_top = 24.0
-margin_right = 399.0
-margin_bottom = 125.0
-color = Color( 0.121569, 0.12549, 0.180392, 1 )
-
-[node name="line" type="ColorRect" parent="desc"]
-margin_left = -7.0
-margin_bottom = 100.0
-color = Color( 0.2, 0.203922, 0.301961, 1 )
-
-[node name="RTL" type="RichTextLabel" parent="desc"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 16.0
-margin_right = -5.0
-custom_fonts/normal_font = SubResource( 1 )
-bbcode_enabled = true
-bbcode_text = "Ataque Directo: Consume 2x[font=res://assets/font/bbcode_font.tres][img=40]res://assets/dices/AX.png[/img][/font] para dañar 1xVIDA a un enemigo."
-text = "Ataque Directo: Consume 2x para dañar 1xVIDA a un enemigo."
-fit_content_height = true
-scroll_active = false

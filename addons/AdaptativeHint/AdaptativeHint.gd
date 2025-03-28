@@ -3,6 +3,7 @@ extends CanvasLayer
 var offsetMouse = Vector2(10,10)
 onready var screenSize = get_viewport().get_visible_rect().size
 onready var shortkeys = load("res://addons/AdaptativeHint/assets/shortkeys.gd").shortkeys()
+var last_hide = false
 
 func _ready():
 	hide_panel()
@@ -13,6 +14,13 @@ func _process(delta):
 		$Panel.rect_global_position.x -= $Panel.rect_size.x + offsetMouse.x*2
 	if $Panel.rect_global_position.y>screenSize.y*0.7: 
 		$Panel.rect_global_position.y -= $Panel.rect_size.y + offsetMouse.y*2
+	
+	#TO FIX GODOT 3.5 FAST VISIBLE TOGGLE ISSUE
+	if last_hide:
+		last_hide = false
+		visible = false
+	else:
+		visible = true
 
 func show_panel(text):
 	$Panel/RTL.bbcode_text = "[center]"
@@ -29,6 +37,7 @@ func replace_shortkeys(text):
 	return text
 
 func hide_panel():
-	visible = false
 	$Panel/RTL.bbcode_text = ""
 	set_process(false)
+	visible = false
+	last_hide = true

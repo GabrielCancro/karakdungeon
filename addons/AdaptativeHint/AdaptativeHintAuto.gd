@@ -9,7 +9,7 @@ func _ready():
 	get_node("/root").add_child(HintPanel)
 
 func _on_hover_enter_area(node,text):
-	if text && node!=currentNode: 
+	if text && node && node!=currentNode: 
 		currentNode = node
 		HintPanel.show_panel(text)
 	elif node==currentNode: 
