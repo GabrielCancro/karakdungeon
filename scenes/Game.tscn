@@ -108,7 +108,7 @@ anchor_right = 1.0
 margin_left = -167.0
 margin_right = -24.0
 margin_bottom = 143.0
-rect_pivot_offset = Vector2( 58.5, 58.5 )
+rect_pivot_offset = Vector2( 76, 72 )
 texture = ExtResource( 13 )
 expand = true
 
@@ -186,3 +186,8 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.235294, 0.235294, 0.235294, 0.0196078 )
+
+[node name="b1" type="ColorRect" parent="CLUI/InputBlocker"]
+anchor_right = 1.0
+margin_bottom = 11.0
+color = Color( 0.486275, 0.486275, 0.486275, 1 )

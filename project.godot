@@ -26,7 +26,7 @@ Lang="*res://autoloads/Lang.gd"
 TurnManager="*res://autoloads/TurnManager.gd"
 MapGenerator="*res://autoloads/MapGenerator.gd"
 ItemManager="*res://autoloads/ItemManager.gd"
-AdaptativeHintAuto="*res://addons/AdaptativeHint/AdaptativeHintAutoload.gd"
+AdaptativeHintAuto="*res://addons/AdaptativeHint/AdaptativeHintAuto.gd"
 
 [display]
 

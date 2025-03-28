@@ -49,6 +49,7 @@ func enemy_attack(def,pj):
 func end_turn():
 	Utils.disable_input(2)
 	get_node("/root/Game/CLUI/ActionList").visible = false
+	get_node("/root/Game/CLUI/EndTurnButton").modulate = Color(.3,.3,.3,1)
 	for p in PlayerManager.PLAYERS:
 		p.ui.restore_original_dices()
 		p.mov = 0
@@ -65,4 +66,14 @@ func end_turn():
 		p.ui.updateUI()
 	PlayerManager.change_player(DungeonManager.current_player.id)
 	get_node("/root/Game/CLUI/ActionList").visible = true
-	DungeonManager.dec_torch()
+	
+	if DungeonManager.dec_torch() == false:
+		for p in PlayerManager.PLAYERS:
+			if p.hp>0:
+				Utils.disable_input(2)
+				PlayerManager.change_player(p.id)
+				yield(get_tree().create_timer(.7),"timeout")
+				PlayerManager.damage_player(p.id,1)
+				yield(get_tree().create_timer(.7),"timeout")
+	
+	get_node("/root/Game/CLUI/EndTurnButton").modulate = Color(1,1,1,1)

@@ -19,7 +19,7 @@ func _ready():
 
 func goto_next_level():
 	dungeon_level += 1
-	set_torch( 1 + 2 * dungeon_level )
+	set_torch( 10 + 5 * dungeon_level )
 	Utils.remove_all_childs(get_node("/root/Game/Map"))
 	get_node("/root/Game/CLUI/Key").visible = false
 	have_key = false
@@ -133,9 +133,10 @@ func find_hide_defiances(xx,yy):
 func set_torch(val):
 	total_torch = val
 	get_node("/root/Game/CLUI/Torch/lb_torch").text = str(total_torch)
-	Effector.scale_boom( get_node("/root/Game/CLUI/Torch/lb_torch") )
+	Effector.scale_boom( get_node("/root/Game/CLUI/Torch") )
 	get_node("/root/Game/CLUI/Torch/lb_torch").visible = (total_torch>0)
 	get_node("/root/Game/CLUI/Torch/img").visible = (total_torch>0)
 
 func dec_torch():
 	set_torch(total_torch-1)
+	return (total_torch>=0)

@@ -43,11 +43,7 @@ margin_bottom = -74.0
 mouse_filter = 2
 custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
-bbcode_text = "[center][font=res://addons/AdaptativeHint/assets/bbcode_icon_align.tres]
-Ataque Directo: Consume 2xpara dañar 1xVIDA a un enemigo.
-[/font][/center]"
-text = "
-Ataque Directo: Consume 2xpara dañar 1xVIDA a un enemigo.
-"
+bbcode_text = "[center]Ataque Directo: Consume 2x para dañar 1xVIDA a un enemigo."
+text = "Ataque Directo: Consume 2x para dañar 1xVIDA a un enemigo."
 fit_content_height = true
 scroll_active = false

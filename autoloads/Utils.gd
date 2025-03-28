@@ -15,7 +15,9 @@ func remove_all_childs(node):
 		n.queue_free()
 
 func _process(delta):
-	if disabled_input_timer>0: disabled_input_timer -= delta
+	if disabled_input_timer>0: 
+		disabled_input_timer -= delta
+		get_node_or_null("/root/Game/CLUI/InputBlocker").modulate.a = min(1,disabled_input_timer*2)
 	else: enable_input()
 
 func disable_input(t):

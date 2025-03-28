@@ -3,7 +3,10 @@ extends Node2D
 func _ready():
 	DungeonManager.connect("new_dungeon",self,"on_new_dungeon")
 	DungeonManager.goto_next_level()
-	AdaptativeHintAuto.add_hint($CLUI/KeyOut,"Una descripcion interesante para mi hint @POTION descripcion interesante para mi hint  descripcion interesante para mi hint ")
+	
+	AdaptativeHintAuto.add_hint($CLUI/KeyOut,Lang.get_text("hint_key"))
+	AdaptativeHintAuto.add_hint($CLUI/Torch,Lang.get_text("hint_torch"))
+	
 	yield(get_tree().create_timer(2),"timeout")
 	$CLUI/TutorialHint.show_tuto("start")
 	yield($CLUI/TutorialHint,"close_popup")

@@ -9,6 +9,11 @@ func _ready():
 	#$HintButton.connect("mouse_entered",self,"on_hint_hover",[true])
 	#$HintButton.connect("mouse_exited",self,"on_hint_hover",[false])
 	DungeonManager.connect("change_room",self,"update")
+	AdaptativeHintAuto.add_hint($hp,Lang.get_text("hint_hp"))
+	AdaptativeHintAuto.add_hint($dif,Lang.get_text("hint_dif"))
+	AdaptativeHintAuto.add_hint($dm,Lang.get_text("hint_dm"))
+	AdaptativeHintAuto.add_hint($TestRnd,Lang.get_text("hint_test"))
+	AdaptativeHintAuto.add_hint($Reqs,Lang.get_text("hint_reqs"))
 
 func update():
 	#print("DEFIANCE UI UPDATE")

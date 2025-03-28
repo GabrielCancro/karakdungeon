@@ -1,6 +1,6 @@
 extends ColorRect
 
-var skip_tuto = false
+var skip_tuto = true
 var viewed = []
 signal close_popup()
 

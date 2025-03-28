@@ -4,7 +4,7 @@ extends ColorRect
 #var time = 0
 
 func _ready():
-	$Button.connect("button_down",self,"on_click")
+	$Button.connect("button_down",TurnManager,"end_turn")
 #	$Button.connect("button_down",self,"on_hold",[true])
 #	$Button.connect("button_up",self,"on_hold",[false])
 
@@ -24,6 +24,3 @@ func _ready():
 #	time = 0
 #	holding = val
 
-func on_click():
-	Effector.scale_boom(self)
-	TurnManager.end_turn()

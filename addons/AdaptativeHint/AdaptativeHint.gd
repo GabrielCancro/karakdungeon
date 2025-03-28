@@ -1,17 +1,18 @@
 extends CanvasLayer
 
-var offsetMouse = Vector2(35,20)
+var offsetMouse = Vector2(10,10)
+onready var screenSize = get_viewport().get_visible_rect().size
+onready var shortkeys = load("res://addons/AdaptativeHint/assets/shortkeys.gd").shortkeys()
 
-var shortkeys = {
-	"@POTION": "[img=40]res://addons/AdaptativeHint/assets/shortkey_potion.png[/img]"
-}
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	hide_panel()
 
 func _process(delta):
 	$Panel.rect_global_position = get_viewport().get_mouse_position() + offsetMouse
+	if $Panel.rect_global_position.x>screenSize.x*0.7: 
+		$Panel.rect_global_position.x -= $Panel.rect_size.x + offsetMouse.x*2
+	if $Panel.rect_global_position.y>screenSize.y*0.7: 
+		$Panel.rect_global_position.y -= $Panel.rect_size.y + offsetMouse.y*2
 
 func show_panel(text):
 	$Panel/RTL.bbcode_text = "[center]"
