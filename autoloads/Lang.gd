@@ -40,16 +40,14 @@ var texts = {
 	"hint_dm_es":"DAÑO: Es el daño que puede infligirte este desafío.",
 	"hint_test_es":"TIRADA DE AZAR: Al interactuar se elige aleatoriamente una casilla de azar, si es [color=green]verde[/color], tienes exito, si es [color=red]rojo[/color] habras fallado.",
 	"hint_reqs_es":"DAÑO: Es el daño que puede infligirte este desafío",
+	
+	"dice_neutral_es":"DADO NEUTRAL",
+	"dice_fight_es":"DADO DE COMBATE",
+	"dice_mind_es":"DADO DE ASTUCIA",
+	"dice_agility_es":"DADO DE DESTREZA",
+	"dice_custom_es":"DADO COMBINADO",
 }
 
-var images = {
-	"@SW":"[font=res://assets/font/bbcode_font.tres][img=40]res://assets/dices/SW.png[/img][/font]",
-	"@HP":"[font=res://assets/font/bbcode_font.tres][img=40]res://assets/bbimg/bb_hp.png[/img][/font]",
-	"@HN":"[font=res://assets/font/bbcode_font.tres][img=40]res://assets/dices/HN.png[/img][/font]",
-	"@EY":"[font=res://assets/font/bbcode_font.tres][img=40]res://assets/dices/EY.png[/img][/font]",
-	"@BT":"[font=res://assets/font/bbcode_font.tres][img=40]res://assets/dices/BT.png[/img][/font]",
-	"@UP":"[font=res://assets/font/bbcode_font.tres][img=40]res://assets/up_arrow.png[/img][/font]",
-}
 
 func get_text(code,vals = []):
 	var lang_code = code+"_"+lang
@@ -57,10 +55,4 @@ func get_text(code,vals = []):
 	else: 
 		var tx = texts[lang_code]
 		for i in range(vals.size()): tx = tx.replace("#"+str(i+1),str(vals[i]))
-		for k in images.keys(): 
-			#var am = PlayerManager.get_dice_amount(k.substr(1))
-			tx = tx.replace(k,images[k]) #+"("+str(am)+")")
 		return tx
-
-func get_img(code):
-	return images[code]

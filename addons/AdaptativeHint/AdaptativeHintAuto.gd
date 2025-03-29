@@ -19,6 +19,9 @@ func _on_hover_enter_area(node,text):
 ### To use from your code 
 ### AdaptativeHintAuto.add_hint($node,"Example text about potions @POTION")
 func add_hint(node:Node,text=""):
+	if node.is_connected("mouse_entered",self,"_on_hover_enter_area"): 
+		node.disconnect("mouse_entered",self,"_on_hover_enter_area")
+		node.disconnect("mouse_exited",self,"_on_hover_enter_area")
 	node.connect("mouse_entered",self,"_on_hover_enter_area",[node,text])
 	node.connect("mouse_exited",self,"_on_hover_enter_area",[node,null])
 	_on_hover_enter_area(node,false)

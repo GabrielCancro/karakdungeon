@@ -6,16 +6,14 @@ var value = null
 signal end_roll()
 
 func _ready():
-	hover_dice(false)
-	$Button.connect("mouse_entered",self,"hover_dice",[true])
-	$Button.connect("mouse_exited",self,"hover_dice",[false])
+	pass
 
 func set_faces(arr):
 	faces = arr
-	for i in faces.size(): get_node("Faces/Grid/f"+str(i+1)).texture = load("res://assets/dices/"+faces[i]+".png")
+	var text = "[color=#"+PlayerManager.get_dice_color(faces).to_html()+"]"+Lang.get_text("dice_"+PlayerManager.get_dice_type(faces))+"[/color]\n"
+	for i in faces.size(): text+=" @"+faces[i]+" "
+	AdaptativeHintAuto.add_hint($Button,text)
 	color = PlayerManager.get_dice_color(faces)
-	$Faces.color = color
-	$Faces/ColorRect.color = color
 
 func roll():
 	randomize()
@@ -29,11 +27,6 @@ func roll():
 	emit_signal("end_roll")
 
 func set_one_face(face):
-	faces = [face,face,face,face,face,face]
-	for i in faces.size(): get_node("Faces/Grid/f"+str(i+1)).texture = load("res://assets/dices/"+faces[i]+".png")
+	set_faces([face,face,face,face,face,face])
 	value = face
 	$img.texture = load("res://assets/dices/"+value+".png")
-	$Faces.color = Color(.2,.2,.2,1)
-	
-func hover_dice(val):
-	$Faces.visible = val

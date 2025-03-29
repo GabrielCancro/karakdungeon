@@ -115,11 +115,18 @@ func set_pj_attr(key,val):
 	PlayerManager.change_player( DungeonManager.current_player.id )
 
 func get_dice_color(faces):
-	if faces == ["NN","NN","SW","BT","HN","EY"]: return Color(.4,.4,.4,1)
+	if faces == ["NN","NN","SW","BT","HN","EY"]: return Color(.6,.6,.6,1)
 	if faces == ["NN","NN","SW","SW","SW","BT"]: return Color(.8,.2,.2,1)
 	if faces == ["NN","BT","HN","EY","HN","EY"]: return Color(.4,.4,.7,1)
 	if faces == ["SW","BT","BT","BT","HN","EY"]: return Color(.2,.8,.2,1)
-	return Color(.2,.2,.2,1)
+	return Color(.4,.4,.4,1)
+
+func get_dice_type(faces):
+	if faces == ["NN","NN","SW","BT","HN","EY"]: return "neutral"
+	if faces == ["NN","NN","SW","SW","SW","BT"]: return "fight"
+	if faces == ["NN","BT","HN","EY","HN","EY"]: return "mind"
+	if faces == ["SW","BT","BT","BT","HN","EY"]: return "agility"
+	return "custom"
 
 func select_next_player():
 	if !DungeonManager.current_player: change_player(1)
