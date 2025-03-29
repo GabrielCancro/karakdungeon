@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dam.png-77904701c91f700e3439ea51a435d497.stex"
+path="res://.import/difficult_m.png-1062199043650e0b167b0d29077bd0bc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bbimg/dam.png"
-dest_files=[ "res://.import/dam.png-77904701c91f700e3439ea51a435d497.stex" ]
+source_file="res://assets/bbimg/difficult_m.png"
+dest_files=[ "res://.import/difficult_m.png-1062199043650e0b167b0d29077bd0bc.stex" ]
 
 [params]
 

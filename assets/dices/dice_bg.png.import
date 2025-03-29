@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gear.png-a7fbca5f5b35d89b3873a6a15d1f78f9.stex"
+path="res://.import/dice_bg.png-4c243b0b39f77a6f3c4734e7417de26c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bbimg/gear.png"
-dest_files=[ "res://.import/gear.png-a7fbca5f5b35d89b3873a6a15d1f78f9.stex" ]
+source_file="res://assets/dices/dice_bg.png"
+dest_files=[ "res://.import/dice_bg.png-4c243b0b39f77a6f3c4734e7417de26c.stex" ]
 
 [params]
 
