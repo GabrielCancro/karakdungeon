@@ -34,11 +34,11 @@ var texts = {
 	"attr_EY_es":"@EY OJO: Percepcion y astucia, mayor facilidad para encontrar secretos y resolver enigmas.",
 
 	"hint_key_es":"Necesitas encontrar la llave de este nivel, cuando la tengas podras bajar por la escalera al siguiente.",
-	"hint_torch_es":"Cuando tu antorcha se termine, todos tus personajes reciben un punto de daño cada turno.",
+	"hint_torch_es":"Cuando tu antorcha se termine, todos tus personajes reciben un punto de daño.",
 	"hint_hp_es":"HP: Son los puntos de golpe que resiste este desafío.",
 	"hint_dif_es":"DIFICULTAD: Es el nivel de dificultad del desafío, generalmente se ve modificado por los atributos del personaje que interactua.",
 	"hint_dm_es":"DAÑO: Es el daño que puede infligirte este desafío.",
-	"hint_test_es":"TIRADA DE AZAR: Al interactuar se elige aleatoriamente una casilla de azar, si es [color=green]verde[/color], tienes exito, si es [color=red]rojo[/color] habras fallado.",
+	"hint_test_es":"TIRADA DE AZAR: Al interactuar se elige aleatoriamente una casilla de azar, si es [color=#FFFFAA]verde[/color], tienes exito, si es [color=#FF9999]rojo[/color] habras fallado.",
 	"hint_reqs_es":"DAÑO: Es el daño que puede infligirte este desafío",
 	
 	"dice_neutral_es":"DADO NEUTRAL",

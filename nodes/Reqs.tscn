@@ -89,3 +89,9 @@ rect_min_size = Vector2( 55, 55 )
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 5
+
+[node name="Button" type="Button" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+focus_mode = 0
+flat = true

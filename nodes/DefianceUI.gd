@@ -12,8 +12,8 @@ func _ready():
 	AdaptativeHintAuto.add_hint($hp,Lang.get_text("hint_hp"))
 	AdaptativeHintAuto.add_hint($dif,Lang.get_text("hint_dif"))
 	AdaptativeHintAuto.add_hint($dm,Lang.get_text("hint_dm"))
-	AdaptativeHintAuto.add_hint($TestRnd,Lang.get_text("hint_test"))
-	AdaptativeHintAuto.add_hint($Reqs,Lang.get_text("hint_reqs"))
+	AdaptativeHintAuto.add_hint($TestRnd/Button,Lang.get_text("hint_test"))
+	AdaptativeHintAuto.add_hint($Reqs/Button,Lang.get_text("hint_reqs"))
 
 func update():
 	#print("DEFIANCE UI UPDATE")
@@ -39,7 +39,7 @@ func update():
 			var am = 0
 			if defiance.type=="trap": 
 				am = PlayerManager.get_dice_amount("HN") + PlayerManager.get_dice_amount("EY")
-			$dif/lb.text = str(am)
+			$dif/lb.text = str(defiance.dif - am)
 			$TestRnd.set_dif(defiance.dif - am)
 			$TestRnd.visible = true
 		if "req" in defiance:

@@ -21,9 +21,9 @@ func set_dif(dif):
 	$Selector.visible = false
 	for c in $Grid.get_children():
 		var i = c.get_index()+1
-		if i<=fail: c.modulate = Color(.8,.2,.2)
-		elif i<success: c.modulate = Color(.5,.5,.5)
-		else: c.modulate = Color(.8,.8,.2)
+		if i<=fail: c.modulate = Color(1,.5,.5)
+		elif i<success: c.modulate = Color(.8,.8,.8)
+		else: c.modulate = Color(1,1,.5)
 
 func roll():
 	randomize()
