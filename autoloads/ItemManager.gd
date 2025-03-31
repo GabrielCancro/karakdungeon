@@ -12,7 +12,8 @@ var PARTY_ITEMS = {}
 var item
 
 func _ready():
-	for i in ALL_ITEMS.keys(): add_item(i)
+	#for i in ALL_ITEMS.keys(): add_item(i)
+	pass
 
 func get_item_data(code):
 	var data = ALL_ITEMS[code].duplicate()
@@ -22,18 +23,18 @@ func get_item_data(code):
 
 func add_item(it_name):
 	if it_name in PARTY_ITEMS.keys(): 
-		return false
+		return null
 	else:
 		PARTY_ITEMS[it_name] = get_item_data(it_name)
-		return true
+		return it_name
 
 func add_rnd_item():
 	randomize()
 	var items = ALL_ITEMS.keys()
 	items.shuffle()
 	for it_name in items:
-		if add_item(it_name): return true
-	return false
+		if add_item(it_name): return it_name
+	return null
 
 func recover_uses():
 	for it in PARTY_ITEMS:

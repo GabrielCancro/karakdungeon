@@ -8,6 +8,7 @@ extends ColorRect
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Img/AnimationPlayer.stop()
 	yield(get_tree().create_timer(.2),"timeout")
 	update_item_list()
 
@@ -31,3 +32,8 @@ func update_usables():
 		if ("uses"in it.data) && (it.data["uses"]<=0): 
 			it.color = Color(.15,.15,.15,1)
 
+func play_take_item_anim(it_name):
+	$Img.texture = load("res://assets/items/it_"+it_name+".png")
+	$Img/AnimationPlayer.play("anim1")
+	yield($Img/AnimationPlayer,"animation_finished")
+	update_item_list()

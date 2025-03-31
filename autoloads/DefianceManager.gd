@@ -36,6 +36,7 @@ func get_random_defiance(perc = 100):
 	return DEFIANCES.keys()[i]
 
 func resolve_current_defiance():
+	check_chest_resolved()
 	var croom = DungeonManager.current_room.data.erase("defiance")
 	DungeonManager.force_update()
 	yield(get_tree().create_timer(.5),"timeout")
@@ -52,3 +53,9 @@ func activate_trap(def):
 		yield(get_tree().create_timer(.1),"timeout")
 	yield(get_tree().create_timer(.5),"timeout")
 	resolve_current_defiance()
+
+func check_chest_resolved():
+	var def = DungeonManager.current_room.data.defiance
+	if def.type=="chest": 
+		var it_name = ItemManager.add_rnd_item()
+		if it_name: get_node("/root/Game/CLUI/ItemList").play_take_item_anim(it_name)
