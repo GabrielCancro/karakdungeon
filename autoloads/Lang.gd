@@ -39,7 +39,8 @@ var texts = {
 	"hint_dif_es":"DIFICULTAD: Es el nivel de dificultad del desafío, generalmente se ve modificado por los atributos del personaje que interactua.",
 	"hint_dm_es":"DAÑO: Es el daño que puede infligirte este desafío.",
 	"hint_test_es":"TIRADA DE AZAR: Al interactuar se elige aleatoriamente una casilla de azar, si es [color=#FFFFAA]verde[/color], tienes exito, si es [color=#FF9999]rojo[/color] habras fallado.",
-	"hint_reqs_es":"DAÑO: Es el daño que puede infligirte este desafío",
+	"hint_reqs_es":"DAÑO: Es el daño que puede infligirte este desafío.",
+	"hint_reload_item_es":"RECARGABLE: Recuperas los usos de este item o habilidad al pasar al siguiente nivel.",
 	
 	"dice_neutral_es":"DADO NEUTRAL",
 	"dice_fight_es":"DADO DE COMBATE",

@@ -1,9 +1,9 @@
 extends Node
 
 var ALL_ITEMS = {
-	"old_dage":{"uses":2},
-	"best_heart":{"uses":1},
-	"travel_boots":{"uses":2},
+	"old_dage":{"uses":2,"tier":1},
+	"best_heart":{"uses":1,"tier":1,"reload":true},
+	"travel_boots":{"uses":2,"tier":1},
 	#"blood_amulet":{"uses":2},
 	#"magic_missile":{"uses":2},
 }
@@ -12,7 +12,7 @@ var PARTY_ITEMS = {}
 var item
 
 func _ready():
-	#for i in ALL_ITEMS.keys(): add_item(i)
+	for i in ALL_ITEMS.keys(): add_item(i)
 	pass
 
 func get_item_data(code):
@@ -28,11 +28,12 @@ func add_item(it_name):
 		PARTY_ITEMS[it_name] = get_item_data(it_name)
 		return it_name
 
-func add_rnd_item():
+func add_rnd_item(tier=null):
 	randomize()
 	var items = ALL_ITEMS.keys()
 	items.shuffle()
 	for it_name in items:
+		if tier && tier>ALL_ITEMS[it_name].tier: continue
 		if add_item(it_name): return it_name
 	return null
 

@@ -25,12 +25,12 @@ func update_item_list():
 
 func update_usables():
 	for it in $Items.get_children():
-		it.color = Color(0,.2,.35,1)
+		it.modulate.a = 1
 		if (ItemManager.has_method("condition_"+it.data.name) 
 		&& !ItemManager.call("condition_"+it.data.name,it.data)): 
-			it.color = Color(.15,.15,.15,1)
+			it.modulate.a = .3
 		if ("uses"in it.data) && (it.data["uses"]<=0): 
-			it.color = Color(.15,.15,.15,1)
+			it.modulate.a = .3
 
 func play_take_item_anim(it_name):
 	$Img.texture = load("res://assets/items/it_"+it_name+".png")

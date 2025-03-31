@@ -9,8 +9,8 @@ var DEFIANCES = {
 	"trap":{"type":"trap", "dif":4,"dam":2},
 	"door":{"type":"door", "req":["HN","EY"]},
 	"debris":{"type":"block", "hp":3},
-	"wchest":{"type":"chest", "req":["HN","HN"]},
-	"chest":{"type":"chest", "req":["HN","HN","HN","EY","EY"]},
+	"wchest":{"type":"chest","tier":1, "req":["HN","HN"]},
+	"chest":{"type":"chest","tier":2, "req":["HN","HN","HN","EY","EY"]},
 	"stairs":{"type":"stairs"},
 	"fountain":{"type":"fountain","uses":2},
 }
@@ -57,5 +57,5 @@ func activate_trap(def):
 func check_chest_resolved():
 	var def = DungeonManager.current_room.data.defiance
 	if def.type=="chest": 
-		var it_name = ItemManager.add_rnd_item()
+		var it_name = ItemManager.add_rnd_item(def.tier)
 		if it_name: get_node("/root/Game/CLUI/ItemList").play_take_item_anim(it_name)
