@@ -58,7 +58,12 @@ func scale_boom(node):
 	var origin = node.get(prop)
 	tween.interpolate_property(node,prop,origin*1.3,origin,.3,Tween.TRANS_QUAD,Tween.EASE_OUT)
 	tween.start()
-#
+
+func resalte(node):
+	var _a = node.modulate.a
+	tween.interpolate_property(node,"modulate:a",1.5,_a,.3,Tween.TRANS_QUAD,Tween.EASE_OUT)
+	tween.start()
+
 #func damage_fx(node,dam):
 #	show_damage_text(dam,node.position+Vector2(0,-150))
 #	var spr = get_node_or_null("Sprite")

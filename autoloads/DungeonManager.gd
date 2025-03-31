@@ -55,7 +55,7 @@ func get_or_create_one_room(xx,yy):
 	if !rnode: 
 		rnode = preload("res://nodes/Room.tscn").instance()
 		rnode.name = "r_"+key
-		var rsize = rnode.get_node("image").rect_size
+		var rsize = rnode.get_node("floor").rect_size
 		var room_data = map[key]
 		if "defiance" in room_data: room_data.defiance = DefianceManager.get_defiance_data(room_data.defiance)
 		rnode.set_data(room_data)
@@ -81,7 +81,7 @@ func get_room_defiance(room_node=current_room):
 func set_current_room(dx,dy):
 	var room = get_room_node(dx,dy)
 	if is_instance_valid(current_room): current_room.on_leave()
-	if room && room != current_room: Effector.scale_boom(room)
+	if room && room != current_room: Effector.resalte(room)
 	current_room = room
 	if current_room: 
 		current_room.update()
