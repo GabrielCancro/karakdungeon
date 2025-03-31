@@ -35,6 +35,11 @@ var texts = {
 	"it_best_heart_desc_es":"Si tienes @SW@SW, te curas +2HP",
 	"it_travel_boots_name_es":"BOTAS DE VIAJERO",
 	"it_travel_boots_desc_es":"Si tienes @BT@BT, recuperas tu accion, recuperas todo tu movimiento, pero pierdes una @BT",
+	"it_picklock_name_es":"Ganzuas",
+	"it_picklock_desc_es":"Pierdes @EY pero ganas @HN@HN",
+	"it_thief_knife_name_es":"Daga de ladron",
+	"it_thief_knife_desc_es":"Pierdes @BT@HN pero ganas @SW@SW",
+	
 
 	"tuto_start_es":"Bienvenido a tu primer mazmorra!\nTe enseñaré lo básico para que puedas jugar..",
 	"tuto_pjui_es":"En la parte inferior estan las fichas de tus personajes, allí verás sus atributos, vida y movimiento.",

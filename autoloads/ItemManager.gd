@@ -4,6 +4,8 @@ var ALL_ITEMS = {
 	"old_dage":{"uses":2,"tier":1},
 	"best_heart":{"uses":1,"tier":1,"reload":true},
 	"travel_boots":{"uses":2,"tier":1},
+	"picklock":{"uses":2,"tier":1},
+	"thief_knife":{"uses":2,"tier":1},
 	#"blood_amulet":{"uses":2},
 	#"magic_missile":{"uses":2},
 }
@@ -81,3 +83,15 @@ func on_use_travel_boots(item):
 	DungeonManager.reset_current_room()
 	DungeonManager.current_player.ui.updateUI()
 
+func condition_picklock(item): return (PlayerManager.get_dice_amount("EY")>=1)
+func on_use_picklock(item): 
+	DungeonManager.current_player.ui.quit_dice("EY")
+	DungeonManager.current_player.ui.add_dice_face("HN")
+	DungeonManager.current_player.ui.add_dice_face("HN")
+
+func condition_thief_knife(item): return (PlayerManager.get_dice_amount("BT")>=1 && PlayerManager.get_dice_amount("HN")>=1)
+func on_use_thief_knife(item): 
+	DungeonManager.current_player.ui.quit_dice("BT")
+	DungeonManager.current_player.ui.quit_dice("HN")
+	DungeonManager.current_player.ui.add_dice_face("SW")
+	DungeonManager.current_player.ui.add_dice_face("SW")
