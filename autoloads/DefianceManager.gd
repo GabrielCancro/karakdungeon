@@ -9,6 +9,7 @@ var DEFIANCES = {
 	"trap":{"type":"trap", "dif":4,"dam":2},
 	"door":{"type":"door", "req":["HN","EY"]},
 	"debris":{"type":"block", "hp":3},
+	"wchest":{"type":"chest", "req":["HN","HN"]},
 	"chest":{"type":"chest", "req":["HN","HN","HN","EY","EY"]},
 	"stairs":{"type":"stairs"},
 	"fountain":{"type":"fountain","uses":2},

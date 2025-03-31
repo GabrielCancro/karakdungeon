@@ -26,7 +26,7 @@ func show_current_actions():
 func order_actions():
 	for ac in $List.get_children():
 		var i = ac.get_index()
-		ac.rect_position = Vector2(i*5,i*16)
+		ac.rect_position = Vector2(i*5,i*40)
 
 func block():
 	$block.visible = true
