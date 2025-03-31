@@ -14,13 +14,14 @@ func _ready():
 	yield($CLUI/TutorialHint,"close_popup")
 	$CLUI/TutorialHint.show_tuto("dices")
 	yield($CLUI/TutorialHint,"close_popup")
-	print("START GAME!!")
 
 func on_new_dungeon():
 	$CLUI/lb_level.text = "Nivel "+str(DungeonManager.dungeon_level)
 
 func _process(delta):
 	if Utils.is_input_disabled(): return
-	if $Camera2D.zoom.x<2 && Input.is_action_pressed("zoom_map"): $Camera2D.zoom += Vector2(.05,.05)
-	if $Camera2D.zoom.x>1 && !Input.is_action_pressed("zoom_map"): $Camera2D.zoom -= Vector2(.05,.05)
+	var pressed = ($CLUI/MapButton.pressed || Input.is_action_pressed("zoom_map"))
+	if $Camera2D.zoom.x<2 && pressed: $Camera2D.zoom += Vector2(.05,.05)
+	if $Camera2D.zoom.x>1 && !pressed: $Camera2D.zoom -= Vector2(.05,.05)
+	$Camera2D.offset_v = $Camera2D.zoom.y/2
 	if Input.is_action_just_pressed("change_player"): PlayerManager.select_next_player()

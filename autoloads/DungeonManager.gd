@@ -61,7 +61,9 @@ func get_or_create_one_room(xx,yy):
 		rnode.set_data(room_data)
 		rnode.position = Vector2(room_data.x*rsize.x,room_data.y*rsize.y)
 		get_node("/root/Game/Map").add_child(rnode)
-		Utils.set_zindex( rnode.get_node("Sprite"), .1 )
+		Utils.set_zindex( rnode.get_node("Sprite"), .1, 20 )
+		if "defiance" in room_data && room_data.defiance.name=="stairs":
+			Utils.set_zindex( rnode.get_node("Sprite"), .1, 0 )
 	return rnode
 
 func get_room_data(dx,dy):

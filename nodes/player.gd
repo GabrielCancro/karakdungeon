@@ -12,6 +12,7 @@ func _ready():
 	set_selected(false)
 
 func _process(delta):
+	#$Label.text = str(z_index)
 	global_position += global_position.direction_to(dest)*global_position.distance_to(dest)*0.1
 	for p in PlayerManager.PLAYERS:
 		p = p.node

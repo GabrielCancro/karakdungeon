@@ -26,7 +26,7 @@ func update():
 	
 	if defiance:
 		$Sprite.texture = load("res://assets/defiances/df_"+defiance.name+".png")
-		$lb_name.text = defiance.name
+		$lb_name.text = Lang.get_text("df_name_"+defiance.name)
 		$desc/lb.text = Lang.get_text("df_"+defiance.type)
 		$lb_stats.text = ""
 		#if "hp" in defiance: $lb_stats.text += " HP:"+str(defiance.hp)+"/"+str(defiance.hpm)+" "

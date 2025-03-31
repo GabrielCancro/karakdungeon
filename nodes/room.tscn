@@ -3,18 +3,17 @@
 [ext_resource path="res://nodes/Room.gd" type="Script" id=1]
 [ext_resource path="res://assets/defiances/df_goblin.png" type="Texture" id=2]
 [ext_resource path="res://assets/floor1.png" type="Texture" id=3]
-[ext_resource path="res://assets/font/AbyssinicaSIL-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/font/Anton-Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://assets/wall.png" type="Texture" id=5]
 [ext_resource path="res://assets/wall_esq.png" type="Texture" id=6]
 [ext_resource path="res://assets/wall_limit.png" type="Texture" id=7]
 [ext_resource path="res://assets/rooms/doorA_L.png" type="Texture" id=8]
 [ext_resource path="res://assets/rooms/roomA.png" type="Texture" id=9]
+[ext_resource path="res://assets/shader/sh_outline.tres" type="Material" id=10]
 
 [sub_resource type="DynamicFont" id=1]
-size = 49
+size = 37
 font_data = ExtResource( 4 )
-
-[sub_resource type="TileSet" id=2]
 
 [node name="Room" type="Node2D"]
 script = ExtResource( 1 )
@@ -346,27 +345,11 @@ margin_top = -50.0
 margin_right = 50.0
 color = Color( 0.0784314, 0.0745098, 0.137255, 1 )
 
-[node name="Label" type="Label" parent="."]
-visible = false
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -71.5
-margin_top = 41.0
-margin_right = 71.5
-margin_bottom = 104.0
-custom_colors/font_color = Color( 0.666667, 0.666667, 0.666667, 1 )
-custom_fonts/font = SubResource( 1 )
-text = "-1x1"
-align = 1
-valign = 1
-clip_text = true
-
 [node name="Sprite" type="Sprite" parent="."]
 z_index = 5
 
 [node name="Image" type="TextureRect" parent="Sprite"]
+material = ExtResource( 10 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -389,6 +372,17 @@ margin_right = 60.0
 margin_bottom = 51.0
 flat = true
 
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource( 2 )
-format = 1
+[node name="Label" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -114.0
+margin_top = 52.0
+margin_right = 114.0
+margin_bottom = 108.0
+custom_fonts/font = SubResource( 1 )
+text = "asd"
+align = 1
+valign = 1

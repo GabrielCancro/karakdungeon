@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://nodes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/DefianceUI.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://nodes/ItemList.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/torch.png" type="Texture" id=12]
 [ext_resource path="res://assets/torch_off.png" type="Texture" id=13]
+[ext_resource path="res://assets/ui/ui_map.png" type="Texture" id=14]
 
 [sub_resource type="DynamicFont" id=2]
 size = 46
@@ -192,3 +193,22 @@ color = Color( 0.235294, 0.235294, 0.235294, 0.0196078 )
 anchor_right = 1.0
 margin_bottom = 11.0
 color = Color( 0.486275, 0.486275, 0.486275, 1 )
+
+[node name="MapButton" type="Button" parent="CLUI"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -119.0
+margin_top = 163.0
+margin_right = -23.0
+margin_bottom = 259.0
+rect_min_size = Vector2( 6, 0 )
+focus_mode = 0
+flat = true
+
+[node name="Key" type="TextureRect" parent="CLUI/MapButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 58.5, 58.5 )
+mouse_filter = 2
+texture = ExtResource( 14 )
+expand = true

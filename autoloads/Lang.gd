@@ -9,6 +9,18 @@ var texts = {
 	"df_door_es":"No puedes pasar por aquí hasta que abras el cerrojo.",
 	"df_stairs_es":"Esta escalera lleva al siguiente nivel.",
 	"df_fountain_es":"Esta fuente sanará hasta 2HP a quien beba de ella.",
+	"df_chest_es":"Si logras abrirlo puedes obtener nuevos items.",
+	
+	"df_name_goblin_es":"Goblin",
+	"df_name_rat_es":"Rata Gig.",
+	"df_name_bat_es":"Murcielago",
+	"df_name_trap_es":"Trampa",
+	"df_name_door_es":"Puerta",
+	"df_name_debris_es":"Escombros",
+	"df_name_wchest_es":"Cofre",
+	"df_name_chest_es":"Cofre",
+	"df_name_stairs_es":"Escalera",
+	"df_name_fountain_es":"Fuente",
 	
 	"ac_attack_es":"Causa entre 0 y 2 de daño, cada @SW añade un golpe extra.",
 	"ac_dissarm_es":"Cada @HN y cada @EY mejora la posibilidad de éxito.",
