@@ -58,7 +58,10 @@ func on_use_item(item):
 	if (has_method("on_use_"+item.name)):
 		call("on_use_"+item.name,item)
 		Effector.scale_boom(item.ui)
-		if "uses" in item: item.uses -=1
+		if "uses" in item: 
+			item.uses -=1
+			if item.uses == 0 && !"reload" in item: 
+				PARTY_ITEMS.erase(item.name)
 	yield(get_tree().create_timer(.5),"timeout")
 	update_item_list()
 

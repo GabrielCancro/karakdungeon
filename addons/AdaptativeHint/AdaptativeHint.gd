@@ -31,7 +31,7 @@ func show_panel(text):
 func replace_shortkeys(text):
 	for sk in shortkeys.keys():
 		text = text.replace(sk,"[font=res://addons/AdaptativeHint/assets/bbcode_icon_align.tres]"+shortkeys[sk]+"[/font]")
-		print(text)
+		#print(text)
 	return text
 
 func hide_panel():

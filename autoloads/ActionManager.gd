@@ -91,13 +91,15 @@ func run_action_dissarm():
 func check_action_unlock(): return (def.type == "door" or def.type == "chest")
 func run_action_unlock():
 	yield(get_tree().create_timer(.5),"timeout")
+	var have_unlocks = false
 	for dice in PlayerManager.get_current_player_dices():
 		for i in range(def.req.size()):
 			if def.req[i]==dice && !def.req_solved[i]: 
 				def.req_solved[i] = true
+				have_unlocks = true
 				break
-	yield(get_tree().create_timer(.5),"timeout")
-	emit_signal("end_action",true)
+	if have_unlocks: yield(get_tree().create_timer(.5),"timeout")
+	emit_signal("end_action",have_unlocks)
 
 func check_action_force(): return (def.type == "door" or def.type == "chest")
 func run_action_force():
