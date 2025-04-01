@@ -36,7 +36,8 @@ func update():
 	if DungeonManager.current_player: DungeonManager.current_player.ui.updateUI()
 
 func on_click():
-	print("ROOM ",data)
+	#print("ROOM ",data)
+	pass
 
 func show_hiden_defiance():
 	if "defiance" in data && "hide" in data.defiance && data.defiance.hide: 

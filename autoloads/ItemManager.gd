@@ -52,9 +52,9 @@ func update_item_list():
 	get_node("/root/Game/CLUI/ItemList").update_usables()
 
 func on_use_item(item):
-	print("ON USE ITEM ",item.name)
+	#print("ON USE ITEM ",item.name)
 	if (has_method("condition_"+item.name)) && !call("condition_"+item.name,item): return false
-	print("condition_success")
+	#print("condition_success")
 	if "uses" in item && item.uses<=0: return false
 	if !DungeonManager.current_player: return false
 	if (has_method("on_use_"+item.name)):

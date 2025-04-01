@@ -4,6 +4,8 @@ func _ready():
 	DungeonManager.connect("new_dungeon",self,"on_new_dungeon")
 	DungeonManager.goto_next_level()
 	
+	LittleGS.add_options_panel_to_scene(self)
+	
 	AdaptativeHintAuto.add_hint($CLUI/KeyOut,Lang.get_text("hint_key"))
 	AdaptativeHintAuto.add_hint($CLUI/Torch,Lang.get_text("hint_torch"))
 	

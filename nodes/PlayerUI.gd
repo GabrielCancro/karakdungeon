@@ -40,7 +40,7 @@ func roll_dices():
 		d.roll()
 
 func add_dice_face(face):
-	print("add_dice_face ",face)
+	#print("add_dice_face ",face)
 	var node = preload("res://nodes/Dice.tscn").instance()
 	node.set_one_face(face)
 	$HBox.add_child(node)
@@ -67,7 +67,7 @@ func set_selected(val=$Selector.visible):
 	$Selector.visible = val
 	if val: modulate = Color(1,1,1,1)
 	else: modulate = Color(.7,.7,.7,1)
-	print("data.action ",data.action)
+	#print("data.action ",data.action)
 	if data.action: $HBox.modulate = Color(1,1,1,1)
 	else: $HBox.modulate = Color(.5,.5,.5,.5)
 	

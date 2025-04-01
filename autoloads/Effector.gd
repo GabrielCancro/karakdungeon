@@ -89,7 +89,7 @@ func blood_bg():
 #	get_node("/root/Game/CLUI").add_child(node)
 
 func add_hint(hint_data):
-	print(hint_data.owner.name)
+	#(hint_data.owner.name)
 	#hint_data={"owner":self,"panel":null,"code":"tx_code","over_node":null,"callback":null}
 	var over_area = hint_data["owner"]
 	if "over_area" in hint_data: over_area = hint_data["owner"].get_node(hint_data["over_area"])
@@ -99,7 +99,7 @@ func add_hint(hint_data):
 	#node.connect("tree_exited",self,"_on_hint_enter_area",[node,tx_code,false])
 
 func _on_hint_enter_area(hint_data,val):
-	print(hint_data)
+	#print(hint_data)
 	if hint_data.panel:
 		var HintPanel
 		if hint_data.panel=="default": HintPanel = get_node("/root/Game/CLUI/HintPanel")

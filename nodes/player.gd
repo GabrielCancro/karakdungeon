@@ -65,7 +65,7 @@ func move_to(dx,dy):
 
 func teleport_to(xx,yy):
 	var room = DungeonManager.get_or_create_one_room(xx,yy)
-	print("TELEPORT ",room)
+	#print("TELEPORT ",room)
 	if room:
 		data.x = xx
 		data.y = yy

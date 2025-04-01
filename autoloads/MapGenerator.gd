@@ -100,7 +100,7 @@ func add_one_random_door():
 			return
 
 func remove_unconnected_doors():
-	print("REMOVE UNCONNECTED DOORS")
+	#print("REMOVE UNCONNECTED DOORS")
 	for key in map:
 		var room_data = map[key]
 		if room_data.doors.up: room_data.doors.up = (get_room_data(room_data.x,room_data.y-1) != null)
@@ -141,7 +141,7 @@ func add_defiances():
 		var k = keys.pop_back()
 		if k=="0x0": continue
 		map[k]["defiance"] = d
-		print(d," in ",k)
+		#print(d," in ",k)
 
 func get_rnd(arr):
 	randomize()

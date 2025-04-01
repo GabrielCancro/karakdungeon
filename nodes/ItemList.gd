@@ -16,7 +16,7 @@ func update_item_list():
 	Utils.remove_all_childs($Items)
 	var party_items = ItemManager.get_party_items()
 	$Items.columns = 1+floor((party_items.keys().size()-1)/5)
-	print("@COLUMNS   ",$Items.columns)
+	#print("@COLUMNS   ",$Items.columns)
 	for it_name in party_items.keys():
 		var itnode = preload("res://nodes/ItemNode.tscn").instance()
 		itnode.set_data(party_items[it_name])

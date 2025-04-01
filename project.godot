@@ -27,6 +27,7 @@ TurnManager="*res://autoloads/TurnManager.gd"
 MapGenerator="*res://autoloads/MapGenerator.gd"
 ItemManager="*res://autoloads/ItemManager.gd"
 AdaptativeHintAuto="*res://addons/AdaptativeHint/AdaptativeHintAuto.gd"
+LittleGS="*res://addons/LittleGameSettings/LittleGameSettingsAuto.gd"
 
 [display]
 
@@ -39,7 +40,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/AdaptativeHint/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/AdaptativeHint/plugin.cfg", "res://addons/LittleGameSettings/plugin.cfg" )
 
 [gui]
 

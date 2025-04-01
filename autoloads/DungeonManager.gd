@@ -28,8 +28,8 @@ func goto_next_level():
 	total_defs = 0
 	resolved_defs = 0
 	for r in map: if "defiance" in map[r]: total_defs += 1
-	print("TOTAL DEFIANCES ",total_defs)
-	print("KEY IN ",floor(total_defs*0.8))
+	#print("TOTAL DEFIANCES ",total_defs)
+	#print("KEY IN ",floor(total_defs*0.8))
 	for p in PlayerManager.PLAYERS: 
 		if p.hp<=0: p.node.visible = false
 		p.node.teleport_to(0,0)
@@ -93,7 +93,7 @@ func set_current_room(dx,dy):
 	if !def or (def.type!="door" and def.type!="enemy" and def.type!="block"): 
 		DungeonManager.create_dungeon_nodes(dx,dy)
 	emit_signal("change_room")
-	if current_room: print("CURRENT ROOM ",current_room.data)
+	#if current_room: print("CURRENT ROOM ",current_room.data)
 
 func reset_current_room():
 	set_current_room(current_room.data.x, current_room.data.y)
@@ -113,12 +113,12 @@ func get_key():
 	Effector.appear(key)
 	yield(get_tree().create_timer(1),"timeout")
 	Effector.scale_boom(key)
-	print(get_node("/root/Game/CLUI/KeyOut").rect_global_position)
+	#print(get_node("/root/Game/CLUI/KeyOut").rect_global_position)
 	Effector.move_to(key,get_node("/root/Game/CLUI/KeyOut").rect_global_position)
 
 func on_resolve_defiance():
 	resolved_defs += 1
-	print("RESOLVED ",resolved_defs,"/",total_defs)
+	#("RESOLVED ",resolved_defs,"/",total_defs)
 	if !have_key && resolved_defs>=floor(total_defs*0.8): get_key()
 
 func find_hide_defiances(xx,yy):
@@ -129,7 +129,7 @@ func find_hide_defiances(xx,yy):
 	if "defiance" in rnode.data && "hide" in rnode.data.defiance && rnode.data.defiance.hide:
 		randomize()
 		var percept = 25 + PlayerManager.get_dice_amount("EY")*25
-		print("PERCENT ",percept)
+		#print("PERCENT ",percept)
 		if randi()%100 < percept: rnode.show_hiden_defiance()
 
 func set_torch(val):
