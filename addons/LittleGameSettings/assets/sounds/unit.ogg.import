@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/unit.ogg-f9da4587bc2fe0d06bdc6f2fca81515a.oggstr"
+
+[deps]
+
+source_file="res://addons/LittleGameSettings/assets/sounds/unit.ogg"
+dest_files=[ "res://.import/unit.ogg-f9da4587bc2fe0d06bdc6f2fca81515a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

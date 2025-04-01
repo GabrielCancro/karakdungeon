@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/healt.ogg-52fa4ffa1d5b5ad96a760501e938337d.oggstr"
+
+[deps]
+
+source_file="res://addons/LittleGameSettings/assets/sounds/healt.ogg"
+dest_files=[ "res://.import/healt.ogg-52fa4ffa1d5b5ad96a760501e938337d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

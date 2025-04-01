@@ -12,5 +12,7 @@ It will have:
 -Save Game Data and Settings Data
 
 -Localization to some languajes
+signal lenguaje_change is wanted when you need relocalizate strings in the current scene
 
 -Basic Sound and music manager with a little reusable sfx collection
+files in .ogg only

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/stash.ogg-35a12a347389b36cab789110b4db9200.oggstr"
+
+[deps]
+
+source_file="res://addons/LittleGameSettings/assets/sounds/stash.ogg"
+dest_files=[ "res://.import/stash.ogg-35a12a347389b36cab789110b4db9200.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

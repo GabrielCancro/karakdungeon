@@ -1,6 +1,7 @@
 extends Node
 
 var ManagerNode
+signal languaje_change(lang)
 
 func _ready():
 	ManagerNode = preload("res://addons/LittleGameSettings/LittleGameSettingsManagerNode.tscn").instance()
@@ -17,6 +18,18 @@ func save_data(_data):
 func load_data():
 	return ManagerNode.load_custom_data()
 
+func clear_all_user_data():
+	ManagerNode.clear_data()
+
 #get localizated by current languaje string setted in assets/localizated_strings.gd
 func get_loc_str(code):
 	return ManagerNode.get_localizated_string(code)
+
+func play_sound(name):
+	ManagerNode.play_sound(name)
+
+func play_music(name=null):
+	ManagerNode.play_music(name)
+
+func stop_music():
+	ManagerNode.stop_music()

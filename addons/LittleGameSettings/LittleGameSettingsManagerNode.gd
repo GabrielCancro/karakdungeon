@@ -1,5 +1,8 @@
 extends Node
 
+func _ready():
+	initialize_manager()
+
 ##FULLSCREEN
 func toogle_fullscreen():
 	settings_data.fullscreen = !OS.window_fullscreen
@@ -25,10 +28,7 @@ func get_localizated_string(code):
 	else: return key
 
 ##SAVEDATA SETTINGS
-var settings_data = {'fullscreen':true, 'lang_index':0}
-
-func _ready():
-	load_settings_data()
+var settings_data = {'version':1, 'fullscreen':true, 'lang_index':0, 'sfx_vol':100, 'music_vol':100}
 
 func save_settings_data():
 	var file = File.new()
@@ -41,8 +41,8 @@ func load_settings_data():
 	file.open("user://settings.res", File.READ)
 	var loaded_data = str2var(file.get_as_text())
 	file.close()
-	if(loaded_data): settings_data = loaded_data
-	OS.window_fullscreen = settings_data.fullscreen
+	if(loaded_data && "version" in loaded_data && loaded_data.version>=settings_data.version):
+		settings_data = loaded_data
 
 ##SAVEDATA CUSTOM
 func save_custom_data(_data):
@@ -66,4 +66,57 @@ func clear_data():
 		dir.remove("user://settings.res")
 	if file.file_exists("user://savedata.res"):
 		dir.remove("user://savedata.res")
-	get_tree().quit()
+	#get_tree().quit()
+
+#SOUNDS AND MUSIC
+var preload_sounds = []
+var current_music
+
+func play_sound(name):
+	var audio = AudioStreamPlayer.new()
+	audio.set_bus("sfx")
+	add_child(audio)
+	audio.stream = load("res://addons/LittleGameSettings/assets/sounds/"+name+".ogg")
+	audio.stream.loop = false
+	audio.play()
+	yield(audio,"finished")
+	audio.queue_free()
+
+func play_music(name=null):
+	if name:
+		current_music.stream = load("res://addons/LittleGameSettings/assets/sounds/"+name+".ogg")
+		assert(current_music.stream) #THE SOUND FILE DONT LOADED!!
+		current_music.stream.loop = true
+	if current_music:
+		current_music.play()
+
+func stop_music():
+	if current_music:
+		current_music.stop()
+
+func set_vol(val=100,bus="Master"):
+	var db = (val-100)*0.33
+	var bus_index = AudioServer.get_bus_index(bus)
+	AudioServer.set_bus_volume_db(bus_index, db )
+	AudioServer.set_bus_mute(bus_index, (val==0) )
+	settings_data[bus+"_vol"] = val
+	save_settings_data()
+
+func get_vol(bus="Master"):
+	var bus_index = AudioServer.get_bus_index(bus)
+	var db = AudioServer.get_bus_volume_db(bus_index)
+	if AudioServer.is_bus_mute(bus_index): return 0
+	else: return floor(db/0.33+100)
+
+func initialize_manager():
+	load_settings_data()
+	OS.window_fullscreen = settings_data.fullscreen
+	AudioServer.add_bus(1)
+	AudioServer.set_bus_name(1,"sfx")
+	AudioServer.add_bus(2)
+	AudioServer.set_bus_name(2,"music")
+	set_vol(settings_data.sfx_vol,"sfx")
+	set_vol(settings_data.music_vol,"music")
+	current_music = AudioStreamPlayer.new()
+	current_music.set_bus("music")
+	add_child(current_music)

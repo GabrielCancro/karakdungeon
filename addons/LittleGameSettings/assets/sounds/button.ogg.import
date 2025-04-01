@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/button.ogg-31daab0863ac51657ea7f0792b909d5b.oggstr"
+
+[deps]
+
+source_file="res://addons/LittleGameSettings/assets/sounds/button.ogg"
+dest_files=[ "res://.import/button.ogg-31daab0863ac51657ea7f0792b909d5b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

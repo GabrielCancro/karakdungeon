@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/thundre.ogg-e41492a659846cf0a529fb88551b94e3.oggstr"
+
+[deps]
+
+source_file="res://addons/LittleGameSettings/assets/sounds/thundre.ogg"
+dest_files=[ "res://.import/thundre.ogg-e41492a659846cf0a529fb88551b94e3.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

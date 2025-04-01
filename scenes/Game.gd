@@ -5,6 +5,22 @@ func _ready():
 	DungeonManager.goto_next_level()
 	
 	LittleGS.add_options_panel_to_scene(self)
+	LittleGS.play_music("music01")
+	LittleGS.play_sound("wind")
+	
+	#1 load you custom data
+	var my_data = LittleGS.load_data()
+	#2 if is not initialized, set start values
+	if !"start_amount" in my_data: my_data = {"start_amount":0}
+	#3 modify your custom data
+	my_data["start_amount"] += 1
+	#4 save data in permanent file
+	LittleGS.save_data(my_data)
+	#5 print values
+	print(my_data)
+	
+	#you can clear all saved data
+	#LittleGS.clear_all_user_data()
 	
 	AdaptativeHintAuto.add_hint($CLUI/KeyOut,Lang.get_text("hint_key"))
 	AdaptativeHintAuto.add_hint($CLUI/Torch,Lang.get_text("hint_torch"))

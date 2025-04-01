@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ico_fullscreen.png-241e7a1a9d4d44935b2ae5ef7f8bb50e.stex"
+path="res://.import/ico_languaje.png-ff1394ceecc740d6a9caa2437491039c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/LittleGameSettings/assets/ico_fullscreen.png"
-dest_files=[ "res://.import/ico_fullscreen.png-241e7a1a9d4d44935b2ae5ef7f8bb50e.stex" ]
+source_file="res://assets/items/ico_languaje.png"
+dest_files=[ "res://.import/ico_languaje.png-ff1394ceecc740d6a9caa2437491039c.stex" ]
 
 [params]
 
