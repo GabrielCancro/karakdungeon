@@ -20,6 +20,7 @@ func _ready():
 func goto_next_level():
 	dungeon_level += 1
 	set_torch( 10 + 5 * dungeon_level )
+	ItemManager.recover_uses()
 	Utils.remove_all_childs(get_node("/root/Game/Map"))
 	get_node("/root/Game/CLUI/Key").visible = false
 	have_key = false

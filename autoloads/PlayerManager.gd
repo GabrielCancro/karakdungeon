@@ -1,14 +1,14 @@
 extends Node
 
 var PLAYERS = []
-
+var PLAYERS_ID_ARRAY = [0,1,2]#FROM PJSELECTION
 var PLAYERS_BASE_DATA = [
 	{"name":"Maikki",
 		"retrait": preload("res://assets/retraits/retrait_1.png"),
 		"dices": [
-			["NN","NN","SW","BT","HN","EY"],
-			["NN","NN","SW","SW","SW","BT"],
-			["SW","BT","BT","BT","HN","EY"],
+			["NN","NN","SW","BT","HN","EY"], #NETRAL
+			["NN","NN","SW","SW","SW","BT"], #COMBAT
+			["SW","BT","BT","BT","HN","EY"], #DEXTRE
 		],
 		"hpm":5, "movm":5, "item":null},
 		
@@ -17,7 +17,7 @@ var PLAYERS_BASE_DATA = [
 		"dices": [
 			["NN","NN","SW","BT","HN","EY"],
 			["NN","NN","SW","SW","SW","BT"],
-			["NN","BT","HN","EY","HN","EY"],
+			["NN","BT","HN","EY","HN","EY"], #ASTUTE
 		],
 		"hpm":5, "movm":5, "item":"thief_knife"},
 		
@@ -38,7 +38,7 @@ var PLAYERS_BASE_DATA = [
 			["NN","BT","HN","EY","HN","EY"],
 			["SW","BT","BT","BT","HN","EY"],
 		],
-		"hpm":5, "movm":5, "item":null},
+		"hpm":4, "movm":5, "item":null},
 	
 	{"name":"Bharash",
 		"retrait": preload("res://assets/retraits/retrait_5.png"),
@@ -49,24 +49,26 @@ var PLAYERS_BASE_DATA = [
 		],
 		"hpm":6, "movm":4, "item":null},
 		
-		
+	{"name":"Kythana",
+		"retrait": preload("res://assets/retraits/retrait_6.png"),
+		"dices": [
+			["NN","NN","SW","BT","HN","EY"],
+			["NN","NN","SW","SW","SW","BT"],
+			["NN","BT","HN","EY","HN","EY"],
+		],
+		"hpm":5, "movm":5, "item":"healing_stuff"},
 ]
 
 func add_player(player_node):
-	var data = {"id":null, "x":1, "y":0, "h":0, "v":1, 
-		"node":null, "ui":null, "action":true}
-	PLAYERS.append(data)
-	data["id"] = PLAYERS.size()
-	data["ui"] = get_node("/root/Game/CLUI/PlayerUI"+str(data["id"]))
-	data["node"] = player_node
-	data["hpm"] = PLAYERS_BASE_DATA[data["id"]-1]["hpm"]
+	var player_index = PLAYERS.size()+1
+	var ui = get_node("/root/Game/CLUI/PlayerUI"+str(player_index))
+	var data = {"id":player_index, "x":1, "y":0, "h":0, "v":1, "node":player_node, "ui":ui, "action":true}
+	data.merge( PLAYERS_BASE_DATA[PLAYERS_ID_ARRAY[player_index-1]] )
 	data["hp"] = data["hpm"]
-	data["movm"] = PLAYERS_BASE_DATA[data["id"]-1]["hpm"]
 	data["mov"] = data["movm"]
-	data["retrait"] = PLAYERS_BASE_DATA[data["id"]-1]["retrait"]
-	data["dices"] = PLAYERS_BASE_DATA[data["id"]-1]["dices"]
-	data["name"] = PLAYERS_BASE_DATA[data["id"]-1]["name"]
-	data["ui"].set_player(data["id"])
+	PLAYERS.append(data)
+	data["ui"].set_player(player_index)
+	if data["item"]: ItemManager.add_item(data["item"])
 	return data
 
 func get_current_player_dices():

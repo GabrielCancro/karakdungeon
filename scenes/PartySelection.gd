@@ -19,6 +19,7 @@ func _ready():
 	#you can clear all saved data
 	#LittleGS.clear_all_user_data()
 	
+	$Button.visible = false
 	
 	$Button.connect("button_down",self,"on_button_click")
 	Utils.remove_all_childs($HBox)
@@ -29,12 +30,14 @@ func _ready():
 		node.get_node("Button").connect("button_down",self,"on_select_button_click",[node])
 
 func on_button_click():
+	PlayerManager.PLAYERS_ID_ARRAY = get_players_selected()
 	get_tree().change_scene("res://scenes/Game.tscn")
 
 func on_select_button_click(node):
 	var scolor = node.get_node("SelectColor")
+	if get_players_selected().size()>=3 && !scolor.visible: return
 	scolor.visible = !scolor.visible
-	print("SELECTED ",get_players_selected())
+	$Button.visible = (get_players_selected().size()==3)
 
 func get_players_selected():
 	var arr = []

@@ -12,6 +12,7 @@ func set_player(id):
 	data = PlayerManager.get_player_data(id)
 	$TextureProgress.texture_under = data.retrait
 	$TextureProgress.texture_progress = data.retrait
+	$lb_name.text = data.name
 	restore_original_dices()
 	updateUI()
 

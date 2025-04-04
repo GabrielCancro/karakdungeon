@@ -6,6 +6,7 @@ var ALL_ITEMS = {
 	"travel_boots":{"uses":2,"tier":1},
 	"picklock":{"uses":2,"tier":1},
 	"thief_knife":{"uses":2,"tier":1},
+	"healing_stuff":{"uses":2,"tier":2,"reload":true},
 	#"blood_amulet":{"uses":2},
 	#"magic_missile":{"uses":2},
 }
@@ -14,7 +15,7 @@ var PARTY_ITEMS = {}
 var item
 
 func _ready():
-	for i in ALL_ITEMS.keys(): add_item(i)
+	#for i in ALL_ITEMS.keys(): add_item(i)
 	pass
 
 func get_item_data(code):
@@ -41,7 +42,7 @@ func add_rnd_item(tier=null):
 
 func recover_uses():
 	for it in PARTY_ITEMS:
-		if "uses" in it: it.uses = it.usesm
+		if "reload" in it && it.reload: it.uses = it.usesm
 	update_item_list()
 
 func get_party_items():
@@ -95,3 +96,9 @@ func on_use_thief_knife(item):
 	DungeonManager.current_player.ui.quit_dice("HN")
 	DungeonManager.current_player.ui.add_dice_face("SW")
 	DungeonManager.current_player.ui.add_dice_face("SW")
+
+func condition_healing_stuff(item): return (PlayerManager.get_dice_amount("EY")>=1) && (DungeonManager.current_player.hp<DungeonManager.current_player.hpm)
+func on_use_healing_stuff(item): 
+	DungeonManager.current_player.ui.quit_dice("EY")
+	PlayerManager.heal_player(DungeonManager.current_player.id,1)
+

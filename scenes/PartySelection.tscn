@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://nodes/PjSelectUI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/PartySelection.gd" type="Script" id=2]
 [ext_resource path="res://assets/floor1.png" type="Texture" id=3]
+[ext_resource path="res://assets/font/AbyssinicaSIL-Regular.ttf" type="DynamicFontData" id=4]
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id=5]
 code = "shader_type canvas_item;
 
 uniform float strength : hint_range(0.0, 1.0) = 0.4;
@@ -42,9 +43,20 @@ void fragment() {
 }"
 
 [sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
+shader = SubResource( 5 )
 shader_param/strength = 0.105
 shader_param/speed = 0.077
+
+[sub_resource type="DynamicFont" id=4]
+size = 44
+outline_size = 5
+outline_color = Color( 0.2, 0.2, 0.2, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 44
+outline_color = Color( 0.2, 0.2, 0.2, 1 )
+font_data = ExtResource( 4 )
 
 [node name="PartySelection" type="Control"]
 anchor_right = 1.0
@@ -60,40 +72,83 @@ texture = ExtResource( 3 )
 expand = true
 stretch_mode = 2
 
-[node name="Button" type="Button" parent="."]
-margin_left = 1388.0
-margin_top = 776.0
-margin_right = 1562.0
-margin_bottom = 870.0
+[node name="lb_name" type="Label" parent="."]
+anchor_right = 1.0
+margin_left = 1.0
+margin_top = 5.0
+margin_right = -1.0
+margin_bottom = 86.0
+custom_colors/font_color = Color( 0.780392, 0.803922, 0.486275, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "ELIGE TRES HEROES PARA BAJAR AL DUNGEON!"
+align = 1
+valign = 1
+clip_text = true
 
 [node name="HBox" type="GridContainer" parent="."]
-margin_left = 90.0
-margin_top = 60.0
-margin_right = 998.0
-margin_bottom = 764.0
-custom_constants/vseparation = 50
-custom_constants/hseparation = 50
-columns = 3
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -622.5
+margin_top = -350.5
+margin_right = 622.5
+margin_bottom = 404.5
+custom_constants/vseparation = 15
+custom_constants/hseparation = 15
+columns = 4
 
 [node name="PJSelectUI" parent="HBox" instance=ExtResource( 1 )]
 margin_bottom = 370.0
 
 [node name="PJSelectUI2" parent="HBox" instance=ExtResource( 1 )]
-margin_left = 350.0
-margin_right = 650.0
+margin_left = 315.0
+margin_right = 615.0
 margin_bottom = 370.0
 
 [node name="PJSelectUI3" parent="HBox" instance=ExtResource( 1 )]
-margin_left = 700.0
-margin_right = 1000.0
+margin_left = 630.0
+margin_right = 930.0
 margin_bottom = 370.0
 
 [node name="PJSelectUI4" parent="HBox" instance=ExtResource( 1 )]
-margin_top = 420.0
-margin_bottom = 790.0
+margin_left = 945.0
+margin_right = 1245.0
+margin_bottom = 370.0
 
 [node name="PJSelectUI5" parent="HBox" instance=ExtResource( 1 )]
-margin_left = 350.0
-margin_top = 420.0
-margin_right = 650.0
-margin_bottom = 790.0
+margin_top = 385.0
+margin_bottom = 755.0
+
+[node name="PJSelectUI6" parent="HBox" instance=ExtResource( 1 )]
+margin_left = 315.0
+margin_top = 385.0
+margin_right = 615.0
+margin_bottom = 755.0
+
+[node name="Button" type="Button" parent="."]
+margin_left = 1144.0
+margin_top = 733.0
+margin_right = 1426.0
+margin_bottom = 854.0
+focus_mode = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.0745098, 0.0745098, 0.0745098, 1 )
+
+[node name="lb_name2" type="Label" parent="Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.780392, 0.803922, 0.486275, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "GOTO
+DUNGEON"
+align = 1
+valign = 1
+clip_text = true

@@ -38,7 +38,9 @@ var texts = {
 	"it_picklock_name_es":"Ganzuas",
 	"it_picklock_desc_es":"Pierdes @EY pero ganas @HN@HN",
 	"it_thief_knife_name_es":"Daga de ladron",
-	"it_thief_knife_desc_es":"Pierdes @BT@HN pero ganas @SW@SW",
+	"it_thief_knife_desc_es":"Pierdes @BT@HN y ganas @SW@SW",
+	"it_healing_stuff_name_es":"Baston curativo",
+	"it_healing_stuff_desc_es":"Pierdes @EY y recuperas +1HP",
 	
 
 	"tuto_start_es":"Bienvenido a tu primer mazmorra!\nTe enseñaré lo básico para que puedas jugar..",
