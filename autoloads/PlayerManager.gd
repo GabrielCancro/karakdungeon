@@ -8,9 +8,9 @@ var PLAYERS_BASE_DATA = [
 		"dices": [
 			["NN","NN","SW","BT","HN","EY"],
 			["NN","NN","SW","SW","SW","BT"],
-			["NN","NN","SW","SW","SW","BT"],
+			["SW","BT","BT","BT","HN","EY"],
 		],
-		"hpm":5, "movm":5, "items":[]},
+		"hpm":5, "movm":5, "item":null},
 		
 	{"name":"Finnius",
 		"retrait": preload("res://assets/retraits/retrait_2.png"),
@@ -19,7 +19,7 @@ var PLAYERS_BASE_DATA = [
 			["NN","NN","SW","SW","SW","BT"],
 			["NN","BT","HN","EY","HN","EY"],
 		],
-		"hpm":5, "movm":5, "items":["thief_knife"]},
+		"hpm":5, "movm":5, "item":"thief_knife"},
 		
 	{"name":"Tarhun",
 		"retrait": preload("res://assets/retraits/retrait_3.png"),
@@ -28,7 +28,28 @@ var PLAYERS_BASE_DATA = [
 			["NN","BT","HN","EY","HN","EY"],
 			["SW","BT","BT","BT","HN","EY"],
 		],
-		"hpm":5, "movm":5, "items":[]},
+		"hpm":5, "movm":5, "item":null},
+	
+	{"name":"Kahne",
+		"retrait": preload("res://assets/retraits/retrait_4.png"),
+		"dices": [
+			["NN","NN","SW","BT","HN","EY"],
+			["NN","NN","SW","BT","HN","EY"],
+			["NN","BT","HN","EY","HN","EY"],
+			["SW","BT","BT","BT","HN","EY"],
+		],
+		"hpm":5, "movm":5, "item":null},
+	
+	{"name":"Bharash",
+		"retrait": preload("res://assets/retraits/retrait_5.png"),
+		"dices": [
+			["NN","NN","SW","BT","HN","EY"],
+			["NN","NN","SW","SW","SW","BT"],
+			["NN","NN","SW","SW","SW","BT"],
+		],
+		"hpm":6, "movm":4, "item":null},
+		
+		
 ]
 
 func add_player(player_node):

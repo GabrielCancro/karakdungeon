@@ -1,52 +1,99 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://nodes/PjSelectUI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/PartySelection.gd" type="Script" id=2]
+[ext_resource path="res://assets/floor1.png" type="Texture" id=3]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float strength : hint_range(0.0, 1.0) = 0.4;
+uniform float speed : hint_range(0.0, 2.0) = 0.333;
+
+void fragment() {
+  float t = TIME * speed;
+
+  vec3 col = vec3(0.0);
+   
+  vec2 res=1.0/SCREEN_PIXEL_SIZE;
+
+  // Convert SCREEN_UV to range [-1, 1], centering it
+  vec2 pos = SCREEN_UV * 2.0 - 1.0;
+   
+  // Preserve aspect ratio manually using the screen resolution uniform
+  pos.y *= (res.y / res.x);
+   
+  pos *= 4.0; // Scale up for a larger effect
+
+  for (float k = 1.0; k < 7.0; k += 1.0) { 
+    pos.x += strength * sin(2.0 * t + k * 1.5 * pos.y) + t * 0.5;
+    pos.y += strength * cos(2.0 * t + k * 1.5 * pos.x);
+  }
+
+  // Color calculation using time and position
+  col += 0.2+0.1 * cos(TIME + pos.xxx + vec3(0.0, 1.0, 2.0));
+
+  // Gamma correction
+  col = pow(col, vec3(0.4545));
+
+  // Set final output
+  COLOR.rgb = col;
+  COLOR.a = 1.0;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/strength = 0.105
+shader_param/speed = 0.077
 
 [node name="PartySelection" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
 
-[node name="HBox" type="HBoxContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color( 0.658824, 0.658824, 0.658824, 1 )
+material = SubResource( 2 )
 anchor_right = 1.0
-margin_top = 120.0
-margin_bottom = 635.0
-custom_constants/separation = 12
-alignment = 1
-
-[node name="PJSelectUI" parent="HBox" instance=ExtResource( 1 )]
-margin_left = 26.0
-margin_right = 326.0
-margin_bottom = 515.0
-rect_min_size = Vector2( 300, 515 )
-
-[node name="PJSelectUI2" parent="HBox" instance=ExtResource( 1 )]
-margin_left = 338.0
-margin_right = 638.0
-margin_bottom = 515.0
-rect_min_size = Vector2( 300, 515 )
-
-[node name="PJSelectUI3" parent="HBox" instance=ExtResource( 1 )]
-margin_left = 650.0
-margin_right = 950.0
-margin_bottom = 515.0
-rect_min_size = Vector2( 300, 515 )
-
-[node name="PJSelectUI4" parent="HBox" instance=ExtResource( 1 )]
-margin_left = 962.0
-margin_right = 1262.0
-margin_bottom = 515.0
-rect_min_size = Vector2( 300, 515 )
-
-[node name="PJSelectUI5" parent="HBox" instance=ExtResource( 1 )]
-margin_left = 1274.0
-margin_right = 1574.0
-margin_bottom = 515.0
-rect_min_size = Vector2( 300, 515 )
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 2
 
 [node name="Button" type="Button" parent="."]
-margin_left = 706.0
-margin_top = 774.0
-margin_right = 918.0
-margin_bottom = 848.0
+margin_left = 1388.0
+margin_top = 776.0
+margin_right = 1562.0
+margin_bottom = 870.0
+
+[node name="HBox" type="GridContainer" parent="."]
+margin_left = 90.0
+margin_top = 60.0
+margin_right = 998.0
+margin_bottom = 764.0
+custom_constants/vseparation = 50
+custom_constants/hseparation = 50
+columns = 3
+
+[node name="PJSelectUI" parent="HBox" instance=ExtResource( 1 )]
+margin_bottom = 370.0
+
+[node name="PJSelectUI2" parent="HBox" instance=ExtResource( 1 )]
+margin_left = 350.0
+margin_right = 650.0
+margin_bottom = 370.0
+
+[node name="PJSelectUI3" parent="HBox" instance=ExtResource( 1 )]
+margin_left = 700.0
+margin_right = 1000.0
+margin_bottom = 370.0
+
+[node name="PJSelectUI4" parent="HBox" instance=ExtResource( 1 )]
+margin_top = 420.0
+margin_bottom = 790.0
+
+[node name="PJSelectUI5" parent="HBox" instance=ExtResource( 1 )]
+margin_left = 350.0
+margin_top = 420.0
+margin_right = 650.0
+margin_bottom = 790.0
