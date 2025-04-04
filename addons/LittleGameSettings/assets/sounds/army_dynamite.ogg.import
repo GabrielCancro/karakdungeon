@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/army_dynamite.ogg-93221e7fcbff36bdb609f5bb3f063431.oggstr"
+
+[deps]
+
+source_file="res://addons/LittleGameSettings/assets/sounds/army_dynamite.ogg"
+dest_files=[ "res://.import/army_dynamite.ogg-93221e7fcbff36bdb609f5bb3f063431.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

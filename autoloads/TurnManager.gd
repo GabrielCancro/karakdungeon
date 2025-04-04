@@ -48,6 +48,7 @@ func enemy_attack(def,pj):
 
 func end_turn():
 	Utils.disable_input(2)
+	LittleGS.play_sound("wind",60)
 	get_node("/root/Game/CLUI/ActionList").visible = false
 	get_node("/root/Game/CLUI/EndTurnButton").modulate = Color(.3,.3,.3,1)
 	for p in PlayerManager.PLAYERS:

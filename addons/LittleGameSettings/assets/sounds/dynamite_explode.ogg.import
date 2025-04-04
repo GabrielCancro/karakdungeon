@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/dynamite_explode.ogg-900bc8929c078b2620b3bc7f81aec2f5.oggstr"
+
+[deps]
+
+source_file="res://addons/LittleGameSettings/assets/sounds/dynamite_explode.ogg"
+dest_files=[ "res://.import/dynamite_explode.ogg-900bc8929c078b2620b3bc7f81aec2f5.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

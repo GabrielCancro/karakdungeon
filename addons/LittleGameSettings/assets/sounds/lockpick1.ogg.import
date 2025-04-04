@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/lockpick1.ogg-99f62f5a248ddd14756c6c786c23d02f.oggstr"
+
+[deps]
+
+source_file="res://addons/LittleGameSettings/assets/sounds/lockpick1.ogg"
+dest_files=[ "res://.import/lockpick1.ogg-99f62f5a248ddd14756c6c786c23d02f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

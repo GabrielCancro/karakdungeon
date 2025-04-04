@@ -31,8 +31,6 @@ func _ready():
 func on_button_click():
 	$Button.disabled = true
 	PlayerManager.PLAYERS_ID_ARRAY = get_players_selected()
-	LittleGS.play_sound("wind",60)
-	yield(get_tree().create_timer(.2),"timeout")
 	get_tree().change_scene("res://scenes/Game.tscn")
 
 func on_select_button_click(node):

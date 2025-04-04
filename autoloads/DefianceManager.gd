@@ -7,10 +7,10 @@ var DEFIANCES = {
 	"rat":{"type":"enemy", "hp":3, "dam":1},
 	"bat":{"type":"enemy", "hp":2, "dam":1},
 	"trap":{"type":"trap", "dif":4,"dam":2},
-	"door":{"type":"door", "req":["HN","EY"]},
+	"door":{"type":"door", "req":["HN","EY"],"snd":"open"},
 	"debris":{"type":"block", "hp":3, "give_item":0.2},
-	"wchest":{"type":"chest","tier":1, "req":["HN","HN"]},
-	"chest":{"type":"chest","tier":2, "req":["HN","HN","HN","EY","EY"]},
+	"wchest":{"type":"chest","tier":1, "req":["HN","HN"],"snd":"open"},
+	"chest":{"type":"chest","tier":2, "req":["HN","HN","HN","EY","EY"],"snd":"open"},
 	"stairs":{"type":"stairs"},
 	"fountain":{"type":"fountain","uses":2},
 }
@@ -38,6 +38,8 @@ func get_random_defiance(perc = 100):
 func resolve_current_defiance():
 	check_chest_resolved()
 	if check_give_item_on_resolve(): yield(get_tree().create_timer(.5),"timeout")
+	var def = DungeonManager.current_room.data.defiance
+	if "snd" in def: LittleGS.play_sound(def.snd)
 	var croom = DungeonManager.current_room.data.erase("defiance")
 	DungeonManager.force_update()
 	yield(get_tree().create_timer(.5),"timeout")

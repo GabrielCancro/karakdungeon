@@ -135,7 +135,7 @@ func damage_current_player(dam):
 func damage_player(id,dam):
 	var player = PlayerManager.get_player_data(id)
 	Effector.scale_boom(player.node)
-	LittleGS.play_sound("hit")
+	LittleGS.play_sound("hit1")
 	player.hp -= dam
 	if player.hp <=0:
 		player.hp = 0

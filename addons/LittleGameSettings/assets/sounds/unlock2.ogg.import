@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/unlock2.ogg-b836d5e91a1347bf43f3a21c7e369fb3.oggstr"
+
+[deps]
+
+source_file="res://addons/LittleGameSettings/assets/sounds/unlock2.ogg"
+dest_files=[ "res://.import/unlock2.ogg-b836d5e91a1347bf43f3a21c7e369fb3.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

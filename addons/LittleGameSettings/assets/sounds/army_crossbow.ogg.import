@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/army_crossbow.ogg-f23cf4a9fc217709b9e0c11b692d52c5.oggstr"
+
+[deps]
+
+source_file="res://addons/LittleGameSettings/assets/sounds/army_crossbow.ogg"
+dest_files=[ "res://.import/army_crossbow.ogg-f23cf4a9fc217709b9e0c11b692d52c5.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

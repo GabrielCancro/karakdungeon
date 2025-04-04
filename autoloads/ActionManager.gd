@@ -75,16 +75,21 @@ func check_action_dissarm(): return (def.type == "trap")
 func run_action_dissarm():
 	var defUI = get_node("/root/Game/CLUI/DefianceUI")
 	defUI.dif_test.roll()
+	LittleGS.play_sound("lockpick1")
 	var result = yield(defUI.dif_test,"end_roll")
 	yield(get_tree().create_timer(1),"timeout")
 	if result=="FAIL": 
 		Effector.show_float_text("ACTIVATED!",room.position+Vector2(0,-100),"damage")
 		DefianceManager.activate_trap(def)
+		LittleGS.play_sound("lock2")
 		yield(get_tree().create_timer(1.5),"timeout")
 	elif result=="SUCCESS": 
+		LittleGS.play_sound("unlock3")
 		Effector.show_float_text("DISSARMED",room.position+Vector2(0,-100),"normal")
 		DefianceManager.resolve_current_defiance()
-	elif result=="NONE": Effector.show_float_text("NONE",room.position+Vector2(0,-100),"white")
+	elif result=="NONE": 
+		LittleGS.play_sound("lock2")
+		Effector.show_float_text("NONE",room.position+Vector2(0,-100),"white")
 	yield(get_tree().create_timer(.3),"timeout")
 	emit_signal("end_action",true)
 
@@ -99,7 +104,9 @@ func run_action_unlock():
 				def.req_solved[i] = true
 				have_unlocks = true
 				break
-	if have_unlocks: yield(get_tree().create_timer(.5),"timeout")
+	if have_unlocks: 
+		LittleGS.play_sound("lockpick1")
+		yield(get_tree().create_timer(.5),"timeout")
 	emit_signal("end_action",have_unlocks)
 
 func check_action_force(): return (def.type == "door" or def.type == "chest")

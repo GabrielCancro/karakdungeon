@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/army_rapier.ogg-36cc28017822114dc1a81b87b0c7a82f.oggstr"
+
+[deps]
+
+source_file="res://addons/LittleGameSettings/assets/sounds/army_rapier.ogg"
+dest_files=[ "res://.import/army_rapier.ogg-36cc28017822114dc1a81b87b0c7a82f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

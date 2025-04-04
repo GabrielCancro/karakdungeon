@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/player_damage.ogg-7d90f0021d27fa8da6e70cfae655dd78.oggstr"
+
+[deps]
+
+source_file="res://addons/LittleGameSettings/assets/sounds/player_damage.ogg"
+dest_files=[ "res://.import/player_damage.ogg-7d90f0021d27fa8da6e70cfae655dd78.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
