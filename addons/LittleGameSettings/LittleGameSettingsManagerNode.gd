@@ -72,22 +72,25 @@ func clear_data():
 var preload_sounds = []
 var current_music
 
-func play_sound(name):
+func play_sound(name,vol=100):
 	var audio = AudioStreamPlayer.new()
 	audio.set_bus("sfx")
 	add_child(audio)
 	audio.stream = load("res://addons/LittleGameSettings/assets/sounds/"+name+".ogg")
 	audio.stream.loop = false
+	audio.volume_db = (vol-100)*0.33
 	audio.play()
 	yield(audio,"finished")
 	audio.queue_free()
 
-func play_music(name=null):
+func play_music(name=null,vol=100):
 	if name:
 		current_music.stream = load("res://addons/LittleGameSettings/assets/sounds/"+name+".ogg")
 		assert(current_music.stream) #THE SOUND FILE DONT LOADED!!
 		current_music.stream.loop = true
+		current_music.volume_db = (vol-100)*0.33
 	if current_music:
+		current_music.volume_db = (vol-100)*0.33
 		current_music.play()
 
 func stop_music():

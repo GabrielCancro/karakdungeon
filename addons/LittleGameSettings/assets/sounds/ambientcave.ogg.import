@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ambientcave.ogg-cdc5efe9085acb80eb76fefa3f390d08.oggstr"
+
+[deps]
+
+source_file="res://addons/LittleGameSettings/assets/sounds/ambientcave.ogg"
+dest_files=[ "res://.import/ambientcave.ogg-cdc5efe9085acb80eb76fefa3f390d08.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -25,11 +25,11 @@ func clear_all_user_data():
 func get_loc_str(code):
 	return ManagerNode.get_localizated_string(code)
 
-func play_sound(name):
-	ManagerNode.play_sound(name)
+func play_sound(name,vol=100):
+	ManagerNode.play_sound(name,vol)
 
-func play_music(name=null):
-	ManagerNode.play_music(name)
+func play_music(name=null,vol=100):
+	ManagerNode.play_music(name,vol)
 
 func stop_music():
 	ManagerNode.stop_music()

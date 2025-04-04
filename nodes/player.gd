@@ -58,6 +58,7 @@ func move_to(dx,dy):
 		data.y = dest_mov.y
 		data.h = dest_mov.h
 		data.v = dest_mov.v
+		LittleGS.play_sound("step")
 		data.ui.updateUI()
 
 		DungeonManager.set_current_room(data.x,data.y)

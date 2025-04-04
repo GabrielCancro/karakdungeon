@@ -61,6 +61,7 @@ func run_action_attack():
 		var val = randi()%3
 		def.hp -= val
 		Effector.show_float_text("-"+str(val)+"HP",room.position+Vector2(0,-100+i*10),"damage")
+		LittleGS.play_sound("hit")
 		defUI.update()
 		Effector.move_to_yoyo(pj.node,(pj.node.global_position-pj.node.get_dest_pos())*0.5)
 		yield(get_tree().create_timer(.7),"timeout")

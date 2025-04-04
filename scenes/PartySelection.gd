@@ -2,8 +2,7 @@ extends Control
 
 func _ready():
 	LittleGS.add_options_panel_to_scene(self)
-	LittleGS.play_music("music01")
-	LittleGS.play_sound("wind")
+	LittleGS.play_music("ambientcave",70)
 	
 	#1 load you custom data
 	var my_data = LittleGS.load_data()
@@ -30,12 +29,16 @@ func _ready():
 		node.get_node("Button").connect("button_down",self,"on_select_button_click",[node])
 
 func on_button_click():
+	$Button.disabled = true
 	PlayerManager.PLAYERS_ID_ARRAY = get_players_selected()
+	LittleGS.play_sound("wind",60)
+	yield(get_tree().create_timer(.2),"timeout")
 	get_tree().change_scene("res://scenes/Game.tscn")
 
 func on_select_button_click(node):
 	var scolor = node.get_node("SelectColor")
 	if get_players_selected().size()>=3 && !scolor.visible: return
+	LittleGS.play_sound("button")
 	scolor.visible = !scolor.visible
 	$Button.visible = (get_players_selected().size()==3)
 
