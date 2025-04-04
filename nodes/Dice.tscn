@@ -8,7 +8,7 @@
 margin_right = 70.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 70, 70 )
-rect_pivot_offset = Vector2( 35, 35 )
+rect_pivot_offset = Vector2( -127, -16 )
 script = ExtResource( 1 )
 
 [node name="bg" type="TextureRect" parent="."]

@@ -20,8 +20,6 @@ func update_item_list():
 	for it_name in party_items.keys():
 		var itnode = preload("res://nodes/ItemNode.tscn").instance()
 		itnode.set_data(party_items[it_name])
-		var text = "[u][color=#90F090]"+Lang.get_text("it_"+it_name+"_name")+"[/color][/u]\n"+Lang.get_text("it_"+it_name+"_desc")
-		AdaptativeHintAuto.add_hint(itnode.get_node("Button"),text)
 		$Items.add_child(itnode)
 	update_usables()
 

@@ -7,7 +7,6 @@ func _ready():
 #	$Button.connect("mouse_entered",self,"on_button_hover",[true])
 #	$Button.connect("mouse_exited",self,"on_button_hover",[false])
 	$Button.connect("button_down",self,"on_click")
-	AdaptativeHintAuto.add_hint($Button2,Lang.get_text("hint_reload_item"))
 
 
 func set_data(it_data):
@@ -24,6 +23,9 @@ func set_data(it_data):
 			else: m.modulate = Color(0,0,0,0)
 	if reload: color = Color(.2,.2,0,1)
 	else: color = Color(0,.2,.35,1)
+	var text = "[u][color=#90F090]"+Lang.get_text("it_"+data.name+"_name")+"[/color][/u]\n"+Lang.get_text("it_"+data.name+"_desc")
+	AdaptativeHintAuto.add_hint($Button,text)
+	AdaptativeHintAuto.add_hint($Button2,Lang.get_text("hint_reload_item"))
 
 func on_click():
 	if Utils.is_input_disabled(): return

@@ -3,12 +3,12 @@ extends Node
 signal resolved_defiance()
 
 var DEFIANCES = {
-	"goblin":{"type":"enemy", "hp":5, "dam":2},
+	"goblin":{"type":"enemy", "hp":5, "dam":2, "give_item":0.5},
 	"rat":{"type":"enemy", "hp":3, "dam":1},
 	"bat":{"type":"enemy", "hp":2, "dam":1},
 	"trap":{"type":"trap", "dif":4,"dam":2},
 	"door":{"type":"door", "req":["HN","EY"]},
-	"debris":{"type":"block", "hp":3},
+	"debris":{"type":"block", "hp":3, "give_item":0.2},
 	"wchest":{"type":"chest","tier":1, "req":["HN","HN"]},
 	"chest":{"type":"chest","tier":2, "req":["HN","HN","HN","EY","EY"]},
 	"stairs":{"type":"stairs"},
@@ -37,6 +37,7 @@ func get_random_defiance(perc = 100):
 
 func resolve_current_defiance():
 	check_chest_resolved()
+	if check_give_item_on_resolve(): yield(get_tree().create_timer(.5),"timeout")
 	var croom = DungeonManager.current_room.data.erase("defiance")
 	DungeonManager.force_update()
 	yield(get_tree().create_timer(.5),"timeout")
@@ -59,3 +60,11 @@ func check_chest_resolved():
 	if def.type=="chest": 
 		var it_name = ItemManager.add_rnd_item(def.tier)
 		if it_name: get_node("/root/Game/CLUI/ItemList").play_take_item_anim(it_name)
+
+func check_give_item_on_resolve():
+	var def = DungeonManager.current_room.data.defiance
+	if def && "give_item" in def:
+		randomize()
+		if randf()<=def.give_item:
+			return ItemManager.add_rnd_item(1)
+	return false

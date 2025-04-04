@@ -1,0 +1,7 @@
+OK- ADD random item to goblin and debries
+- ADD sfx
+- ADD music
+- ADD main menu
+- Make 4 Dungeons
+- Make last Dungeon and final boss
+- Select Characters

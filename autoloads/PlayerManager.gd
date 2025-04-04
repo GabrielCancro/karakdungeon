@@ -2,30 +2,49 @@ extends Node
 
 var PLAYERS = []
 
+var PLAYERS_BASE_DATA = [
+	{"name":"Maikki",
+		"retrait": preload("res://assets/retraits/retrait_1.png"),
+		"dices": [
+			["NN","NN","SW","BT","HN","EY"],
+			["NN","NN","SW","SW","SW","BT"],
+			["NN","NN","SW","SW","SW","BT"],
+		],
+		"hpm":5, "movm":5, "items":[]},
+		
+	{"name":"Finnius",
+		"retrait": preload("res://assets/retraits/retrait_2.png"),
+		"dices": [
+			["NN","NN","SW","BT","HN","EY"],
+			["NN","NN","SW","SW","SW","BT"],
+			["NN","BT","HN","EY","HN","EY"],
+		],
+		"hpm":5, "movm":5, "items":["thief_knife"]},
+		
+	{"name":"Tarhun",
+		"retrait": preload("res://assets/retraits/retrait_3.png"),
+		"dices": [
+			["NN","NN","SW","BT","HN","EY"],
+			["NN","BT","HN","EY","HN","EY"],
+			["SW","BT","BT","BT","HN","EY"],
+		],
+		"hpm":5, "movm":5, "items":[]},
+]
+
 func add_player(player_node):
 	var data = {"id":null, "x":1, "y":0, "h":0, "v":1, 
-		"node":null, "ui":null, "action":true,
-		"hp":5,"hpm":5,"mov":5,"movm":5}
+		"node":null, "ui":null, "action":true}
 	PLAYERS.append(data)
 	data["id"] = PLAYERS.size()
 	data["ui"] = get_node("/root/Game/CLUI/PlayerUI"+str(data["id"]))
 	data["node"] = player_node
-	data["retrait"] = load("res://assets/retraits/retrait_"+str(data["id"])+".png")
-	if data["id"]==1: data["dices"] = [
-		["NN","NN","SW","BT","HN","EY"],
-		["NN","NN","SW","SW","SW","BT"],
-		["NN","NN","SW","SW","SW","BT"],
-	]
-	if data["id"]==2: data["dices"] = [
-		["NN","NN","SW","BT","HN","EY"],
-		["NN","NN","SW","SW","SW","BT"],
-		["NN","BT","HN","EY","HN","EY"],
-	]
-	if data["id"]==3: data["dices"] = [
-		["NN","NN","SW","BT","HN","EY"],
-		["NN","BT","HN","EY","HN","EY"],
-		["SW","BT","BT","BT","HN","EY"],
-	]
+	data["hpm"] = PLAYERS_BASE_DATA[data["id"]-1]["hpm"]
+	data["hp"] = data["hpm"]
+	data["movm"] = PLAYERS_BASE_DATA[data["id"]-1]["hpm"]
+	data["mov"] = data["movm"]
+	data["retrait"] = PLAYERS_BASE_DATA[data["id"]-1]["retrait"]
+	data["dices"] = PLAYERS_BASE_DATA[data["id"]-1]["dices"]
+	data["name"] = PLAYERS_BASE_DATA[data["id"]-1]["name"]
 	data["ui"].set_player(data["id"])
 	return data
 
