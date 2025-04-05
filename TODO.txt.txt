@@ -5,3 +5,22 @@ OK- ADD random item to goblin and debries
 - Make 4 Dungeons
 - Make last Dungeon and final boss
 - Select Characters
+
+
+BUGS
+-cofre grande esta feo el asset
+-cofre grande no me dio ningun item :(
+-el daño de los enemigos siempre es 1, aunque indique otra cosa
+FIXED-en level 3 no aparecio la escalera
+-goblin y puerta deben dar mas items
+-trampa debe ajustar dificultad por nivel
+-pocas trampas en nivel 3
+-SFX, dead,  antorcha, dados, usar item, encontrar item, heal
+-sfx al seleccionar player con vos male/female?
+-sfx on hit escombros, slash al atacar los enemigos,
+FIXED-los items con reload no andan!
+-agregar final boss
+-popup GAME OVER
+-a veces las rooms parpadean
+-las roms quedan mal conectadas! (pare ser residuo de niveles anteriores??)
+-tenes muchas antorchas

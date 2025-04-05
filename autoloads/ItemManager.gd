@@ -41,8 +41,9 @@ func add_rnd_item(tier=null):
 	return null
 
 func recover_uses():
-	for it in PARTY_ITEMS:
-		if "reload" in it && it.reload: it.uses = it.usesm
+	for it_name in PARTY_ITEMS:
+		var item = PARTY_ITEMS[it_name]
+		if "reload" in item && item.reload: item.uses = item.usesm
 	update_item_list()
 
 func get_party_items():
@@ -54,10 +55,9 @@ func update_item_list():
 
 func on_use_item(item):
 	#print("ON USE ITEM ",item.name)
-	if (has_method("condition_"+item.name)) && !call("condition_"+item.name,item): return false
-	#print("condition_success")
-	if "uses" in item && item.uses<=0: return false
 	if !DungeonManager.current_player: return false
+	if "uses" in item && item.uses<=0: return false
+	if (has_method("condition_"+item.name)) && !call("condition_"+item.name,item): return false
 	if (has_method("on_use_"+item.name)):
 		call("on_use_"+item.name,item)
 		Effector.scale_boom(item.ui)

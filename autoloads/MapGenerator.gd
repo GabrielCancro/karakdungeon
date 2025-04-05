@@ -139,9 +139,8 @@ func add_defiances():
 	for d in defs: 
 		if keys.size()<=0: break
 		var k = keys.pop_back()
-		if k=="0x0": continue
+		if k=="0x0": k = keys.pop_back()
 		map[k]["defiance"] = d
-		#print(d," in ",k)
 
 func get_rnd(arr):
 	randomize()

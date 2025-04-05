@@ -7,7 +7,7 @@ var DEFIANCES = {
 	"rat":{"type":"enemy", "hp":3, "dam":1},
 	"bat":{"type":"enemy", "hp":2, "dam":1},
 	"trap":{"type":"trap", "dif":4,"dam":2},
-	"door":{"type":"door", "req":["HN","EY"],"snd":"open"},
+	"door":{"type":"door", "req":["HN","EY"], "give_item":0.2, "snd":"open"},
 	"debris":{"type":"block", "hp":3, "give_item":0.2},
 	"wchest":{"type":"chest","tier":1, "req":["HN","HN"],"snd":"open"},
 	"chest":{"type":"chest","tier":2, "req":["HN","HN","HN","EY","EY"],"snd":"open"},
