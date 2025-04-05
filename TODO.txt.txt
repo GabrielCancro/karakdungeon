@@ -12,7 +12,7 @@ BUGS
 -cofre grande no me dio ningun item :(
 -el daño de los enemigos siempre es 1, aunque indique otra cosa
 FIXED-en level 3 no aparecio la escalera
--goblin y puerta deben dar mas items
+FIXED-goblin y puerta deben dar mas items
 -trampa debe ajustar dificultad por nivel
 -pocas trampas en nivel 3
 -SFX, dead,  antorcha, dados, usar item, encontrar item, heal
@@ -22,5 +22,5 @@ FIXED-los items con reload no andan!
 -agregar final boss
 -popup GAME OVER
 -a veces las rooms parpadean
--las roms quedan mal conectadas! (pare ser residuo de niveles anteriores??)
+-las roms quedan mal conectadas! (parece ser residuo de niveles anteriores??)
 -tenes muchas antorchas
