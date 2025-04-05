@@ -2,7 +2,7 @@
 
 [ext_resource path="res://addons/LittleGameSettings/LittleSettingsPanel.gd" type="Script" id=1]
 [ext_resource path="res://addons/LittleGameSettings/assets/option_panel_icons/ico_fullscreen.png" type="Texture" id=2]
-[ext_resource path="res://assets/items/ico_languaje.png" type="Texture" id=3]
+[ext_resource path="res://addons/LittleGameSettings/assets/option_panel_icons/ico_languaje.png" type="Texture" id=3]
 [ext_resource path="res://addons/LittleGameSettings/assets/Roboto-Regular.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="DynamicFont" id=1]
