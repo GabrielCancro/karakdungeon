@@ -49,12 +49,13 @@ func update():
 		if $dm.visible: $dm/lb.text = str(defiance.dam)
 		#if "dam" in defiance: $lb_stats.text += " DAM:<"+str(defiance.dam)+">"+" "
 	
-	if check_solved(): DefianceManager.resolve_current_defiance()
+		if defiance && !"checked" in defiance && check_solved(): 
+			defiance["checked"]=true
+			DefianceManager.resolve_current_defiance()
 	
 	visible = (defiance!=null)
 
 func check_solved():
-	if !defiance: return false
 	if "hp" in defiance && defiance.hp<=0: return true
 	if "prg" in defiance && defiance.prg>=defiance.prgm: return true
 	#if "dif" in defiance && $TestRnd.result == "SUCCESS": return true

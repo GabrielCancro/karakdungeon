@@ -9,8 +9,8 @@ var DEFIANCES = {
 	"trap":{"type":"trap", "dif":4,"dam":2},
 	"door":{"type":"door", "req":["HN","EY"], "give_item":0.2, "snd":"open"},
 	"debris":{"type":"block", "hp":3, "give_item":0.2},
-	"wchest":{"type":"chest","tier":1, "req":["HN","HN"],"snd":"open"},
-	"chest":{"type":"chest","tier":2, "req":["HN","HN","HN","EY","EY"],"snd":"open"},
+	"wchest":{"type":"chest","tier":1, "req":["HN","HN"],"give_item":1,"snd":"open"},
+	"chest":{"type":"chest","tier":2, "req":["HN","HN","HN","EY","EY"],"give_item":1,"snd":"open"},
 	"stairs":{"type":"stairs"},
 	"fountain":{"type":"fountain","uses":2},
 }
@@ -24,6 +24,7 @@ func get_defiance_data(code):
 	if "prg" in data: data["prgm"] = data.prg
 	if "prg" in data: data["prg"] = 0
 	if "req" in data: 
+		if data.name=="wchest": for i in range(DungeonManager.dungeon_level-1): data.req.append("EY")
 		data["req_solved"] = []
 		for i in data.req: data["req_solved"].append(false)
 	if "hide" in code_arr: data["hide"] = true
@@ -36,13 +37,13 @@ func get_random_defiance(perc = 100):
 	return DEFIANCES.keys()[i]
 
 func resolve_current_defiance():
-	check_chest_resolved()
-	if check_give_item_on_resolve(): yield(get_tree().create_timer(.5),"timeout")
+	var getted_item = check_give_item_on_resolve()
 	var def = DungeonManager.current_room.data.defiance
 	if "snd" in def: LittleGS.play_sound(def.snd)
 	var croom = DungeonManager.current_room.data.erase("defiance")
 	DungeonManager.force_update()
 	yield(get_tree().create_timer(.5),"timeout")
+	if getted_item: get_node("/root/Game/CLUI/ItemList").play_take_item_anim(getted_item)
 	DungeonManager.reset_current_room()
 	emit_signal("resolved_defiance")
 
@@ -57,16 +58,10 @@ func activate_trap(def):
 	yield(get_tree().create_timer(.5),"timeout")
 	resolve_current_defiance()
 
-func check_chest_resolved():
-	var def = DungeonManager.current_room.data.defiance
-	if def.type=="chest": 
-		var it_name = ItemManager.add_rnd_item(def.tier)
-		if it_name: get_node("/root/Game/CLUI/ItemList").play_take_item_anim(it_name)
-
 func check_give_item_on_resolve():
 	var def = DungeonManager.current_room.data.defiance
 	if def && "give_item" in def:
 		randomize()
 		if randf()<=def.give_item:
+			if !"tier" in def: def["tier"] = 1
 			return ItemManager.add_rnd_item(1)
-	return false

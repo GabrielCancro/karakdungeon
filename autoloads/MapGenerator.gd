@@ -128,7 +128,7 @@ func add_defiances():
 		defs=["rat","bat","goblin","goblin","door","door","fountain","wchest"]
 		for i in range(4): defs.append(get_rnd(["rat","bat","debris"]))
 	elif lv==3: #25 (15)
-		defs=["rat","bat","goblin","goblin","door","door","fountain","trap","chest@hide"]
+		defs=["rat","bat","goblin","goblin","door","door","fountain","trap","trap","chest@hide"]
 		for i in range(4): defs.append(get_rnd(["rat","bat","debris"]))
 		for i in range(3): defs.append(get_rnd(["goblin","trap"]))
 	

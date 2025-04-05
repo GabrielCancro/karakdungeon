@@ -36,7 +36,7 @@ func add_rnd_item(tier=null):
 	var items = ALL_ITEMS.keys()
 	items.shuffle()
 	for it_name in items:
-		if tier && tier>ALL_ITEMS[it_name].tier: continue
+		if tier && tier<ALL_ITEMS[it_name].tier: continue
 		if add_item(it_name): return it_name
 	return null
 
