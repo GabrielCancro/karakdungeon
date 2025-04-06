@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://nodes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/DefianceUI.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://assets/torch_off.png" type="Texture" id=13]
 [ext_resource path="res://assets/ui/ui_map.png" type="Texture" id=14]
 [ext_resource path="res://assets/floor1.png" type="Texture" id=15]
+[ext_resource path="res://assets/bbimg/difficult_m.png" type="Texture" id=16]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -264,3 +265,31 @@ rect_pivot_offset = Vector2( 58.5, 58.5 )
 mouse_filter = 2
 texture = ExtResource( 14 )
 expand = true
+
+[node name="HelpButton" type="Button" parent="CLUI"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -108.0
+margin_top = 285.0
+margin_right = -32.0
+margin_bottom = 361.0
+rect_min_size = Vector2( 6, 0 )
+flat = true
+
+[node name="Key" type="TextureRect" parent="CLUI/HelpButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 58.5, 58.5 )
+mouse_filter = 2
+texture = ExtResource( 16 )
+expand = true
+
+[node name="lb_level" type="Label" parent="CLUI/HelpButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.788235, 0.788235, 0.788235, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "?"
+align = 1
+valign = 1
+clip_text = true

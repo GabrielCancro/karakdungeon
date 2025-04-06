@@ -37,11 +37,12 @@ func get_random_defiance(perc = 100):
 	return DEFIANCES.keys()[i]
 
 func resolve_current_defiance():
+	Utils.disable_input(1.0)
 	var getted_item = check_give_item_on_resolve()
 	var def = DungeonManager.current_room.data.defiance
 	if "snd" in def: LittleGS.play_sound(def.snd)
-	var croom = DungeonManager.current_room.data.erase("defiance")
-	DungeonManager.force_update()
+	
+	DungeonManager.current_room.erase_defiance()
 	yield(get_tree().create_timer(.5),"timeout")
 	if getted_item: get_node("/root/Game/CLUI/ItemList").play_take_item_anim(getted_item)
 	DungeonManager.reset_current_room()

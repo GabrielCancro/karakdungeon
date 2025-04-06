@@ -46,10 +46,11 @@ func run_action(ac_name):
 	Utils.enable_input()
 
 func get_bonif(ac_name):
-	var am = 0
-	if ac_name=="attack": am = PlayerManager.get_dice_amount("SW")
-	elif ac_name=="unlock": am = PlayerManager.get_reqs_can_complete()
-	elif ac_name=="dissarm": am = PlayerManager.get_dice_amount("HN") + PlayerManager.get_dice_amount("EY")
+	var am = "-"
+	if ac_name=="attack": am = "x"+str(PlayerManager.get_dice_amount("SW")+1)
+	elif ac_name=="unlock": am = "x"+str(PlayerManager.get_reqs_can_complete())
+	elif ac_name=="dissarm": am = "-"+str(PlayerManager.get_dice_amount("HN") + PlayerManager.get_dice_amount("EY"))
+	elif ac_name=="force": am = "20%"
 	return am
 
 func check_action_attack(): return (def.type == "enemy") or (def.type == "block")

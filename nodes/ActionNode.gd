@@ -9,10 +9,11 @@ func _ready():
 func set_action(_name):
 	ac_name = _name
 	$Label.text = ac_name + " "
-	var bnf = ActionManager.get_bonif(ac_name)
-	$ImgBonif.visible = true #(bnf>0)
-	if (bnf>0): $lb_bon.text = str(bnf)
-	else: $lb_bon.text = "-"
+	$lb_bon.text = ActionManager.get_bonif(ac_name)
+#	var bnf = ActionManager.get_bonif(ac_name)
+#	$ImgBonif.visible = true #(bnf>0)
+#	if (bnf>0): $lb_bon.text = str(bnf)
+#	else: $lb_bon.text = "-"
 
 func on_click():
 	if Utils.is_input_disabled(): return

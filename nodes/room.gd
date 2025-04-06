@@ -17,7 +17,6 @@ func set_data(room_data):
 		$Sprite/Image.texture = load("res://assets/defiances/df_"+data["defiance"]["name"]+".png")
 		if "hide" in data.defiance:
 			if data.defiance.hide: $Sprite.modulate.a = 0
-			elif $Sprite.modulate.a<1: Effector.appear($Sprite)
 	
 	#DOORS
 	for d in data.doors.keys():
@@ -42,5 +41,13 @@ func on_click():
 func show_hiden_defiance():
 	if "defiance" in data && "hide" in data.defiance && data.defiance.hide: 
 		data.defiance.hide = false
+		Effector.appear($Sprite)
 		Utils.disable_input(.5)
 		update()
+
+func erase_defiance():
+	data.erase("defiance")
+	Effector.disappear($Sprite)
+	yield(get_tree().create_timer(.5),"timeout")
+	DungeonManager.force_update()
+	
