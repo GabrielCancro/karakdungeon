@@ -44,7 +44,8 @@ func enemy_attack(def,pj):
 	Effector.scale_boom(def.def_sprite)
 	Effector.move_to_yoyo(def.def_sprite, Vector2(pj.h,pj.v)*50)
 	yield(get_tree().create_timer(.3),"timeout")
-	PlayerManager.damage_current_player(1)
+	randomize()
+	PlayerManager.damage_current_player(randi()%(def.dam+1))
 
 func end_turn():
 	Utils.disable_input(2)

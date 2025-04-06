@@ -7,22 +7,33 @@ OK- ADD random item to goblin and debries
 - Select Characters
 
 
-BUGS
+LISTA DE TODOS APR-2025
 FIXED-cofre grande esta feo el asset
--cofre grande no me dio ningun item :(
--el daño de los enemigos siempre es 1, aunque indique otra cosa
+FIXED-tenes muchas antorchas
+FIXED-resolver puertas no da tesoros
+FIXED-el daño de los enemigos siempre es 1, aunque indique otra cosa
 FIXED-en level 3 no aparecio la escalera
 FIXED-goblin y puerta deben dar mas items
 FIXED-trampa debe ajustar dificultad por nivel
 FIXED-pocas trampas en nivel 3
--SFX, dead,  antorcha, dados, usar item, encontrar item, heal
--sfx al seleccionar player con vos male/female?
--sfx on hit escombros, slash al atacar los enemigos,
 FIXED-los items con reload no andan!
--agregar final boss
--popup GAME OVER
--a veces las rooms parpadean
--las roms quedan mal conectadas! (parece ser residuo de niveles anteriores??)
-FIXED-tenes muchas antorchas
-FIXED-resolver puertas no da tesoros
 
+-SFX
+   -SFX, dead,  antorcha, dados, usar item, encontrar item, heal
+   -sfx al seleccionar player con vos male/female?
+   -sfx on hit escombros, slash al atacar los enemigos,
+
+-CONTENIDO
+   -agregar final boss
+   -popup GAME OVER
+   -cofre grande no me dio ningun item :( (xq no hay items tier 2 xd)
+   -agregar cartelito de help con info de los atributos
+
+-BUGS
+   -a veces las rooms parpadean
+   -las roms quedan mal conectadas! (parece ser residuo de niveles anteriores??)
+   -agrandar botones de acciones
+
+-FX
+   -poner un efecto o algo cuando descendes por la escalera, fade o algo
+   -efecto de rotar defiance cuando se resuelve
