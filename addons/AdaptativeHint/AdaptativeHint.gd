@@ -11,6 +11,7 @@ func _ready():
 func _process(delta):
 	$Panel.rect_global_position = get_viewport().get_mouse_position() + offsetMouse
 	$Panel.rect_global_position.x = min($Panel.rect_global_position.x,screenSize.x-$Panel.rect_size.x)
+	$Panel.rect_global_position.y = min($Panel.rect_global_position.y,screenSize.y-$Panel.rect_size.y)
 	#if $Panel.rect_global_position.x>screenSize.x*0.7: 
 	#	$Panel.rect_global_position.x -= $Panel.rect_size.x + offsetMouse.x*2
 	if $Panel.rect_global_position.y>screenSize.y*0.7: 

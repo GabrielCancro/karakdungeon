@@ -35,21 +35,21 @@ margin_bottom = -10.0
 
 [node name="ActionNode2" parent="List" instance=ExtResource( 3 )]
 margin_left = 16.0
-margin_top = -5.0
-margin_right = 226.0
-margin_bottom = 41.0
+margin_top = 27.0
+margin_right = 261.0
+margin_bottom = 97.0
 
 [node name="ActionNode3" parent="List" instance=ExtResource( 3 )]
 margin_left = 32.0
-margin_top = 47.0
-margin_right = 242.0
-margin_bottom = 93.0
+margin_top = 111.0
+margin_right = 277.0
+margin_bottom = 181.0
 
 [node name="ActionNode4" parent="List" instance=ExtResource( 3 )]
 margin_left = 48.0
-margin_top = 98.0
-margin_right = 258.0
-margin_bottom = 144.0
+margin_top = 194.0
+margin_right = 293.0
+margin_bottom = 264.0
 
 [node name="block" type="ColorRect" parent="."]
 visible = false

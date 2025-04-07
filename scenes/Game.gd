@@ -7,6 +7,9 @@ func _ready():
 	AdaptativeHintAuto.add_hint($CLUI/KeyOut,Lang.get_text("hint_key"))
 	AdaptativeHintAuto.add_hint($CLUI/Torch,Lang.get_text("hint_torch"))
 	
+	var help_hint_text = Lang.get_text("attr_SW")+"\n\n"+Lang.get_text("attr_BT")+"\n\n"+Lang.get_text("attr_HN")+"\n\n"+Lang.get_text("attr_EY")
+	AdaptativeHintAuto.add_hint($CLUI/HelpButton,help_hint_text)
+	
 	yield(get_tree().create_timer(2),"timeout")
 	$CLUI/TutorialHint.show_tuto("start")
 	yield($CLUI/TutorialHint,"close_popup")

@@ -142,4 +142,5 @@ func set_torch(val):
 
 func dec_torch():
 	set_torch(total_torch-1)
+	LittleGS.play_sound("wind",80)
 	return (total_torch>=0)

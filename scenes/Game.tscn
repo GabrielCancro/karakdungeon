@@ -224,9 +224,9 @@ margin_bottom = 905.0
 [node name="ActionList" parent="CLUI" instance=ExtResource( 5 )]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -405.0
+margin_left = -485.0
 margin_top = 266.0
-margin_right = -405.0
+margin_right = -485.0
 margin_bottom = 266.0
 
 [node name="ItemList" parent="CLUI" instance=ExtResource( 11 )]
@@ -274,6 +274,7 @@ margin_top = 285.0
 margin_right = -32.0
 margin_bottom = 361.0
 rect_min_size = Vector2( 6, 0 )
+focus_mode = 0
 flat = true
 
 [node name="Key" type="TextureRect" parent="CLUI/HelpButton"]

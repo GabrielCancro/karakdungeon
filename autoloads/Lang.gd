@@ -23,6 +23,7 @@ var texts = {
 	"df_name_fountain_es":"Fuente",
 	
 	"ac_attack_es":"Causa entre 0 y 2 de daño, cada @SW añade un golpe extra.",
+	"ac_clear_es":"Limpia entre 0 y 2, cada @SW y cada @HN añade un intento extra.",
 	"ac_dissarm_es":"Cada @HN y cada @EY mejora la posibilidad de éxito.",
 	"ac_unlock_es":"Completa los requisitos según los atributos actuales del personaje.",
 	"ac_force_es":"20% de destruir el primer requisito, esté o no resuelto.",

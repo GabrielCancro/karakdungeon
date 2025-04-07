@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/hit_door.ogg-5af7c20471cabdca37b158056123af06.oggstr"
+
+[deps]
+
+source_file="res://addons/LittleGameSettings/assets/sounds/hit_door.ogg"
+dest_files=[ "res://.import/hit_door.ogg-5af7c20471cabdca37b158056123af06.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -33,6 +33,7 @@ func updateUI():
 		if i < data.mov: m.modulate = Color(1,1,1,1)
 		else: m.modulate = Color(.3,.3,.3,1)
 		m.visible = (i<data.mov or i<data.movm)
+		if i >= data.movm: m.modulate = Color(.5,.5,1,1)
 	data.node.update_hp()
 	set_selected()
 

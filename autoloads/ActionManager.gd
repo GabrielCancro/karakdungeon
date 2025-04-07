@@ -11,6 +11,7 @@ signal end_action()
 var ACTIONS = {
 	"attack":{},
 	#"evade":{},
+	"clear":{},
 	"dissarm":{},
 	"unlock":{},
 	"force":{},
@@ -48,12 +49,13 @@ func run_action(ac_name):
 func get_bonif(ac_name):
 	var am = "-"
 	if ac_name=="attack": am = "x"+str(PlayerManager.get_dice_amount("SW")+1)
+	if ac_name=="clear": am = "x"+str(PlayerManager.get_dice_amount("SW")+PlayerManager.get_dice_amount("HN")+1)
 	elif ac_name=="unlock": am = "x"+str(PlayerManager.get_reqs_can_complete())
 	elif ac_name=="dissarm": am = "-"+str(PlayerManager.get_dice_amount("HN") + PlayerManager.get_dice_amount("EY"))
 	elif ac_name=="force": am = "20%"
 	return am
 
-func check_action_attack(): return (def.type == "enemy") or (def.type == "block")
+func check_action_attack(): return (def.type == "enemy")
 func run_action_attack(): 
 	randomize()
 	yield(get_tree().create_timer(.5),"timeout")
@@ -66,6 +68,22 @@ func run_action_attack():
 		defUI.update()
 		Effector.move_to_yoyo(pj.node,(pj.node.global_position-pj.node.get_dest_pos())*0.5)
 		yield(get_tree().create_timer(.7),"timeout")
+		if def.hp<=0: break
+	emit_signal("end_action",true)
+
+func check_action_clear(): return (def.type == "block")
+func run_action_clear(): 
+	randomize()
+	yield(get_tree().create_timer(.3),"timeout")
+	var defUI = get_node("/root/Game/CLUI/DefianceUI")
+	for i in range(1+PlayerManager.get_dice_amount("SW")+PlayerManager.get_dice_amount("HN")):
+		var val = randi()%3
+		def.hp -= val
+		Effector.show_float_text("-"+str(val)+"HP",room.position+Vector2(0,-100+i*10),"damage")
+		LittleGS.play_sound("hit_rock")
+		defUI.update()
+		Effector.move_to_yoyo(pj.node,(pj.node.global_position-pj.node.get_dest_pos())*0.5)
+		yield(get_tree().create_timer(.5),"timeout")
 		if def.hp<=0: break
 	emit_signal("end_action",true)
 
@@ -119,6 +137,7 @@ func run_action_force():
 		def.req.pop_at(0)
 		def.req_solved.pop_at(0)
 	else: Effector.show_float_text("NONE",room.position+Vector2(0,-100),"white")
+	LittleGS.play_sound("hit_door",70)
 	yield(get_tree().create_timer(.5),"timeout")
 	emit_signal("end_action",true)
 

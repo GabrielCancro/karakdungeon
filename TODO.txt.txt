@@ -19,21 +19,24 @@ FIXED-pocas trampas en nivel 3
 FIXED-los items con reload no andan!
 
 -SFX
-   -SFX, dead,  antorcha, dados, usar item, encontrar item, heal
-   -sfx al seleccionar player con vos male/female?
-   -sfx on hit escombros, slash al atacar los enemigos,
+   FIXED-SFX, dead,  antorcha, dados, heal, on hit escombros
+   FIXED-sfx al seleccionar player con vos male/female?
+   FIXED-sfx slash al atacar los enemigos,
+   FIXED-sfx al forzar puerta / cofre
+   -sfx usar item, encontrar item, 
 
 -CONTENIDO
    -agregar final boss
    -popup GAME OVER
    -cofre grande no me dio ningun item :( (xq no hay items tier 2 xd)
-   -agregar cartelito de help con info de los atributos
+   FIXED-agregar cartelito de help con info de los atributos
 
 -BUGS
    -a veces las rooms parpadean
    -las roms quedan mal conectadas! (parece ser residuo de niveles anteriores??)
-   -agrandar botones de acciones
+   FIXED-agrandar botones de acciones
+   FIXED-no hacer sfx si el daño es 0hp
 
 -FX
-   -poner un efecto o algo cuando descendes por la escalera, fade o algo
-   -efecto de rotar defiance cuando se resuelve
+   FIXED-efecto de rotar defiance cuando se resuelve
+  -poner un efecto o algo cuando descendes por la escalera, fade o algo

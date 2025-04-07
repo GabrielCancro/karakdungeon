@@ -50,7 +50,7 @@ func enemy_attack(def,pj):
 
 func end_turn():
 	Utils.disable_input(2)
-	LittleGS.play_sound("wind",60)
+	LittleGS.play_sound("point")
 	get_node("/root/Game/CLUI/ActionList").visible = false
 	get_node("/root/Game/CLUI/EndTurnButton").modulate = Color(.3,.3,.3,1)
 	for p in PlayerManager.PLAYERS:
@@ -61,6 +61,7 @@ func end_turn():
 			p.action = true
 			p.ui.roll_dices()
 		p.ui.updateUI()
+	LittleGS.play_sound("roll_dices")
 	yield(get_tree().create_timer(1.5),"timeout")
 	for p in PlayerManager.PLAYERS:
 		p.mov = p.movm
@@ -72,10 +73,10 @@ func end_turn():
 	if DungeonManager.dec_torch() == false:
 		for p in PlayerManager.PLAYERS:
 			if p.hp>0:
-				Utils.disable_input(2)
+				Utils.disable_input(1.5)
 				PlayerManager.change_player(p.id)
-				yield(get_tree().create_timer(.7),"timeout")
+				yield(get_tree().create_timer(.5),"timeout")
 				PlayerManager.damage_player(p.id,1)
-				yield(get_tree().create_timer(.7),"timeout")
+				yield(get_tree().create_timer(.5),"timeout")
 	
 	get_node("/root/Game/CLUI/EndTurnButton").modulate = Color(1,1,1,1)

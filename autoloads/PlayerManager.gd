@@ -107,6 +107,7 @@ func get_reqs_can_complete():
 func change_player(id):
 	if PLAYERS[id-1].hp<=0: return false
 	if DungeonManager.current_player: 
+		if DungeonManager.current_player.id != id: LittleGS.play_sound("coins",80)
 		DungeonManager.current_player.node.set_selected(false)
 		DungeonManager.current_player.ui.set_selected(false)
 	DungeonManager.current_player = PLAYERS[id-1]
@@ -135,13 +136,15 @@ func damage_current_player(dam):
 func damage_player(id,dam):
 	var player = PlayerManager.get_player_data(id)
 	Effector.scale_boom(player.node)
-	LittleGS.play_sound("hit1")
 	player.hp -= dam
 	if player.hp <=0:
 		player.hp = 0
 		player.mov = 0
 		player.action = false
 		player.ui.visible = false
+		LittleGS.play_sound("dead1")
+	elif dam>0: LittleGS.play_sound("hit1")
+	else: LittleGS.play_sound("evade",70)
 	player.ui.updateUI()
 	Effector.show_float_text("-"+str(dam)+"HP",player.node.position+Vector2(0,-80),"damage")
 
@@ -152,6 +155,7 @@ func heal_player(id,val):
 	player.hp += val
 	player.ui.updateUI()
 	Effector.show_float_text("+"+str(val)+"HP",player.node.position+Vector2(0,-80),"normal")
+	LittleGS.play_sound("healt2")
 
 func set_pj_attr(key,val):
 	DungeonManager.current_player[key] = val
