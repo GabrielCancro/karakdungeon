@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/it_picklock - copia.png-7cc899f2458b008c8f871727c68822b4.stex"
+path="res://.import/it_battle_axe.png-736c9eaec0d34e491dcd563572d5b40f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/items/it_picklock - copia.png"
-dest_files=[ "res://.import/it_picklock - copia.png-7cc899f2458b008c8f871727c68822b4.stex" ]
+source_file="res://assets/items/it_battle_axe.png"
+dest_files=[ "res://.import/it_battle_axe.png-736c9eaec0d34e491dcd563572d5b40f.stex" ]
 
 [params]
 

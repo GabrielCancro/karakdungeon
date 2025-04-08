@@ -7,6 +7,7 @@ var ALL_ITEMS = {
 	"picklock":{"uses":2,"tier":1},
 	"thief_knife":{"uses":2,"tier":1},
 	"healing_stuff":{"uses":2,"tier":2,"reload":true},
+	"battle_axe":{"uses":3,"tier":2},
 	#"blood_amulet":{"uses":2},
 	#"magic_missile":{"uses":2},
 }

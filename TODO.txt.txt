@@ -30,6 +30,7 @@ FIXED-los items con reload no andan!
    -popup GAME OVER
    -cofre grande no me dio ningun item :( (xq no hay items tier 2 xd)
    FIXED-agregar cartelito de help con info de los atributos
+   -explicacion de recarga de items
 
 -BUGS
    -a veces las rooms parpadean

@@ -30,6 +30,7 @@ var texts = {
 	"ac_recover_es":"Curas tus puntos de vida (HP). Puede agotarse.",
 	"ac_descend_es":"Necesitas la llave de este nivel y reunir a todos tus personajes aquí para poder descender.",
 	
+	"it_reload_es":"usos por nivel",
 	"it_old_dage_name_es":"DAGA VIEJA",
 	"it_old_dage_desc_es":"Si no tiene ninguna @SW, ganas una @SW",
 	"it_best_heart_name_es":"CORAZON DE BESTIA",
@@ -42,6 +43,8 @@ var texts = {
 	"it_thief_knife_desc_es":"Pierdes @BT@HN y ganas @SW@SW",
 	"it_healing_stuff_name_es":"Baston curativo",
 	"it_healing_stuff_desc_es":"Pierdes @EY y recuperas +1HP",
+	"it_battle_axe_name_es":"Hacha de batalla",
+	"it_battle_axe_desc_es":"si tienes @SW ganas un @SW extra",
 	
 
 	"tuto_start_es":"Bienvenido a tu primer mazmorra!\nTe enseñaré lo básico para que puedas jugar..",
