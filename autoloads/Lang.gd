@@ -44,7 +44,11 @@ var texts = {
 	"it_healing_stuff_name_es":"Baston curativo",
 	"it_healing_stuff_desc_es":"Pierdes @EY y recuperas +1HP",
 	"it_battle_axe_name_es":"Hacha de batalla",
-	"it_battle_axe_desc_es":"si tienes @SW ganas un @SW extra",
+	"it_battle_axe_desc_es":"Si tienes @SW ganas un @SW extra",
+	"it_heal_potion_name_es":"Pocion curativa",
+	"it_heal_potion_desc_es":"Cura +1HP",
+	"it_mind_potion_name_es":"Pocion de astucia",
+	"it_mind_potion_desc_es":"Si tienes @EY ganas un @EY extra",
 	
 
 	"tuto_start_es":"Bienvenido a tu primer mazmorra!\nTe enseñaré lo básico para que puedas jugar..",

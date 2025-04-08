@@ -6,6 +6,8 @@ var ALL_ITEMS = {
 	"travel_boots":{"uses":2,"tier":1},
 	"picklock":{"uses":2,"tier":1},
 	"thief_knife":{"uses":2,"tier":1},
+	"heal_potion":{"uses":3,"tier":1},
+	"mind_potion":{"uses":2,"tier":1},
 	"healing_stuff":{"uses":2,"tier":2,"reload":true},
 	"battle_axe":{"uses":3,"tier":2},
 	#"blood_amulet":{"uses":2},
