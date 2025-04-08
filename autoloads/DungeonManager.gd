@@ -112,10 +112,13 @@ func get_key():
 	key.visible = true
 	Effector.move_to(key,Vector2(750,220))
 	Effector.appear(key)
-	yield(get_tree().create_timer(1),"timeout")
+	yield(get_tree().create_timer(.5),"timeout")
+	LittleGS.play_sound("key_pickup")
+	yield(get_tree().create_timer(.5),"timeout")
 	Effector.scale_boom(key)
 	#print(get_node("/root/Game/CLUI/KeyOut").rect_global_position)
 	Effector.move_to(key,get_node("/root/Game/CLUI/KeyOut").rect_global_position)
+	
 
 func on_resolve_defiance():
 	resolved_defs += 1

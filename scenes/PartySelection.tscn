@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://nodes/PjSelectUI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/PartySelection.gd" type="Script" id=2]
 [ext_resource path="res://assets/floor1.png" type="Texture" id=3]
 [ext_resource path="res://assets/font/AbyssinicaSIL-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/bbimg/difficult_m.png" type="Texture" id=5]
 
 [sub_resource type="Shader" id=5]
 code = "shader_type canvas_item;
@@ -56,6 +57,12 @@ font_data = ExtResource( 4 )
 [sub_resource type="DynamicFont" id=3]
 size = 44
 outline_color = Color( 0.2, 0.2, 0.2, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 46
+outline_size = 5
+outline_color = Color( 0.203922, 0.203922, 0.203922, 1 )
 font_data = ExtResource( 4 )
 
 [node name="PartySelection" type="Control"]
@@ -149,6 +156,34 @@ custom_colors/font_color = Color( 0.780392, 0.803922, 0.486275, 1 )
 custom_fonts/font = SubResource( 3 )
 text = "GOTO
 DUNGEON"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="HelpButton" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -115.0
+margin_top = 437.0
+margin_right = -39.0
+margin_bottom = 513.0
+rect_min_size = Vector2( 6, 0 )
+flat = true
+
+[node name="Key" type="TextureRect" parent="HelpButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 58.5, 58.5 )
+mouse_filter = 2
+texture = ExtResource( 5 )
+expand = true
+
+[node name="lb_level" type="Label" parent="HelpButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.788235, 0.788235, 0.788235, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "?"
 align = 1
 valign = 1
 clip_text = true

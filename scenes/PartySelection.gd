@@ -4,6 +4,9 @@ func _ready():
 	LittleGS.add_options_panel_to_scene(self)
 	LittleGS.play_music("ambientcave",70)
 	
+	var help_hint_text = Lang.get_text("attr_SW")+"\n\n"+Lang.get_text("attr_BT")+"\n\n"+Lang.get_text("attr_HN")+"\n\n"+Lang.get_text("attr_EY")
+	AdaptativeHintAuto.add_hint($HelpButton,help_hint_text)
+	
 	#1 load you custom data
 	var my_data = LittleGS.load_data()
 	#2 if is not initialized, set start values

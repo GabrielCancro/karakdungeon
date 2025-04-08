@@ -24,7 +24,8 @@ func set_data(it_data):
 	if reload: color = Color(.2,.2,0,1)
 	else: color = Color(0,.2,.35,1)
 	var text = "[u][color=#90F090]"+Lang.get_text("it_"+data.name+"_name")+"[/color][/u]\n"+Lang.get_text("it_"+data.name+"_desc")
-	if reload: text += "\n[color=#70B070]("+str(data.usesm)+" "+Lang.get_text("it_reload")+")[/color]"
+	if reload: text += "\n[color=#70B070]("+Lang.get_text("it_reload")+")[/color]"
+	else: text += "\n[color=#7070B0]("+Lang.get_text("it_reload_not")+")[/color]"
 	AdaptativeHintAuto.add_hint($Button,text)
 	AdaptativeHintAuto.add_hint($Button2,Lang.get_text("hint_reload_item"))
 

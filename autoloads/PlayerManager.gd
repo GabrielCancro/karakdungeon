@@ -136,6 +136,13 @@ func damage_current_player(dam):
 func damage_player(id,dam):
 	var player = PlayerManager.get_player_data(id)
 	Effector.scale_boom(player.node)
+	randomize()
+	if randf()<PlayerManager.get_dice_amount("BT")*.1: 
+		Effector.show_float_text("-"+str(dam)+"HP EVADED!",player.node.position+Vector2(0,-80),"normal")
+		dam = 0
+	else:
+		Effector.show_float_text("-"+str(dam)+"HP",player.node.position+Vector2(0,-80),"damage")
+	
 	player.hp -= dam
 	if player.hp <=0:
 		player.hp = 0
@@ -146,7 +153,6 @@ func damage_player(id,dam):
 	elif dam>0: LittleGS.play_sound("hit1")
 	else: LittleGS.play_sound("evade",70)
 	player.ui.updateUI()
-	Effector.show_float_text("-"+str(dam)+"HP",player.node.position+Vector2(0,-80),"damage")
 
 func heal_player(id,val):
 	var player = PlayerManager.get_player_data(id)

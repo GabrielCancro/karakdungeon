@@ -8,6 +8,7 @@ var ALL_ITEMS = {
 	"thief_knife":{"uses":2,"tier":1},
 	"heal_potion":{"uses":3,"tier":1},
 	"mind_potion":{"uses":2,"tier":1},
+	
 	"healing_stuff":{"uses":2,"tier":2,"reload":true},
 	"battle_axe":{"uses":3,"tier":2},
 	#"blood_amulet":{"uses":2},
@@ -32,6 +33,7 @@ func add_item(it_name):
 		return null
 	else:
 		PARTY_ITEMS[it_name] = get_item_data(it_name)
+		LittleGS.play_sound("pickup")
 		return it_name
 
 func add_rnd_item(tier=null):
@@ -63,6 +65,7 @@ func on_use_item(item):
 	if (has_method("condition_"+item.name)) && !call("condition_"+item.name,item): return false
 	if (has_method("on_use_"+item.name)):
 		call("on_use_"+item.name,item)
+		LittleGS.play_sound("equip")
 		Effector.scale_boom(item.ui)
 		if "uses" in item: 
 			item.uses -=1
@@ -105,3 +108,11 @@ func on_use_healing_stuff(item):
 	DungeonManager.current_player.ui.quit_dice("EY")
 	PlayerManager.heal_player(DungeonManager.current_player.id,1)
 
+func condition_battle_axe(item): return (PlayerManager.get_dice_amount("SW")>=1)
+func on_use_battle_axe(item): DungeonManager.current_player.ui.add_dice_face("SW")
+
+func condition_heal_potion(item): return (DungeonManager.current_player.hp<DungeonManager.current_player.hpm)
+func on_use_heal_potion(item): PlayerManager.heal_player(DungeonManager.current_player.id,1)
+
+func condition_mind_potion(item): return (PlayerManager.get_dice_amount("EY")>=1)
+func on_use_mind_potion(item): DungeonManager.current_player.ui.add_dice_face("EY")

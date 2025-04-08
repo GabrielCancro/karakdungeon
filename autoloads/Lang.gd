@@ -30,7 +30,8 @@ var texts = {
 	"ac_recover_es":"Curas tus puntos de vida (HP). Puede agotarse.",
 	"ac_descend_es":"Necesitas la llave de este nivel y reunir a todos tus personajes aquí para poder descender.",
 	
-	"it_reload_es":"usos por nivel",
+	"it_reload_es":"se recupera por nivel",
+	"it_reload_not_es":"se destruye al gastarse",
 	"it_old_dage_name_es":"DAGA VIEJA",
 	"it_old_dage_desc_es":"Si no tiene ninguna @SW, ganas una @SW",
 	"it_best_heart_name_es":"CORAZON DE BESTIA",
@@ -55,10 +56,10 @@ var texts = {
 	"tuto_pjui_es":"En la parte inferior estan las fichas de tus personajes, allí verás sus atributos, vida y movimiento.",
 	"tuto_dices_es":"Al comenzar cada turno, se arrojarán los dados de atributos de tus personajes, estos dados te dan ventaja en distintas acciónes.",
 	
-	"attr_SW_es":"@SW ESPADA: Fuerza de combate, otorga mayor daño de ataque.",
-	"attr_BT_es":"@BT BOTA: Agilidad de movimiento, te permite esquivar y avanzar mas casillas que el resto.",
+	"attr_SW_es":"@SW ESPADA: Fuerza, infliges mayor daño al atacar.",
+	"attr_BT_es":"@BT BOTA: Agilidad, avanzas mas casillas que el resto y te da +10% chances de evadir daño.",
 	"attr_HN_es":"@HN MANO: Maña, mayor facilidad para abrir cerrojos o desactivar trampas.",
-	"attr_EY_es":"@EY OJO: Percepcion y astucia, mayor facilidad para encontrar secretos y resolver enigmas.",
+	"attr_EY_es":"@EY OJO: Astucia, mayor facilidad para abrir cerrojos o desactivar trampas, tambien te da +25% chances de encontrar elementos ocultos.",
 
 	"hint_key_es":"Necesitas encontrar la llave de este nivel, cuando la tengas podras bajar por la escalera al siguiente.",
 	"hint_torch_es":"Cuando tu antorcha se termine, todos tus personajes reciben daño en cada turno.",
@@ -68,6 +69,7 @@ var texts = {
 	"hint_test_es":"TIRADA DE AZAR: Al interactuar se elige aleatoriamente una casilla de azar, si es [color=#FFFFAA]verde[/color], tienes exito, si es [color=#FF9999]rojo[/color] habras fallado.",
 	"hint_reqs_es":"DAÑO: Es el daño que puede infligirte este desafío.",
 	"hint_reload_item_es":"RECARGABLE: Recuperas los usos de este item o habilidad al pasar al siguiente nivel.",
+	"hint_items_es":"INVENTARIO: Los objetos son compartidos, cualquier personaje puede utilizarlos si cumple con su requisito.",
 	
 	"dice_neutral_es":"DADO NEUTRAL",
 	"dice_fight_es":"DADO DE COMBATE",
