@@ -4,7 +4,6 @@ OK- ADD random item to goblin and debries
 - ADD main menu
 - Make 4 Dungeons
 - Make last Dungeon and final boss
-- Select Characters
 
 
 LISTA DE TODOS APR-2025
@@ -23,7 +22,8 @@ FIXED-los items con reload no andan!
    FIXED-sfx al seleccionar player con vos male/female?
    FIXED-sfx slash al atacar los enemigos,
    FIXED-sfx al forzar puerta / cofre
-   -sfx usar item, encontrar item, 
+   FIXED-sfx usar item, encontrar item, 
+   FIXED-sfx pickup keys   
 
 -CONTENIDO
    -agregar final boss
@@ -31,6 +31,7 @@ FIXED-los items con reload no andan!
    -cofre grande no me dio ningun item :( (xq no hay items tier 2 xd)
    FIXED-agregar cartelito de help con info de los atributos
    -explicacion de recarga de items
+   -select Characters Screen
 
 -BUGS
    -a veces las rooms parpadean
