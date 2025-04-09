@@ -37,9 +37,10 @@ func enable_input():
 func is_input_disabled():
 	return (disabled_input_timer>0 || DISABLED_ACTIONS)
 
-func show_popup(name):
+func show_popup(name,page=null):
 	var node = load("res://popups/"+name+".tscn").instance()
 	current_popup = node
+	node.set_page(page)
 	get_node("/root").add_child(node)
 	yield(node,"on_close")
 	current_popup = null

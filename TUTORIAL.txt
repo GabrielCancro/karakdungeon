@@ -1,0 +1,17 @@
+OBJETIVO
+Bienvenido, tu grupo de aventureros ha descendido al primer nivel de este dungeon, debes explorarlo para encontrar la llave y poder bajar al siguiente nivel.
+
+PERSONAJES Y MOVIMIENTO
+En la parte inferior estan las fichas de tus personajes, puedes clickearlas para seleccionarlos y utilizar WASD para moverte por el dungeon.
+
+ATRIBUTOS
+Al inicio de cada turno tus personajes arrojan sus dados de atributos, dependiendo de los resultados obtendran ventaja para realizar unas u otras acciones.
+
+DESAFIOS Y ACCIONES
+Las habitaciones suelen contener desafios de distintos tipos, enemigos, escombros o trampas, cada desafio te permite realizar ciertas acciones que se veran bonificadas segun los atributos de cada personaje.
+
+ANTORCHAS Y DESCENDER
+Las antorchas son la unica forma de mantenerte a salvo, cada turno se reducira su numero, si llega a cero todos tus personajes recibiran daño en cada turno, asegurate de que eso no suceda!
+
+OBJETIVO FINAL
+En el cuerto piso esta Gorok el troll, debes vencerlo para superar esta mission, buena suerte a tus aventureros!

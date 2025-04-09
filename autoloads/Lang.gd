@@ -79,6 +79,14 @@ var texts = {
 	
 	"tx_hp_es":"HP: Indica la vitalidad del personaje, cuantos puntos de golpe puede resistir antes de morir.",
 	"tx_mv_es":"MV: Indica cuantos movimientos puede realizar el personaje en cada turno.",
+	
+	"tuto_welcome_es":"[center][color=#f6ff88]BIENVENIDO[/color]\nTu grupo de aventureros ha descendido al primer nivel de este dungeon, debes explorarlo para encontrar la llave y poder bajar al siguiente nivel.",
+	"tuto_pjs_es":"[center][color=#f6ff88]PERSONAJES Y MOVIMIENTO[/color]\nEn la parte inferior estan las fichas de tus personajes, puedes clickearlas para seleccionarlos y utilizar WASD para moverte por el dungeon.",
+	"tuto_attr_es":"[center][color=#f6ff88]ATRIBUTOS[/color]\nAl inicio de cada turno tus personajes arrojan sus dados de atributos, dependiendo de los resultados obtendran ventaja para realizar unas u otras acciones.",
+	"tuto_defiances_es":"[center][color=#f6ff88]DESAFIOS Y ACCIONES[/color]\nEncontraras diferentes desafios al explorar como enemigos, escombros o trampas. Cada uno permite realizar diferentes acciones modificadas por los atributos de tus personajes.",
+	"tuto_torch_es":"[center][color=#f6ff88]ANTORCHAS[/color]\nLas antorchas son la unica forma de mantenerte a salvo, cada turno se reducira su numero, si llega a cero todos tus personajes recibiran daño en cada turno, asegurate de que eso no suceda!",
+	"tuto_end_es":"[center][color=#f6ff88]OBJETIVO[/color]\nEn el cuarto piso esta Gorok el troll, debes vencerlo para superar esta mision, buena suerte a tus aventureros!",
+
 }
 
 

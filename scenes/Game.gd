@@ -9,7 +9,7 @@ func _ready():
 	
 	var help_hint_text = Lang.get_text("attr_SW")+"\n\n"+Lang.get_text("attr_BT")+"\n\n"+Lang.get_text("attr_HN")+"\n\n"+Lang.get_text("attr_EY")
 	AdaptativeHintAuto.add_hint($CLUI/HelpButton,help_hint_text)
-	$CLUI/HelpButton.connect("button_down",Utils,"show_popup",["tuto01"])
+	$CLUI/HelpButton.connect("button_down",Utils,"show_popup",["tuto01","tuto_welcome"])
 	
 	yield(get_tree().create_timer(2),"timeout")
 	$CLUI/TutorialHint.show_tuto("start")

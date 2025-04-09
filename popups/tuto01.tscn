@@ -8,7 +8,6 @@
 
 [sub_resource type="DynamicFont" id=2]
 size = 40
-outline_color = Color( 0.2, 0.2, 0.2, 1 )
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=1]
@@ -57,31 +56,31 @@ patch_margin_top = 127
 patch_margin_right = 132
 patch_margin_bottom = 129
 
-[node name="lb_name2" type="Label" parent="Panel"]
+[node name="RTL" type="RichTextLabel" parent="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 11.0
-margin_top = 16.0
-margin_right = -4.0
-margin_bottom = -17.0
-custom_colors/font_color = Color( 0.823529, 0.823529, 0.823529, 1 )
-custom_fonts/font = SubResource( 2 )
-text = "MOVIMIENTO
-Puedes seleccionar a tus personajes cliqueando sobre ellos.
-Luego, utiliza las teclas WASD para mover al personaje que tengas seleccionado."
-align = 1
-autowrap = true
-clip_text = true
+margin_left = 15.0
+margin_top = 25.0
+margin_right = -15.0
+margin_bottom = -2.0
+mouse_filter = 2
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]Ataque Directo: Consume 2x para dañar 1xVIDA a un enemigo."
+text = "Ataque Directo: Consume 2x para dañar 1xVIDA a un enemigo."
+fit_content_height = true
+scroll_active = false
 
 [node name="Button" type="Button" parent="Panel"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -76.5
-margin_top = 143.5
-margin_right = 76.5
-margin_bottom = 268.5
+margin_left = -153.0
+margin_top = 157.0
+margin_right = 153.0
+margin_bottom = 291.0
+focus_mode = 0
 __meta__ = {
 "_edit_group_": true
 }
@@ -97,12 +96,106 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color = Color( 0.780392, 0.803922, 0.486275, 1 )
 custom_fonts/font = SubResource( 1 )
-text = "OK"
+text = "1/10"
 align = 1
 valign = 1
 clip_text = true
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Panel/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -25.0
+margin_top = -5.0
+margin_right = 26.0
+margin_bottom = 7.0
+texture = ExtResource( 3 )
+patch_margin_left = 64
+patch_margin_top = 64
+patch_margin_right = 64
+patch_margin_bottom = 64
+
+[node name="btn_next" type="Button" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = -13.0
+margin_right = 178.0
+margin_bottom = 112.0
+focus_mode = 0
+flat = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="lb_name2" type="Label" parent="Panel/btn_next"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.780392, 0.803922, 0.486275, 1 )
+custom_fonts/font = SubResource( 1 )
+text = ">"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="btn_back" type="Button" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -185.0
+margin_top = -13.0
+margin_right = -3.0
+margin_bottom = 112.0
+focus_mode = 0
+flat = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="lb_name2" type="Label" parent="Panel/btn_back"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.780392, 0.803922, 0.486275, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "<"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="btn_skip" type="Button" parent="Panel"]
+modulate = Color( 0.752941, 0.752941, 0.752941, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 450.0
+margin_top = -356.0
+margin_right = 773.0
+margin_bottom = -234.0
+focus_mode = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="Panel/btn_skip"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.0745098, 0.0745098, 0.0745098, 1 )
+
+[node name="lb_name2" type="Label" parent="Panel/btn_skip"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.780392, 0.803922, 0.486275, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "SKIP TUTO"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Panel/btn_skip"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -25.0
