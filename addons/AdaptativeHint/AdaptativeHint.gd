@@ -11,11 +11,12 @@ func _ready():
 func _process(delta):
 	$Panel.rect_global_position = get_viewport().get_mouse_position() + offsetMouse
 	$Panel.rect_global_position.x = min($Panel.rect_global_position.x,screenSize.x-$Panel.rect_size.x)
+	#print($Panel.rect_size.x)
 	$Panel.rect_global_position.y = min($Panel.rect_global_position.y,screenSize.y-$Panel.rect_size.y)
 	#if $Panel.rect_global_position.x>screenSize.x*0.7: 
 	#	$Panel.rect_global_position.x -= $Panel.rect_size.x + offsetMouse.x*2
 	if $Panel.rect_global_position.y>screenSize.y*0.7: 
-		$Panel.rect_global_position.y -= $Panel.rect_size.y + offsetMouse.y*2
+		$Panel.rect_global_position.y -= ($Panel.rect_size.y-120) + offsetMouse.y*2
 	if $Panel.modulate.a<=0: set_process(false)
 
 func show_panel(text):
@@ -25,6 +26,7 @@ func show_panel(text):
 	$Panel/RTL.rect_position = Vector2(50,50)
 	$Panel/RTL.rect_size.y += 20
 	$Panel.rect_size.y = 100+$Panel/RTL.get_content_height()
+	print($Panel.rect_size.y)
 	$Tween.remove_all()
 	$Panel.modulate.a = 1
 	set_process(true)

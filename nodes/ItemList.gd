@@ -9,6 +9,7 @@ extends ColorRect
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Img/AnimationPlayer.stop()
+	$lb_level.text = Lang.get_text("tx_inventory")
 	AdaptativeHintAuto.add_hint($HelpButton,Lang.get_text("hint_items"))
 	yield(get_tree().create_timer(.2),"timeout")
 	update_item_list()

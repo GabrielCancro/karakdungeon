@@ -1,23 +1,18 @@
 extends Node2D
 
 func _ready():
+	$CLUI/TutoButton.connect("button_down",self,"on_click_button",["TutoButton"])
 	DungeonManager.connect("new_dungeon",self,"on_new_dungeon")
 	DungeonManager.goto_next_level()
 	
 	AdaptativeHintAuto.add_hint($CLUI/KeyOut,Lang.get_text("hint_key"))
 	AdaptativeHintAuto.add_hint($CLUI/Torch,Lang.get_text("hint_torch"))
+	AdaptativeHintAuto.add_hint($CLUI/TutoButton,Lang.get_text("hint_show_tuto"))
+	AdaptativeHintAuto.add_hint($CLUI/HelpButton,Lang.get_help_attr_hint())
 	
-	var help_hint_text = Lang.get_text("attr_SW")+"\n\n"+Lang.get_text("attr_BT")+"\n\n"+Lang.get_text("attr_HN")+"\n\n"+Lang.get_text("attr_EY")
-	AdaptativeHintAuto.add_hint($CLUI/HelpButton,help_hint_text)
-	$CLUI/HelpButton.connect("button_down",Utils,"show_popup",["tuto01","tuto_welcome"])
-	
+	Utils.disable_input(2.5)
 	yield(get_tree().create_timer(2),"timeout")
-	$CLUI/TutorialHint.show_tuto("start")
-	yield($CLUI/TutorialHint,"close_popup")
-	$CLUI/TutorialHint.show_tuto("pjui")
-	yield($CLUI/TutorialHint,"close_popup")
-	$CLUI/TutorialHint.show_tuto("dices")
-	yield($CLUI/TutorialHint,"close_popup")
+	Utils.show_popup("tuto01")
 
 func on_new_dungeon():
 	$CLUI/lb_level.text = "Nivel "+str(DungeonManager.dungeon_level)
@@ -29,3 +24,8 @@ func _process(delta):
 	if $Camera2D.zoom.x>1 && !pressed: $Camera2D.zoom -= Vector2(.05,.05)
 	$Camera2D.offset_v = $Camera2D.zoom.y/2
 	if Input.is_action_just_pressed("change_player"): PlayerManager.select_next_player()
+
+func on_click_button(name):
+	if name=="TutoButton":
+		LittleGS.play_sound("button")
+		Utils.show_popup("tuto01")

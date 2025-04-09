@@ -3,9 +3,7 @@ extends Control
 func _ready():
 	LittleGS.add_options_panel_to_scene(self)
 	LittleGS.play_music("ambientcave",70)
-	
-	var help_hint_text = Lang.get_text("attr_SW")+"\n\n"+Lang.get_text("attr_BT")+"\n\n"+Lang.get_text("attr_HN")+"\n\n"+Lang.get_text("attr_EY")
-	AdaptativeHintAuto.add_hint($HelpButton,help_hint_text)
+	AdaptativeHintAuto.add_hint($HelpButton,Lang.get_help_attr_hint())
 	
 	#1 load you custom data
 	var my_data = LittleGS.load_data()
@@ -33,6 +31,8 @@ func _ready():
 func on_button_click():
 	$Button.disabled = true
 	PlayerManager.PLAYERS_ID_ARRAY = get_players_selected()
+	Utils.show_popup("transition1")
+	yield(get_tree().create_timer(1),"timeout")
 	get_tree().change_scene("res://scenes/Game.tscn")
 
 func on_select_button_click(node):

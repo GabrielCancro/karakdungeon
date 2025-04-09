@@ -1,35 +1,94 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://popups/tuto01.gd" type="Script" id=1]
 [ext_resource path="res://assets/ui/9path_frame.png" type="Texture" id=2]
 [ext_resource path="res://assets/ui/9path_frame_small.png" type="Texture" id=3]
 [ext_resource path="res://assets/font/AbyssinicaSIL-Regular.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://assets/up_arrow.png" type="Texture" id=5]
+[ext_resource path="res://assets/bbimg/difficult_m.png" type="Texture" id=5]
+[ext_resource path="res://assets/shader/sh_clipped.tres" type="Material" id=6]
+[ext_resource path="res://assets/white.png" type="Texture" id=7]
+[ext_resource path="res://nodes/ActionNode.tscn" type="PackedScene" id=8]
 
-[sub_resource type="DynamicFont" id=2]
-size = 40
-font_data = ExtResource( 4 )
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+
+uniform sampler2D clip_texture;
+uniform vec2 clip_texture_size;
+uniform vec2 clip_texture_offset;
+
+void fragment(){
+    vec2 texture_size = (1.0 / TEXTURE_PIXEL_SIZE);
+    vec2 texture_ratio = texture_size / clip_texture_size;
+    vec2 clip_UV = UV * texture_ratio + clip_texture_offset;
+    
+    vec4 color;
+    if (clip_UV.x > 1.0 || clip_UV.x < 0.0 || clip_UV.y > 1.0 || clip_UV.y < 0.0) {
+        color = vec4(0.0, 0.0, 0.0, 0.0)
+    }
+    else {
+        color = texture(clip_texture, clip_UV);
+    }
+    
+    if(color.a!=0.0)
+        COLOR=vec4(0.0, 0.0, 0.0, 0.0);
+    else
+        COLOR=texture(TEXTURE, UV);
+    
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
+shader_param/clip_texture_size = Vector2( 100, 100 )
+shader_param/clip_texture_offset = Vector2( -0.823, -2.066 )
+shader_param/clip_texture = ExtResource( 7 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 44
 outline_color = Color( 0.2, 0.2, 0.2, 1 )
 font_data = ExtResource( 4 )
 
+[sub_resource type="DynamicFont" id=2]
+size = 40
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 46
+outline_size = 5
+outline_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+font_data = ExtResource( 4 )
+
 [node name="tuto01" type="CanvasLayer"]
-layer = 3
+layer = 2
 script = ExtResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+modulate = Color( 0.0117647, 0, 0.0823529, 0.705882 )
+material = ExtResource( 6 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = -249.0
-color = Color( 0.0136719, 0, 0.0820313, 0.588235 )
 
-[node name="ColorRect2" type="ColorRect" parent="."]
+[node name="ActionNode" parent="." instance=ExtResource( 8 )]
+margin_left = 1189.0
+margin_top = 289.0
+margin_right = 1434.0
+margin_bottom = 359.0
+
+[node name="ActionNode2" parent="." instance=ExtResource( 8 )]
+margin_left = 1205.0
+margin_top = 372.0
+margin_right = 1450.0
+margin_bottom = 442.0
+
+[node name="ClippedBg" type="TextureRect" parent="."]
+modulate = Color( 0.247059, 0.247059, 0.247059, 0.705882 )
+material = SubResource( 4 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 650.0
-color = Color( 0.0117647, 0, 0.0823529, 0.0313726 )
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 2
 
 [node name="Panel" type="ColorRect" parent="."]
 anchor_left = 0.5
@@ -37,10 +96,162 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -347.0
-margin_top = -253.0
+margin_top = -317.0
 margin_right = 347.0
-margin_bottom = 93.0
+margin_bottom = 29.0
+
+[node name="Button" type="Button" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -153.0
+margin_top = 125.0
+margin_right = 153.0
+margin_bottom = 259.0
+focus_mode = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="Panel/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
 color = Color( 0.0745098, 0.0745098, 0.0745098, 1 )
+
+[node name="lb_name2" type="Label" parent="Panel/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 20.0
+margin_bottom = 20.0
+custom_colors/font_color = Color( 0.780392, 0.803922, 0.486275, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "1/10"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Panel/Button"]
+modulate = Color( 0.721569, 0.72549, 0.631373, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -25.0
+margin_top = -5.0
+margin_right = 26.0
+margin_bottom = 7.0
+texture = ExtResource( 3 )
+patch_margin_left = 64
+patch_margin_top = 64
+patch_margin_right = 64
+patch_margin_bottom = 64
+
+[node name="btn_next" type="Button" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = -45.0
+margin_right = 178.0
+margin_bottom = 80.0
+focus_mode = 0
+flat = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="lb_name2" type="Label" parent="Panel/btn_next"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 21.0
+margin_bottom = 21.0
+custom_colors/font_color = Color( 0.780392, 0.803922, 0.486275, 1 )
+custom_fonts/font = SubResource( 1 )
+text = ">"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="btn_back" type="Button" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -185.0
+margin_top = -45.0
+margin_right = -3.0
+margin_bottom = 80.0
+focus_mode = 0
+flat = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="lb_name2" type="Label" parent="Panel/btn_back"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 21.0
+margin_bottom = 21.0
+custom_colors/font_color = Color( 0.780392, 0.803922, 0.486275, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "<"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="btn_skip" type="Button" parent="Panel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -228.0
+margin_top = -184.0
+margin_right = 228.0
+margin_bottom = -92.0
+focus_mode = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="Panel/btn_skip"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 10.0
+margin_bottom = 10.0
+mouse_filter = 2
+color = Color( 0.0745098, 0.0745098, 0.0745098, 1 )
+
+[node name="lb_name2" type="Label" parent="Panel/btn_skip"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = 50.0
+margin_right = 1.0
+margin_bottom = 10.0
+custom_colors/font_color = Color( 0.780392, 0.803922, 0.486275, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "SKIP TUTORIAL"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Panel/btn_skip"]
+modulate = Color( 0.721569, 0.72549, 0.631373, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -25.0
+margin_top = -5.0
+margin_right = 26.0
+margin_bottom = 7.0
+texture = ExtResource( 3 )
+patch_margin_left = 64
+patch_margin_top = 64
+patch_margin_right = 64
+patch_margin_bottom = 64
+
+[node name="ColorRect2" type="ColorRect" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Panel"]
 modulate = Color( 0.721569, 0.72549, 0.631373, 1 )
@@ -71,163 +282,45 @@ text = "Ataque Directo: Consume 2x para dañar 1xVIDA a un enemigo."
 fit_content_height = true
 scroll_active = false
 
-[node name="Button" type="Button" parent="Panel"]
+[node name="HelpButton" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -108.0
+margin_top = 285.0
+margin_right = -32.0
+margin_bottom = 361.0
+rect_min_size = Vector2( 6, 0 )
+flat = true
+
+[node name="Key2" type="TextureRect" parent="HelpButton"]
+modulate = Color( 0.0588235, 0.0588235, 0.0588235, 1 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -153.0
-margin_top = 157.0
-margin_right = 153.0
-margin_bottom = 291.0
-focus_mode = 0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="ColorRect" type="ColorRect" parent="Panel/Button"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+margin_left = -82.5
+margin_top = -82.5
+margin_right = 82.5
+margin_bottom = 82.5
+rect_pivot_offset = Vector2( 58.5, 58.5 )
 mouse_filter = 2
-color = Color( 0.0745098, 0.0745098, 0.0745098, 1 )
+texture = ExtResource( 5 )
+expand = true
 
-[node name="lb_name2" type="Label" parent="Panel/Button"]
+[node name="Key" type="TextureRect" parent="HelpButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_colors/font_color = Color( 0.780392, 0.803922, 0.486275, 1 )
-custom_fonts/font = SubResource( 1 )
-text = "1/10"
-align = 1
-valign = 1
-clip_text = true
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Panel/Button"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -25.0
-margin_top = -5.0
-margin_right = 26.0
-margin_bottom = 7.0
-texture = ExtResource( 3 )
-patch_margin_left = 64
-patch_margin_top = 64
-patch_margin_right = 64
-patch_margin_bottom = 64
-
-[node name="btn_next" type="Button" parent="Panel"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = 2.0
-margin_top = -13.0
-margin_right = 178.0
-margin_bottom = 112.0
-focus_mode = 0
-flat = true
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="lb_name2" type="Label" parent="Panel/btn_next"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_colors/font_color = Color( 0.780392, 0.803922, 0.486275, 1 )
-custom_fonts/font = SubResource( 1 )
-text = ">"
-align = 1
-valign = 1
-clip_text = true
-
-[node name="btn_back" type="Button" parent="Panel"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -185.0
-margin_top = -13.0
-margin_right = -3.0
-margin_bottom = 112.0
-focus_mode = 0
-flat = true
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="lb_name2" type="Label" parent="Panel/btn_back"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_colors/font_color = Color( 0.780392, 0.803922, 0.486275, 1 )
-custom_fonts/font = SubResource( 1 )
-text = "<"
-align = 1
-valign = 1
-clip_text = true
-
-[node name="btn_skip" type="Button" parent="Panel"]
-modulate = Color( 0.752941, 0.752941, 0.752941, 1 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 450.0
-margin_top = -356.0
-margin_right = 773.0
-margin_bottom = -234.0
-focus_mode = 0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="ColorRect" type="ColorRect" parent="Panel/btn_skip"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 58.5, 58.5 )
 mouse_filter = 2
-color = Color( 0.0745098, 0.0745098, 0.0745098, 1 )
+texture = ExtResource( 5 )
+expand = true
 
-[node name="lb_name2" type="Label" parent="Panel/btn_skip"]
+[node name="lb_level" type="Label" parent="HelpButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_colors/font_color = Color( 0.780392, 0.803922, 0.486275, 1 )
-custom_fonts/font = SubResource( 1 )
-text = "SKIP TUTO"
+custom_colors/font_color = Color( 0.788235, 0.788235, 0.788235, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "?"
 align = 1
 valign = 1
 clip_text = true
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Panel/btn_skip"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -25.0
-margin_top = -5.0
-margin_right = 26.0
-margin_bottom = 7.0
-texture = ExtResource( 3 )
-patch_margin_left = 64
-patch_margin_top = 64
-patch_margin_right = 64
-patch_margin_bottom = 64
-
-[node name="Arrow1" type="TextureRect" parent="."]
-margin_left = 224.0
-margin_top = 678.0
-margin_right = 288.0
-margin_bottom = 742.0
-rect_rotation = 143.831
-texture = ExtResource( 5 )
-
-[node name="Arrow2" type="TextureRect" parent="."]
-margin_left = 224.0
-margin_top = 678.0
-margin_right = 288.0
-margin_bottom = 742.0
-rect_rotation = 143.831
-texture = ExtResource( 5 )
-
-[node name="Arrow3" type="TextureRect" parent="."]
-margin_left = 224.0
-margin_top = 678.0
-margin_right = 288.0
-margin_bottom = 742.0
-rect_rotation = 143.831
-texture = ExtResource( 5 )

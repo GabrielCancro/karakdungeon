@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://nodes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/DefianceUI.tscn" type="PackedScene" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://assets/font/AbyssinicaSIL-Regular.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://scenes/Game.gd" type="Script" id=7]
 [ext_resource path="res://nodes/EndTurnButton.tscn" type="PackedScene" id=8]
-[ext_resource path="res://nodes/TutorialHint.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/dungeon_key_outline.png" type="Texture" id=10]
 [ext_resource path="res://nodes/ItemList.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/torch.png" type="Texture" id=12]
@@ -16,6 +15,8 @@
 [ext_resource path="res://assets/ui/ui_map.png" type="Texture" id=14]
 [ext_resource path="res://assets/floor1.png" type="Texture" id=15]
 [ext_resource path="res://assets/bbimg/difficult_m.png" type="Texture" id=16]
+[ext_resource path="res://assets/ui/9path_frame_small.png" type="Texture" id=17]
+[ext_resource path="res://assets/ui/ui_turn.png" type="Texture" id=18]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -44,7 +45,7 @@ void fragment() {
   }
 
   // Color calculation using time and position
-  col += 0.2+0.1 * cos(TIME + pos.xxx + vec3(0.0, 1.0, 2.0));
+  col += 0.2+0.1 * cos(TIME + pos.xxx + vec3(0.0, 0.5, 0.5));
 
   // Gamma correction
   col = pow(col, vec3(0.4545));
@@ -54,15 +55,20 @@ void fragment() {
   COLOR.a = 1.0;
 }"
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="ShaderMaterial" id=5]
 shader = SubResource( 1 )
-shader_param/strength = 0.105
-shader_param/speed = 0.077
+shader_param/strength = 0.1
+shader_param/speed = 0.05
 
 [sub_resource type="DynamicFont" id=2]
 size = 46
 outline_size = 5
 outline_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 44
+outline_color = Color( 0.2, 0.2, 0.2, 1 )
 font_data = ExtResource( 6 )
 
 [node name="Game" type="Node2D"]
@@ -72,6 +78,7 @@ script = ExtResource( 7 )
 layer = -1
 
 [node name="ColorRect" type="ColorRect" parent="CLBG"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.0980392, 0.0980392, 0.0980392, 1 )
@@ -80,8 +87,8 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="CLBG"]
-modulate = Color( 0.054902, 0.054902, 0.054902, 1 )
-material = SubResource( 3 )
+modulate = Color( 0.219608, 0.219608, 0.219608, 1 )
+material = SubResource( 5 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 15 )
@@ -233,20 +240,6 @@ margin_bottom = 266.0
 margin_top = 184.0
 margin_bottom = 220.0
 
-[node name="TutorialHint" parent="CLUI" instance=ExtResource( 9 )]
-visible = false
-
-[node name="InputBlocker" type="ColorRect" parent="CLUI"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0.235294, 0.235294, 0.235294, 0.0196078 )
-
-[node name="b1" type="ColorRect" parent="CLUI/InputBlocker"]
-anchor_right = 1.0
-margin_bottom = 11.0
-color = Color( 0.486275, 0.486275, 0.486275, 1 )
-
 [node name="MapButton" type="Button" parent="CLUI"]
 anchor_left = 1.0
 anchor_right = 1.0
@@ -294,3 +287,76 @@ text = "?"
 align = 1
 valign = 1
 clip_text = true
+
+[node name="TutoButton" type="Button" parent="CLUI"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = -17.0
+margin_top = -86.0
+margin_right = 72.0
+margin_bottom = 32.0
+focus_mode = 0
+flat = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="CLUI/TutoButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.0745098, 0.0745098, 0.0745098, 1 )
+
+[node name="lb_name2" type="Label" parent="CLUI/TutoButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 17.0
+margin_top = 16.0
+margin_right = 2.0
+margin_bottom = -32.0
+custom_colors/font_color = Color( 0.780392, 0.803922, 0.486275, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "?"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CLUI/TutoButton"]
+modulate = Color( 0.721569, 0.72549, 0.631373, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -25.0
+margin_top = -5.0
+margin_right = 26.0
+margin_bottom = 7.0
+texture = ExtResource( 17 )
+patch_margin_left = 64
+patch_margin_top = 64
+patch_margin_right = 64
+patch_margin_bottom = 64
+
+[node name="TextureRect" type="TextureRect" parent="CLUI/TutoButton"]
+visible = false
+modulate = Color( 0.858824, 0.858824, 0.858824, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -129.0
+margin_top = -50.0
+margin_right = 89.0
+margin_bottom = 108.0
+mouse_filter = 2
+texture = ExtResource( 18 )
+expand = true
+
+[node name="InputBlocker" type="ColorRect" parent="CLUI"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.235294, 0.235294, 0.235294, 0.0196078 )
+
+[node name="b1" type="ColorRect" parent="CLUI/InputBlocker"]
+anchor_right = 1.0
+margin_bottom = 11.0
+color = Color( 0.486275, 0.486275, 0.486275, 1 )

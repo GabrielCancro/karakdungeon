@@ -8,29 +8,62 @@ func _ready():
 	$Panel/btn_next.connect("button_down",self,"on_click_next",[+1])
 	$Panel/btn_back.connect("button_down",self,"on_click_next",[-1])
 	$Panel/btn_skip.connect("button_down",self,"on_click_close")
-	$Arrow1.rect_global_position =  Vector2(15,-20)+PlayerManager.get_player_data(1).ui.rect_global_position
-	$Arrow2.rect_global_position =  Vector2(15,-20)+PlayerManager.get_player_data(2).ui.rect_global_position
-	$Arrow3.rect_global_position =  Vector2(15,-20)+PlayerManager.get_player_data(3).ui.rect_global_position
+	AdaptativeHintAuto.add_hint($HelpButton,Lang.get_help_attr_hint())
 	set_page()
 
 func on_click_close():
+	LittleGS.play_sound("button")
 	emit_signal("on_close")
 	queue_free()
 
 func on_click_next(val):
+	LittleGS.play_sound("button")
 	tuto_index += val
-	if tuto_index>=tuto_arr.size(): on_click_close()
-	else: set_page(tuto_arr[tuto_index])
+	if tuto_index>=tuto_arr.size(): tuto_index = tuto_arr.size()-1
+	if tuto_index<=0: tuto_index = 0
+	set_page(tuto_arr[tuto_index])
 
 func set_page(page=null):
 	$Panel/RTL.bbcode_text = Lang.get_text(tuto_arr[tuto_index])
-	update_arrow_buttons()
-
-func update_arrow_buttons():
-	$Panel/btn_back.disabled = tuto_index<=0
-	$Panel/btn_next.disabled = tuto_index>=tuto_arr.size()-1
 	$Panel/Button/lb_name2.text = str(tuto_index+1)+"/"+str(tuto_arr.size())
-	if $Panel/btn_back.disabled: $Panel/btn_back.modulate = Color(.5,.5,.5,1)
-	else: $Panel/btn_back.modulate = Color(1,1,1,1)
-	if $Panel/btn_next.disabled: $Panel/btn_next.modulate = Color(.5,.5,.5,1)
-	else: $Panel/btn_next.modulate = Color(1,1,1,1)
+	$Panel/btn_back.visible = (tuto_index>0)
+	$Panel/btn_next.visible = (tuto_index<tuto_arr.size()-1)
+	if $Panel/btn_next.visible: $Panel/btn_skip/lb_name2.text = Lang.get_text("tx_skip_tutorial")
+	else: $Panel/btn_skip/lb_name2.text = Lang.get_text("tx_close_tutorial")
+	update_actions_buttons()
+	update_clipped_bg()
+
+func update_actions_buttons():
+	$HelpButton.visible = (tuto_index==2)
+	if tuto_index==3: 
+		$ActionNode.visible = true
+		$ActionNode.set_action("attack")
+		$ActionNode2.visible = true
+		$ActionNode2.set_action("open")
+	else:
+		$ActionNode.visible = false
+		$ActionNode2.visible = false
+
+func update_clipped_bg():
+	var size = Vector2()
+	var offset = Vector2()
+	if tuto_index==0:
+		size = Vector2(450,150)
+		offset = (Vector2(0,0))/-size
+	elif tuto_index==1:
+		var uipos = PlayerManager.get_player_data(1).ui.rect_global_position + Vector2(-100,-100)
+		size = Vector2(1250,400)
+		offset = uipos/-size
+	elif tuto_index==2:
+		var uipos = PlayerManager.get_player_data(1).ui.rect_global_position + Vector2(-100,+50)
+		size = Vector2(1250,400)
+		offset = uipos/-size
+	elif tuto_index==3:
+		var uipos = $ActionNode.rect_global_position + Vector2(-20,-30)
+		size = Vector2(300,200)
+		offset = uipos/-size
+	elif tuto_index==4:
+		size = Vector2(250,150)
+		offset = (Vector2(1600-size.x,0))/-size
+	($ClippedBg.material as ShaderMaterial).set_shader_param("clip_texture_size",size);
+	($ClippedBg.material as ShaderMaterial).set_shader_param("clip_texture_offset",offset);

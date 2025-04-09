@@ -28,10 +28,10 @@ FIXED-los items con reload no andan!
 -CONTENIDO
    -agregar final boss
    -popup GAME OVER
-   -cofre grande no me dio ningun item :( (xq no hay items tier 2 xd)
+   FIXED-cofre grande no me dio ningun item :( (xq no hay items tier 2 xd)
    FIXED-agregar cartelito de help con info de los atributos
-   -explicacion de recarga de items
-   -select Characters Screen
+   FIXED-explicacion de recarga de items
+   FIXED-select Characters Screen
 
 -BUGS
    -a veces las rooms parpadean

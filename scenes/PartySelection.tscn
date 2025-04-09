@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/bbimg/difficult_m.png" type="Texture" id=5]
 [ext_resource path="res://assets/ui/9path_frame_small.png" type="Texture" id=6]
 
-[sub_resource type="Shader" id=5]
+[sub_resource type="Shader" id=7]
 code = "shader_type canvas_item;
 
 uniform float strength : hint_range(0.0, 1.0) = 0.4;
@@ -34,7 +34,7 @@ void fragment() {
   }
 
   // Color calculation using time and position
-  col += 0.2+0.1 * cos(TIME + pos.xxx + vec3(0.0, 1.0, 2.0));
+  col += 0.2+0.1 * cos(TIME + pos.xxx + vec3(0.0, 0.5, 1.0));
 
   // Gamma correction
   col = pow(col, vec3(0.4545));
@@ -45,7 +45,7 @@ void fragment() {
 }"
 
 [sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 5 )
+shader = SubResource( 7 )
 shader_param/strength = 0.105
 shader_param/speed = 0.077
 

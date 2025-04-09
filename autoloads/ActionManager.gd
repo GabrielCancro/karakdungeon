@@ -146,16 +146,20 @@ func run_action_descend():
 	yield(get_tree().create_timer(.5),"timeout")
 	if !DungeonManager.have_key:
 		Effector.show_float_text("NEED LEVEL KEY",room.position+Vector2(0,-100),"white")
+		LittleGS.play_sound("fail",80)
 		emit_signal("end_action",false)
 		return
 	for p in PlayerManager.PLAYERS:
 		if p.hp<=0: continue
 		if p.x != room.data.x or p.y != room.data.y:
 			Effector.show_float_text("NEED ALL PARTY",room.position+Vector2(0,-100),"white")
+			LittleGS.play_sound("fail",80)
 			emit_signal("end_action",false)
 			return
 	emit_signal("end_action",true)
-	yield(get_tree().create_timer(1.5),"timeout")
+	yield(get_tree().create_timer(.5),"timeout")
+	Utils.show_popup("transition1")
+	yield(get_tree().create_timer(1),"timeout")
 	DungeonManager.goto_next_level()
 
 func check_action_recover(): return (def.type == "fountain")
