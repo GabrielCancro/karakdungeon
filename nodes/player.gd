@@ -27,6 +27,7 @@ func _input(event):
 	if Utils.is_input_disabled(): return
 	if !DungeonManager.current_player: return
 	if DungeonManager.current_player.node!=self: return
+	if Utils.current_popup: return
 	if !data.action: return
 	if event.is_action_pressed("ui_up"): move_to(0,-1)
 	if event.is_action_pressed("ui_down"): move_to(0,1)

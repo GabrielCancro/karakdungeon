@@ -1,6 +1,7 @@
 extends ColorRect
 
 func _ready():
+	visible = false
 	ActionManager.ACTION_LIST_NODE = self
 	DungeonManager.connect("change_room",self,"show_current_actions")
 

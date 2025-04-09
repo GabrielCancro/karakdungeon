@@ -21,9 +21,8 @@ func _ready():
 	#you can clear all saved data
 	#LittleGS.clear_all_user_data()
 	
-	$Button.visible = false
-	
 	$Button.connect("button_down",self,"on_button_click")
+	update_button_state()
 	Utils.remove_all_childs($HBox)
 	for pdata in PlayerManager.PLAYERS_BASE_DATA:
 		var node = preload("res://nodes/PjSelectUI.tscn").instance()
@@ -38,14 +37,22 @@ func on_button_click():
 
 func on_select_button_click(node):
 	var scolor = node.get_node("SelectColor")
-	if get_players_selected().size()>=3 && !scolor.visible: return
+	if get_players_selected().size()>=3 && !node.selected: return
 	LittleGS.play_sound("button")
-	scolor.visible = !scolor.visible
-	$Button.visible = (get_players_selected().size()==3)
+	node.select(!node.selected)
+	update_button_state()
 
 func get_players_selected():
 	var arr = []
 	for pui in $HBox.get_children():
-		if pui.get_node("SelectColor").visible:
+		if pui.selected:
 			arr.append(pui.get_index())
 	return arr
+
+func update_button_state():
+	if (get_players_selected().size()==3):
+		$Button.modulate.a = 1
+		$Button.disabled = false
+	else:
+		$Button.modulate.a = .3
+		$Button.disabled = true

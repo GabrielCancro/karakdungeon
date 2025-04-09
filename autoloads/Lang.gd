@@ -76,6 +76,9 @@ var texts = {
 	"dice_mind_es":"DADO DE ASTUCIA",
 	"dice_agility_es":"DADO DE DESTREZA",
 	"dice_custom_es":"DADO COMBINADO",
+	
+	"tx_hp_es":"HP: Indica la vitalidad del personaje, cuantos puntos de golpe puede resistir antes de morir.",
+	"tx_mv_es":"MV: Indica cuantos movimientos puede realizar el personaje en cada turno.",
 }
 
 

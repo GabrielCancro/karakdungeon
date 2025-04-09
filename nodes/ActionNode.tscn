@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/font/AbyssinicaSIL-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://nodes/ActionNode.gd" type="Script" id=2]
 [ext_resource path="res://assets/up_arrow.png" type="Texture" id=3]
+[ext_resource path="res://assets/ui/9path_frame_small.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 42
@@ -16,6 +17,7 @@ rect_pivot_offset = Vector2( 122, 68 )
 script = ExtResource( 2 )
 
 [node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -2.0
@@ -72,3 +74,18 @@ text = " x2"
 align = 1
 valign = 1
 clip_text = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+modulate = Color( 0.721569, 0.72549, 0.631373, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -11.0
+margin_top = -6.0
+margin_right = 280.0
+margin_bottom = 88.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+patch_margin_left = 64
+patch_margin_top = 64
+patch_margin_right = 64
+patch_margin_bottom = 64

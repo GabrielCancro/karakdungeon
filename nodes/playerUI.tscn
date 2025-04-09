@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/font/AbyssinicaSIL-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://nodes/Dice.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/retraits/retrait_1.png" type="Texture" id=4]
 [ext_resource path="res://assets/retraits/retrait_outline.png" type="Texture" id=5]
 [ext_resource path="res://assets/mov_point.png" type="Texture" id=6]
+[ext_resource path="res://assets/ui/9path_frame_small.png" type="Texture" id=7]
 
 [sub_resource type="DynamicFont" id=3]
 size = 37
@@ -35,6 +36,21 @@ margin_bottom = 162.0
 color = Color( 0.219608, 0.219608, 0.219608, 1 )
 script = ExtResource( 3 )
 
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+modulate = Color( 0.721569, 0.72549, 0.631373, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -7.0
+margin_top = -6.0
+margin_right = 329.0
+margin_bottom = 192.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+patch_margin_left = 64
+patch_margin_top = 64
+patch_margin_right = 64
+patch_margin_bottom = 64
+
 [node name="Selector" type="TextureRect" parent="."]
 modulate = Color( 0.768627, 0.772549, 0.105882, 1 )
 anchor_left = 0.5
@@ -51,9 +67,9 @@ expand = true
 [node name="ColorRect" type="ColorRect" parent="Selector"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 16.0
+margin_left = 25.0
 margin_top = 183.0
-margin_right = 215.0
+margin_right = 211.0
 margin_bottom = 89.0
 
 [node name="TextureProgress" type="TextureProgress" parent="."]

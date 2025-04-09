@@ -2,6 +2,7 @@ extends Node
 
 var disabled_input_timer = 0
 var DISABLED_ACTIONS = false
+var current_popup = null
 
 func set_zindex(node, delay=0,offsetY=0):
 	if delay>0: yield(get_tree().create_timer(delay),"timeout")
@@ -35,3 +36,10 @@ func enable_input():
 
 func is_input_disabled():
 	return (disabled_input_timer>0 || DISABLED_ACTIONS)
+
+func show_popup(name):
+	var node = load("res://popups/"+name+".tscn").instance()
+	current_popup = node
+	get_node("/root").add_child(node)
+	yield(node,"on_close")
+	current_popup = null
