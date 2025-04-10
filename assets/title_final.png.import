@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/df_rat.webp-ce359aecf2d8c52224917503c13bf46e.stex"
+path="res://.import/title_final.png-8a06adf41f69c66ed80dca2d9fd33bbe.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/defiances/df_rat.webp"
-dest_files=[ "res://.import/df_rat.webp-ce359aecf2d8c52224917503c13bf46e.stex" ]
+source_file="res://assets/title_final.png"
+dest_files=[ "res://.import/title_final.png-8a06adf41f69c66ed80dca2d9fd33bbe.stex" ]
 
 [params]
 

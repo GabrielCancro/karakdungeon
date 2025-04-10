@@ -1,8 +1,6 @@
 extends Control
 
 func _ready():
-	LittleGS.add_options_panel_to_scene(self)
-	LittleGS.play_music("ambientcave",70)
 	AdaptativeHintAuto.add_hint($HelpButton,Lang.get_help_attr_hint())
 	
 	#1 load you custom data
@@ -18,8 +16,13 @@ func _ready():
 	
 	#you can clear all saved data
 	#LittleGS.clear_all_user_data()
+	$lb_name.text = Lang.get_text("tx_chose_heroes")
+	$Button2/lb_name2.text = Lang.get_text("tx_back")
+	LittleGS.add_button_behavior($Button2,self,"on_click_back")
+	$Button/lb_name2.text = Lang.get_text("tx_goto_dungeon")
+	LittleGS.add_button_behavior($Button,self,"on_click_dungeon")
 	
-	$Button.connect("button_down",self,"on_button_click")
+	
 	update_button_state()
 	Utils.remove_all_childs($HBox)
 	for pdata in PlayerManager.PLAYERS_BASE_DATA:
@@ -28,12 +31,17 @@ func _ready():
 		node.set_data(pdata)
 		node.get_node("Button").connect("button_down",self,"on_select_button_click",[node])
 
-func on_button_click():
-	$Button.disabled = true
+func on_click_dungeon():
+	PlayerManager.PLAYERS = []
 	PlayerManager.PLAYERS_ID_ARRAY = get_players_selected()
 	Utils.show_popup("transition1")
 	yield(get_tree().create_timer(1),"timeout")
 	get_tree().change_scene("res://scenes/Game.tscn")
+
+func on_click_back():
+	Utils.show_popup("transition1")
+	yield(get_tree().create_timer(1),"timeout")
+	get_tree().change_scene("res://scenes/Menu.tscn")
 
 func on_select_button_click(node):
 	var scolor = node.get_node("SelectColor")

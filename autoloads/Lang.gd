@@ -14,6 +14,7 @@ var texts = {
 	"df_name_goblin_es":"Goblin",
 	"df_name_rat_es":"Rata Gig.",
 	"df_name_bat_es":"Murcielago",
+	"df_name_gorok_es":"Gorok",
 	"df_name_trap_es":"Trampa",
 	"df_name_door_es":"Puerta",
 	"df_name_debris_es":"Escombros",
@@ -80,6 +81,10 @@ var texts = {
 	
 	"tx_hp_es":"HP: Indica la vitalidad del personaje, cuantos puntos de golpe puede resistir antes de morir.",
 	"tx_mv_es":"MV: Indica cuantos movimientos puede realizar el personaje en cada turno.",
+	"tx_back_es":"Volver",
+	"tx_play_es":"Jugar",
+	"tx_goto_dungeon_es":"Bajar al\nDungeon",
+	"tx_chose_heroes_es":"Elige a tres aventureros para bajar al dungeon!",
 	
 	"tuto_welcome_es":"[center][color=#f6ff88]BIENVENIDO[/color]\nTu grupo de aventureros ha descendido al primer nivel de este dungeon, debes explorarlo para encontrar la llave y poder bajar al siguiente nivel.",
 	"tuto_pjs_es":"[center][color=#f6ff88]PERSONAJES Y MOVIMIENTO[/color]\nEn la parte inferior estan las fichas de tus personajes, puedes clickearlas o presionar [Q] para seleccionarlos y utilizar [W][A][S][D] para moverte por el dungeon.",
@@ -91,13 +96,16 @@ var texts = {
 	"tx_skip_tutorial_es":"SALTAR TUTORIAL",
 	"tx_close_tutorial_es":"CERRAR TUTORIAL",
 	"tx_inventory_es": "INVENTARIO",
-
+	
+	"popup_win_es":"[center][color=#f6ff88]VICTORIA[/color]\nHas vencido a Gorok el troll y liberaste su guarida de todo peligro.\n\nEsperamos que lo hayas disfrutado!",
+	"popup_lose_es":"[center][color=#f6ff88]DERROTA[/color]\nTodos tus aventureros han caido, ya no saldran de este calabozo.\n\nVuelve a intentarlo!",
 }
 
 func get_help_attr_hint():
 	return Lang.get_text("attr_SW")+"\n\n"+Lang.get_text("attr_BT")+"\n\n"+Lang.get_text("attr_HN")+"\n\n"+Lang.get_text("attr_EY")
 
 func get_text(code,vals = []):
+	lang = LittleGS.get_current_languaje()
 	var lang_code = code+"_"+lang
 	if !lang_code in texts: return "<"+lang_code+">"
 	else: 

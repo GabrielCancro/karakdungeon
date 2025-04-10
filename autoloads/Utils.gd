@@ -42,5 +42,8 @@ func show_popup(name,page=null):
 	current_popup = node
 	node.set_page(page)
 	get_node("/root").add_child(node)
-	yield(node,"on_close")
+	node.connect("on_close",self,"_on_close_popup")
+	return node
+
+func _on_close_popup():
 	current_popup = null

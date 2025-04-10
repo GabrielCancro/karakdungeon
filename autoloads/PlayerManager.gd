@@ -150,6 +150,7 @@ func damage_player(id,dam):
 		player.action = false
 		player.ui.visible = false
 		LittleGS.play_sound("dead1")
+		check_all_players_dead()
 	elif dam>0: LittleGS.play_sound("hit1")
 	else: LittleGS.play_sound("evade",70)
 	player.ui.updateUI()
@@ -190,8 +191,15 @@ func select_next_player():
 			if id > PLAYERS.size(): id = 1
 			if change_player(id): return
 
-#func delete_player(id):
-#	var pj = PLAYERS.pop_at(id-1)
-#	if DungeonManager.current_player == pj: select_next_player()
-#	pj.node.queue_free()
-#	pj.ui.queue_free()
+func check_all_players_dead():
+	var any_live = false
+	for i in range(PLAYERS.size()): if PLAYERS[i].hp>0: any_live = true
+	if !any_live:  
+		Utils.disable_input(2.0)
+		yield(get_tree().create_timer(1),"timeout")
+		LittleGS.play_sound("all_dead")
+		yield(get_tree().create_timer(1),"timeout")
+		yield(Utils.show_popup("lose"),"on_close")
+		Utils.show_popup("transition1")
+		yield(get_tree().create_timer(1),"timeout")
+		get_tree().change_scene("res://scenes/Menu.tscn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://nodes/PjSelectUI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/PartySelection.gd" type="Script" id=2]
@@ -66,6 +66,11 @@ outline_size = 5
 outline_color = Color( 0.203922, 0.203922, 0.203922, 1 )
 font_data = ExtResource( 4 )
 
+[sub_resource type="DynamicFont" id=8]
+size = 32
+outline_color = Color( 0.2, 0.2, 0.2, 1 )
+font_data = ExtResource( 4 )
+
 [node name="PartySelection" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -88,10 +93,10 @@ margin_right = -165.0
 margin_bottom = 576.0
 custom_colors/font_color = Color( 0.780392, 0.803922, 0.486275, 1 )
 custom_fonts/font = SubResource( 4 )
-text = "ELIGE TRES HEROES 
-PARA BAJAR AL DUNGEON!"
+text = "ELIGE TRES HEROES PARA BAJAR AL DUNGEON!"
 align = 1
 valign = 1
+autowrap = true
 clip_text = true
 
 [node name="HBox" type="GridContainer" parent="."]
@@ -198,3 +203,49 @@ text = "?"
 align = 1
 valign = 1
 clip_text = true
+
+[node name="Button2" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -906.0
+margin_top = -496.0
+margin_right = -672.0
+margin_bottom = -381.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="Button2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.0745098, 0.0745098, 0.0745098, 1 )
+
+[node name="lb_name2" type="Label" parent="Button2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 104.0
+margin_top = 31.0
+margin_right = 12.0
+custom_colors/font_color = Color( 0.780392, 0.803922, 0.486275, 1 )
+custom_fonts/font = SubResource( 8 )
+text = "Volver"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Button2"]
+modulate = Color( 0.721569, 0.72549, 0.631373, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -25.0
+margin_top = -5.0
+margin_right = 26.0
+margin_bottom = 7.0
+texture = ExtResource( 6 )
+patch_margin_left = 64
+patch_margin_top = 64
+patch_margin_right = 64
+patch_margin_bottom = 64

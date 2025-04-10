@@ -6,6 +6,7 @@ var DEFIANCES = {
 	"goblin":{"type":"enemy", "hp":5, "dam":2, "give_item":0.5},
 	"rat":{"type":"enemy", "hp":3, "dam":1},
 	"bat":{"type":"enemy", "hp":2, "dam":1},
+	"gorok":{"type":"enemy", "hp":7, "dam":2},
 	"trap":{"type":"trap", "dif":4,"dam":2},
 	"door":{"type":"door", "req":["HN","EY"], "give_item":0.2, "snd":"open"},
 	"debris":{"type":"block", "hp":3, "give_item":0.2},
@@ -42,11 +43,21 @@ func resolve_current_defiance():
 	var def = DungeonManager.current_room.data.defiance
 	if "snd" in def: LittleGS.play_sound(def.snd)
 	
+	var winner = (def.name=="gorok")
 	DungeonManager.current_room.erase_defiance()
 	yield(get_tree().create_timer(.5),"timeout")
 	if getted_item: get_node("/root/Game/CLUI/ItemList").play_take_item_anim(getted_item)
 	DungeonManager.reset_current_room()
 	emit_signal("resolved_defiance")
+	
+	if winner: 
+		Utils.disable_input(2.0)
+		LittleGS.play_sound("troll_dead")
+		yield(get_tree().create_timer(1),"timeout")
+		yield(Utils.show_popup("win"),"on_close")
+		Utils.show_popup("transition1")
+		yield(get_tree().create_timer(1),"timeout")
+		get_tree().change_scene("res://scenes/Menu.tscn")
 
 func activate_trap(def):
 	Effector.scale_boom(DungeonManager.current_room.get_node("Sprite"))

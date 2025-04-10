@@ -80,8 +80,9 @@ func play_sound(name,vol=100):
 	audio.stream.loop = false
 	audio.volume_db = (vol-100)*0.33
 	audio.play()
-	yield(audio,"finished")
-	audio.queue_free()
+	audio.connect("finished",audio,"queue_free")
+	return audio
+
 
 func play_music(name=null,vol=100):
 	if name:
@@ -92,6 +93,7 @@ func play_music(name=null,vol=100):
 	if current_music:
 		current_music.volume_db = (vol-100)*0.33
 		current_music.play()
+	return current_music
 
 func stop_music():
 	if current_music:

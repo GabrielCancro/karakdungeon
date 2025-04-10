@@ -1,7 +1,8 @@
 extends Node2D
 
 func _ready():
-	$CLUI/TutoButton.connect("button_down",self,"on_click_button",["TutoButton"])
+	LittleGS.add_button_behavior($CLUI/EndTurnButton,TurnManager,"end_turn")
+	LittleGS.add_button_behavior($CLUI/TutoButton,self,"on_click_tuto_button")
 	DungeonManager.connect("new_dungeon",self,"on_new_dungeon")
 	DungeonManager.goto_next_level()
 	
@@ -25,7 +26,5 @@ func _process(delta):
 	$Camera2D.offset_v = $Camera2D.zoom.y/2
 	if Input.is_action_just_pressed("change_player"): PlayerManager.select_next_player()
 
-func on_click_button(name):
-	if name=="TutoButton":
-		LittleGS.play_sound("button")
-		Utils.show_popup("tuto01")
+func on_click_tuto_button():
+	Utils.show_popup("tuto01")

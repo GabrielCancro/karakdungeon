@@ -26,7 +26,7 @@ func show_panel(text):
 	$Panel/RTL.rect_position = Vector2(50,50)
 	$Panel/RTL.rect_size.y += 20
 	$Panel.rect_size.y = 100+$Panel/RTL.get_content_height()
-	print($Panel.rect_size.y)
+	#print($Panel.rect_size.y)
 	$Tween.remove_all()
 	$Panel.modulate.a = 1
 	set_process(true)
