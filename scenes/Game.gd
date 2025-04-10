@@ -1,6 +1,7 @@
 extends Node2D
 
 func _ready():
+	$CLUI/EndTurnButton/lb_desc.text = Lang.get_text("tx_end_turn")
 	LittleGS.add_button_behavior($CLUI/EndTurnButton,TurnManager,"end_turn")
 	LittleGS.add_button_behavior($CLUI/TutoButton,self,"on_click_tuto_button")
 	DungeonManager.connect("new_dungeon",self,"on_new_dungeon")
@@ -16,7 +17,7 @@ func _ready():
 	Utils.show_popup("tuto01")
 
 func on_new_dungeon():
-	$CLUI/lb_level.text = "Nivel "+str(DungeonManager.dungeon_level)
+	$CLUI/lb_level.text = Lang.get_text("tx_level")+" "+str(DungeonManager.dungeon_level)
 
 func _process(delta):
 	if Utils.is_input_disabled(): return

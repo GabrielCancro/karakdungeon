@@ -46,7 +46,10 @@ func enemy_attack(def,pj):
 	Effector.move_to_yoyo(def.def_sprite, Vector2(pj.h,pj.v)*50)
 	yield(get_tree().create_timer(.3),"timeout")
 	randomize()
-	PlayerManager.damage_current_player(randi()%(def.dam+1))
+	if("allways_damage" in def && def.allways_damage):
+		PlayerManager.damage_current_player(randi()%(def.dam)+1)
+	else:
+		PlayerManager.damage_current_player(randi()%(def.dam+1))
 
 func end_turn():
 	Utils.disable_input(2)

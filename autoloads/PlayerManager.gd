@@ -137,8 +137,8 @@ func damage_player(id,dam):
 	var player = PlayerManager.get_player_data(id)
 	Effector.scale_boom(player.node)
 	randomize()
-	if randf()<PlayerManager.get_dice_amount("BT")*.1: 
-		Effector.show_float_text("-"+str(dam)+"HP EVADED!",player.node.position+Vector2(0,-80),"normal")
+	if dam>0 && randf()<PlayerManager.get_dice_amount("BT")*.1: 
+		Effector.show_float_text("-"+str(dam)+"HP "+Lang.get_text("tx_evade"),player.node.position+Vector2(0,-80),"normal")
 		dam = 0
 	else:
 		Effector.show_float_text("-"+str(dam)+"HP",player.node.position+Vector2(0,-80),"damage")

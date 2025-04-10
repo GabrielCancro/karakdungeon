@@ -13,7 +13,7 @@ func _ready():
 
 func on_click_button():
 	$Button.disabled = true
-	main_sfx.stop()
+	if is_instance_valid(main_sfx): main_sfx.stop()
 	Utils.show_popup("transition1")
 	yield(get_tree().create_timer(1),"timeout")
 	get_tree().change_scene("res://scenes/PartySelection.tscn")

@@ -246,8 +246,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -272.0
 margin_top = -238.0
-margin_right = -80.0
-margin_bottom = -88.0
+margin_right = -56.0
+margin_bottom = -69.0
 custom_fonts/font = SubResource( 6 )
 flat = true
 
@@ -269,7 +269,8 @@ anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 78, 58 )
 custom_colors/font_color = Color( 0.823529, 0.858824, 0.670588, 1 )
 custom_fonts/font = SubResource( 7 )
-text = "END TURN"
+text = "FIN
+TURNO"
 align = 1
 valign = 1
 autowrap = true

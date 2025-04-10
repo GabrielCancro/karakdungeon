@@ -8,7 +8,7 @@ func _ready():
 
 func set_action(_name):
 	ac_name = _name
-	$Label.text = ac_name + " "
+	$Label.text = Lang.get_text("ac_name_"+ac_name) + " "
 	$lb_bon.text = ActionManager.get_bonif(ac_name)
 #	var bnf = ActionManager.get_bonif(ac_name)
 #	$ImgBonif.visible = true #(bnf>0)

@@ -40,9 +40,11 @@ func update_actions_buttons():
 	$HelpButton.visible = (tuto_index==2)
 	if tuto_index==3: 
 		$ActionNode.visible = true
-		$ActionNode.set_action("attack")
+		$ActionNode.get_node("Label").text = Lang.get_text("ac_name_attack")
+		$ActionNode.get_node("lb_bon").text = "-"
 		$ActionNode2.visible = true
-		$ActionNode2.set_action("open")
+		$ActionNode2.get_node("Label").text = Lang.get_text("ac_name_dissarm")
+		$ActionNode2.get_node("lb_bon").text = "-"
 	else:
 		$ActionNode.visible = false
 		$ActionNode2.visible = false

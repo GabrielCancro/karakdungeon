@@ -6,7 +6,7 @@ var DEFIANCES = {
 	"goblin":{"type":"enemy", "hp":5, "dam":2, "give_item":0.5},
 	"rat":{"type":"enemy", "hp":3, "dam":1},
 	"bat":{"type":"enemy", "hp":2, "dam":1},
-	"gorok":{"type":"enemy", "hp":7, "dam":2},
+	"gorok":{"type":"enemy", "hp":7, "dam":2, "allways_damage":true},
 	"trap":{"type":"trap", "dif":4,"dam":2},
 	"door":{"type":"door", "req":["HN","EY"], "give_item":0.2, "snd":"open"},
 	"debris":{"type":"block", "hp":3, "give_item":0.2},
