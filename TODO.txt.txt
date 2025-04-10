@@ -26,12 +26,15 @@ FIXED-los items con reload no andan!
    FIXED-sfx pickup keys   
 
 -CONTENIDO
-   -agregar final boss
-   -popup GAME OVER
+   FIXED-agregar final boss
+   FIXED-popup GAME OVER
    FIXED-cofre grande no me dio ningun item :( (xq no hay items tier 2 xd)
    FIXED-agregar cartelito de help con info de los atributos
    FIXED-explicacion de recarga de items
    FIXED-select Characters Screen
+   FIXED-MainMenu
+   -Agregar traducciones al ingles
+   -Ver que quedo sin traducir (nivel en las keys uy algo mas)   
 
 -BUGS
    -a veces las rooms parpadean
@@ -41,4 +44,4 @@ FIXED-los items con reload no andan!
 
 -FX
    FIXED-efecto de rotar defiance cuando se resuelve
-  -poner un efecto o algo cuando descendes por la escalera, fade o algo
+   FIXED-poner un efecto o algo cuando descendes por la escalera, fade o algo
