@@ -6,6 +6,7 @@ var last_nodes = []
 var new_nodes = []
 var rooms_amount = 10
 var percent_of_door = 30
+var final_level = 4
 
 # Called when the node enters the scene tree for the first time.
 func generate_new_map(_rooms_amount,generate_by_steps=false):
@@ -122,18 +123,22 @@ func add_defiances():
 	
 	var defs = []
 	if lv==1: #15 (6)
-		defs=["rat","bat","debris","trap","wchest","gorok"]
+		defs=["rat","bat","debris","trap","wchest"]
 #		defs = ["trap@hide","trap@hide","trap@hide","wchest@hide","wchest@hide","wchest@hide"]
 		for i in range(3): defs.append(get_rnd(["rat","bat","debris"]))
-	elif lv==2: #20(11)
-		defs=["rat","bat","goblin","goblin","door","door","fountain","wchest"]
+	elif lv==2: #20(12)
+		defs=["rat","bat","goblin","goblin","door","door","fountain","wchest@hide","trap"]
 		for i in range(4): defs.append(get_rnd(["rat","bat","debris"]))
 	elif lv==3: #25 (15)
-		defs=["rat","bat","goblin","goblin","door","door","fountain","trap","trap","chest@hide"]
+		defs=["rat","bat","goblin","goblin","door","door","fountain","trap","trap@hide","chest@hide"]
 		for i in range(4): defs.append(get_rnd(["rat","bat","debris"]))
 		for i in range(3): defs.append(get_rnd(["goblin","trap"]))
+	elif lv==4: #30 (20)
+		defs=["rat","bat","goblin","goblin","door","door","fountain","trap","trap@hide","wchest@hide","wchest@hide","gorok"]
+		for i in range(5): defs.append(get_rnd(["rat","bat","debris"]))
+		for i in range(4): defs.append(get_rnd(["goblin","trap"]))
 	
-	defs.append("stairs")
+	if lv<DungeonManager.final_level: defs.append("stairs")
 	
 	var keys = map.keys()
 	keys.shuffle()

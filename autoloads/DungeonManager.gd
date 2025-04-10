@@ -4,6 +4,7 @@ var current_room
 var current_player
 var have_key = false
 var dungeon_level = 0
+var final_level = 4
 var total_defs = 0
 var resolved_defs = 0
 var total_torch = 0
@@ -23,6 +24,7 @@ func goto_next_level():
 	ItemManager.recover_uses()
 	Utils.remove_all_childs(get_node("/root/Game/Map"))
 	get_node("/root/Game/CLUI/Key").visible = false
+	if dungeon_level == final_level: get_node("/root/Game/CLUI/KeyOut").visible = false
 	have_key = false
 	yield(get_tree().create_timer(.1),"timeout")
 	map = MapGenerator.generate_new_map(10+5*dungeon_level)
@@ -123,7 +125,7 @@ func get_key():
 func on_resolve_defiance():
 	resolved_defs += 1
 	#("RESOLVED ",resolved_defs,"/",total_defs)
-	if !have_key && resolved_defs>=floor(total_defs*0.8): get_key()
+	if !have_key && dungeon_level<final_level && resolved_defs>=floor(total_defs*0.8): get_key()
 
 func find_hide_defiances(xx,yy):
 	var key = str(xx)+"x"+str(yy)
