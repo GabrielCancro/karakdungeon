@@ -64,6 +64,7 @@ func on_use_item(item):
 	if "uses" in item && item.uses<=0: return false
 	if (has_method("condition_"+item.name)) && !call("condition_"+item.name,item): return false
 	if (has_method("on_use_"+item.name)):
+		Utils.disable_input(1)
 		call("on_use_"+item.name,item)
 		LittleGS.play_sound("equip")
 		Effector.scale_boom(item.ui)

@@ -6,7 +6,6 @@ var last_nodes = []
 var new_nodes = []
 var rooms_amount = 10
 var percent_of_door = 30
-var final_level = 4
 
 # Called when the node enters the scene tree for the first time.
 func generate_new_map(_rooms_amount,generate_by_steps=false):
@@ -134,11 +133,12 @@ func add_defiances():
 		for i in range(4): defs.append(get_rnd(["rat","bat","debris"]))
 		for i in range(3): defs.append(get_rnd(["goblin","trap"]))
 	elif lv==4: #30 (20)
-		defs=["rat","bat","goblin","goblin","door","door","fountain","trap","trap@hide","wchest@hide","wchest@hide","gorok"]
+		defs=["rat","bat","goblin","goblin","door","door","fountain","trap","trap@hide","wchest@hide","wchest@hide"]
 		for i in range(5): defs.append(get_rnd(["rat","bat","debris"]))
 		for i in range(4): defs.append(get_rnd(["goblin","trap"]))
 	
-	if lv<DungeonManager.final_level: defs.append("stairs")
+	if !DungeonManager.is_final_level(): 
+		defs.append("stairs")
 	
 	var keys = map.keys()
 	keys.shuffle()
@@ -147,6 +147,19 @@ func add_defiances():
 		var k = keys.pop_back()
 		if k=="0x0": k = keys.pop_back()
 		map[k]["defiance"] = d
+
+	#ADD GOROK IN FINAL LEVEL FAR OF 0-0!
+	if DungeonManager.is_final_level():
+		var far_room_key = "0x1"
+		var far_room_distance = 0
+		for k in keys: 
+			if "defiance" in map[k]: continue
+			var dist = Vector2(0,0).distance_to(Vector2(map[k].x,map[k].y))
+			if dist>far_room_distance:
+				far_room_key = k
+				far_room_distance = dist
+		map[far_room_key]["defiance"] = "gorok"
+
 
 func get_rnd(arr):
 	randomize()

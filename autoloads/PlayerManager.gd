@@ -148,7 +148,8 @@ func damage_player(id,dam):
 		player.hp = 0
 		player.mov = 0
 		player.action = false
-		player.ui.visible = false
+		Effector.disappear(player.ui,true)
+		Effector.disappear(player.node,true)
 		LittleGS.play_sound("dead1")
 		check_all_players_dead()
 	elif dam>0: LittleGS.play_sound("hit1")

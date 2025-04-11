@@ -33,18 +33,18 @@ func get_room_actions():
 	return ac_array
 
 func run_action(ac_name):
-	Utils.disable_input(3)
+	Utils.disable_input(2)
 	if has_method("run_action_"+ac_name):
 		var keep_action = call("run_action_"+ac_name)
 		DungeonManager.current_player.node.anim_action_start()
 		yield(get_tree().create_timer(.2),"timeout")
 		var result = yield(self,"end_action")
+		Utils.disable_input(.5)
 		DungeonManager.force_update()
 		DungeonManager.current_player.node.anim_action_end()
 		if result:
 			PlayerManager.set_pj_attr("action",false)
 			PlayerManager.set_pj_attr("mov",0)
-	Utils.enable_input()
 
 func get_bonif(ac_name):
 	var am = "-"
@@ -67,6 +67,7 @@ func run_action_attack():
 		LittleGS.play_sound("hit")
 		defUI.update()
 		Effector.move_to_yoyo(pj.node,(pj.node.global_position-pj.node.get_dest_pos())*0.5)
+		Utils.disable_input(1)
 		yield(get_tree().create_timer(.7),"timeout")
 		if def.hp<=0: break
 	emit_signal("end_action",true)
@@ -83,6 +84,7 @@ func run_action_clear():
 		LittleGS.play_sound("hit_rock")
 		defUI.update()
 		Effector.move_to_yoyo(pj.node,(pj.node.global_position-pj.node.get_dest_pos())*0.5)
+		Utils.disable_input(1)
 		yield(get_tree().create_timer(.5),"timeout")
 		if def.hp<=0: break
 	emit_signal("end_action",true)
@@ -95,12 +97,14 @@ func run_action_dissarm():
 	var defUI = get_node("/root/Game/CLUI/DefianceUI")
 	defUI.dif_test.roll()
 	LittleGS.play_sound("lockpick1")
+	Utils.disable_input(4)
 	var result = yield(defUI.dif_test,"end_roll")
 	yield(get_tree().create_timer(1),"timeout")
 	if result=="FAIL": 
 		Effector.show_float_text("ACTIVATED!",room.position+Vector2(0,-100),"damage")
 		DefianceManager.activate_trap(def)
 		LittleGS.play_sound("lock2")
+		Utils.disable_input(2)
 		yield(get_tree().create_timer(1.5),"timeout")
 	elif result=="SUCCESS": 
 		LittleGS.play_sound("unlock3")
@@ -125,11 +129,13 @@ func run_action_unlock():
 				break
 	if have_unlocks: 
 		LittleGS.play_sound("lockpick1")
+		Utils.disable_input(1)
 		yield(get_tree().create_timer(.5),"timeout")
 	emit_signal("end_action",have_unlocks)
 
 func check_action_force(): return (def.type == "door" or def.type == "chest")
 func run_action_force():
+	Utils.disable_input(1.5)
 	yield(get_tree().create_timer(.5),"timeout")
 	randomize()
 	if randi()%100<=20: 
@@ -158,6 +164,7 @@ func run_action_descend():
 			emit_signal("end_action",false)
 			return
 	emit_signal("end_action",true)
+	Utils.disable_input(2.5)
 	yield(get_tree().create_timer(.4),"timeout")
 	Utils.show_popup("transition1")
 	yield(get_tree().create_timer(1),"timeout")

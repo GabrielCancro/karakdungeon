@@ -1,21 +1,21 @@
 OK- ADD random item to goblin and debries
-- ADD sfx
-- ADD music
-- ADD main menu
-- Make 4 Dungeons
-- Make last Dungeon and final boss
+OK- ADD sfx
+OK- ADD music
+OK- ADD main menu
+OK- Make 4 Dungeons
+OK- Make last Dungeon and final boss
 
 
 LISTA DE TODOS APR-2025
-FIXED-cofre grande esta feo el asset
-FIXED-tenes muchas antorchas
-FIXED-resolver puertas no da tesoros
-FIXED-el daño de los enemigos siempre es 1, aunque indique otra cosa
-FIXED-en level 3 no aparecio la escalera
-FIXED-goblin y puerta deben dar mas items
-FIXED-trampa debe ajustar dificultad por nivel
-FIXED-pocas trampas en nivel 3
-FIXED-los items con reload no andan!
+  FIXED-cofre grande esta feo el asset
+  FIXED-tenes muchas antorchas
+  FIXED-resolver puertas no da tesoros
+  FIXED-el daño de los enemigos siempre es 1, aunque indique otra cosa
+  FIXED-en level 3 no aparecio la escalera
+  FIXED-goblin y puerta deben dar mas items
+  FIXED-trampa debe ajustar dificultad por nivel
+  FIXED-pocas trampas en nivel 3
+  FIXED-los items con reload no andan!
 
 -SFX
    FIXED-SFX, dead,  antorcha, dados, heal, on hit escombros
@@ -33,16 +33,16 @@ FIXED-los items con reload no andan!
    FIXED-explicacion de recarga de items
    FIXED-select Characters Screen
    FIXED-MainMenu
-   -Agregar traducciones al ingles
-   -Ver que quedo sin traducir (nivel en las keys uy algo mas)   
+   FIXED-Agregar traducciones al ingles
+   FIXED-Ver que quedo sin traducir (nivel en las keys uy algo mas)   
 
 -BUGS
-   -a veces las rooms parpadean
-   -las roms quedan mal conectadas! (parece ser residuo de niveles anteriores??)
-   -sfx y mensaje al revelar una trampa
-   -si cambias de personaje cuando reacciona un enemigo cambias el objetivo herido!
+   FIXED-sfx y mensaje al revelar una trampa
+   FIXED-si cambias de personaje cuando reacciona un enemigo cambias el objetivo herido!
    FIXED-agrandar botones de acciones
    FIXED-no hacer sfx si el daño es 0hp
+   -a veces las rooms parpadean
+   -las roms quedan mal conectadas! (parece ser residuo de niveles anteriores??)
 
 -FX
    FIXED-efecto de rotar defiance cuando se resuelve
