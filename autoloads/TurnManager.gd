@@ -3,12 +3,12 @@ extends Node
 signal end_reaction()
 
 func on_pre_move():
-	Utils.disable_input(0.1)
+	Utils.disable_input(0.2)
 	yield(get_tree().create_timer(.02),"timeout")
 	var def = DungeonManager.get_room_defiance()
 	if def && def.type=="enemy": 
-		enemy_attack(def,DungeonManager.current_player)
 		Utils.disable_input(.7)
+		enemy_attack(def,DungeonManager.current_player)
 		yield(get_tree().create_timer(.7),"timeout")
 	emit_signal("end_reaction")
 
@@ -19,7 +19,9 @@ func on_across_room():
 	if def && def.type=="trap": 
 		DungeonManager.current_room.show_hiden_defiance()
 		yield(get_tree().create_timer(.5),"timeout")
+		Effector.show_float_text("ACTIVATED!",DungeonManager.current_room.position+Vector2(0,-100),"damage")
 		DefianceManager.activate_trap(def)
+		LittleGS.play_sound("lock2")
 		Utils.disable_input(1.5)
 		yield(get_tree().create_timer(1.5),"timeout")
 	emit_signal("end_reaction")
