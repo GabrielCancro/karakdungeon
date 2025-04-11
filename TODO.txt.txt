@@ -34,7 +34,9 @@ LISTA DE TODOS APR-2025
    FIXED-select Characters Screen
    FIXED-MainMenu
    FIXED-Agregar traducciones al ingles
-   FIXED-Ver que quedo sin traducir (nivel en las keys uy algo mas)   
+   FIXED-Ver que quedo sin traducir (nivel en las keys uy algo mas)  
+   -poner la llave en un defiance especifico despues de x%
+   -seguramente sea mejor que la ultima escalera sea una puerta a la guarida y al abrirla con la llave aparece Gorok en el level 3, actualmente aparece muy cerca en el nuevo nivel 4
 
 -BUGS
    FIXED-sfx y mensaje al revelar una trampa
@@ -43,7 +45,7 @@ LISTA DE TODOS APR-2025
    FIXED-no hacer sfx si el daño es 0hp
    -a veces las rooms parpadean
    -las roms quedan mal conectadas! (parece ser residuo de niveles anteriores??)
-   -poner la llave en un defiance especifico despues de x%
+
 
 -FX
    FIXED-efecto de rotar defiance cuando se resuelve
