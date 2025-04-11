@@ -50,3 +50,19 @@ LISTA DE TODOS APR-2025
 -FX
    FIXED-efecto de rotar defiance cuando se resuelve
    FIXED-poner un efecto o algo cuando descendes por la escalera, fade o algo
+
+
+-FINAL VERSION??
+-mas variedad items
+-mas variedad enemigos
+-mas variedad de personajes
+-estados como aturdido, debil o realentizado.
+-dado de escudo q absorbe daño
+-dado de scroll
+-hechizos?
+-distintos dungeons (arte)
+-dungeons con decoraciones randoms
+-eventos que abran un popup y tengas q tomar una desicion
+-que cada desafio te de algo tipo dinero y se pueda usar en un altar o algo asi
+-pasadizos secretos,
+-trampa que te lleve a una posicion random del mapa (ta buena esa)
