@@ -39,6 +39,8 @@ FIXED-los items con reload no andan!
 -BUGS
    -a veces las rooms parpadean
    -las roms quedan mal conectadas! (parece ser residuo de niveles anteriores??)
+   -sfx y mensaje al revelar una trampa
+   -si cambias de personaje cuando reacciona un enemigo cambias el objetivo herido!
    FIXED-agrandar botones de acciones
    FIXED-no hacer sfx si el daño es 0hp
 
