@@ -12,11 +12,12 @@ func add_options_panel_to_scene(scene):
 	options_panel_node.ManagerNode = ManagerNode
 	scene.add_child(options_panel_node)
 
-func add_button_behavior(btn,callback_node,callback_name):
+func add_button_behavior(btn,callback_node=null,callback_name=null):
 	btn.focus_mode = Control.FOCUS_NONE
 	btn.rect_pivot_offset = btn.rect_size/2
-	btn.connect("button_down",callback_node,callback_name)
-	btn.connect("button_down",self,"play_sound",["button"])
+	if callback_node: 
+		btn.connect("button_down",callback_node,callback_name)
+		btn.connect("button_down",self,"play_sound",["button"])
 	btn.connect("mouse_entered",self,"on_hover_scale",[btn,true])
 	btn.connect("mouse_exited",self,"on_hover_scale",[btn,false])
 

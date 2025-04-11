@@ -138,7 +138,7 @@ func run_action_force():
 	Utils.disable_input(1.5)
 	yield(get_tree().create_timer(.5),"timeout")
 	randomize()
-	if randi()%100<=20: 
+	if randi()%100<=10: 
 		Effector.show_float_text("FORCE",room.position+Vector2(0,-100),"normal")
 		var index = randi()%def.req.size()
 		def.req.pop_at(index)

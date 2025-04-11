@@ -19,15 +19,18 @@ var DEFIANCES = {
 func get_defiance_data(code):
 	var code_arr = code.split("@")
 	code = code_arr[0]
-	var data = DEFIANCES[code].duplicate()
+	var data = DEFIANCES[code].duplicate(true)
 	data.name = code
 	if "hp" in data: data["hpm"] = data.hp
 	if "prg" in data: data["prgm"] = data.prg
 	if "prg" in data: data["prg"] = 0
 	if "req" in data: 
 		if data.name=="wchest": for i in range(DungeonManager.dungeon_level-1): data.req.append("EY")
+		randomize()
+		if data.name=="door": for i in range(DungeonManager.dungeon_level-1): if randf()<.5: data.req.append("EY")
 		data["req_solved"] = []
 		for i in data.req: data["req_solved"].append(false)
+	if "dif" in data && data.name=="trap": data.dif = 3 + DungeonManager.dungeon_level
 	if "hide" in code_arr: data["hide"] = true
 	return data
 

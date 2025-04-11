@@ -43,6 +43,7 @@ LISTA DE TODOS APR-2025
    FIXED-no hacer sfx si el daño es 0hp
    -a veces las rooms parpadean
    -las roms quedan mal conectadas! (parece ser residuo de niveles anteriores??)
+   -poner la llave en un defiance especifico despues de x%
 
 -FX
    FIXED-efecto de rotar defiance cuando se resuelve
