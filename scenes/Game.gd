@@ -13,7 +13,7 @@ func _ready():
 	AdaptativeHintAuto.add_hint($CLUI/Torch,Lang.get_text("hint_torch"))
 	AdaptativeHintAuto.add_hint($CLUI/TutoButton,Lang.get_text("hint_show_tuto"))
 	AdaptativeHintAuto.add_hint($CLUI/HelpButton,Lang.get_help_attr_hint())
-	if Utils.is_mobile: AdaptativeHintAuto.add_hint($CLUI/EndTurnButton,"\n[color=#707070]("+Lang.get_text("tx_touch_again")+")[/color]")
+	if Utils.is_mobile: AdaptativeHintAuto.add_hint($CLUI/EndTurnButton,"[color=#707070]"+Lang.get_text("tx_touch_again")+"[/color]")
 	Utils.disable_input(2.5)
 	yield(get_tree().create_timer(2),"timeout")
 	Utils.show_popup("tuto01")

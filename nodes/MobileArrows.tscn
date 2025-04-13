@@ -18,8 +18,11 @@ margin_bottom = -62.0
 flat = true
 
 [node name="img" type="TextureRect" parent="up"]
+modulate = Color( 1, 1, 1, 0.545098 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 14.0
+margin_bottom = -16.0
 texture = ExtResource( 2 )
 expand = true
 
@@ -41,8 +44,11 @@ margin_bottom = 50.0
 flat = true
 
 [node name="img" type="TextureRect" parent="down"]
+modulate = Color( 1, 1, 1, 0.545098 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 16.0
+margin_bottom = -14.0
 texture = ExtResource( 2 )
 expand = true
 flip_v = true
@@ -65,8 +71,12 @@ margin_bottom = 50.0
 flat = true
 
 [node name="img" type="TextureRect" parent="left"]
+modulate = Color( 1, 1, 1, 0.545098 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -14.0
+margin_right = -14.0
+margin_bottom = -30.0
 rect_rotation = 90.0
 rect_pivot_offset = Vector2( 50, 50 )
 texture = ExtResource( 2 )
@@ -91,8 +101,12 @@ margin_bottom = 50.0
 flat = true
 
 [node name="img" type="TextureRect" parent="right"]
+modulate = Color( 1, 1, 1, 0.545098 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -15.0
+margin_right = -15.0
+margin_bottom = -30.0
 rect_rotation = 90.0
 rect_pivot_offset = Vector2( 50, 50 )
 texture = ExtResource( 2 )
