@@ -26,9 +26,11 @@ func set_data(it_data):
 	var text = "[u][color=#90F090]"+Lang.get_text("it_"+data.name+"_name")+"[/color][/u]\n"+Lang.get_text("it_"+data.name+"_desc")
 	if reload: text += "\n[color=#70B070]("+Lang.get_text("it_reload")+")[/color]"
 	else: text += "\n[color=#7070B0]("+Lang.get_text("it_reload_not")+")[/color]"
+	if Utils.is_mobile: text += "\n[color=#707070]("+Lang.get_text("tx_touch_again")+")[/color]"
 	AdaptativeHintAuto.add_hint($Button,text)
 	AdaptativeHintAuto.add_hint($Button2,Lang.get_text("hint_reload_item"))
 
 func on_click():
 	if Utils.is_input_disabled(): return
+	if AdaptativeHintAuto.currentNode != $Button: return
 	ItemManager.on_use_item(data)

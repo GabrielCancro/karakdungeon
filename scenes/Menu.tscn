@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/Menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/bgmenu.png" type="Texture" id=2]
@@ -7,6 +7,12 @@
 [ext_resource path="res://assets/ui/9path_frame_small.png" type="Texture" id=5]
 [ext_resource path="res://assets/white.png" type="Texture" id=6]
 [ext_resource path="res://assets/shader/sh_flame.tres" type="Material" id=7]
+[ext_resource path="res://addons/LittleGameSettings/assets/Roboto-Regular.ttf" type="DynamicFontData" id=8]
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+outline_color = Color( 0.2, 0.2, 0.2, 1 )
+font_data = ExtResource( 8 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 44
@@ -65,6 +71,32 @@ margin_bottom = -156.0
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
+
+[node name="lb_mobile" type="Label" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -328.0
+margin_top = -76.0
+custom_colors/font_color = Color( 0.545098, 0.545098, 0.545098, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "RUNNING MOBILE"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="lb_version" type="Label" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -76.0
+margin_right = 328.0
+custom_colors/font_color = Color( 0.545098, 0.545098, 0.545098, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "v009"
+align = 1
+valign = 1
+clip_text = true
 
 [node name="Button" type="Button" parent="."]
 anchor_left = 0.5

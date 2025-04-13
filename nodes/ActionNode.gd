@@ -17,6 +17,7 @@ func set_action(_name):
 
 func on_click():
 	if Utils.is_input_disabled(): return
+	if AdaptativeHintAuto.currentNode != $Button: return
 	Effector.scale_boom(self)
 	ActionManager.run_action(ac_name)
 	yield(ActionManager,"end_action")

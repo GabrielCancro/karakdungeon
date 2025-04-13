@@ -2,17 +2,18 @@ extends Node2D
 
 func _ready():
 	$CLUI/EndTurnButton/lb_desc.text = Lang.get_text("tx_end_turn")
-	LittleGS.add_button_behavior($CLUI/EndTurnButton,TurnManager,"end_turn")
+	LittleGS.add_button_behavior($CLUI/EndTurnButton,self,"on_click_end_turn")
 	LittleGS.add_button_behavior($CLUI/TutoButton,self,"on_click_tuto_button")
 	LittleGS.add_button_behavior($CLUI/MapButton)
 	DungeonManager.connect("new_dungeon",self,"on_new_dungeon")
 	DungeonManager.goto_next_level()
+	if Utils.is_mobile: $CLUI/EndTurnButton.rect_position.y += 40
 	
 	AdaptativeHintAuto.add_hint($CLUI/KeyOut,Lang.get_text("hint_key"))
 	AdaptativeHintAuto.add_hint($CLUI/Torch,Lang.get_text("hint_torch"))
 	AdaptativeHintAuto.add_hint($CLUI/TutoButton,Lang.get_text("hint_show_tuto"))
 	AdaptativeHintAuto.add_hint($CLUI/HelpButton,Lang.get_help_attr_hint())
-	
+	if Utils.is_mobile: AdaptativeHintAuto.add_hint($CLUI/EndTurnButton,"\n[color=#707070]("+Lang.get_text("tx_touch_again")+")[/color]")
 	Utils.disable_input(2.5)
 	yield(get_tree().create_timer(2),"timeout")
 	Utils.show_popup("tuto01")
@@ -30,3 +31,7 @@ func _process(delta):
 
 func on_click_tuto_button():
 	Utils.show_popup("tuto01")
+
+func on_click_end_turn():
+	if Utils.is_mobile && AdaptativeHintAuto.currentNode != $CLUI/EndTurnButton: return
+	TurnManager.end_turn()

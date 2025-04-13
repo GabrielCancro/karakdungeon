@@ -3,6 +3,11 @@ extends Node
 var disabled_input_timer = 0
 var DISABLED_ACTIONS = false
 var current_popup = null
+var is_mobile = true
+
+func _ready():
+	#is_mobile = OS.has_feature("mobile") || OS.has_feature("web_android") || OS.has_feature("web_ios")|| OS.has_feature("android") || OS.has_feature("ios")
+	is_mobile = JavaScript.eval("/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)", true)
 
 func set_zindex(node, delay=0,offsetY=0):
 	if delay>0: yield(get_tree().create_timer(delay),"timeout")

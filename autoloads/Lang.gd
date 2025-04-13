@@ -110,6 +110,7 @@ var texts = {
 	"tx_need_party": "DEBES REUNIR A TODOS AQUI PARA BAJAR",
 	"tx_level": "Nivel",
 	"tx_end_turn": "FIN\nTURNO",
+	"tx_touch_again":"Toca de nuevo para activar",
 	
 	"popup_win":"[center][color=#f6ff88]VICTORIA[/color]\nHas vencido a Gorok el troll y liberaste su guarida de todo peligro.\n\nEsperamos que lo hayas disfrutado!",
 	"popup_lose":"[center][color=#f6ff88]DERROTA[/color]\nTodos tus aventureros han caido, ya no saldran de este calabozo.\n\nVuelve a intentarlo!",
@@ -219,6 +220,7 @@ var texts = {
 	"tx_need_party": "YOU MUST GATHER EVERYONE TO DESCEND",
 	"tx_level": "Level",
 	"tx_end_turn": "END\nTURN",
+	"tx_touch_again":"Touch again to use",
 
 	"popup_win": "[center][color=#f6ff88]VICTORY[/color]\nYou defeated Gorok the troll and cleared his lair of danger.\n\nWe hope you enjoyed it!",
 	"popup_lose": "[center][color=#f6ff88]DEFEAT[/color]\nAll your adventurers have fallen. They won't leave this dungeon.\n\nTry again!"
