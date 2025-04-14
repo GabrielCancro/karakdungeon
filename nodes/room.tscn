@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://nodes/Room.gd" type="Script" id=1]
 [ext_resource path="res://assets/defiances/df_goblin.png" type="Texture" id=2]
@@ -10,8 +10,9 @@
 [ext_resource path="res://assets/rooms/doorA_L.png" type="Texture" id=8]
 [ext_resource path="res://assets/rooms/roomA.png" type="Texture" id=9]
 [ext_resource path="res://assets/shader/sh_outline.tres" type="Material" id=10]
+[ext_resource path="res://assets/rooms/shadow.png" type="Texture" id=11]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=3]
 size = 37
 font_data = ExtResource( 4 )
 
@@ -31,6 +32,23 @@ margin_bottom = 125.0
 texture = ExtResource( 9 )
 expand = true
 
+[node name="shadow" type="Sprite" parent="."]
+z_index = 999
+
+[node name="shadow" type="TextureRect" parent="shadow"]
+modulate = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -180.5
+margin_top = -179.5
+margin_right = 175.5
+margin_bottom = 171.5
+mouse_filter = 2
+texture = ExtResource( 11 )
+expand = true
+
 [node name="doors" type="Control" parent="."]
 modulate = Color( 0.627451, 0.627451, 0.627451, 1 )
 anchor_right = 1.0
@@ -41,6 +59,7 @@ margin_right = 125.0
 margin_bottom = 125.0
 
 [node name="up" type="TextureRect" parent="doors"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_rotation = 90.0
@@ -59,6 +78,7 @@ flip_h = true
 flip_v = true
 
 [node name="left" type="TextureRect" parent="doors"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 125, 125 )
@@ -383,7 +403,7 @@ margin_left = -114.0
 margin_top = 52.0
 margin_right = 114.0
 margin_bottom = 108.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 text = "asd"
 align = 1
 valign = 1

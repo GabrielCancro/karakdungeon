@@ -7,7 +7,7 @@ var is_mobile = true
 
 func _ready():
 	#is_mobile = OS.has_feature("mobile") || OS.has_feature("web_android") || OS.has_feature("web_ios")|| OS.has_feature("android") || OS.has_feature("ios")
-	is_mobile = true#JavaScript.eval("/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)", true)
+	is_mobile = JavaScript.eval("/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)", true)
 
 func set_zindex(node, delay=0,offsetY=0):
 	if delay>0: yield(get_tree().create_timer(delay),"timeout")

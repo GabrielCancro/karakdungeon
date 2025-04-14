@@ -18,7 +18,7 @@
 [ext_resource path="res://assets/ui/9path_frame_small.png" type="Texture" id=17]
 [ext_resource path="res://assets/ui/ui_turn.png" type="Texture" id=18]
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id=8]
 code = "shader_type canvas_item;
 
 uniform float strength : hint_range(0.0, 1.0) = 0.4;
@@ -56,7 +56,7 @@ void fragment() {
 }"
 
 [sub_resource type="ShaderMaterial" id=5]
-shader = SubResource( 1 )
+shader = SubResource( 8 )
 shader_param/strength = 0.1
 shader_param/speed = 0.05
 

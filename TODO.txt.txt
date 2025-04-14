@@ -43,9 +43,10 @@ LISTA DE TODOS APR-2025
    FIXED-si cambias de personaje cuando reacciona un enemigo cambias el objetivo herido!
    FIXED-agrandar botones de acciones
    FIXED-no hacer sfx si el daño es 0hp
-   -a veces las rooms parpadean
+   010-a veces las rooms parpadean
    -las roms quedan mal conectadas! (parece ser residuo de niveles anteriores??)
-
+   010-las puertas necesitan muchos ojos en lvl 3, tendria que ser ojos o manos
+   010-las puertas deberian ocultar si tienen caminos antes de abrirlas
 
 -FX
    FIXED-efecto de rotar defiance cuando se resuelve

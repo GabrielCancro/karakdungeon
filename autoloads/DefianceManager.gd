@@ -27,7 +27,10 @@ func get_defiance_data(code):
 	if "req" in data: 
 		if data.name=="wchest": for i in range(DungeonManager.dungeon_level-1): data.req.append("EY")
 		randomize()
-		if data.name=="door": for i in range(DungeonManager.dungeon_level-1): if randf()<.5: data.req.append("EY")
+		if data.name=="door": 
+			for i in range(DungeonManager.dungeon_level-1): 
+				if randf()<.25: data.req.append("EY") 
+				elif randf()<.25: data.req.append("HN")
 		data["req_solved"] = []
 		for i in data.req: data["req_solved"].append(false)
 	if "dif" in data && data.name=="trap": data.dif = 3 + DungeonManager.dungeon_level

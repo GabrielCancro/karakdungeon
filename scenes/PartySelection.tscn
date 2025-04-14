@@ -179,12 +179,15 @@ patch_margin_bottom = 64
 [node name="HelpButton" type="Button" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -115.0
-margin_top = 477.0
-margin_right = -39.0
-margin_bottom = 553.0
+margin_left = -134.0
+margin_top = 470.0
+margin_right = -35.0
+margin_bottom = 569.0
 rect_min_size = Vector2( 6, 0 )
 flat = true
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Key" type="TextureRect" parent="HelpButton"]
 anchor_right = 1.0

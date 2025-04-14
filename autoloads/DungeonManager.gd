@@ -88,7 +88,7 @@ func get_room_defiance(room_node=current_room):
 func set_current_room(dx,dy):
 	var room = get_room_node(dx,dy)
 	if is_instance_valid(current_room): current_room.on_leave()
-	if room && room != current_room: Effector.resalte(room)
+	if room && room != current_room: room.remove_sadow()#Effector.resalte(room)
 	current_room = room
 	if current_room: 
 		current_room.update()
