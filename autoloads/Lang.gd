@@ -111,6 +111,8 @@ var texts = {
 	"tx_level": "Nivel",
 	"tx_end_turn": "FIN\nTURNO",
 	"tx_touch_again":"Toca de nuevo para activar",
+	"tx_exhausted":"AGOTADO!",
+	"tx_full_hp": "MAXIMO HP!",
 	
 	"popup_win":"[center][color=#f6ff88]VICTORIA[/color]\nHas vencido a Gorok el troll y liberaste su guarida de todo peligro.\n\nEsperamos que lo hayas disfrutado!",
 	"popup_lose":"[center][color=#f6ff88]DERROTA[/color]\nTodos tus aventureros han caido, ya no saldran de este calabozo.\n\nVuelve a intentarlo!",
@@ -204,6 +206,8 @@ var texts = {
 	"tx_play": "Play",
 	"tx_goto_dungeon": "Enter the\nDungeon",
 	"tx_chose_heroes": "Pick three adventurers to enter the dungeon!",
+	"tx_exhausted": "EXHAUSTED!",
+	"tx_full_hp": "FULL HP!",
 
 	"tuto_welcome": "[center][color=#f6ff88]WELCOME[/color]\nYour group of adventurers has entered the first dungeon level. Explore it to find the key and descend to the next floor.",
 	"tuto_pjs": "[center][color=#f6ff88]CHARACTERS & MOVEMENT[/color]\nAt the bottom are your character cards. Click or press [Q] to select, and use [W][A][S][D] to move around the dungeon.",

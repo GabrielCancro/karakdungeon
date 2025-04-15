@@ -174,7 +174,7 @@ func check_action_recover(): return (def.type == "fountain")
 func run_action_recover():
 	yield(get_tree().create_timer(.5),"timeout")
 	if def.uses<=0:
-		Effector.show_float_text("AGOTADO!",room.position+Vector2(0,-100),"white")
+		Effector.show_float_text(Lang.get_text("tx_exhausted"),room.position+Vector2(0,-100),"white")
 		emit_signal("end_action",false)
 	elif pj.hp!=pj.hpm: 
 		def.uses -= 1
@@ -182,5 +182,5 @@ func run_action_recover():
 		if def.uses <= 0: def["def_sprite"].modulate = Color(.4,.4,.4,1)
 		emit_signal("end_action",true)
 	else: 
-		Effector.show_float_text("FULL HP!",room.position+Vector2(0,-100),"white")
+		Effector.show_float_text(Lang.get_text("tx_full_hp"),room.position+Vector2(0,-100),"white")
 		emit_signal("end_action",false)

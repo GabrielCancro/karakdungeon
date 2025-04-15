@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/intro_splash.ogg-879b37056d211e20afe3c3c9ffeccc28.oggstr"
+
+[deps]
+
+source_file="res://addons/LittleGameSettings/assets/sounds/intro_splash.ogg"
+dest_files=[ "res://.import/intro_splash.ogg-879b37056d211e20afe3c3c9ffeccc28.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

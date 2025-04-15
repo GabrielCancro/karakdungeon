@@ -6,7 +6,7 @@ var main_sfx
 func _ready():
 	LittleGS.add_options_panel_to_scene(self)
 	LittleGS.play_music("ambientcave",70)
-	main_sfx = LittleGS.play_sound("dungeon_steps",40)
+	main_sfx = LittleGS.play_sound("dungeon_steps",70)
 	LittleGS.add_button_behavior($Button,self,"on_click_button")
 	LittleGS.connect("languaje_change",self,"on_change_lang")
 	$Button/lb_name2.text = Lang.get_text("tx_play")
