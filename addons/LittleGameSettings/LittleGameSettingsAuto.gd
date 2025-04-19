@@ -49,3 +49,6 @@ func play_music(name=null,vol=100):
 
 func stop_music():
 	ManagerNode.stop_music()
+
+func set_custom_sounds_folder(path):
+	ManagerNode.custom_sounds_folder = path

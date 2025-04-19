@@ -71,22 +71,36 @@ func clear_data():
 #SOUNDS AND MUSIC
 var preload_sounds = []
 var current_music
+var custom_sounds_folder
+
+func _get_stream(code):
+	var stream
+	#LOAD FROM CUSTOM PATH FIRST
+	if custom_sounds_folder:
+		stream = load(custom_sounds_folder+"/"+code+".ogg")
+		if !stream: stream = load(custom_sounds_folder+"/"+code+".wav")
+		if !stream: stream = load(custom_sounds_folder+"/"+code+".mp3")
+	#IF IS NULL, LOAD FROM DEFAULTS
+	if !stream:
+		stream = load("res://addons/LittleGameSettings/assets/sounds/"+code+".ogg")
+		if !stream: stream = load("res://addons/LittleGameSettings/assets/sounds/"+code+".wav")
+		if !stream: stream = load("res://addons/LittleGameSettings/assets/sounds/"+code+".mp3")
+	return stream
 
 func play_sound(name,vol=100):
 	var audio = AudioStreamPlayer.new()
 	audio.set_bus("sfx")
 	add_child(audio)
-	audio.stream = load("res://addons/LittleGameSettings/assets/sounds/"+name+".ogg")
+	audio.stream = _get_stream(name)
 	audio.stream.loop = false
 	audio.volume_db = (vol-100)*0.33
 	audio.play()
 	audio.connect("finished",audio,"queue_free")
 	return audio
 
-
 func play_music(name=null,vol=100):
 	if name:
-		current_music.stream = load("res://addons/LittleGameSettings/assets/sounds/"+name+".ogg")
+		current_music.stream = _get_stream(name)
 		assert(current_music.stream) #THE SOUND FILE DONT LOADED!!
 		current_music.stream.loop = true
 		current_music.volume_db = (vol-100)*0.33
