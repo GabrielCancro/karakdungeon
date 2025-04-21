@@ -28,14 +28,26 @@ func updateUI():
 	$TextureProgress.max_value = data.hpm
 	$TextureProgress.value = data.hpm - data.hp
 	#$lb_mov.text = "MOV: "+str(data.mov)+"/"+str(data.movm)
-	for m in $mov.get_children():
-		var i = m.get_index()
-		if i < data.mov: m.modulate = Color(1,1,1,1)
-		else: m.modulate = Color(.3,.3,.3,1)
-		m.visible = (i<data.mov or i<data.movm)
-		if i >= data.movm: m.modulate = Color(.5,.5,1,1)
+	update_mov_ui()
 	data.node.update_hp()
 	set_selected()
+
+func update_mov_ui():
+	var radius = 50
+	var step = 0.30
+	var offset = 2.70
+	
+	for m in $mov.get_children():
+		var i = m.get_index()
+		var ri = step*i+offset
+		if i >= data.movm: 
+			ri += step/2
+			m.modulate = Color(.1,.8,.1,1)
+		else:
+			if i < data.mov: m.modulate = Color(1,1,1,1)
+			else: m.modulate = Color(.3,.3,.3,1)
+		m.visible = (i<data.mov or i<data.movm)
+		m.rect_position = Vector2(cos(ri),sin(ri))*radius - m.rect_size/2
 
 func roll_dices():
 	for d in $HBox.get_children():

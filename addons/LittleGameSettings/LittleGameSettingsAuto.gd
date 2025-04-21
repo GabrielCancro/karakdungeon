@@ -35,6 +35,9 @@ func clear_all_user_data():
 	ManagerNode.clear_data()
 
 #get localizated by current languaje string setted in assets/localizated_strings.gd
+func set_localization_file(file_path):
+	ManagerNode.localization_class = load(file_path)
+
 func get_loc_str(code):
 	return ManagerNode.get_localizated_string(code)
 
@@ -43,6 +46,9 @@ func get_current_languaje():
 
 func play_sound(name,vol=100):
 	return ManagerNode.play_sound(name,vol)
+
+func stop_all_sounds():
+	return ManagerNode.stop_all_sounds()
 
 func play_music(name=null,vol=100):
 	return ManagerNode.play_music(name,vol)

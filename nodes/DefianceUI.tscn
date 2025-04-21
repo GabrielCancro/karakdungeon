@@ -102,15 +102,14 @@ margin_right = 224.5
 margin_bottom = 151.0
 
 [node name="Reqs" parent="." instance=ExtResource( 5 )]
-visible = false
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -171.5
-margin_top = 84.0
-margin_right = 172.5
-margin_bottom = 139.0
+anchor_bottom = 0.5
+margin_left = -258.5
+margin_top = 99.0
+margin_right = 255.5
+margin_bottom = 195.0
 
 [node name="desc" type="ColorRect" parent="."]
 anchor_left = 0.5

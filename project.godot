@@ -22,12 +22,12 @@ DefianceManager="*res://autoloads/DefianceManager.gd"
 Effector="*res://autoloads/Effector.gd"
 ActionManager="*res://autoloads/ActionManager.gd"
 PlayerManager="*res://autoloads/PlayerManager.gd"
-Lang="*res://autoloads/Lang.gd"
 TurnManager="*res://autoloads/TurnManager.gd"
 MapGenerator="*res://autoloads/MapGenerator.gd"
 ItemManager="*res://autoloads/ItemManager.gd"
 AdaptativeHintAuto="*res://addons/AdaptativeHint/AdaptativeHintAuto.gd"
 LittleGS="*res://addons/LittleGameSettings/LittleGameSettingsAuto.gd"
+Lang="*res://autoloads/Lang.gd"
 
 [display]
 

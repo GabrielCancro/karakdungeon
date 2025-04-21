@@ -12,6 +12,7 @@ func set_defiance(_def):
 			r.visible = true
 			if !def.req_solved[i]: r.modulate = Color(.5,.5,.5,1)
 			else: r.modulate = Color(1,1,1,1)
+			r.get_node("frame").visible = def.req_solved[i]
 		else:
 			r.visible = false
 

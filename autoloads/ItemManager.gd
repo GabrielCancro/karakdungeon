@@ -43,6 +43,11 @@ func add_rnd_item(tier=null):
 	for it_name in items:
 		if tier && tier<ALL_ITEMS[it_name].tier: continue
 		if add_item(it_name): return it_name
+	
+	#if didnt find item, ignore tier
+	for it_name in items:
+		if add_item(it_name): return it_name
+	
 	return null
 
 func recover_uses():

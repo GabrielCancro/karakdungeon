@@ -5,7 +5,12 @@ This have simples globals functions to manage all features in LittleGameSettings
 
 It will have:
 
--Option Panel: a simple panel to change settings of game (language, fullscreen, clear data, credits, volummens)
+OPTIONS PANEL
+-Option Panel: a simple panel to change settings of game 
+(language, fullscreen, clear data, credits, volummens)
+
+you only need call "add_options_panel_to_scene(scene)"
+
 
 -Fullscreen Manager
 
@@ -14,5 +19,14 @@ It will have:
 -Localization to some languajes
 signal lenguaje_change is wanted when you need relocalizate strings in the current scene
 
--Basic Sound and music manager with a little reusable sfx collection
-files in .ogg only
+SOUND MODULE
+-Basic Sound and music manager with a little reusable sfx collection files in .ogg .wav or .mp3
+-The default folder to assets is "res://assets/sounds/", but you can change calling "set_custom_sounds_folder(path)"
+
+functions:
+	set_custom_sounds_folder(path)
+	play_sound(name,vol=100) (play in sfx bus without loops)
+	stop_all_sounds()
+	play_music(name=null,vol=100) (play only one currency in loop in "music" bus)
+	stop_music()
+	

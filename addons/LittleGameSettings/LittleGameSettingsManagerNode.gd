@@ -10,22 +10,30 @@ func toogle_fullscreen():
 	save_settings_data()
 
 ##LOCALIZATION
-onready var Languajes = load("res://addons/LittleGameSettings/assets/localizated_strings.gd").languajes()
-onready var localizated_strings = load("res://addons/LittleGameSettings/assets/localizated_strings.gd").localizated_strings()
+var localization_class = load("res://addons/LittleGameSettings/example_localizated_strings.gd")
 
 func get_lang():
-	return Languajes[settings_data.lang_index]
+	var languajes = localization_class.languajes()
+	return languajes[settings_data.lang_index]
 
 func next_lang():
+	var languajes = localization_class.languajes()
 	settings_data.lang_index += 1
-	if settings_data.lang_index>=Languajes.size(): settings_data.lang_index = 0
+	if settings_data.lang_index>=languajes.size(): settings_data.lang_index = 0
 	save_settings_data()
 	return get_lang()
 
 func get_localizated_string(code):
-	var key = code+"_"+get_lang()
-	if key in localizated_strings: return localizated_strings[key]
-	else: return key
+	var localizated_strings = localization_class.localizated_strings()
+	var loc_in_lang = localizated_strings[get_lang()]
+	if code in loc_in_lang: 
+		var text = loc_in_lang[code]
+		var shortkeys = localization_class.shortkeys()
+		for sk in shortkeys.keys():
+			text = text.replace(sk,"[font=res://addons/LittleGameSettings/assets/bbcode_icon_align.tres]"+shortkeys[sk]+"[/font]")
+		return text
+	else: 
+		return get_lang()+":"+code
 
 ##SAVEDATA SETTINGS
 var settings_data = {'version':1, 'fullscreen':true, 'lang_index':0, 'sfx_vol':100, 'music_vol':100}
@@ -71,12 +79,12 @@ func clear_data():
 #SOUNDS AND MUSIC
 var preload_sounds = []
 var current_music
-var custom_sounds_folder
+var custom_sounds_folder = "res://assets/sounds/"
 
 func _get_stream(code):
-	var stream
+	var stream = load(code)
 	#LOAD FROM CUSTOM PATH FIRST
-	if custom_sounds_folder:
+	if !stream && custom_sounds_folder:
 		stream = load(custom_sounds_folder+"/"+code+".ogg")
 		if !stream: stream = load(custom_sounds_folder+"/"+code+".wav")
 		if !stream: stream = load(custom_sounds_folder+"/"+code+".mp3")
@@ -85,6 +93,7 @@ func _get_stream(code):
 		stream = load("res://addons/LittleGameSettings/assets/sounds/"+code+".ogg")
 		if !stream: stream = load("res://addons/LittleGameSettings/assets/sounds/"+code+".wav")
 		if !stream: stream = load("res://addons/LittleGameSettings/assets/sounds/"+code+".mp3")
+	if !stream: push_error("LittleGS ERROR: dont exist sound file to - "+str(code))
 	return stream
 
 func play_sound(name,vol=100):
@@ -92,11 +101,19 @@ func play_sound(name,vol=100):
 	audio.set_bus("sfx")
 	add_child(audio)
 	audio.stream = _get_stream(name)
+	assert(audio.stream)
+	if !audio.stream: return
 	audio.stream.loop = false
 	audio.volume_db = (vol-100)*0.33
 	audio.play()
 	audio.connect("finished",audio,"queue_free")
 	return audio
+
+func stop_all_sounds():
+	for a in get_children():
+		if a is AudioStreamPlayer && is_instance_valid(a) && a != current_music:
+			a.stop()
+			a.queue_free()
 
 func play_music(name=null,vol=100):
 	if name:
@@ -139,3 +156,6 @@ func initialize_manager():
 	current_music = AudioStreamPlayer.new()
 	current_music.set_bus("music")
 	add_child(current_music)
+
+func add_to_scene():
+	get_node("/root").add_child(self)

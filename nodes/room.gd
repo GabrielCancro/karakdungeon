@@ -6,7 +6,7 @@ var ttl = randf()
 func _ready():
 	$shadow.visible = true
 	Effector.appear($doors)
-	Effector.appear($Sprite)
+	#Effector.appear($Sprite)
 	Effector.appear($floor)
 	$Button.connect("button_down",self,"on_click")
 

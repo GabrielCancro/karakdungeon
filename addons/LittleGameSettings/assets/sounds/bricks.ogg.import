@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/bricks.ogg-24dd48ce728c6f5127761309289f978a.oggstr"
+
+[deps]
+
+source_file="res://addons/LittleGameSettings/assets/sounds/bricks.ogg"
+dest_files=[ "res://.import/bricks.ogg-24dd48ce728c6f5127761309289f978a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

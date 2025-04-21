@@ -1,12 +1,11 @@
 extends Control
 
 const preloads = [
-	preload("res://addons/LittleGameSettings/assets/sounds/ambientcave.ogg"),
+	preload("res://assets/sounds/ambientcave.ogg"),
+	preload("res://assets/sounds/dungeon_steps.ogg"),
 	preload("res://addons/LittleGameSettings/assets/sounds/button.ogg"),
-	preload("res://addons/LittleGameSettings/assets/sounds/dungeon_steps.ogg"),
 	preload("res://addons/LittleGameSettings/assets/sounds/intro_splash.ogg"),
 ]
-var sfx
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,7 +21,7 @@ func _ready():
 	$Tween.interpolate_property($Pump,"modulate:a",0,1,0.2,Tween.TRANS_QUAD,Tween.EASE_IN,1)
 	$Tween.start()
 	yield(get_tree().create_timer(1),"timeout")
-	sfx = LittleGS.play_sound("intro_splash")
+	LittleGS.play_sound("intro_splash")
 	yield(get_tree().create_timer(1),"timeout")
 	
 	$Pump.play("eye")
@@ -41,5 +40,5 @@ func _ready():
 	next_scene()
 
 func next_scene():
-	if sfx: sfx.stop()
+	LittleGS.stop_all_sounds()
 	get_tree().change_scene("res://scenes/Menu.tscn")

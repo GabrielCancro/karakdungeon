@@ -82,4 +82,4 @@ func check_give_item_on_resolve():
 		randomize()
 		if randf()<=def.give_item:
 			if !"tier" in def: def["tier"] = 1
-			return ItemManager.add_rnd_item(1)
+			return ItemManager.add_rnd_item(def["tier"])

@@ -70,7 +70,7 @@ func end_turn():
 	yield(get_tree().create_timer(1.5),"timeout")
 	for p in PlayerManager.PLAYERS:
 		p.mov = p.movm
-		for d in p.ui.get_dices(): if d=="BT": p.mov += 1
+		for d in p.ui.get_dices(): if d=="BT": p.mov += 2
 		p.ui.updateUI()
 	PlayerManager.change_player(DungeonManager.current_player.id)
 	get_node("/root/Game/CLUI/ActionList").visible = true

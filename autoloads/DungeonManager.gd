@@ -136,7 +136,7 @@ func find_hide_defiances(xx,yy):
 	if !rnode: return
 	if "defiance" in rnode.data && "hide" in rnode.data.defiance && rnode.data.defiance.hide:
 		randomize()
-		var percept = 25 + PlayerManager.get_dice_amount("EY")*25
+		var percept = 25 + PlayerManager.get_dice_amount("EY")*35
 		#print("PERCENT ",percept)
 		if randi()%100 < percept: rnode.show_hiden_defiance()
 

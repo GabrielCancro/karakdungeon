@@ -47,7 +47,7 @@ func run_action(ac_name):
 			PlayerManager.set_pj_attr("mov",0)
 
 func get_bonif(ac_name):
-	var am = "-"
+	var am = "-"z
 	if ac_name=="attack": am = "x"+str(PlayerManager.get_dice_amount("SW")+1)
 	if ac_name=="clear": am = "x"+str(PlayerManager.get_dice_amount("SW")+PlayerManager.get_dice_amount("HN")+1)
 	elif ac_name=="unlock": am = "x"+str(PlayerManager.get_reqs_can_complete())

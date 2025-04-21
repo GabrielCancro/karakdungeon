@@ -48,5 +48,3 @@ func on_click_music():
 	if ManagerNode.get_vol("music")==0: ManagerNode.set_vol(100,"music")
 	else: ManagerNode.set_vol(0,"music")
 	update_ui()
-
-
