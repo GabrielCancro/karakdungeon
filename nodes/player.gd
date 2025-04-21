@@ -29,10 +29,11 @@ func _input(event):
 	if DungeonManager.current_player.node!=self: return
 	if Utils.current_popup: return
 	if !data.action: return
-	if event.is_action_pressed("ui_up"): move_to(0,-1)
-	if event.is_action_pressed("ui_down"): move_to(0,1)
-	if event.is_action_pressed("ui_right"): move_to(1,0)
-	if event.is_action_pressed("ui_left"): move_to(-1,0)
+	if event is InputEventKey && event.pressed:
+		if event.scancode == KEY_W: move_to(0,-1)
+		if event.scancode == KEY_S: move_to(0,1)
+		if event.scancode == KEY_A: move_to(-1,0)
+		if event.scancode == KEY_D: move_to(1,0)
 
 func move_to(dx,dy):
 	if data.mov<=0: return

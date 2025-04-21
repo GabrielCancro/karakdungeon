@@ -18,7 +18,7 @@ func set_data(_data):
 func set_dices():
 	Utils.remove_all_childs($DiceBox)
 	for dice_faces in data.dices:
-		var node = preload("res://nodes/Dice.tscn").instance()
+		var node = load("res://nodes/Dice.tscn").instance()
 		$DiceBox.add_child(node)
 		node.set_faces(dice_faces)
 	for d in $DiceBox.get_children():

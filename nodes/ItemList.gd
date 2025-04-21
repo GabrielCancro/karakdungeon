@@ -20,7 +20,7 @@ func update_item_list():
 	$Items.columns = 1+floor((party_items.keys().size()-1)/5)
 	#print("@COLUMNS   ",$Items.columns)
 	for it_name in party_items.keys():
-		var itnode = preload("res://nodes/ItemNode.tscn").instance()
+		var itnode = load("res://nodes/ItemNode.tscn").instance()
 		itnode.set_data(party_items[it_name])
 		$Items.add_child(itnode)
 	update_usables()

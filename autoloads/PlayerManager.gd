@@ -4,7 +4,7 @@ var PLAYERS = []
 var PLAYERS_ID_ARRAY = [0,1,2]#FROM PJSELECTION
 var PLAYERS_BASE_DATA = [
 	{"name":"Maikki",
-		"retrait": preload("res://assets/retraits/retrait_1.png"),
+		"retrait": load("res://assets/retraits/retrait_1.png"),
 		"dices": [
 			["NN","NN","SW","BT","HN","EY"], #NETRAL
 			["NN","NN","SW","SW","SW","BT"], #COMBAT
@@ -13,7 +13,7 @@ var PLAYERS_BASE_DATA = [
 		"hpm":5, "movm":5, "item":null},
 		
 	{"name":"Finnius",
-		"retrait": preload("res://assets/retraits/retrait_2.png"),
+		"retrait": load("res://assets/retraits/retrait_2.png"),
 		"dices": [
 			["NN","NN","SW","BT","HN","EY"],
 			["NN","NN","SW","SW","SW","BT"],
@@ -22,7 +22,7 @@ var PLAYERS_BASE_DATA = [
 		"hpm":5, "movm":5, "item":"thief_knife"},
 		
 	{"name":"Tarhun",
-		"retrait": preload("res://assets/retraits/retrait_3.png"),
+		"retrait": load("res://assets/retraits/retrait_3.png"),
 		"dices": [
 			["NN","NN","SW","BT","HN","EY"],
 			["NN","BT","HN","EY","HN","EY"],
@@ -31,7 +31,7 @@ var PLAYERS_BASE_DATA = [
 		"hpm":5, "movm":5, "item":null},
 	
 	{"name":"Kahne",
-		"retrait": preload("res://assets/retraits/retrait_4.png"),
+		"retrait": load("res://assets/retraits/retrait_4.png"),
 		"dices": [
 			["NN","NN","SW","BT","HN","EY"],
 			["NN","NN","SW","BT","HN","EY"],
@@ -41,7 +41,7 @@ var PLAYERS_BASE_DATA = [
 		"hpm":4, "movm":5, "item":null},
 	
 	{"name":"Bharash",
-		"retrait": preload("res://assets/retraits/retrait_5.png"),
+		"retrait": load("res://assets/retraits/retrait_5.png"),
 		"dices": [
 			["NN","NN","SW","BT","HN","EY"],
 			["NN","NN","SW","SW","SW","BT"],
@@ -50,7 +50,7 @@ var PLAYERS_BASE_DATA = [
 		"hpm":6, "movm":4, "item":null},
 		
 	{"name":"Kythana",
-		"retrait": preload("res://assets/retraits/retrait_6.png"),
+		"retrait": load("res://assets/retraits/retrait_6.png"),
 		"dices": [
 			["NN","NN","SW","BT","HN","EY"],
 			["NN","NN","SW","SW","SW","BT"],

@@ -1,14 +1,15 @@
 extends Control
 
-const preloads = [
-	preload("res://assets/sounds/ambientcave.ogg"),
-	preload("res://assets/sounds/dungeon_steps.ogg"),
-	preload("res://addons/LittleGameSettings/assets/sounds/button.ogg"),
-	preload("res://addons/LittleGameSettings/assets/sounds/intro_splash.ogg"),
+var preloads = [
+	load("res://assets/sounds/ambientcave.ogg"),
+	load("res://assets/sounds/dungeon_steps.ogg"),
+	load("res://addons/LittleGameSettings/assets/sounds/button.ogg"),
+	load("res://addons/LittleGameSettings/assets/sounds/intro_splash.ogg"),
 ]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	set_autoloads()
 	$Button.connect("button_down",self,"next_scene")
 	var cpos = get_viewport_rect().size/2
 	$Pump.position = cpos
@@ -17,6 +18,7 @@ func _ready():
 	$Pump.modulate.a = 0
 	$Logo.modulate.a = 0
 	$Pump.play("idle")
+	MyGlobal.printer()
 	
 	$Tween.interpolate_property($Pump,"modulate:a",0,1,0.2,Tween.TRANS_QUAD,Tween.EASE_IN,1)
 	$Tween.start()
@@ -42,3 +44,21 @@ func _ready():
 func next_scene():
 	LittleGS.stop_all_sounds()
 	get_tree().change_scene("res://scenes/Menu.tscn")
+
+func set_autoloads():
+	var autoloads = [
+		"ActionManager",
+		"DefianceManager",
+		"DungeonManager",
+		"Effector",
+		"ItemManager",
+		"Lang",
+		"MapGenerator",
+		"MyGlobal",
+		"PlayerManager",
+		"TurnManager",
+		"Utils",
+	]
+	for au in autoloads:
+		print("/root/"+au+"  ->  "+"res://autoloads/"+au+".gd")
+		get_tree().root.get_node("/root/"+au).set_script(load("res://autoloads/"+au+".gd"))

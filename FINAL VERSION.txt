@@ -1,0 +1,45 @@
+FINAL VERSION
+
+Inflige un daño (adicional) a cada héroe en la sala al final del turno.
+Regenera 1 punto de vida por turno.
+
+Recibe 1 punto de daño menos de los ataques.
+
+Anula el primer ataque contra él en cada turno/acción.
+
+Se mueve 1 casilla hacia el héroe más cercano al final del turno si la sala está vacía, bloqueando otros eventos a los que pueda acceder hasta que sea derrotado.
+
+Invoca a otros enemigos.
+Inflige daño a los héroes que pasen por salas adyacentes a menos que pasen una prueba de agilidad.
+
+Al impactar, teletransporta al héroe golpeado a una sala vacía aleatoria.
+Inflige daño en antorchas en lugar de puntos de vida.
+
+Debe desbloquearse (usando una cierta cantidad de dados) para atacar en cada turno.
+
+Probablemente solo debería consumir los dados necesarios, no una acción, o debería requerir muy pocos dados o reservarse para jefes.
+
+Invencible hasta que se encuentre y derrote a otro monstruo.
+
+Coloca una versión más débil de sí mismo en todas las salas vacías adyacentes al ser derrotado.
+
+Existe en dos salas separadas a la vez y ambas mitades deben ser derrotadas en un solo turno para eliminarlo. Un héroe aleatorio recibe 1 punto de daño al final del turno hasta que el monstruo sea encontrado y eliminado.
+
+Cada héroe debe realizar una prueba de desarme de trampa contra 1 punto de daño al final del turno hasta que el monstruo sea encontrado y eliminado.
+
+Un héroe seleccionado debe realizar una prueba de desarme de trampa al final del turno o el grupo perderá un objeto aleatorio (los objetos se recuperan al eliminar al monstruo).
+
+
+-mas variedad items
+-mas variedad enemigos
+-mas variedad de personajes
+-estados como aturdido, debil o realentizado.
+-dado de escudo q absorbe daño
+-dado de scroll
+-hechizos?
+-distintos dungeons (arte)
+-dungeons con decoraciones randoms
+-eventos que abran un popup y tengas q tomar una desicion
+-que cada desafio te de algo tipo dinero y se pueda usar en un altar o algo asi
+-pasadizos secretos,
+-trampa que te lleve a una posicion random del mapa (ta buena esa)

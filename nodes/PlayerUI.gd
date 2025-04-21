@@ -19,7 +19,7 @@ func set_player(id):
 func restore_original_dices():
 	Utils.remove_all_childs($HBox)
 	for dice_faces in data.dices:
-		var node = preload("res://nodes/Dice.tscn").instance()
+		var node = load("res://nodes/Dice.tscn").instance()
 		node.set_faces(dice_faces)
 		$HBox.add_child(node)
 
@@ -55,7 +55,7 @@ func roll_dices():
 
 func add_dice_face(face):
 	#print("add_dice_face ",face)
-	var node = preload("res://nodes/Dice.tscn").instance()
+	var node = load("res://nodes/Dice.tscn").instance()
 	node.set_one_face(face)
 	$HBox.add_child(node)
 	updateUI()

@@ -17,7 +17,7 @@ func show_current_actions():
 	var ac_array = ActionManager.get_room_actions()
 	visible = (ac_array.size()>0)
 	for ac_name in ac_array:
-		var ac = preload("res://nodes/ActionNode.tscn").instance()
+		var ac = load("res://nodes/ActionNode.tscn").instance()
 		var text = Lang.get_text("ac_"+ac_name)
 		if Utils.is_mobile: text += "\n[color=#707070]("+Lang.get_text("tx_touch_again")+")[/color]"
 		AdaptativeHintAuto.add_hint(ac.get_node("Button"),text)

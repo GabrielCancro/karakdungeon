@@ -1,4 +1,4 @@
-extends Control
+extends Node
 
 var room_node
 var map = {}

@@ -26,7 +26,7 @@ func _ready():
 	update_button_state()
 	Utils.remove_all_childs($HBox)
 	for pdata in PlayerManager.PLAYERS_BASE_DATA:
-		var node = preload("res://nodes/PjSelectUI.tscn").instance()
+		var node = load("res://nodes/PjSelectUI.tscn").instance()
 		$HBox.add_child(node)
 		node.set_data(pdata)
 		node.get_node("Button").connect("button_down",self,"on_select_button_click",[node])

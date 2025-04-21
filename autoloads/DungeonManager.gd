@@ -58,7 +58,7 @@ func get_or_create_one_room(xx,yy):
 	if !key in map.keys(): return null
 	var rnode = get_node_or_null("/root/Game/Map/"+"r_"+key)
 	if !rnode: 
-		rnode = preload("res://nodes/Room.tscn").instance()
+		rnode = load("res://nodes/Room.tscn").instance()
 		rnode.name = "r_"+key
 		var rsize = rnode.get_node("floor").rect_size
 		var room_data = map[key]

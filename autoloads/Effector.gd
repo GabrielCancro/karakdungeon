@@ -141,6 +141,6 @@ func fade_yoyo(node):
 	tween.start()
 
 func show_float_text(text,pos,style="normal"):
-	var node = preload("res://nodes/fx/FloatText.tscn").instance()
+	var node = load("res://nodes/fx/FloatText.tscn").instance()
 	node.set_float(text,pos,style)
 	get_node("/root").add_child(node)

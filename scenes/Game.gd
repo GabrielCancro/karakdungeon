@@ -1,5 +1,7 @@
 extends Node2D
 
+var zoom_key_pressed = false
+
 func _ready():
 	$CLUI/EndTurnButton/lb_desc.text = Lang.get_text("tx_end_turn")
 	LittleGS.add_button_behavior($CLUI/EndTurnButton,self,"on_click_end_turn")
@@ -21,9 +23,13 @@ func _ready():
 func on_new_dungeon():
 	$CLUI/lb_level.text = Lang.get_text("tx_level")+" "+str(DungeonManager.dungeon_level)
 
+func _input(event):
+	if event is InputEventKey:
+		if event.scancode == KEY_Z: zoom_key_pressed = event.pressed
+
 func _process(delta):
 	if Utils.is_input_disabled(): return
-	var pressed = ($CLUI/MapButton.pressed || Input.is_action_pressed("zoom_map"))
+	var pressed = ($CLUI/MapButton.pressed || zoom_key_pressed)
 	if $Camera2D.zoom.x<2 && pressed: $Camera2D.zoom += Vector2(.05,.05)
 	if $Camera2D.zoom.x>1 && !pressed: $Camera2D.zoom -= Vector2(.05,.05)
 	$Camera2D.offset_v = $Camera2D.zoom.y/2
