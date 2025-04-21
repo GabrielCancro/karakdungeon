@@ -10,6 +10,7 @@ var preloads = [
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_autoloads()
+	get_tree().set_screen_stretch(1,1,Vector2(1600,900))
 	$Button.connect("button_down",self,"next_scene")
 	var cpos = get_viewport_rect().size/2
 	$Pump.position = cpos
