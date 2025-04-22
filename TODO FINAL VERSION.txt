@@ -53,6 +53,7 @@ BUGS Y MEJORAS
 - Espectro, no lo puedes atacar si no tienes al menos un ojo
 - Furioso, se mueve hacia el heroe mas cercano al finalizar el turno
 - Todos los que esten en la sala tienen 50% de recibir un punto de daño al finalizar el turno
+- Mejorar la tirada de dificultad!! Quizas un popup?
 
 FIXED- hay que agregarle una fog a la puertas cuando estan cerradas para indicar que no se sabe lo que hay atras
 ADDED- pinchos, no se desarma, 30% de perder uno de vida al atravesarlo
