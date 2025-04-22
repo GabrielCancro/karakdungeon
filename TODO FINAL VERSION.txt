@@ -56,3 +56,6 @@ BUGS Y MEJORAS
 
 FIXED- hay que agregarle una fog a la puertas cuando estan cerradas para indicar que no se sabe lo que hay atras
 ADDED- pinchos, no se desarma, 30% de perder uno de vida al atravesarlo
+
+TEXTO EN LA SELECTION PLAYER
+Básicamente entraras a un dungeon con tres aventureros, cada aventurero tiene su salud, su movimiento y sus dados de atributos. Esos dados se rolean en cada turno y te dejan resolver los desafíos que te encuentres. Algunos aventureros comienzan con un item. Elige tres y desciende a las profundidades!
