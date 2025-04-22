@@ -65,6 +65,8 @@ func move_to(dx,dy):
 
 		DungeonManager.set_current_room(data.x,data.y)
 		dest = get_dest_pos()
+		TurnManager.on_enter_room()
+		yield(TurnManager,"end_reaction")
 
 func teleport_to(xx,yy):
 	var room = DungeonManager.get_or_create_one_room(xx,yy)

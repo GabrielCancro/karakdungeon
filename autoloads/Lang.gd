@@ -11,6 +11,7 @@ var texts = {
 	"df_stairs":"Esta escalera lleva al siguiente nivel.",
 	"df_fountain":"Esta fuente sanará hasta 2HP a quien beba de ella.",
 	"df_chest":"Si logras abrirlo puedes obtener nuevos items.",
+	"df_spikes":"30% de recibir un punto de daño al atravesarlo.",
 	
 	"df_name_goblin":"Goblin",
 	"df_name_rat":"Rata Gig.",
@@ -23,6 +24,7 @@ var texts = {
 	"df_name_chest":"Cofre",
 	"df_name_stairs":"Escalera",
 	"df_name_fountain":"Fuente",
+	"df_name_spikes":"Púas",
 	
 	"ac_name_attack":"atacar",
 	"ac_attack":"Causa entre 0 y 2 de daño, cada @SW añade un golpe extra.",
@@ -125,6 +127,7 @@ var texts = {
 	"df_stairs": "These stairs lead to the next level.",
 	"df_fountain": "This fountain will heal up to 2HP if you drink from it.",
 	"df_chest": "If you manage to open it, you can get new items.",
+	"df_spikes":"30% chance of taking 1 damage when passing through it.",
 
 	"df_name_goblin": "Goblin",
 	"df_name_rat": "Giant Rat",
@@ -137,6 +140,7 @@ var texts = {
 	"df_name_chest": "Chest",
 	"df_name_stairs": "Stairs",
 	"df_name_fountain": "Fountain",
+	"df_name_spikes": "Spikes Floor",
 
 	"ac_name_attack": "attack",
 	"ac_attack": "Deals 0 to 2 damage, each @SW adds an extra hit.",

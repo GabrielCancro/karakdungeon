@@ -48,8 +48,11 @@ BUGS Y MEJORAS
 - Al reiniciar la partida no se limpian los objetos y nivel de dungeon
 - Es un poco molesto tener que ir con todos los personajes hasta la escalera.
 - los dungeons quedan muy vacios cuando vences los desafios,
-- pinchos, no se desarma, pierdes uno de vida si no tienes botas
+
 - Enjambre, enemigo que se ataca con ojos y manos, no con espadas
 - Espectro, no lo puedes atacar si no tienes al menos un ojo
 - Furioso, se mueve hacia el heroe mas cercano al finalizar el turno
 - Todos los que esten en la sala tienen 50% de recibir un punto de daño al finalizar el turno
+
+FIXED- hay que agregarle una fog a la puertas cuando estan cerradas para indicar que no se sabe lo que hay atras
+ADDED- pinchos, no se desarma, 30% de perder uno de vida al atravesarlo

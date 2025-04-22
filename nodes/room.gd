@@ -2,6 +2,7 @@ extends Node2D
 
 var data
 var ttl = randf()
+var explored = false
 
 func _ready():
 	$shadow.visible = true
@@ -28,14 +29,9 @@ func set_data(room_data):
 	#DOORS
 	var have_door_defiance = ("defiance" in data && data.defiance.type == "door")
 	for d in data.doors.keys():
-		var show_door = true
-		if have_door_defiance:
-			if d=="up": show_door = (DungeonManager.get_room_node(data.x,data.y-1)!=null)
-			if d=="down": show_door = (DungeonManager.get_room_node(data.x,data.y+1)!=null)
-			if d=="left": show_door = (DungeonManager.get_room_node(data.x-1,data.y)!=null)
-			if d=="right": show_door = (DungeonManager.get_room_node(data.x+1,data.y)!=null)
-		get_node("doors/"+d).visible = data.doors[d] && show_door
-
+		get_node("doors/"+d).visible = data.doors[d]
+		var room = get_adyacent_room_by_direction(d)
+		get_node("doorsFog/"+d).visible = have_door_defiance && (!room || !room.explored)
 
 func on_leave():
 	pass
@@ -69,4 +65,11 @@ func erase_defiance():
 func remove_sadow():
 	set_process(false)
 	if $shadow.visible:
+		explored = true
 		Effector.disappear($shadow,true)
+
+func get_adyacent_room_by_direction(dir):
+	if dir=="up": return DungeonManager.get_room_node(data.x,data.y-1)
+	if dir=="down": return DungeonManager.get_room_node(data.x,data.y+1)
+	if dir=="left": return DungeonManager.get_room_node(data.x-1,data.y)
+	if dir=="right": return DungeonManager.get_room_node(data.x+1,data.y)

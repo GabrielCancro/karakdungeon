@@ -14,6 +14,7 @@ var DEFIANCES = {
 	"chest":{"type":"chest","tier":2, "req":["HN","HN","HN","EY","EY"],"give_item":1,"snd":"open"},
 	"stairs":{"type":"stairs"},
 	"fountain":{"type":"fountain","uses":2},
+	"spikes":{"type":"spikes"},
 }
 
 func get_defiance_data(code):

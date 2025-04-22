@@ -24,9 +24,21 @@ func on_across_room():
 		DefianceManager.activate_trap(def)
 		LittleGS.play_sound("lock2")
 		yield(get_tree().create_timer(1.5),"timeout")
+	if def && def.name=="spikes":
+		randomize()
+		if randf()<0.3: 
+			Effector.scale_boom(DungeonManager.current_room.get_node("Sprite"))
+			yield(get_tree().create_timer(.2),"timeout")
+			PlayerManager.damage_current_player(1)
+			yield(get_tree().create_timer(.4),"timeout")
 	emit_signal("end_reaction")
 
 func on_leave_room():
+	Utils.disable_input(0.1)
+	yield(get_tree().create_timer(.02),"timeout")
+	emit_signal("end_reaction")
+
+func on_enter_room():
 	Utils.disable_input(0.1)
 	yield(get_tree().create_timer(.02),"timeout")
 	emit_signal("end_reaction")
