@@ -33,7 +33,9 @@ func _ready():
 
 func on_click_dungeon():
 	PlayerManager.PLAYERS = []
+	ItemManager.PARTY_ITEMS = {}
 	PlayerManager.PLAYERS_ID_ARRAY = get_players_selected()
+	DungeonManager.dungeon_level = 0
 	Utils.show_popup("transition1")
 	yield(get_tree().create_timer(1),"timeout")
 	get_tree().change_scene("res://scenes/Game.tscn")

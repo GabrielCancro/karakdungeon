@@ -27,7 +27,7 @@ func goto_next_level():
 	have_key = false
 	yield(get_tree().create_timer(.1),"timeout")
 	var map_size = 10+5*dungeon_level
-	if is_final_level(): map_size = 10
+	if is_final_level(): map_size = 20
 	set_torch( map_size )
 	map = MapGenerator.generate_new_map(map_size)
 	total_defs = 0

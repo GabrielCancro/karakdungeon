@@ -133,9 +133,8 @@ func add_defiances():
 		for i in range(4): defs.append(get_rnd(["rat","bat","debris","spikes"]))
 		for i in range(3): defs.append(get_rnd(["goblin","trap"]))
 	elif lv==4: #30 (20)
-		defs=["rat","bat","goblin","goblin","door","door","fountain","trap","trap@hide","wchest@hide","wchest@hide"]
-		for i in range(5): defs.append(get_rnd(["rat","bat","debris","spikes"]))
-		for i in range(4): defs.append(get_rnd(["goblin","trap"]))
+		defs=["rat","bat","door","trap@hide","wchest@hide"]
+		for i in range(2): defs.append(get_rnd(["rat","bat","debris","spikes"]))
 	
 	if !DungeonManager.is_final_level(): 
 		defs.append("stairs")
