@@ -122,19 +122,19 @@ func add_defiances():
 	
 	var defs = []
 	if lv==1: #15 (6)
-#		defs=["rat","bat","debris","trap","wchest","door","door","door"]
-		defs = ["spikes","spikes","spikes","spikes","chest","chest"]
-		for i in range(3): defs.append(get_rnd(["rat","bat","debris"]))
+		defs=["rat","bat","debris","trap","wchest","door","door","door"]
+#		defs = ["spikes","spikes","spikes","spikes","chest","chest"]
+		for i in range(3): defs.append(get_rnd(["rat","bat","debris","spikes"]))
 	elif lv==2: #20(12)
-		defs=["rat","bat","goblin","goblin","door","door","fountain","wchest@hide","trap"]
-		for i in range(4): defs.append(get_rnd(["rat","bat","debris"]))
+		defs=["rat","bat","goblin","goblin","door","door","fountain","wchest@hide","trap","spikes"]
+		for i in range(4): defs.append(get_rnd(["rat","bat","debris","spikes"]))
 	elif lv==3: #25 (15)
-		defs=["rat","bat","goblin","goblin","door","door","fountain","trap","trap@hide","chest@hide"]
-		for i in range(4): defs.append(get_rnd(["rat","bat","debris"]))
+		defs=["rat","bat","goblin","goblin","door","door","fountain","trap","trap@hide","chest@hide","spikes"]
+		for i in range(4): defs.append(get_rnd(["rat","bat","debris","spikes"]))
 		for i in range(3): defs.append(get_rnd(["goblin","trap"]))
 	elif lv==4: #30 (20)
 		defs=["rat","bat","goblin","goblin","door","door","fountain","trap","trap@hide","wchest@hide","wchest@hide"]
-		for i in range(5): defs.append(get_rnd(["rat","bat","debris"]))
+		for i in range(5): defs.append(get_rnd(["rat","bat","debris","spikes"]))
 		for i in range(4): defs.append(get_rnd(["goblin","trap"]))
 	
 	if !DungeonManager.is_final_level(): 
