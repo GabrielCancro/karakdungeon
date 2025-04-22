@@ -69,7 +69,7 @@ var texts = {
 	"tuto_dices":"Al comenzar cada turno, se arrojarán los dados de atributos de tus personajes, estos dados te dan ventaja en distintas acciónes.",
 	
 	"attr_SW":"@SW ESPADA: Fuerza, infliges mayor daño al atacar.",
-	"attr_BT":"@BT BOTA: Agilidad, avanzas mas casillas que el resto y te da +10% chances de evadir daño.",
+	"attr_BT":"@BT BOTA: Agilidad, avanzas mas casillas que el resto y te da +10%/+20% chances de evadir daño de enemigos/trampas.",
 	"attr_HN":"@HN MANO: Maña, mayor facilidad para abrir cerrojos o desactivar trampas.",
 	"attr_EY":"@EY OJO: Astucia, mayor facilidad para abrir cerrojos o desactivar trampas, tambien te da +25% chances de encontrar elementos ocultos.",
 
@@ -83,6 +83,7 @@ var texts = {
 	"hint_reload_item":"RECARGABLE: Recuperas los usos de este item o habilidad al pasar al siguiente nivel.",
 	"hint_items":"INVENTARIO: Los objetos son compartidos, cualquier personaje puede utilizarlos si cumple con su requisito.",
 	"hint_show_tuto":"Mostrar tutorial.",
+	"hint_selection_player":"Básicamente entraras a un dungeon con tres aventureros, cada aventurero tiene su salud, su movimiento y sus dados de atributos. Esos dados se rolean en cada turno y te dejan resolver los desafíos que te encuentres. Algunos aventureros comienzan con un item.\n[color=#FFFFAA]Elige tres y desciende a las profundidades![/color]",
 
 	"dice_neutral":"DADO NEUTRAL",
 	"dice_fight":"DADO DE COMBATE",
@@ -183,7 +184,7 @@ var texts = {
 	"tuto_dices": "At the start of each turn, your characters will roll their attribute dice, which give you advantages in different actions.",
 
 	"attr_SW": "@SW SWORD: Strength, deals more damage when attacking.",
-	"attr_BT": "@BT BOOT: Agility, move more tiles and +10% chance to dodge damage.",
+	"attr_BT": "@BT BOOT: Agility, move more tiles and +10%/+20% chance to dodge damage from enemies/traps.",
 	"attr_HN": "@HN HAND: Skill, better at unlocking or disarming traps.",
 	"attr_EY": "@EY EYE: Cunning, better at unlocking or disarming traps, also +25% chance to find hidden items.",
 
@@ -197,6 +198,7 @@ var texts = {
 	"hint_reload_item": "RECHARGEABLE: Item or skill use is recovered when going to the next level.",
 	"hint_items": "INVENTORY: Items are shared. Any character can use them if they meet the requirements.",
 	"hint_show_tuto": "Show tutorial.",
+	"hint_selection_player":"Basically, you'll enter a dungeon with three adventurers. Each adventurer has their own health, movement, and attribute dice. These dice are rolled each turn and allows you to resolve any challenges you encounter. Some adventurers start with one item.\n[color=#FFFFAA]Choose three and descend into the depths![/color]",
 
 	"dice_neutral": "NEUTRAL DICE",
 	"dice_fight": "DICE OF FIGHT",

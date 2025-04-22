@@ -137,7 +137,10 @@ func damage_player(id,dam):
 	var player = PlayerManager.get_player_data(id)
 	Effector.scale_boom(player.node)
 	randomize()
-	if dam>0 && randf()<PlayerManager.get_dice_amount("BT")*.1: 
+	var evade = PlayerManager.get_dice_amount("BT")*.1
+	var def = DungeonManager.get_room_defiance()
+	if def && (def.type=="trap" || def.type=="spikes"): evade *= 2
+	if dam>0 && randf()<evade: 
 		Effector.show_float_text("-"+str(dam)+"HP "+Lang.get_text("tx_evade"),player.node.position+Vector2(0,-80),"normal")
 		dam = 0
 	else:

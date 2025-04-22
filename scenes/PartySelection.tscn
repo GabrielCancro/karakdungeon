@@ -179,10 +179,10 @@ patch_margin_bottom = 64
 [node name="HelpButton" type="Button" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -134.0
-margin_top = 470.0
-margin_right = -35.0
-margin_bottom = 569.0
+margin_left = -117.0
+margin_top = 376.0
+margin_right = -18.0
+margin_bottom = 475.0
 rect_min_size = Vector2( 6, 0 )
 flat = true
 __meta__ = {
@@ -198,6 +198,37 @@ texture = ExtResource( 5 )
 expand = true
 
 [node name="lb_level" type="Label" parent="HelpButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.788235, 0.788235, 0.788235, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "?"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="HelpButton2" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -141.0
+margin_top = 480.0
+margin_right = -42.0
+margin_bottom = 579.0
+rect_min_size = Vector2( 6, 0 )
+flat = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Key" type="TextureRect" parent="HelpButton2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 58.5, 58.5 )
+mouse_filter = 2
+texture = ExtResource( 5 )
+expand = true
+
+[node name="lb_level" type="Label" parent="HelpButton2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color = Color( 0.788235, 0.788235, 0.788235, 1 )

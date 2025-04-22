@@ -1,7 +1,8 @@
 extends Control
 
 func _ready():
-	AdaptativeHintAuto.add_hint($HelpButton,Lang.get_help_attr_hint())
+	AdaptativeHintAuto.add_hint($HelpButton,Lang.get_text("hint_selection_player"))
+	AdaptativeHintAuto.add_hint($HelpButton2,Lang.get_help_attr_hint())
 	
 	#1 load you custom data
 	var my_data = LittleGS.load_data()
