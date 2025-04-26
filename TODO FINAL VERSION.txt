@@ -1,15 +1,16 @@
 FINAL VERSION
 
-Inflige un daño (adicional) a cada héroe en la sala al final del turno.
-Regenera 1 punto de vida por turno.
-
-Recibe 1 punto de daño menos de los ataques.
-
-Anula el primer ataque contra él en cada turno/acción.
+Vampiro: Regenera 1 punto de vida por turno.
+Troll menor: Anula el primer ataque contra él en cada turno/acción.
+Espectro: solo le podes pegar si tenes al menos un ojo.
+Trasgo: Si lo atacas y no muere invoca otro trasgo en alguna habitacion cercana.
+Perro Demonio: si pasas en una habitacion adyascente se mueve hacia vos.
 
 Se mueve 1 casilla hacia el héroe más cercano al final del turno si la sala está vacía, bloqueando otros eventos a los que pueda acceder hasta que sea derrotado.
 
 Invoca a otros enemigos.
+Inflige un daño (adicional) a cada héroe en la sala al final del turno.
+
 Inflige daño a los héroes que pasen por salas adyacentes a menos que pasen una prueba de agilidad.
 
 Al impactar, teletransporta al héroe golpeado a una sala vacía aleatoria.
