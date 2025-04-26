@@ -41,6 +41,9 @@ func on_leave_room():
 func on_enter_room():
 	Utils.disable_input(0.1)
 	yield(get_tree().create_timer(.02),"timeout")
+	if check_move_adjacent_defiances(): 
+		Utils.disable_input(1.2)
+		yield(get_tree().create_timer(1.2),"timeout")
 	emit_signal("end_reaction")
 
 func on_post_action():
@@ -97,3 +100,12 @@ func end_turn():
 				yield(get_tree().create_timer(.5),"timeout")
 	
 	get_node("/root/Game/CLUI/EndTurnButton").modulate = Color(1,1,1,1)
+
+func check_move_adjacent_defiances():
+	var x = DungeonManager.current_room.data.x
+	var y = DungeonManager.current_room.data.y
+	if DefianceManager.try_move_defiance_to(DungeonManager.get_room_node(x-1,y),1,0): return true
+	elif DefianceManager.try_move_defiance_to(DungeonManager.get_room_node(x+1,y),-1,0): return true
+	elif DefianceManager.try_move_defiance_to(DungeonManager.get_room_node(x,y+1),0,-1): return true
+	elif DefianceManager.try_move_defiance_to(DungeonManager.get_room_node(x,y-1),0,1): return true
+	return false

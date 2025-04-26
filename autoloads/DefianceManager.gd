@@ -84,3 +84,29 @@ func check_give_item_on_resolve():
 		if randf()<=def.give_item:
 			if !"tier" in def: def["tier"] = 1
 			return ItemManager.add_rnd_item(def["tier"])
+
+func try_move_defiance_to(room,toX,toY):
+	if !room: return false
+	print("MOVE DEFIANCE ",room.data)
+	if !"defiance" in room.data: return false
+	if !room.data.defiance: return false
+	var dest_room_data = DungeonManager.get_room_data(room.data.x+toX,room.data.y+toY)
+	if !dest_room_data: return false
+	if "defiance" in dest_room_data && dest_room_data.defiance: return false
+	if room.data.defiance.type != "enemy": return false
+	if toX==1 && !dest_room_data.doors.left: return false
+	if toX==-11 && !dest_room_data.doors.right: return false
+	if toY==1 && !dest_room_data.doors.up: return false
+	if toY==-1 && !dest_room_data.doors.down: return false
+	move_defiance(room,DungeonManager.get_room_node(dest_room_data.x,dest_room_data.y))
+	return true
+
+func move_defiance(from,to):
+	yield(get_tree().create_timer(.5),"timeout")
+	Effector.move_to(from.get_node("Sprite"),to.global_position)
+	yield(get_tree().create_timer(.5),"timeout")
+	from.get_node("Sprite").global_position = from.global_position
+	to.data["defiance"] = from.data.defiance.duplicate(true)
+	from.erase_defiance()
+	from.update()
+	to.update()

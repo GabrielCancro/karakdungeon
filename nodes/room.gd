@@ -22,6 +22,7 @@ func set_data(room_data):
 	if "defiance" in data: 
 		data["defiance"]["def_sprite"] = $Sprite
 		$Sprite.visible = true
+		$Sprite.modulate.a = 1
 		$Sprite/Image.texture = load("res://assets/defiances/df_"+data["defiance"]["name"]+".png")
 		if "hide" in data.defiance:
 			if data.defiance.hide: $Sprite.modulate.a = 0

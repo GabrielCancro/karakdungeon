@@ -46,10 +46,12 @@ func move_to(dx,dy):
 		TurnManager.on_pre_move()
 		yield(TurnManager,"end_reaction")
 		
+		var entre_new_room = false
 		if data.x==dest_mov.x && data.y==dest_mov.y:
 			TurnManager.on_across_room()
 			yield(TurnManager,"end_reaction")
 		else:
+			entre_new_room = true
 			TurnManager.on_leave_room()
 			yield(TurnManager,"end_reaction")
 		
@@ -65,8 +67,9 @@ func move_to(dx,dy):
 
 		DungeonManager.set_current_room(data.x,data.y)
 		dest = get_dest_pos()
-		TurnManager.on_enter_room()
-		yield(TurnManager,"end_reaction")
+		if entre_new_room:
+			TurnManager.on_enter_room()
+			yield(TurnManager,"end_reaction")
 
 func teleport_to(xx,yy):
 	var room = DungeonManager.get_or_create_one_room(xx,yy)
