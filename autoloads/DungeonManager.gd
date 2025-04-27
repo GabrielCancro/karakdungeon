@@ -9,6 +9,8 @@ var total_defs = 0
 var resolved_defs = 0
 var total_torch = 0
 
+var can_have_key_defiances = ["enemy"]
+
 signal change_room()
 signal new_dungeon()
 
@@ -127,7 +129,12 @@ func get_key():
 func on_resolve_defiance():
 	resolved_defs += 1
 	#("RESOLVED ",resolved_defs,"/",total_defs)
-	if !have_key && !is_final_level() && resolved_defs>=floor(total_defs*0.8): get_key()
+	if have_key: return
+	if is_final_level(): return
+	if have_posible_defiances_with_key():
+		if resolved_defs>=floor(total_defs*0.8): get_key()
+	else: 
+		get_key()
 
 func find_hide_defiances(xx,yy):
 	var key = str(xx)+"x"+str(yy)
@@ -154,3 +161,13 @@ func dec_torch():
 
 func is_final_level():
 	return (dungeon_level>=final_level)
+
+func have_posible_defiances_with_key():
+	#return true if have any defiance that can have the level key
+	for room_key in DungeonManager.map.keys():
+		var room_data = DungeonManager.map[room_key]
+		if !room_data: continue
+		if !"defiance" in room_data: continue
+		var def = room_data.defiance
+		if def.type in can_have_key_defiances: return true
+	return false
