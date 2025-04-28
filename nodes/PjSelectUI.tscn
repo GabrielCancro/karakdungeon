@@ -105,7 +105,7 @@ mouse_filter = 2
 texture = ExtResource( 4 )
 expand = true
 
-[node name="mv" type="TextureRect" parent="Outline"]
+[node name="mv" type="Button" parent="Outline"]
 anchor_left = 0.5
 anchor_top = -0.442
 anchor_right = 0.504
@@ -114,8 +114,8 @@ margin_left = -99.5
 margin_top = 95.938
 margin_right = -50.056
 margin_bottom = 145.938
-texture = ExtResource( 8 )
-expand = true
+focus_mode = 0
+flat = true
 
 [node name="mv" type="TextureRect" parent="Outline/mv"]
 modulate = Color( 0.882353, 0.882353, 0.882353, 1 )
@@ -137,7 +137,7 @@ align = 1
 valign = 1
 clip_text = true
 
-[node name="hp" type="TextureRect" parent="Outline"]
+[node name="hp" type="Button" parent="Outline"]
 anchor_left = 0.5
 anchor_top = -0.442
 anchor_right = 0.504
@@ -146,6 +146,18 @@ margin_left = -95.5
 margin_top = 141.938
 margin_right = -29.056
 margin_bottom = 208.938
+focus_mode = 0
+flat = true
+
+[node name="hp" type="TextureRect" parent="Outline/hp"]
+anchor_left = 0.5
+anchor_top = -0.442
+anchor_right = 0.504
+anchor_bottom = -0.442
+margin_left = -33.5
+margin_top = 29.614
+margin_right = 32.944
+margin_bottom = 96.614
 texture = ExtResource( 9 )
 expand = true
 

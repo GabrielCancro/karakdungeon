@@ -41,9 +41,6 @@ func on_leave_room():
 func on_enter_room():
 	Utils.disable_input(0.1)
 	yield(get_tree().create_timer(.02),"timeout")
-	if check_move_adjacent_defiances(): 
-		Utils.disable_input(1.2)
-		yield(get_tree().create_timer(1.2),"timeout")
 	emit_signal("end_reaction")
 
 func on_post_action():
@@ -56,6 +53,14 @@ func on_post_action():
 #		enemy_attack(def,DungeonManager.current_player)
 #		yield(get_tree().create_timer(.7),"timeout")
 #	emit_signal("end_reaction")
+
+func on_post_move():
+	Utils.disable_input(0.1)
+	yield(get_tree().create_timer(.02),"timeout")
+	if check_move_adjacent_defiances(): 
+		Utils.disable_input(1.2)
+		yield(get_tree().create_timer(1.2),"timeout")
+	emit_signal("end_reaction")
 
 func enemy_attack(def,pj):
 	Utils.disable_input(.5)

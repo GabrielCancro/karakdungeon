@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/font/AbyssinicaSIL-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/defiances/df_goblin.png" type="Texture" id=2]
@@ -36,6 +36,28 @@ size = 44
 outline_size = 2
 outline_color = Color( 0.231373, 0.231373, 0.231373, 1 )
 font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 97
+outline_size = 4
+outline_color = Color( 1, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=8]
+resource_name = "idel"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("lb:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -10.0, 10.0, -10.0 ]
+}
 
 [node name="DefianceUI" type="ColorRect"]
 margin_right = 305.0
@@ -206,3 +228,47 @@ text = "9"
 align = 1
 valign = 1
 clip_text = true
+
+[node name="ab" type="TextureRect" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -114.0
+margin_top = -32.0
+margin_right = -39.0
+margin_bottom = 43.0
+expand = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ab" type="TextureRect" parent="ab"]
+modulate = Color( 0, 0, 0, 0.392157 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -29.5
+margin_top = -38.5
+margin_right = 29.5
+margin_bottom = 38.5
+texture = ExtResource( 9 )
+expand = true
+
+[node name="lb" type="Label" parent="ab"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.85756
+margin_top = -13.1236
+margin_right = 2.85756
+margin_bottom = 9.87638
+rect_rotation = -1.10513
+rect_pivot_offset = Vector2( 37.5, 55.1197 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "!"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ab"]
+anims/idel = SubResource( 8 )

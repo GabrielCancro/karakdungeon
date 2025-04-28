@@ -14,6 +14,7 @@ func _ready():
 	AdaptativeHintAuto.add_hint($dm,Lang.get_text("hint_dm"))
 	AdaptativeHintAuto.add_hint($TestRnd/Button,Lang.get_text("hint_test"))
 	AdaptativeHintAuto.add_hint($Reqs/Button,Lang.get_text("hint_reqs"))
+	$ab/AnimationPlayer.play("idel")
 
 func update():
 	#print("DEFIANCE UI UPDATE")
@@ -47,6 +48,8 @@ func update():
 			$Reqs.visible = true
 		$dm.visible = ("dam" in defiance)
 		if $dm.visible: $dm/lb.text = str(defiance.dam)
+		$ab.visible = ("ability" in defiance)
+		if $ab.visible: AdaptativeHintAuto.add_hint($ab,Lang.get_text("ab_"+defiance["ability"]))
 		#if "dam" in defiance: $lb_stats.text += " DAM:<"+str(defiance.dam)+">"+" "
 	
 		if defiance && !"checked" in defiance && check_solved(): 

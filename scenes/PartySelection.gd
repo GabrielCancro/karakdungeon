@@ -30,7 +30,7 @@ func _ready():
 		var node = load("res://nodes/PjSelectUI.tscn").instance()
 		$HBox.add_child(node)
 		node.set_data(pdata)
-		node.get_node("Button").connect("button_down",self,"on_select_button_click",[node])
+		node.connect("on_click",self,"on_select_button_click",[node])
 
 func on_click_dungeon():
 	PlayerManager.PLAYERS = []

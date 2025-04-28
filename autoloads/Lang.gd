@@ -16,6 +16,7 @@ var texts = {
 	"df_name_goblin":"Goblin",
 	"df_name_rat":"Rata Gig.",
 	"df_name_bat":"Murcielago",
+	"df_name_rabious":"Rabioso",
 	"df_name_gorok":"Gorok",
 	"df_name_trap":"Trampa",
 	"df_name_door":"Puerta",
@@ -119,6 +120,9 @@ var texts = {
 	
 	"popup_win":"[center][color=#f6ff88]VICTORIA[/color]\nHas vencido a Gorok el troll y liberaste su guarida de todo peligro.\n\nEsperamos que lo hayas disfrutado!",
 	"popup_lose":"[center][color=#f6ff88]DERROTA[/color]\nTodos tus aventureros han caido, ya no saldran de este calabozo.\n\nVuelve a intentarlo!",
+	
+	"ab_furious": "[color=#f0f0f0]FURIOSO: Esta criatura se moverá hacia ti si estás en una habitación vacía adyacente a ella.[/color]",
+	
 	},
 	"en":{
 	"df_enemy": "It will attack you if you move or take an action.",
@@ -133,6 +137,7 @@ var texts = {
 	"df_name_goblin": "Goblin",
 	"df_name_rat": "Giant Rat",
 	"df_name_bat": "Bat",
+	"df_name_rabious":"Rabid",
 	"df_name_gorok": "Gorok",
 	"df_name_trap": "Trap",
 	"df_name_door": "Door",
@@ -233,7 +238,9 @@ var texts = {
 	"tx_touch_again":"Touch again to use",
 
 	"popup_win": "[center][color=#f6ff88]VICTORY[/color]\nYou defeated Gorok the troll and cleared his lair of danger.\n\nWe hope you enjoyed it!",
-	"popup_lose": "[center][color=#f6ff88]DEFEAT[/color]\nAll your adventurers have fallen. They won't leave this dungeon.\n\nTry again!"
+	"popup_lose": "[center][color=#f6ff88]DEFEAT[/color]\nAll your adventurers have fallen. They won't leave this dungeon.\n\nTry again!",
+	
+	"ab_furious": "[color=#f0f0f0]FURIOUS: This creature will move towards you if you are in an empty room adjacent to it.[/color]",
 	},
 }
 

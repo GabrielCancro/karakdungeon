@@ -6,6 +6,7 @@ var DEFIANCES = {
 	"goblin":{"type":"enemy", "hp":5, "dam":2, "give_item":0.5},
 	"rat":{"type":"enemy", "hp":3, "dam":1},
 	"bat":{"type":"enemy", "hp":2, "dam":1},
+	"rabious":{"type":"enemy", "hp":2, "dam":1, "ability":"furious"},
 	"gorok":{"type":"enemy", "hp":7, "dam":2, "allways_damage":true},
 	"trap":{"type":"trap", "dif":4,"dam":2},
 	"door":{"type":"door", "req":["HN","EY"], "give_item":0.2, "snd":"open"},
@@ -87,13 +88,14 @@ func check_give_item_on_resolve():
 
 func try_move_defiance_to(room,toX,toY):
 	if !room: return false
-	print("MOVE DEFIANCE ",room.data)
+	#print("MOVE DEFIANCE ",room.data)
 	if !"defiance" in room.data: return false
 	if !room.data.defiance: return false
 	var dest_room_data = DungeonManager.get_room_data(room.data.x+toX,room.data.y+toY)
 	if !dest_room_data: return false
 	if "defiance" in dest_room_data && dest_room_data.defiance: return false
-	if room.data.defiance.type != "enemy": return false
+	#if room.data.defiance.type != "enemy": return false
+	if !defiance_have_ability(room,"furious"): return false
 	if toX==1 && !dest_room_data.doors.left: return false
 	if toX==-11 && !dest_room_data.doors.right: return false
 	if toY==1 && !dest_room_data.doors.up: return false
@@ -110,3 +112,9 @@ func move_defiance(from,to):
 	from.erase_defiance()
 	from.update()
 	to.update()
+
+func defiance_have_ability(room,ab_name):
+	if !"defiance" in room.data: return false
+	if !"ability" in room.data["defiance"]: return false
+	if ab_name == room.data["defiance"]["ability"]: return true
+	return false

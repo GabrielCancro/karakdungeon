@@ -70,6 +70,9 @@ func move_to(dx,dy):
 		if entre_new_room:
 			TurnManager.on_enter_room()
 			yield(TurnManager,"end_reaction")
+		
+		TurnManager.on_post_move()
+		yield(TurnManager,"end_reaction")
 
 func teleport_to(xx,yy):
 	var room = DungeonManager.get_or_create_one_room(xx,yy)
