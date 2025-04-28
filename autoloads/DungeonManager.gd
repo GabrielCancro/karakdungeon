@@ -9,7 +9,7 @@ var total_defs = 0
 var resolved_defs = 0
 var total_torch = 0
 
-var can_have_key_defiances = ["enemy"]
+var can_have_key_defiances = ["enemy","trap","door"]
 
 signal change_room()
 signal new_dungeon()
