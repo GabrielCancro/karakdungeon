@@ -83,29 +83,30 @@ var custom_sounds_folder = "res://assets/sounds/"
 
 func _get_stream(code):
 	var stream = null
-	var file = File.new()
-	#LOAD FROM CUSTOM PATH FIRST
-	if file.file_exists(code):
-		stream = load(code)
-	if !stream && custom_sounds_folder:
-		if file.file_exists(custom_sounds_folder+"/"+code+".ogg"):
-			stream = load(custom_sounds_folder+"/"+code+".ogg")
-		elif file.file_exists(custom_sounds_folder+"/"+code+".wav"):
-			stream = load(custom_sounds_folder+"/"+code+".wav")
-		elif file.file_exists(custom_sounds_folder+"/"+code+".mp3"):
-			stream = load(custom_sounds_folder+"/"+code+".mp3")
-	#IF IS NULL, LOAD FROM DEFAULTS
-	if !stream:
-		if file.file_exists("res://addons/LittleGameSettings/assets/sounds/"+code+".ogg"):
-			stream = load("res://addons/LittleGameSettings/assets/sounds/"+code+".ogg")
-		elif file.file_exists("res://addons/LittleGameSettings/assets/sounds/"+code+".wav"):
-			stream = load("res://addons/LittleGameSettings/assets/sounds/"+code+".wav")
-		elif file.file_exists("res://addons/LittleGameSettings/assets/sounds/"+code+".mp3"):
-			stream = load("res://addons/LittleGameSettings/assets/sounds/"+code+".mp3")
-	#ELSE IF AN ERROR!
-	if !stream: 
-		push_error("LittleGS ERROR: dont exist sound file to - "+str(code))
-	return stream
+	#LOAD DIRECTLY
+	stream = _get_resource(code)
+	if stream: return stream
+	#LOAD FROM CUSTOM PATH
+	stream = _get_resource(custom_sounds_folder+code+".ogg")
+	if stream: return stream
+	stream = _get_resource(custom_sounds_folder+code+".wav")
+	if stream: return stream
+	stream = _get_resource(custom_sounds_folder+code+".mp3")
+	if stream: return stream
+	#LOAD FROM DEFAULTS
+	stream = _get_resource("res://addons/LittleGameSettings/assets/sounds/"+code+".ogg")
+	if stream: return stream
+	stream = _get_resource("res://addons/LittleGameSettings/assets/sounds/"+code+".wav")
+	if stream: return stream
+	stream = _get_resource("res://addons/LittleGameSettings/assets/sounds/"+code+".mp3")
+	if stream: return stream
+	#ERROR!
+	push_error("LittleGS ERROR: dont exist sound file to - "+str(code))
+	return null
+
+func _get_resource(path):
+	if ResourceLoader.exists(path): return load(path)
+	else: return null
 
 func play_sound(name,vol=100):
 	var audio = AudioStreamPlayer.new()

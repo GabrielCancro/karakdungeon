@@ -26,9 +26,9 @@ TurnManager="*res://autoloads/TurnManager.gd"
 MapGenerator="*res://autoloads/MapGenerator.gd"
 ItemManager="*res://autoloads/ItemManager.gd"
 AdaptativeHintAuto="*res://addons/AdaptativeHint/AdaptativeHintAuto.gd"
-LittleGS="*res://addons/LittleGameSettings/LittleGameSettingsAuto.gd"
 Lang="*res://autoloads/Lang.gd"
 MyGlobal="*res://autoloads/MyGlobal.gd"
+LittleGS="*res://addons/LittleGameSettings/LittleGameSettingsAuto.gd"
 
 [display]
 
