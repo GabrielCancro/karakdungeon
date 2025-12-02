@@ -165,6 +165,7 @@ func run_action_descend():
 			return
 	emit_signal("end_action",true)
 	Utils.disable_input(2.5)
+	LittleGS.play_sound("down_stairs")
 	yield(get_tree().create_timer(.4),"timeout")
 	Utils.show_popup("transition1")
 	yield(get_tree().create_timer(1),"timeout")

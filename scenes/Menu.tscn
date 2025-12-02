@@ -1,22 +1,75 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scenes/Menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/bgmenu.png" type="Texture" id=2]
-[ext_resource path="res://assets/title_final.png" type="Texture" id=3]
-[ext_resource path="res://assets/font/AbyssinicaSIL-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/retraits/retrait_1.png" type="Texture" id=3]
+[ext_resource path="res://assets/font/RobotoBold.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://assets/ui/9path_frame_small.png" type="Texture" id=5]
 [ext_resource path="res://assets/white.png" type="Texture" id=6]
 [ext_resource path="res://assets/shader/sh_flame.tres" type="Material" id=7]
 [ext_resource path="res://addons/LittleGameSettings/assets/Roboto-Regular.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://assets/retraits/retrait_6.png" type="Texture" id=9]
+[ext_resource path="res://assets/retraits/retrait_2.png" type="Texture" id=10]
+[ext_resource path="res://assets/retraits/retrait_5.png" type="Texture" id=11]
+[ext_resource path="res://assets/retraits/retrait_3.png" type="Texture" id=12]
+[ext_resource path="res://assets/title.png" type="Texture" id=13]
+[ext_resource path="res://assets/retraits/retrait_4.png" type="Texture" id=14]
+
+[sub_resource type="Shader" id=7]
+code = "shader_type canvas_item;
+
+uniform float strength : hint_range(0.0, 1.0) = 0.4;
+uniform float speed : hint_range(0.0, 2.0) = 0.333;
+
+void fragment() {
+  float t = TIME * speed;
+
+  vec3 col = vec3(0.0);
+   
+  vec2 res=1.0/SCREEN_PIXEL_SIZE;
+
+  // Convert SCREEN_UV to range [-1, 1], centering it
+  vec2 pos = SCREEN_UV * 2.0 - 1.0;
+   
+  // Preserve aspect ratio manually using the screen resolution uniform
+  pos.y *= (res.y / res.x);
+   
+  pos *= 4.0; // Scale up for a larger effect
+
+  for (float k = 1.0; k < 7.0; k += 1.0) { 
+    pos.x += strength * sin(2.0 * t + k * 1.5 * pos.y) + t * 0.5;
+    pos.y += strength * cos(2.0 * t + k * 1.5 * pos.x);
+  }
+
+  // Color calculation using time and position
+  col += 0.2+0.1 * cos(TIME + pos.xxx + vec3(0.0, 0.5, 1.0));
+
+  // Gamma correction
+  col = pow(col, vec3(0.4545));
+
+  // Set final output
+  COLOR.rgb = col;
+  COLOR.a = 1.0;
+}"
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = SubResource( 7 )
+shader_param/strength = 0.105
+shader_param/speed = 0.077
 
 [sub_resource type="DynamicFont" id=2]
 size = 32
 outline_color = Color( 0.2, 0.2, 0.2, 1 )
 font_data = ExtResource( 8 )
 
-[sub_resource type="DynamicFont" id=1]
-size = 44
+[sub_resource type="DynamicFont" id=9]
+size = 40
+outline_size = 6
 outline_color = Color( 0.2, 0.2, 0.2, 1 )
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 40
 font_data = ExtResource( 4 )
 
 [node name="Menu" type="Control"]
@@ -31,44 +84,124 @@ texture = ExtResource( 2 )
 expand = true
 stretch_mode = 7
 
+[node name="TextureRect3" type="TextureRect" parent="."]
+modulate = Color( 0.658824, 0.658824, 0.658824, 1 )
+material = SubResource( 8 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.249329, 0.249329, 0.296875, 1 )
+
+[node name="Faces" type="Control" parent="."]
+modulate = Color( 1, 1, 1, 0.203922 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TextureRect" type="TextureRect" parent="Faces"]
+margin_left = 307.0
+margin_top = 155.0
+margin_right = 607.0
+margin_bottom = 455.0
+rect_rotation = 144.645
+texture = ExtResource( 3 )
+stretch_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Faces"]
+margin_left = 262.0
+margin_top = 697.0
+margin_right = 562.0
+margin_bottom = 997.0
+texture = ExtResource( 10 )
+stretch_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="Faces"]
+margin_left = 1307.0
+margin_top = 53.0
+margin_right = 1607.0
+margin_bottom = 353.0
+rect_rotation = -218.43
+texture = ExtResource( 12 )
+stretch_mode = 1
+flip_h = true
+
+[node name="TextureRect4" type="TextureRect" parent="Faces"]
+margin_left = -79.0
+margin_top = 452.0
+margin_right = 221.0
+margin_bottom = 752.0
+texture = ExtResource( 14 )
+stretch_mode = 1
+
+[node name="TextureRect5" type="TextureRect" parent="Faces"]
+margin_left = 1057.0
+margin_top = 698.0
+margin_right = 1357.0
+margin_bottom = 998.0
+rect_rotation = 22.7083
+texture = ExtResource( 11 )
+stretch_mode = 1
+
+[node name="TextureRect6" type="TextureRect" parent="Faces"]
+margin_left = 1375.0
+margin_top = 590.0
+margin_right = 1675.0
+margin_bottom = 890.0
+rect_rotation = -27.4136
+texture = ExtResource( 9 )
+stretch_mode = 1
+flip_h = true
+
 [node name="Flame1" type="TextureRect" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0.552941 )
 material = ExtResource( 7 )
-margin_left = 106.0
-margin_top = 33.0
-margin_right = 515.0
-margin_bottom = 677.0
+margin_left = -195.0
+margin_top = 39.0
+margin_right = 214.0
+margin_bottom = 683.0
 texture = ExtResource( 6 )
 expand = true
 
 [node name="Flame2" type="TextureRect" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0.552941 )
 material = ExtResource( 7 )
-margin_left = 1057.0
-margin_top = 180.0
-margin_right = 1362.0
-margin_bottom = 660.0
+margin_left = 451.0
+margin_top = -161.0
+margin_right = 904.0
+margin_bottom = 166.0
 texture = ExtResource( 6 )
 expand = true
 
 [node name="Flame3" type="TextureRect" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0.552941 )
 material = ExtResource( 7 )
-margin_left = 1200.0
-margin_top = 28.0
-margin_right = 1609.0
-margin_bottom = 672.0
+margin_left = 1389.0
+margin_top = 106.0
+margin_right = 1798.0
+margin_bottom = 750.0
 texture = ExtResource( 6 )
 expand = true
 
 [node name="TextureRect2" type="TextureRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 65.0
-margin_top = -103.0
-margin_right = -29.0
-margin_bottom = -156.0
-texture = ExtResource( 3 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -589.5
+margin_top = -413.5
+margin_right = 589.5
+margin_bottom = 249.5
+texture = ExtResource( 13 )
 expand = true
 stretch_mode = 6
 
@@ -77,11 +210,27 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -328.0
+margin_left = -960.0
 margin_top = -76.0
+margin_right = -632.0
 custom_colors/font_color = Color( 0.545098, 0.545098, 0.545098, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "RUNNING MOBILE"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="lb_itch" type="Label" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -410.0
+margin_top = -76.0
+margin_right = -1.0
+custom_colors/font_color = Color( 0.545098, 0.545098, 0.545098, 1 )
+custom_fonts/font = SubResource( 9 )
+text = "mole06.itch.io"
 align = 1
 valign = 1
 clip_text = true
@@ -104,39 +253,39 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -153.0
-margin_top = 256.0
+margin_top = 243.0
 margin_right = 153.0
-margin_bottom = 371.0
+margin_bottom = 358.0
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="ColorRect" type="ColorRect" parent="Button"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 color = Color( 0.0745098, 0.0745098, 0.0745098, 1 )
 
-[node name="lb_name2" type="Label" parent="Button"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_colors/font_color = Color( 0.780392, 0.803922, 0.486275, 1 )
-custom_fonts/font = SubResource( 1 )
-text = "JUGAR"
-align = 1
-valign = 1
-clip_text = true
-
 [node name="NinePatchRect" type="NinePatchRect" parent="Button"]
-modulate = Color( 0.721569, 0.72549, 0.631373, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -25.0
 margin_top = -5.0
 margin_right = 26.0
-margin_bottom = 7.0
+margin_bottom = 8.0
 texture = ExtResource( 5 )
 patch_margin_left = 64
 patch_margin_top = 64
 patch_margin_right = 64
 patch_margin_bottom = 64
+
+[node name="lb_name2" type="Label" parent="Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.780392, 0.803922, 0.486275, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "JUGAR"
+align = 1
+valign = 1
+clip_text = true

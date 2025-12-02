@@ -1,18 +1,20 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://popups/lose.gd" type="Script" id=1]
 [ext_resource path="res://assets/ui/9path_frame.png" type="Texture" id=2]
 [ext_resource path="res://assets/ui/9path_frame_small.png" type="Texture" id=3]
-[ext_resource path="res://assets/font/AbyssinicaSIL-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/font/RobotoRegular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/font/RobotoBold.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://assets/shader/sh_clipped.tres" type="Material" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 44
 outline_color = Color( 0.2, 0.2, 0.2, 1 )
-font_data = ExtResource( 4 )
+font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 40
+size = 36
+outline_color = Color( 0.839216, 0.839216, 0.839216, 1 )
 font_data = ExtResource( 4 )
 
 [node name="lose" type="CanvasLayer"]
@@ -55,20 +57,7 @@ anchor_bottom = 1.0
 mouse_filter = 2
 color = Color( 0.0745098, 0.0745098, 0.0745098, 1 )
 
-[node name="lb_name2" type="Label" parent="Panel/Button"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 20.0
-margin_bottom = 20.0
-custom_colors/font_color = Color( 0.780392, 0.803922, 0.486275, 1 )
-custom_fonts/font = SubResource( 1 )
-text = "Volver"
-align = 1
-valign = 1
-clip_text = true
-
 [node name="NinePatchRect" type="NinePatchRect" parent="Panel/Button"]
-modulate = Color( 0.721569, 0.72549, 0.631373, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -25.0
@@ -81,13 +70,19 @@ patch_margin_top = 64
 patch_margin_right = 64
 patch_margin_bottom = 64
 
-[node name="ColorRect2" type="ColorRect" parent="Panel"]
+[node name="lb_name2" type="Label" parent="Panel/Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
+margin_top = 20.0
+margin_bottom = 20.0
+custom_colors/font_color = Color( 0.780392, 0.803922, 0.486275, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Volver"
+align = 1
+valign = 1
+clip_text = true
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Panel"]
-modulate = Color( 0.721569, 0.72549, 0.631373, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -18.0
@@ -99,6 +94,12 @@ patch_margin_left = 128
 patch_margin_top = 127
 patch_margin_right = 132
 patch_margin_bottom = 129
+
+[node name="ColorRect2" type="ColorRect" parent="Panel"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
 
 [node name="RTL" type="RichTextLabel" parent="Panel"]
 anchor_right = 1.0

@@ -26,6 +26,9 @@ func set_data(room_data):
 		$Sprite/Image.texture = load("res://assets/defiances/df_"+data["defiance"]["name"]+".png")
 		if "hide" in data.defiance:
 			if data.defiance.hide: $Sprite.modulate.a = 0
+#		if room_data.defiance.name=="stairs": Utils.set_zindex($Sprite,self,-200)
+#		elif room_data.defiance.name=="spikes": Utils.set_zindex($Sprite,self,-200)
+#		else: Utils.set_zindex($Sprite,self)
 	
 	#DOORS
 	var have_door_defiance = ("defiance" in data && data.defiance.type == "door")

@@ -9,11 +9,15 @@ func _ready():
 	#is_mobile = OS.has_feature("mobile") || OS.has_feature("web_android") || OS.has_feature("web_ios")|| OS.has_feature("android") || OS.has_feature("ios")
 	is_mobile = JavaScript.eval("/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)", true)
 
-func set_zindex(node, delay=0,offsetY=0):
-	if delay>0: yield(get_tree().create_timer(delay),"timeout")
-	node.z_index = 500+(node.global_position.y+offsetY)/20
-	if DungeonManager.current_player && node==DungeonManager.current_player.node: node.z_index += 2
-	#print(node.name,"  zindex ",node.z_index)
+#func set_zindex(node, delay=0,offsetY=0):
+#	if delay>0: yield(get_tree().create_timer(delay),"timeout")
+#	node.z_index = 500+(node.global_position.y+offsetY)/20
+#	if DungeonManager.current_player && node==DungeonManager.current_player.node: node.z_index += 2
+#	#print(node.name,"  zindex ",node.z_index)
+
+func set_zindex(node,room,extra=0):
+	node.z_index = 500 + node.global_position.y - room.global_position.y
+	
 
 func remove_all_childs(node):
 	for n in node.get_children():

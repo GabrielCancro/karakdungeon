@@ -21,8 +21,9 @@ func set_data(it_data):
 			if i < data.uses: m.modulate = Color(.7,.7,.7,1)
 			elif reload && i < data.usesm: m.modulate = Color(.3,.3,.3,1)
 			else: m.modulate = Color(0,0,0,0)
-	if reload: color = Color(.2,.2,0,1)
-	else: color = Color(0,.2,.35,1)
+		
+	#if reload: color = Color(.2,.2,0,1)
+	#else: color = Color(0,.2,.35,1)
 	var text = "[u][color=#90F090]"+Lang.get_text("it_"+data.name+"_name")+"[/color][/u]\n"+Lang.get_text("it_"+data.name+"_desc")
 	if reload: text += "\n[color=#70B070]("+Lang.get_text("it_reload")+")[/color]"
 	else: text += "\n[color=#7070B0]("+Lang.get_text("it_reload_not")+")[/color]"
@@ -34,3 +35,12 @@ func on_click():
 	if Utils.is_input_disabled(): return
 	if AdaptativeHintAuto.currentNode != $Button: return
 	ItemManager.on_use_item(data)
+
+func set_can_use(val):
+	if val: 
+		$Img.modulate = Color(1,1,1,1)
+		$NinePatchRect.modulate = Color(1,1,1,1)
+	else: 
+		$Img.modulate = Color(.4,.4,.4,1)
+		$NinePatchRect.modulate = Color(.4,.4,.4,1)
+

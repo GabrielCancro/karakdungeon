@@ -1,13 +1,14 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://nodes/PjSelectUI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/PartySelection.gd" type="Script" id=2]
-[ext_resource path="res://assets/floor1.png" type="Texture" id=3]
+[ext_resource path="res://assets/white.png" type="Texture" id=3]
 [ext_resource path="res://assets/font/AbyssinicaSIL-Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://assets/bbimg/difficult_m.png" type="Texture" id=5]
 [ext_resource path="res://assets/ui/9path_frame_small.png" type="Texture" id=6]
+[ext_resource path="res://assets/font/RobotoBold.ttf" type="DynamicFontData" id=7]
 
-[sub_resource type="Shader" id=7]
+[sub_resource type="Shader" id=9]
 code = "shader_type canvas_item;
 
 uniform float strength : hint_range(0.0, 1.0) = 0.4;
@@ -45,20 +46,20 @@ void fragment() {
 }"
 
 [sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 7 )
+shader = SubResource( 9 )
 shader_param/strength = 0.105
 shader_param/speed = 0.077
 
 [sub_resource type="DynamicFont" id=4]
 size = 44
-outline_size = 5
-outline_color = Color( 0.2, 0.2, 0.2, 1 )
-font_data = ExtResource( 4 )
+outline_size = 4
+outline_color = Color( 0.14902, 0.14902, 0.247059, 1 )
+font_data = ExtResource( 7 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 44
 outline_color = Color( 0.2, 0.2, 0.2, 1 )
-font_data = ExtResource( 4 )
+font_data = ExtResource( 7 )
 
 [sub_resource type="DynamicFont" id=6]
 size = 46
@@ -69,7 +70,7 @@ font_data = ExtResource( 4 )
 [sub_resource type="DynamicFont" id=8]
 size = 32
 outline_color = Color( 0.2, 0.2, 0.2, 1 )
-font_data = ExtResource( 4 )
+font_data = ExtResource( 7 )
 
 [node name="PartySelection" type="Control"]
 anchor_right = 1.0
@@ -146,7 +147,21 @@ __meta__ = {
 "_edit_group_": true
 }
 
+[node name="NinePatchRect" type="NinePatchRect" parent="Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -25.0
+margin_top = -5.0
+margin_right = 26.0
+margin_bottom = 7.0
+texture = ExtResource( 6 )
+patch_margin_left = 64
+patch_margin_top = 64
+patch_margin_right = 64
+patch_margin_bottom = 64
+
 [node name="ColorRect" type="ColorRect" parent="Button"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -162,19 +177,6 @@ DUNGEON"
 align = 1
 valign = 1
 clip_text = true
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Button"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -25.0
-margin_top = -5.0
-margin_right = 26.0
-margin_bottom = 7.0
-texture = ExtResource( 6 )
-patch_margin_left = 64
-patch_margin_top = 64
-patch_margin_right = 64
-patch_margin_bottom = 64
 
 [node name="HelpButton" type="Button" parent="."]
 anchor_left = 1.0
@@ -251,7 +253,22 @@ __meta__ = {
 "_edit_group_": true
 }
 
+[node name="NinePatchRect" type="NinePatchRect" parent="Button2"]
+modulate = Color( 0.721569, 0.72549, 0.631373, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -25.0
+margin_top = -5.0
+margin_right = 26.0
+margin_bottom = 7.0
+texture = ExtResource( 6 )
+patch_margin_left = 64
+patch_margin_top = 64
+patch_margin_right = 64
+patch_margin_bottom = 64
+
 [node name="ColorRect" type="ColorRect" parent="Button2"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -269,17 +286,3 @@ text = "Volver"
 align = 1
 valign = 1
 clip_text = true
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Button2"]
-modulate = Color( 0.721569, 0.72549, 0.631373, 1 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -25.0
-margin_top = -5.0
-margin_right = 26.0
-margin_bottom = 7.0
-texture = ExtResource( 6 )
-patch_margin_left = 64
-patch_margin_top = 64
-patch_margin_right = 64
-patch_margin_bottom = 64

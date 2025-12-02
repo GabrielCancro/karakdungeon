@@ -27,12 +27,13 @@ func update_item_list():
 
 func update_usables():
 	for it in $Items.get_children():
+		it.set_can_use(true)
 		it.get_node("border").modulate = Color(.5,.5,.4,1)
 		if (ItemManager.has_method("condition_"+it.data.name) 
 		&& !ItemManager.call("condition_"+it.data.name,it.data)): 
-			it.get_node("border").modulate = Color(.2,.2,.2,1)
+			it.set_can_use(false)
 		if ("uses"in it.data) && (it.data["uses"]<=0): 
-			it.get_node("border").modulate = Color(.2,.2,.2,1)
+			it.set_can_use(false)
 
 func play_take_item_anim(it_name):
 	$Img.texture = load("res://assets/items/it_"+it_name+".png")

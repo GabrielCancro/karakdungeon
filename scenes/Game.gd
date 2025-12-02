@@ -21,7 +21,7 @@ func _ready():
 	Utils.show_popup("tuto01")
 
 func on_new_dungeon():
-	$CLUI/lb_level.text = Lang.get_text("tx_level")+" "+str(DungeonManager.dungeon_level)
+	$CLUI/lb_level.text = " "+Lang.get_text("tx_level")+" "+str(DungeonManager.dungeon_level)
 
 func _input(event):
 	if event is InputEventKey:

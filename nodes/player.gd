@@ -21,7 +21,7 @@ func _process(delta):
 			var dir = Vector2(data.v,data.h)*3
 			if data.id==1: dest -= dir
 			if data.id==3: dest += dir
-	Utils.set_zindex(self)
+	#Utils.set_zindex(self,DungeonManager.current_room)
 
 func _input(event):
 	if Utils.is_input_disabled(): return
@@ -111,6 +111,8 @@ func get_dest_pos():
 
 func set_selected(val):
 	$Selector.visible = val
+	if val: z_index = 3
+	else: z_index = 2
 
 func get_destine_mov(dx,dy):
 	var mov = {"x":data.x,"y":data.y,"h":0,"v":0}
